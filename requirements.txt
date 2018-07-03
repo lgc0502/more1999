@@ -11,7 +11,6 @@ django-q==0.9.4
 gunicorn==19.8.1
 idna==2.6
 lxml==4.2.1
-pkg-resources==0.0.0
 psycopg2==2.7.5
 python-dateutil==2.7.3
 pytz==2018.4
