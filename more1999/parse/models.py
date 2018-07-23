@@ -13,6 +13,7 @@ class API_DATA(models.Model):
     status = models.CharField(max_length=100)
     keyword = models.TextField(blank=True)
     area = models.CharField(max_length=100)
+    li = models.CharField(max_length=100)
     service_name = models.CharField(max_length=100)
     subproject = models.CharField(max_length=100)
     description = models.TextField(blank=True)

@@ -3,3 +3,7 @@ django_venv
 __pycache__
 staticfiles
 db.sqlite3
+config.json
+src
+public
+node_modules

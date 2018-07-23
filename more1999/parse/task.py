@@ -12,9 +12,12 @@ def new_node(key, value):
     node.text = etree.CDATA(value)
     return node
 
-def sayhello():
+def call_api():
+    for index in range(0,2):
+        print("hi")
+    '''
     today=datetime.datetime.today() 
-    yesterday = today-datetime.timedelta(days=1)  
+    yesterday = today-datetime.timedelta(days=2)  
     today = today.strftime('%Y-%m-%d')
     yesterday = yesterday.strftime('%Y-%m-%d')
     root = etree.Element("root")
@@ -25,9 +28,9 @@ def sayhello():
     body = etree.tostring(root, xml_declaration=True)
     r = requests.post(API, data=body, headers=headers)
     d = xmltodict.parse(r.text)
-    #for index in range(len(d['root']['records']['record'])):
-    #    print(d['root']['records']['record'][index]['area'])
-    for index in range(1,3):
+    for index in range(0,2):
+        print("hi")
+        #len(d['root']['records']['record'])
         temp = d['root']['records']['record'][index]
         service_request_id = temp['service_request_id']
         requested_datetime = temp['requested_datetime']
@@ -43,6 +46,13 @@ def sayhello():
         service_notice = temp['service_notice']
         updated_datetime = temp['updated_datetime']
         expected_datetime = temp['expected_datetime']
-        print(d['root']['records']['record'][index]['area'])
-        r1 = Post(title='派森家常小館', content='02-12345678', location=area)
-        r1.save()
+        if(lat is None or lng is None): #no lat and lng 
+            print("hi")
+        else:'''
+            #li = reverse_geo(lat, lng)
+        
+       
+        
+#def reverse_geo(Lat, Lng):
+
+#    return li
