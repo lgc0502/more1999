@@ -7,22 +7,16 @@ import ButtonGroup from './ButtonGroup'
 import emitter from './events'
 import postApi from './postApi'
 
-
-
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      request_data: null
+      request_data: postApi.requertPost('台南市','null').then(data => {
+         return data
+       })
     }
   }
-  componentWillMount(){
-     postApi.requertPost('台南市','null').then(data => {
-      this.setState({
-        request_data: data,
-      })
-     })
-  }
+  
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
