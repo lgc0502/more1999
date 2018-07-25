@@ -14,13 +14,15 @@ class App extends Component {
     this.state = {
       request_data: {},
     }
+    
+  }
+  componentWillMount(){
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
       })
    })
   }
- 
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
