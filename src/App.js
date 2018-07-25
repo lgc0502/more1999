@@ -12,6 +12,7 @@ class App extends Component {
     super(props)
    
     this.state = {
+      isLoading: true,
       request_data: {},
     }
     
@@ -20,6 +21,7 @@ class App extends Component {
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
+        isLoading = false
       })
    })
   }
@@ -31,15 +33,18 @@ class App extends Component {
     })
   }
   render() {
-    console.log(this.state.request_data) 
-   if(this.state.request_data.length === 0){
-     return false
+    const {isLoading,request_data} = this.state
+   if(isLading){
+     return (
+       <p>loading!!!</p>
+     )
    }
     return (
+     
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            {...this.state.request_data}/> </div>
+            {...request_data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">
