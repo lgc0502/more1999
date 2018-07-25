@@ -17,13 +17,7 @@ class App extends Component {
        })
     }
   }
-  componentWillMount(){
-    this.state.request_data.then((value)=>{
-      this.setState({
-        request_data:value
-      })
-    })
-  }
+ 
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
@@ -32,12 +26,14 @@ class App extends Component {
     })
   }
   render() { 
-    
+    const data = this.state.request_data.then((value)=>{
+      return value
+    })
     return (
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            {...this.state.request_data}/> </div>
+            {...data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">
