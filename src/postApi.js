@@ -6,7 +6,6 @@ let end_date = today.getDate() - today.getDay()
 let begin_date = end_date -7
 
 export default {
-
     requertPost:(selectedtown,selectedvill)=>{
         console.log(selectedtown)
         return axios.get('/village_visualization', {
