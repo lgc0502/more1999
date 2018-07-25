@@ -16,7 +16,7 @@ class App extends Component {
         return data
        })
     }
-    state.request_data.then(value=>{
+    this.state.request_data.then(value=>{
       this.setState({
         request_data: value,
       })
