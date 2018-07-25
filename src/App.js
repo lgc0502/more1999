@@ -12,11 +12,10 @@ class App extends Component {
     super(props)
     this.state = {
       request_data: postApi.requertPost('台南市','null').then(data => {
-         return data 
+         data.then((value)=> {return value}) 
        })
     }
   }
-  
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
@@ -25,7 +24,7 @@ class App extends Component {
     })
   }
   render() { 
-    this.state.request_data.then((value)=>console.log(value))
+    
     return (
       <div> 
         <div className="ui container" id="Donutchart">
