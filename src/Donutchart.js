@@ -25,9 +25,15 @@ class Donutchart extends Component {
     constructor(props){
         super(props)
         this.state={
-            type: Object.keys(props.res.Donut),
-            data: props.res
+            type: null,
+            data: null
         }
+        props.then((value)=>{
+            this.setState({
+                type:Object.keys(value.res.Donut),
+                data:value.res.Donut
+            })
+        })
     }
     render () {
         
