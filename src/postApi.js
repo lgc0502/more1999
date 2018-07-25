@@ -19,6 +19,7 @@ export default {
         })
         .then(response=>{
             alert("ok")
+            console.log(response.data)
             return {
                 requestdata: response.data
             }
