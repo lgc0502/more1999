@@ -11,12 +11,15 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      request_data: postApi.requertPost('台南市','null').then(data => {
-         return data
-       })
+      request_data: null
     }
   }
-  
+  componentDidMount(){
+    postApi.requertPost('台南市','null').then(data => {
+      console.log(data) 
+      this.setState({ request_data:data}) 
+     })
+  }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
@@ -30,7 +33,7 @@ class App extends Component {
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            data={this.state.request_data}/> </div>
+            {...this.state.request_data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">

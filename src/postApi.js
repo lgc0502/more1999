@@ -7,7 +7,6 @@ let begin_date = end_date -7
 
 export default {
     requertPost:(selectedtown,selectedvill)=>{
-        console.log(selectedtown)
         return axios.get('/village_visualization', {
             params:{
                 town:selectedtown,
@@ -18,7 +17,7 @@ export default {
         })
         .then(response=>{
             alert("ok")
-            return response.data
+            return { res:response.data}
         })
         .catch(error=>{
             alert("error")
