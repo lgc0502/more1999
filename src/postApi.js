@@ -18,10 +18,7 @@ export default {
         })
         .then(response=>{
             alert("ok")
-            console.log(response)
-            return {
-                requestdata: response.data
-            }
+            return response.data
         })
         .catch(error=>{
             alert("error")

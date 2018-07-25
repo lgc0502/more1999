@@ -25,6 +25,7 @@ class App extends Component {
     })
   }
   render() { 
+    console.log(this.state.request_data)
     return (
       <div> 
         <div className="ui container" id="Donutchart">
