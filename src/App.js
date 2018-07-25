@@ -16,7 +16,13 @@ class App extends Component {
           return data
        })
     }
-    
+  }
+  componentWillMount(){
+    this.state.request_data.then((value)=>{
+      this.setState({
+        request_data:value
+      })
+    })
   }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
@@ -26,7 +32,7 @@ class App extends Component {
     })
   }
   render() { 
-
+    console.log(this.state.request_data)
     return (
       <div> 
         <div className="ui container" id="Donutchart">
