@@ -12,10 +12,13 @@ class App extends Component {
     super(props)
    
     this.state = {
-      request_data: postApi.requertPost('台南市','null').then(data => {
-          return data
-       })
+      request_data: {},
     }
+    postApi.requertPost('台南市','null').then(data => {
+      this.setState({
+        request_data:data,
+      })
+   })
   }
  
   componentDidUpdate(){
