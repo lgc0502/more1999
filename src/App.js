@@ -34,7 +34,7 @@ class App extends Component {
   }
   render() {
     const {isLoading,request_data} = this.state
-   if(isLading){
+   if(isLoading){
      return (
        <p>loading!!!</p>
      )
