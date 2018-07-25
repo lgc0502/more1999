@@ -26,7 +26,7 @@ class App extends Component {
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
-          request_data:data,
+          request_data:{...data},
         })
     })
   }
