@@ -13,7 +13,7 @@ class App extends Component {
    
     this.state = {
       request_data: postApi.requertPost('台南市','null').then(data => {
-          data.then((value)=>{return value})
+          return data
        })
     }
     

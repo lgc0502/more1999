@@ -17,7 +17,7 @@ export default {
         })
         .then(response=>{
             alert("ok")
-            return { res:response.data}
+            response.data.then((value)=>{return {res:value} })
         })
         .catch(error=>{
             alert("error")
