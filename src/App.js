@@ -10,11 +10,17 @@ import postApi from './postApi'
 class App extends Component {
   constructor(props){
     super(props)
+   
     this.state = {
       request_data: postApi.requertPost('台南市','null').then(data => {
-         data.then((value)=> {return value}) 
+        return data
        })
     }
+    state.request_data.then(value=>{
+      this.setState({
+        request_data: value,
+      })
+    })
   }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
@@ -24,7 +30,8 @@ class App extends Component {
     })
   }
   render() { 
-    
+    console.log(this.state.request_data)
+    this.state.request_data.then((value)=>console.log(value))
     return (
       <div> 
         <div className="ui container" id="Donutchart">

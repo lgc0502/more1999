@@ -30,7 +30,7 @@ class Donutchart extends Component {
         }
     }
     render () {
-        console.log(this.state.data)
+        
        return (
            <div className="ui equal width centered grid row">
            
