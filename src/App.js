@@ -32,12 +32,12 @@ class App extends Component {
     })
   }
   render() { 
-    console.log(this.state.request_data)
+    
     return (
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            {...value}/> </div>
+            {...this.state.request_data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">
