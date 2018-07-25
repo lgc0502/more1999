@@ -16,7 +16,7 @@ class App extends Component {
     }
     
   }
-  componentWillMount(){
+  componentDidMount(){
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
