@@ -27,6 +27,7 @@ class App extends Component {
   }
   render() { 
     const data = this.state.request_data.then((value)=>{
+      console.log(value)
       return value
     })
     console.log(data)
