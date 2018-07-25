@@ -26,14 +26,14 @@ class App extends Component {
     })
   }
   render() { 
-    const data = this.state.request_data.then((value)=>{
-      return value
-    })
+   // const data = this.state.request_data.then((value)=>{
+    //  return value
+    //})
     return (
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            {...data}/> </div>
+            {...this.state.request_data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">
