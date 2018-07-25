@@ -30,11 +30,11 @@ class Donutchart extends Component {
         }
     }
     render () {
-       console.log(this.props) 
+       const {data,type} = this.state
        return (
            <div className="ui equal width centered grid row">
            
-            {this.state.type.map((d,i)=>(  
+            {type.map((d,i)=>(  
                <div className="column"
                 key= {`compare-${i}`}>
                 <span
@@ -50,7 +50,7 @@ class Donutchart extends Component {
                     style ={{
                         fontSize:20,
                         color:"#000000"}}>
-                    {this.state.data.Donut[d][0]+"件"}
+                    {data[d][0]+"件"}
                 </span>   
                 <RadialChart  
                     key = {`Radial-${i}`}
@@ -59,7 +59,7 @@ class Donutchart extends Component {
                     innerRadius = {35}
                     radius = {40}
                     getAngle = {d => d}
-                    data = {[this.state.data.Donut[d][1],(100-this.state.data.Donut[d][0])]}
+                    data = {[data[d][1],(100-data[d][0])]}
                     colorType = "category"
                     colorRange = {Palette}  
                     className =  "ui container radial-chart"  
@@ -71,7 +71,7 @@ class Donutchart extends Component {
                     style ={{
                         fontSize:12,
                         color:"#000000"}}>
-                    {this.state.data.Donut[d][1]/100+'%'}
+                    {data[d][1]/100+'%'}
                 </span>    
                 </div>
             ))}
