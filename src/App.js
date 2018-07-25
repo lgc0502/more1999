@@ -29,6 +29,7 @@ class App extends Component {
     const data = this.state.request_data.then((value)=>{
       return value
     })
+    console.log(data)
     return (
       <div> 
         <div className="ui container" id="Donutchart">
