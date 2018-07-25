@@ -33,7 +33,7 @@ class App extends Component {
       <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
-            {...value}/> </div>
+            {...data}/> </div>
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="Map">
