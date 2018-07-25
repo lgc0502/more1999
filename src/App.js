@@ -13,7 +13,7 @@ class App extends Component {
    
     this.state = {
       request_data: postApi.requertPost('台南市','null').then(data => {
-        return data
+          data.then((value)=>{return value})
        })
     }
     
@@ -26,7 +26,7 @@ class App extends Component {
     })
   }
   render() { 
-    this.state.request_data.then((value)=>{const value})
+
     return (
       <div> 
         <div className="ui container" id="Donutchart">
