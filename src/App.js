@@ -16,11 +16,7 @@ class App extends Component {
         return data
        })
     }
-    this.state.request_data.then(value=>{
-      this.setState({
-        request_data: value,
-      })
-    })
+    
   }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
@@ -30,7 +26,7 @@ class App extends Component {
     })
   }
   render() { 
-    console.log(this.state.request_data)
+    console.log(this.state.request_data.value)
     this.state.request_data.then((value)=>console.log(value))
     return (
       <div> 
