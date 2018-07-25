@@ -31,7 +31,9 @@ class App extends Component {
     })
   }
   render() { 
-    console.log(this.state.request_data)
+   if(this.state.request_data.length === 0){
+     return false
+   }
     return (
       <div> 
         <div className="ui container" id="Donutchart">
