@@ -25,18 +25,12 @@ class Donutchart extends Component {
     constructor(props){
         super(props)
         this.state={
-            type: null,
-            data: null
+            type: Object.keys(props.res.Donut),
+            data: props.res.Donut
         }
-        props.then((value)=>{
-            this.setState({
-                type:Object.keys(value.res.Donut),
-                data:value.res.Donut
-            })
-        })
     }
     render () {
-        
+       console.log(this.props) 
        return (
            <div className="ui equal width centered grid row">
            
