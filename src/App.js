@@ -21,7 +21,7 @@ class App extends Component {
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
-        isLoading = false
+        isLoading : false
       })
    })
   }
