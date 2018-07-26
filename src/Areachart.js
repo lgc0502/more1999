@@ -28,7 +28,7 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
-    const {data,dataCollection,typeCollection} = this.state
+    const {data,dateCollection,typeCollection} = this.state
     return (
       <XYPlot
         width={window.innerWidth*0.75}
