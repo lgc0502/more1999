@@ -38,6 +38,7 @@ export default class Map20 extends Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <GeoJSON data={townData} 
+          className="geojson"
           fill = "#F5CE28"
           stroke = "#ffffff"
           strokeWidth = {1.5}
