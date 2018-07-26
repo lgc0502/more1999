@@ -54,6 +54,7 @@ class townMap extends Component{
     }
     componentDidUpdate(){
         //render
+        console.log("in")
         this.eventEmitter = emitter.addListener("markTown",(selected)=>{
             this.setState({
                 town:selected,
