@@ -14,7 +14,6 @@ class ButtonGroup extends Component{
     componentWillMount(){
         //load data
     }
-    
     render(){ 
         return(
             <div>
