@@ -17,7 +17,17 @@ class Areachart extends Component {
     this.state = {
       dateCollection : Object.keys(props.res.Area), 
       data: props.res.Area  ,
-      type: null
+      type: {
+        'parking':0,
+        'light':0,
+        'noise':0,
+        'aisle':0,
+        'road':0,
+        'traffic':0,
+        'dirty':0,
+        'pipe':0,
+        'animal':0 
+      }
     }
   }
   componentWillMount(){
@@ -28,7 +38,17 @@ class Areachart extends Component {
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
       this.setState({
-          type:selectedtype,
+          type:{
+            'parking':selectedtype == 'parking'?1:0,
+            'light':selectedtype == 'light'?1:0,
+            'noise':selectedtype == 'noise'?1:0,
+            'aisle':selectedtype == 'aisle'?1:0,
+            'road':selectedtype == 'road'?1:0,
+            'traffic':selectedtype == 'traffic'?1:0,
+            'dirty':selectedtype == 'dirty'?1:0,
+            'pipe':selectedtype == 'pipe'?1:0,
+            'animal':selectedtype == 'animal'?1:0, 
+          }
       })
   })
   }
@@ -60,7 +80,7 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  key = {`AreaSeries-${i}`}
+                  key = {`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
                   data = {
@@ -70,7 +90,7 @@ class Areachart extends Component {
                     })
                   }
                   color = {Palette[i]}
-                  opacity = {1}  
+                  opacity = {type.d==1?1:0.2}  
                 />    
               )
             )}

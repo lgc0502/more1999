@@ -68,7 +68,7 @@ class Donutchart extends Component {
                     style={{
                         fontSize:12,
                         color:"#000000"}}>
-                    {data[d][1]/100+'%'}
+                    {data[d][1]+'%'}
                 </span>    
                 </div>
             ))}
