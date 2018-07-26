@@ -36,7 +36,9 @@ class App extends Component {
     const {isLoading,request_data} = this.state
    if(isLoading){
      return (
-      <div class="loaddata"></div>
+      <div class="loaddata">
+        <h3 id="load_text">正在接通1999 ......</h3>
+      </div>
      )
    }
     return (
