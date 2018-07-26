@@ -21,7 +21,7 @@ class Areachart extends Component {
   }
   componentWillMount(){
     this.setState({
-      typeCollection : Object.keys(this.props.data.Area[this.state.dateCollection[0]])
+      typeCollection : Object.keys(this.state.data[this.state.dateCollection[0]])
     })
   }
   render() { 
