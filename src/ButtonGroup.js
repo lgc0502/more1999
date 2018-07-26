@@ -13,7 +13,7 @@ class ButtonGroup extends Component{
     controllarea(e,data){
         console.log(e)
         console.log(data)    
-        emitter.emit("showarea",data.value);  
+   //     emitter.emit("showarea",data.value);  
     }
     render(){ 
         return(
