@@ -9,9 +9,9 @@ class ButtonGroup extends Component{
         this.onClick=this.handleClick.bind(this)
     }
     handleClick(e){
-        const{key} = e.target
-        emitter.emit("showarea",key); 
-        console.log(key)
+        const{id} = e.target
+        emitter.emit("showarea",id); 
+        console.log(id)
     }
     componentWillMount(){
         //load data
@@ -21,7 +21,7 @@ class ButtonGroup extends Component{
         return(
             <div>
                 {type.map((d,i)=>
-                <button key = {`${d}`} className = {`ui toggle basic button `} onClick = {this.onClick}>{type[i]}</button>)
+                <button key = {`button-${d}`} id= {`${d}`}className = {`ui toggle basic button `} onClick = {this.onClick}>{type[i]}</button>)
                 }
             </div>
         )
