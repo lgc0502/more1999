@@ -1,21 +1,5 @@
 import React,{Component} from 'react'
 import {RadialChart} from "react-vis"
-//import compareLastweek from "./compareLastweek"
-
-const Palette = ["#FFEFD5","#16982B"]
-/*const compareLastweek = {
-    'Donut':{
-        'a':[4,20],
-        'b':[5,15],
-        'c':[6,3],
-        'd':[7,20],
-        'e':[5,10],
-        'f':[4,20],
-        'g':[5,15],
-        'h':[6,3],
-        'i':[7,20]
-    }
-}*/
 
 class Donutchart extends Component {
     static defaultProps = {
@@ -29,11 +13,18 @@ class Donutchart extends Component {
             data: props.res.Donut
         }
     }
-    render () {
-       const {data,type} = this.state
+    componentWillMount(){
+        const {data,type} = this.state
+        const {width,height} = this.props
+        const Palette = ["#FFEFD5","#16982B"]
+    }
+    componentWillUpdate(){
+        const {data,type} = this.state
+        const {width,height} = this.props
+    }
+    render () {    
        return (
-           <div className="ui equal width centered grid row">
-           
+           <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
                <div className="column"
                 key= {`compare-${i}`}>
