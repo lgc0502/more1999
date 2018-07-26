@@ -16,7 +16,7 @@ class Donutchart extends Component {
     componentWillMount(){
         const {data,type} = this.state
         const {width,height} = this.props
-        const Palette = ["#FFEFD5","#16982B"]
+        const {Palette} = ["#FFEFD5","#16982B"]
     }
     componentWillUpdate(){
         const {data,type} = this.state
