@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import {RadialChart} from "react-vis"
 
 class Donutchart extends Component {
-    
     constructor(props){
         super(props)
         this.state={
@@ -16,9 +15,20 @@ class Donutchart extends Component {
     componentWillUpdate(){
         
     }
-    render () {    
+    render () {   
         const {data,type} = this.state
         const {Palette} = ["#FFEFD5","#16982B"]
+        const {type_copy} = [{
+            'parking':'違規停車',
+            'light':'路燈故障',
+            'noise':'噪音舉發',
+            'aisle':'騎樓舉發',
+            'road':'道路維修',
+            'traffic':'交通運輸',
+            'dirty':'髒亂污染',
+            'pipe':'民生管線',
+            'animal':'動物救援' 
+        }]
        return (
            <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
@@ -29,7 +39,7 @@ class Donutchart extends Component {
                     className="chineseText ui container radial-title center aligned"
                     style={{
                         color:"#000000"}}>
-                    {d}
+                    {type_copy[d]}
                 </span>   
                 <span
                     key={`quantity-${i}`}
