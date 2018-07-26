@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {RadialChart} from "react-vis"
-
+const {Palette} = ["#FFEFD5","#16982B"]
 class Donutchart extends Component {
     static defaultProps = {
        width:window.innerWidth*0.6/9,
@@ -14,15 +14,14 @@ class Donutchart extends Component {
         }
     }
     componentWillMount(){
-        const {data,type} = this.state
-        const {width,height} = this.props
-        const {Palette} = ["#FFEFD5","#16982B"]
+        
     }
     componentWillUpdate(){
-        const {data,type} = this.state
-        const {width,height} = this.props
+        
     }
     render () {    
+        const {data,type} = this.state
+        const {width,height} = this.props
        return (
            <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
@@ -45,8 +44,8 @@ class Donutchart extends Component {
                 </span>   
                 <RadialChart  
                     key = {`Radial-${i}`}
-                    width = {this.props.width}
-                    height = {this.props.height*0.6}
+                    width = {width}
+                    height = {height*0.6}
                     innerRadius = {35}
                     radius = {40}
                     getAngle = {d => d}
