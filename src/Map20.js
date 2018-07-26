@@ -13,7 +13,7 @@ export default class Map20 extends Component {
   }
  
   componentDidMount(){
-    fetch(this.props.data.townmap)
+    fetch(this.props.data.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
