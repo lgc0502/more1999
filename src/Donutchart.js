@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {RadialChart} from "react-vis"
-const {Palette} = ["#FFEFD5","#16982B"]
+
 class Donutchart extends Component {
     
     constructor(props){
