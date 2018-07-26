@@ -11,7 +11,6 @@ export default class Map20 extends Component {
   render() {
     const position = [this.state.lat, this.state.lng]
     return (
-      <svg width={800} height={500} viewBox="0 0 800 500">
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -23,7 +22,7 @@ export default class Map20 extends Component {
           </Popup>
         </Marker>
       </Map>
-      </svg>
+      
     )
   }
 }
