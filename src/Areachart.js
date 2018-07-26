@@ -18,15 +18,15 @@ class Areachart extends Component {
       dateCollection : Object.keys(props.res.Area), 
       data: props.res.Area  ,
       type: {
-        'parking':0,
-        'light':0,
-        'noise':0,
-        'aisle':0,
-        'road':0,
-        'traffic':0,
-        'dirty':0,
-        'pipe':0,
-        'animal':0 
+        'parking':1,
+        'light':1,
+        'noise':1,
+        'aisle':1,
+        'road':1,
+        'traffic':1,
+        'dirty':1,
+        'pipe':1,
+        'animal':1 
       }
     }
   }
@@ -51,7 +51,7 @@ class Areachart extends Component {
             'animal':selectedtype === 'animal'?1:0, 
           }
       })
-  })
+    })
   }
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])

@@ -11,7 +11,6 @@ class ButtonGroup extends Component{
     handleClick(e){
         const{id} = e.target
         emitter.emit("showarea",id); 
-        console.log(id)
     }
     componentWillMount(){
         //load data

@@ -42,6 +42,9 @@ body {
   height:auto;
   margin-top:3%;
 }
+#Map20 {
+  height:180px;
+}
 #Map {
   width: 100%;
   height: auto;
