@@ -92,7 +92,7 @@ class Areachart extends Component {
                     })
                   }
                   color={Palette[i]}
-                  opacity={(this.state.type.d===1)?1:0.2}  
+                  opacity={(this.state.type.d==='1')?1:0.2}  
                 />    
               )
             )}
