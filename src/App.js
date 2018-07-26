@@ -49,9 +49,10 @@ class App extends Component {
           <Donutchart
             {...request_data}/> </div>
         <div className="ui container" id="dropdown">
-    <Dropdown/></div>
-    <div className="ui container" id="leafletmap">
-      <Map20/></div>
+          <Dropdown/></div>
+        <div className="ui container" id="leafletmap">
+          <Map20
+            data={this.props}/></div>
         <div className="ui container" id="Map">
           <Map
             data={this.props}/></div>
