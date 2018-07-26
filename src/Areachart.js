@@ -36,6 +36,7 @@ class Areachart extends Component {
     })
   }
   componentWillUpdate(){
+    console.log("in the state")
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
       console.log(selectedtype)
       this.setState({
