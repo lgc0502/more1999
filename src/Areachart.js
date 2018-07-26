@@ -38,7 +38,7 @@ class Areachart extends Component {
   componentDidUpdate(){
     console.log("in the state")
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
-      console.log(selectedtype)
+      
       this.setState({
           type:{
             'parking':selectedtype === 'parking'?1:0,
@@ -52,6 +52,7 @@ class Areachart extends Component {
             'animal':selectedtype === 'animal'?1:0, 
           }
       })
+      console.log(this.type)
     })
   }
   render() { 

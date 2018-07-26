@@ -6,7 +6,6 @@ const type = ['違規停車','路燈故障','噪音舉發','騎樓舉發','道�
 class ButtonGroup extends Component{
     constructor(props){
         super(props)
-        this.onClick=this.handleClick.bind(this)
     }
     handleClick(e){
         const{id} = e.target
@@ -20,7 +19,7 @@ class ButtonGroup extends Component{
         return(
             <div>
                 {type.map((d,i)=>
-                <button key = {`button-${d}`} id= {`${d}`}className = {`ui toggle basic button `} onClick = {this.onClick}>{type[i]}</button>)
+                <button key = {`button-${d}`} id= {`${d}`}className = {`ui toggle basic button `} onClick = {this.handleClick.bind(this)}>{type[i]}</button>)
                 }
             </div>
         )
