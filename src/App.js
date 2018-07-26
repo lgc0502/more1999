@@ -36,7 +36,7 @@ class App extends Component {
     const {isLoading,request_data} = this.state
    if(isLoading){
      return (
-      <div class="load"></div>
+      <div class="loaddata"></div>
      )
    }
     return (
