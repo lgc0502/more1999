@@ -54,7 +54,7 @@ class App extends Component {
           <ButtonGroup/></div>
         <div className="ui container" id="Areachart">
           <Areachart
-            data={this.state.request_data}/> </div>
+            {...request_data}/> </div>
        </div> 
     )
   }

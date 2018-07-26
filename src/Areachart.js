@@ -8,7 +8,6 @@ import {
   AreaSeries
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
-//import categoryByTime from './categoryByTime'
 
 const Palette = ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
 class Areachart extends Component {
@@ -16,8 +15,9 @@ class Areachart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dateCollection : Object.keys(this.props.data.Area) 
-      }
+      dateCollection : Object.keys(props.res.Area), 
+      data: props.res.Area  
+    }
   }
   componentWillMount(){
     this.setState({
@@ -28,7 +28,7 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
-  
+    const {data,dataCollection,typeCollection} = this.state
     return (
       <XYPlot
         width={window.innerWidth*0.75}
@@ -49,15 +49,15 @@ class Areachart extends Component {
             text:{fill:"#6b6b76",fontWeight: 400}
           }}
         />
-         {this.state.typeCollection.map((d,i)=>(
+         {typeCollection.map((d,i)=>(
               <AreaSeries
                   key = {`AreaSeries-${i}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
                   data = {
-                    this.state.dateCollection.map((d1,i1)=>{  
+                    dateCollection.map((d1,i1)=>{  
 
-                      return({x:new Date(d1),y: this.props.data.Area[d1][d] +(9-3*i),y0:9-3*i})
+                      return({x:new Date(d1),y: data[d1][d] +(9-3*i),y0:9-3*i})
                     })
                   }
                   color = {Palette[i]}
