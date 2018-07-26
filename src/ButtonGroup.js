@@ -21,7 +21,7 @@ class ButtonGroup extends Component{
         return(
             <div>
                 {type.map((d,i)=>
-                <button key = {`${d}`} className = {`ui toggle basic button `} onClick = {this.onClickd}>{type[i]}</button>)
+                <button key = {`${d}`} className = {`ui toggle basic button `} onClick = {this.onClick}>{type[i]}</button>)
                 }
             </div>
         )
