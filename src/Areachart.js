@@ -9,12 +9,12 @@ import {
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
-const Palette = ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
+const Palette= ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
 class Areachart extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
+    this.state= {
       dateCollection : Object.keys(props.res.Area), 
       data: props.res.Area  ,
       type: {
@@ -41,15 +41,15 @@ class Areachart extends Component {
       
       this.setState({
           type:{
-            'parking':selectedtype === 'parking'?1:0,
-            'light':selectedtype === 'light'?1:0,
-            'noise':selectedtype === 'noise'?1:0,
-            'aisle':selectedtype === 'aisle'?1:0,
-            'road':selectedtype === 'road'?1:0,
-            'traffic':selectedtype === 'traffic'?1:0,
-            'dirty':selectedtype === 'dirty'?1:0,
-            'pipe':selectedtype === 'pipe'?1:0,
-            'animal':selectedtype === 'animal'?1:0, 
+            'parking':(selectedtype=== 'parking')?1:0,
+            'light':(selectedtype=== 'light')?1:0,
+            'noise':(selectedtype=== 'noise')?1:0,
+            'aisle':(selectedtype=== 'aisle')?1:0,
+            'road':(selectedtype=== 'road')?1:0,
+            'traffic':(selectedtype=== 'traffic')?1:0,
+            'dirty':(selectedtype=== 'dirty')?1:0,
+            'pipe':(selectedtype=== 'pipe')?1:0,
+            'animal':(selectedtype=== 'animal')?1:0, 
           }
       })
       console.log(this.type)
@@ -58,7 +58,7 @@ class Areachart extends Component {
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
-    const formatTime = timeFormat('%B %d')
+    const formatTime= timeFormat('%B %d')
     const {data,dateCollection,typeCollection} = this.state
     
     return (
@@ -93,7 +93,7 @@ class Areachart extends Component {
                     })
                   }
                   color={Palette[i]}
-                  opacity={this.state.type.d===1?1:0.2}  
+                  opacity={(this.state.type.d===1)?1:0.2}  
                 />    
               )
             )}
