@@ -37,11 +37,11 @@ export default class Map20 extends Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON data={townData} style={{
-          fill = "#F5CE28",
-          stroke = "#ffffff",
-          strokeWidth = 1.5
-        }}/>
+        <GeoJSON data={townData} 
+          fill = "#F5CE28"
+          stroke = "#ffffff"
+          strokeWidth = {1.5}
+        />
         <Marker position={position}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
