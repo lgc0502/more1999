@@ -30,6 +30,7 @@ class Donutchart extends Component {
         const {data,type} = this.state
         const {Palette} = ["#FFEFD5","#16982B"]
         const {type_copy} = this.state
+        console.log(type_copy)
        return (
            <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
@@ -40,7 +41,7 @@ class Donutchart extends Component {
                     className="chineseText ui container radial-title center aligned"
                     style={{
                         color:"#000000"}}>
-                    {d}
+                    {type_copy[d]}
                 </span>   
                 <span
                     key={`quantity-${i}`}
