@@ -37,6 +37,7 @@ class Areachart extends Component {
   }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
+      console.log(selectedtype)
       this.setState({
           type:{
             'parking':selectedtype === 'parking'?1:0,
@@ -57,7 +58,7 @@ class Areachart extends Component {
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
     const {data,dateCollection,typeCollection,type} = this.state
-    console.log(this.state.type)
+    console.log(type)
     return (
       <XYPlot
         width={window.innerWidth*0.75}
