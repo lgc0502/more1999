@@ -8,7 +8,7 @@ import {
   AreaSeries
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
-
+import emitter from './events'
 const Palette = ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
 class Areachart extends Component {
 
