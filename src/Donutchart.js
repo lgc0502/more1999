@@ -39,7 +39,7 @@ class Donutchart extends Component {
                     className="chineseText ui container radial-title center aligned"
                     style={{
                         color:"#000000"}}>
-                    {type_copy[d]}
+                    {type_copy.d}
                 </span>   
                 <span
                     key={`quantity-${i}`}
