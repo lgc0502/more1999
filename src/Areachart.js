@@ -35,7 +35,7 @@ class Areachart extends Component {
       typeCollection : Object.keys(this.state.data[this.state.dateCollection[0]])
     })
   }
-  componentDidUpdate(){
+  componentWillUpdate(){
     console.log("in the state")
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
       this.setState({
@@ -91,8 +91,8 @@ class Areachart extends Component {
                       return({x:new Date(d1),y: data[d1][d] +(9-3*i),y0:9-3*i})
                     })
                   }
-                  color={Palette[i]}
-                  opacity={(this.state.type.d==='1')?1:0.2}  
+                  color={(this.state.type[d]==='1')?"#000000":Palette[i]}
+                  opacity={(this.state.type[d]==='1')?1:0.2}  
                 />    
               )
             )}

@@ -39,7 +39,7 @@ class Donutchart extends Component {
                     className="chineseText ui container radial-title center aligned"
                     style={{
                         fontSize:16,
-                        color:"#999898"}}>
+                        color:"#7a7979"}}>
                     {type_copy[d]}
                 </span>   
                 <span
@@ -47,9 +47,9 @@ class Donutchart extends Component {
                     className="compare_quantity ui container radial-title center aligned"
                     style={{
                         fontSize:18,
-                        fontWeight:800,
-                        color:"#999898"}}>
-                    {data[d][0]+"件"}
+                        fontWeight:600,
+                        color:"#d82109"}}>
+                    {data[d][0]+" 件"}
                 </span>   
                 <RadialChart  
                     key={`Radial-${i}`}
