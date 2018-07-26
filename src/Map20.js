@@ -11,10 +11,10 @@ export default class Map20 extends Component {
   render() {
     const position = [this.state.lat, this.state.lng]
     return (
-      <Map center={position} zoom={this.state.zoom} style={{height: "30vh"}}>
+      <Map center={position} zoom={this.state.zoom} style={{height: "70vh"}}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}}/{y}"
+          url="https://tile.openstreetmap.org/10/300/800"
         />
         <Marker position={position}>
           <Popup>
