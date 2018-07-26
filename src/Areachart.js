@@ -38,18 +38,17 @@ class Areachart extends Component {
   componentDidUpdate(){
     console.log("in the state")
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
-      
       this.setState({
           type:{
-            'parking':(selectedtype=== 'parking')?1:0,
-            'light':(selectedtype=== 'light')?1:0,
-            'noise':(selectedtype=== 'noise')?1:0,
-            'aisle':(selectedtype=== 'aisle')?1:0,
-            'road':(selectedtype=== 'road')?1:0,
-            'traffic':(selectedtype=== 'traffic')?1:0,
-            'dirty':(selectedtype=== 'dirty')?1:0,
-            'pipe':(selectedtype=== 'pipe')?1:0,
-            'animal':(selectedtype=== 'animal')?1:0, 
+            'parking':(selectedtype=== '違規停車')?1:0,
+            'light':(selectedtype=== '路燈故障')?1:0,
+            'noise':(selectedtype=== '噪音舉發')?1:0,
+            'aisle':(selectedtype=== '騎樓舉發')?1:0,
+            'road':(selectedtype=== '道路維修')?1:0,
+            'traffic':(selectedtype=== '交通運輸')?1:0,
+            'dirty':(selectedtype=== '髒亂污染')?1:0,
+            'pipe':(selectedtype=== '民生管線')?1:0,
+            'animal':(selectedtype=== '動物救援')?1:0, 
           }
       })
       
