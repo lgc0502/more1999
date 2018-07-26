@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-
+import { Map, TileLayer, Marker, Popup,GeoJSON } from 'react-leaflet'
+import {feature} from "topojson-client"
 export default class Map20 extends Component {
   constructor(props){
     super(props)
-    state = {
+    this.state = {
       lat: 23.1505,
       lng: 120.3456,
       zoom: 10,
