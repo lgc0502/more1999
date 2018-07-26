@@ -6,7 +6,18 @@ class Donutchart extends Component {
         super(props)
         this.state={
             type: Object.keys(props.res.Donut),
-            data: props.res.Donut
+            data: props.res.Donut,
+            type_copy:{
+                'parking':'違規停車',
+                'light':'路燈故障',
+                'noise':'噪音舉發',
+                'aisle':'騎樓舉發',
+                'road':'道路維修',
+                'traffic':'交通運輸',
+                'dirty':'髒亂污染',
+                'pipe':'民生管線',
+                'animal':'動物救援' 
+            }
         }
     }
     componentWillMount(){
@@ -18,17 +29,7 @@ class Donutchart extends Component {
     render () {   
         const {data,type} = this.state
         const {Palette} = ["#FFEFD5","#16982B"]
-        const {type_copy} = {
-            'parking':'違規停車',
-            'light':'路燈故障',
-            'noise':'噪音舉發',
-            'aisle':'騎樓舉發',
-            'road':'道路維修',
-            'traffic':'交通運輸',
-            'dirty':'髒亂污染',
-            'pipe':'民生管線',
-            'animal':'動物救援' 
-        }
+        const {type_copy} = this.state
        return (
            <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
@@ -39,7 +40,7 @@ class Donutchart extends Component {
                     className="chineseText ui container radial-title center aligned"
                     style={{
                         color:"#000000"}}>
-                    {type_copy[d]}
+                    {d}
                 </span>   
                 <span
                     key={`quantity-${i}`}
