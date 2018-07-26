@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Map from './townMap'
-import Map20 from './Map20'
+//import Map20 from './Map20'
 import Dropdown from './Dropdownsearch'
 import Areachart from './Areachart'
 import Donutchart from './Donutchart'
