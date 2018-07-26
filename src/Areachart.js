@@ -58,7 +58,7 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
-    const {data,dateCollection,typeCollection,type} = this.state
+    const {data,dateCollection,typeCollection} = this.state
     
     return (
       <XYPlot
@@ -92,7 +92,7 @@ class Areachart extends Component {
                     })
                   }
                   color={Palette[i]}
-                  opacity={type.d===1?1:0.2}  
+                  opacity={this.state.type.d===1?1:0.2}  
                 />    
               )
             )}

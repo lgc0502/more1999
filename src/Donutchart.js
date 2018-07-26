@@ -52,7 +52,7 @@ class Donutchart extends Component {
                 <RadialChart  
                     key={`Radial-${i}`}
                     width={window.innerWidth*0.6/9}
-                    height={window.innerWidth*0.6/5}
+                    height={window.innerWidth*0.6/6}
                     innerRadius={35}
                     radius={40}
                     getAngle={d => d}
