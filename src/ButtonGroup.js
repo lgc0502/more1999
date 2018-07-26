@@ -6,19 +6,22 @@ const type = ['違規停車','路燈故障','噪音舉發','騎樓舉發','道�
 class ButtonGroup extends Component{
     constructor(props){
         super(props)
+        this.onClick=this.handleClick.bind(this)
+    }
+    handleClick(e){
+        const{key} = e.target
+        emitter.emit("showarea",key); 
+        console.log(key)
     }
     componentWillMount(){
         //load data
     }
-    controllarea(e){
-        console.log(e)
-        emitter.emit("showarea",e);  
-    }
+    
     render(){ 
         return(
             <div>
                 {type.map((d,i)=>
-                <button key = {`key-${i}`} className = {`ui basic button `} onClick = {this.controllarea(type[i]).bind(this)}>{type[i]}</button>)
+                <button key = {`${d}`} className = {`ui toggle basic button `} onClick = {this.onClickd}>{type[i]}</button>)
                 }
             </div>
         )
