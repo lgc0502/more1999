@@ -43,15 +43,15 @@ class App extends Component {
      )
    }
     return (
-     
-      <div> 
+      <div className="ui container" id="leafletmap">
+      <Map20/></div>
+    /*}  <div> 
         <div className="ui container" id="Donutchart">
           <Donutchart
             {...request_data}/> </div>
         <div className="ui container" id="dropdown">
-          <Dropdown/></div>
-        <div className="ui container" id="leafletmap">
-          <Map20/></div>
+    <Dropdown/></div>
+        
         <div className="ui container" id="Map">
           <Map
             data={this.props}/></div>
@@ -60,7 +60,7 @@ class App extends Component {
         <div className="ui container" id="Areachart">
           <Areachart
             {...request_data}/> </div>
-       </div> 
+  </div> */
     )
   }
 }

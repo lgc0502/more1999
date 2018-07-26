@@ -11,7 +11,7 @@ export default class Map20 extends Component {
   render() {
     const position = [this.state.lat, this.state.lng]
     return (
-      <Map center={position} zoom={this.state.zoom}>
+      <Map center={position} zoom={this.state.zoom} style={{height: "100vh"}}>
         <TileLayer
         
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
