@@ -6,6 +6,9 @@
   width: 100%;
   height:40vh;
   text-align: center;
+  font-family: 'Noto Sans TC',sans-serif;
+  letter-spacing: 3px;
+  font-weight: 600;
   font-size: 5em;
   color: rgb(216, 33, 9);
 }
@@ -45,7 +48,8 @@ body {
   margin-top:3%;
 }
 #leafletmap {
-  height:180px;
+  width:100%;
+  height:auto;
 }
 #Map {
   width: 100%;
