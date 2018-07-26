@@ -10,16 +10,14 @@ class ButtonGroup extends Component{
     componentWillMount(){
         //load data
     }
-    controllarea(e,data){
-        console.log(e)
-        console.log(data)    
-   //     emitter.emit("showarea",data.value);  
+    controllarea(e){
+        emitter.emit("showarea",e);  
     }
     render(){ 
         return(
             <div>
                 {type.map((d,i)=>
-                <button key = {`key-${i}`} className = {`ui basic button `} onClick = {this.controllarea(type[i]).bind(this)}>{type[i]}</button>)
+                <button key = {`key-${i}`} className = {`ui basic button `} onClick = {this.controllarea(type[i])}>{type[i]}</button>)
                 }
             </div>
         )

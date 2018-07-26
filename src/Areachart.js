@@ -16,7 +16,8 @@ class Areachart extends Component {
     super(props)
     this.state = {
       dateCollection : Object.keys(props.res.Area), 
-      data: props.res.Area  
+      data: props.res.Area  ,
+      type: null
     }
   }
   componentWillMount(){
@@ -24,11 +25,19 @@ class Areachart extends Component {
       typeCollection : Object.keys(this.state.data[this.state.dateCollection[0]])
     })
   }
+  componentDidUpdate(){
+    this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
+      this.setState({
+          type:selectedtype,
+      })
+  })
+  }
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
     const {data,dateCollection,typeCollection} = this.state
+    console.log(this.state.type)
     return (
       <XYPlot
         width={window.innerWidth*0.75}
