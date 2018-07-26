@@ -28,9 +28,7 @@ class Donutchart extends Component {
     }
     render () {   
         const {data,type} = this.state
-        const {Palette} = ["#FFEFD5","#16982B"]
         const {type_copy} = this.state
-        console.log(type_copy)
        return (
            <div className="ui equal width centered grid row">  
             {type.map((d,i)=>(  
@@ -60,7 +58,7 @@ class Donutchart extends Component {
                     getAngle={d => d}
                     data={[data[d][1],(100-data[d][0])]}
                     colorType="category"
-                    colorRange={Palette}  
+                    colorRange={["#FFEFD5","#16982B"]}  
                     className="ui container radial-chart"  
                 >
                 </RadialChart>

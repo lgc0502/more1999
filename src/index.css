@@ -18,19 +18,19 @@ body {
 }
 .chineseText {
   font-family: 'Noto Sans TC',sans-serif;
-  font-weight: 400;
-  font-size: 0.5em;
+  font-weight: 500;
+  font-size: 1em;
 }
 
 #Donutchart {
   width: 85%;
-  height:35vh;
+  height:30vh;
   padding-left: 5%;
   padding-right: 5%
 }
 .compare_quantity {
   position: absolute;
-  top:42%;
+  top:45%;
   left:0%;
 }
 .villdropdown ,.towndropdown{
