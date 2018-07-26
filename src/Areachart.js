@@ -39,15 +39,15 @@ class Areachart extends Component {
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
       this.setState({
           type:{
-            'parking':selectedtype == 'parking'?1:0,
-            'light':selectedtype == 'light'?1:0,
-            'noise':selectedtype == 'noise'?1:0,
-            'aisle':selectedtype == 'aisle'?1:0,
-            'road':selectedtype == 'road'?1:0,
-            'traffic':selectedtype == 'traffic'?1:0,
-            'dirty':selectedtype == 'dirty'?1:0,
-            'pipe':selectedtype == 'pipe'?1:0,
-            'animal':selectedtype == 'animal'?1:0, 
+            'parking':selectedtype === 'parking'?1:0,
+            'light':selectedtype === 'light'?1:0,
+            'noise':selectedtype === 'noise'?1:0,
+            'aisle':selectedtype === 'aisle'?1:0,
+            'road':selectedtype === 'road'?1:0,
+            'traffic':selectedtype === 'traffic'?1:0,
+            'dirty':selectedtype === 'dirty'?1:0,
+            'pipe':selectedtype === 'pipe'?1:0,
+            'animal':selectedtype === 'animal'?1:0, 
           }
       })
   })
@@ -56,22 +56,22 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const formatTime = timeFormat('%B %d')
-    const {data,dateCollection,typeCollection} = this.state
+    const {data,dateCollection,typeCollection,type} = this.state
     console.log(this.state.type)
     return (
       <XYPlot
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range = {[window.innerWidth*0.1,window.innerWidth*0.6]}
+        Range={[window.innerWidth*0.1,window.innerWidth*0.6]}
        >
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           XDomain = {[timestamp_begin,timestamp_end]}
-           xRange = {[window.innerWidth*0.1,window.innerWidth*0.6]}
-           tickFormat = {(d)=>formatTime(d)}
-           tickTotal = {6}
+           XDomain={[timestamp_begin,timestamp_end]}
+           xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+           tickFormat={(d)=>formatTime(d)}
+           tickTotal={6}
            xType="time"
            style={{
             line:{stroke:"#ADDDE1"},
@@ -80,17 +80,17 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  key = {`AreaSeries-${d}`}
+                  key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
-                  data = {
+                  data={
                     dateCollection.map((d1,i1)=>{  
 
                       return({x:new Date(d1),y: data[d1][d] +(9-3*i),y0:9-3*i})
                     })
                   }
-                  color = {Palette[i]}
-                  opacity = {type.d==1?1:0.2}  
+                  color={Palette[i]}
+                  opacity={type.d===1?1:0.2}  
                 />    
               )
             )}
