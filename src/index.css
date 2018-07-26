@@ -50,6 +50,7 @@ body {
 #leafletmap {
   width:85%;
   height:350px;
+  margin-top:10%;
 }
 #Map {
   width: 100%;
