@@ -30,6 +30,7 @@ class Map20 extends Component {
                 return
             }
             res.json().then(topology => {
+              console.log(topology)
                 this.setState({
                   poplData:topology.data,
                 //  PolygonsCenter:topology.geopoint
