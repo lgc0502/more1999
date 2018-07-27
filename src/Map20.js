@@ -1,17 +1,27 @@
 import React, { Component } from 'react'
 import {Map,TileLayer,GeoJSON} from 'react-leaflet'
 
-export default class Map20 extends Component {
+const DEFAULT_VIEWPORT = {
+  center:[23.1505,120.3456],
+  zoom:13
+}
+class Map20 extends Component {
   constructor(props){
     super(props)
     this.state = {
       lat: 23.1505,
       lng: 120.3456,
-      zoom: 10,
-      poplData:[]
+      zoom: 13,
+      poplData:[],
+      viewport:DEFAULT_VIEWPORT,
     }
   }
- 
+  onClickReset(){
+    this.setState({viewport: DEFAULT_VIEWPORT})
+  }
+  onViewportChanged(viewport){
+    this.setState({viewport})
+  }
   componentDidMount(){
     fetch(this.props.data.towngeo)
         .then(res => {
@@ -30,10 +40,18 @@ export default class Map20 extends Component {
     
 }
   render() {
+    
     const position = [this.state.lat, this.state.lng]
     const {poplData} = this.state
+    console.log(poplData)
     return (
-      <Map center={position} zoom={this.state.zoom} style={{height: "70vh"}}>
+      <Map 
+        onClick = {this.onClickReset}
+        onViewportChanged = {this.onViewportChanged}
+        viewport = {this.state.viewport}
+        center={position} 
+        zoom={this.state.zoom} 
+        style={{height: "70vh"}}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -44,9 +62,9 @@ export default class Map20 extends Component {
           stroke = "#ffffff"
           strokeWidth = {1.5}
         />
-        
       </Map>
       
     )
   }
 }
+export default Map20
