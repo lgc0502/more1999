@@ -44,7 +44,6 @@ class Map20 extends Component {
     
     const position = [this.state.lat, this.state.lng]
     const {poplData} = this.state
-    console.log(poplData)
     return (
       <Map 
         onClick = {this.onClickReset}
