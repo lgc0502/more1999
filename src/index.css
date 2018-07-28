@@ -1,5 +1,5 @@
 
-.topic {
+#topic {
   display: none;
   position:relative;
   transform: translateY(50%);
@@ -8,7 +8,7 @@
   text-align: center;
   font-family: 'Noto Sans TC Black',sans-serif;
   letter-spacing: 3px;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 5em;
   color: rgb(216, 33, 9);
 }
