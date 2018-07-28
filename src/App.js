@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import Map from './townMap'
-import Map20 from './Map20'
+import Map_init from './townMap'
+import Map from './Map'
 import Dropdown from './Dropdownsearch'
 import Areachart from './Areachart'
 import Donutchart from './Donutchart'
@@ -51,10 +51,10 @@ class App extends Component {
         <div className="ui container" id="dropdown">
           <Dropdown/></div>
         <div className="ui container" id="leafletmap">
-          <Map20
-            data={this.props}/></div>
-        <div className="ui container" id="Map">
           <Map
+            data={this.props}/></div>
+        <div className="ui container" id="Map_init">
+          <Map_init
             data={this.props}/></div>
         <div className="ui container" id="ButtonGroup">
           <ButtonGroup/></div>

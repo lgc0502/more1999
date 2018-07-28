@@ -52,7 +52,7 @@ body {
   height:350px;
   margin-top:10%;
 }
-#Map {
+#Map_init {
   width: 100%;
   height: auto;
   float: left;

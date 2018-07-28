@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Map,TileLayer,GeoJSON} from 'react-leaflet'
+import L from 'leaflet'
 
 const DEFAULT_VIEWPORT = {
   center:[23.1505,120.3456],
@@ -16,12 +16,7 @@ class Map20 extends Component {
       viewport:DEFAULT_VIEWPORT,
     }
   }
-  onClickReset(){
-    this.setState({viewport: DEFAULT_VIEWPORT})
-  }
-  onViewportChanged(viewport){
-    this.setState({viewport})
-  }
+  
   componentDidMount(){
     fetch(this.props.data.towngeo)
         .then(res => {
