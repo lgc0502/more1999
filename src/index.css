@@ -52,6 +52,9 @@ body {
   height: 450px;
   margin-top:10%;
 }
+#map {
+  height: 450px;
+}
 /*#Map_init {
   width: 100%;
   height: auto;
