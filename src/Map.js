@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import L from 'leaflet'
 
 class Map extends Component(){
-    constructor(){
+    constructor(props){
+        super(props)
         this.state = {
             poplData:{},
         }
