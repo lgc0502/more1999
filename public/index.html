@@ -53,6 +53,19 @@
     left:45%;
     font-size: 1em;
   }
+  #topic {
+  display: none;
+  position:relative;
+  transform: translateY(50%);
+  width: 100%;
+  height:40vh;
+  text-align: center;
+  font-family: 'Noto Sans TC Black',sans-serif;
+  letter-spacing: 3px;
+  font-weight: 600;
+  font-size: 5em;
+  color: rgb(216, 33, 9);
+}
   </style>
   
   <body>
@@ -69,7 +82,7 @@
     
     <script> 
       $(window).on('load',function(){
-        $(".topic").show();
+        $("#topic").show();
         $('.load').hide();
       });
 
