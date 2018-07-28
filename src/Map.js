@@ -27,7 +27,7 @@ class Map extends Component(){
             zoom: 13,
             layers: [
                 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
-                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" 
+                    attribution:"&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" 
                 }),
                 L.geoJSON(this.state.poplData).addTo(map)
             ]
