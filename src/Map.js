@@ -11,7 +11,7 @@ class Map extends Component{
     }
     
     componentDidMount(){
-        fetch(this.props.data.poplData)
+        fetch(this.props.data.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
