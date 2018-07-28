@@ -53,9 +53,7 @@ class App extends Component {
         <div className="ui container" id="leafletmap">
           <Map
             data={this.props}/></div>
-        <div className="ui container" id="Map_init">
-          <Map_init
-            data={this.props}/></div>
+
         <div className="ui container" id="ButtonGroup">
           <ButtonGroup/></div>
         <div className="ui container" id="Areachart">
