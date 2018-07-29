@@ -151,11 +151,7 @@ def data_preprocess(raw_data):
         }
         return data
 
-def get_new_data():
-    now=datetime.datetime.today() 
-    past = now-datetime.timedelta(days=7)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
+def get_new_data(now,past):
     d = call_api_by_date(past, now)
     
     if d['root']['count'] != '0':
@@ -217,12 +213,70 @@ def update_status():
                     search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
                     search.delete()
 
-def test(request):
-    
-    get_new_data()
+def test1(request):
+    now=datetime.datetime.today() 
+    past = now-datetime.timedelta(days=1)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
     update_status()
     return render(request, 'index.html')
-
+def test2(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=1)  
+    past = now-datetime.timedelta(days=2)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test3(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=2)  
+    past = now-datetime.timedelta(days=3)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test4(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=3)  
+    past = now-datetime.timedelta(days=4)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test5(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=4)  
+    past = now-datetime.timedelta(days=5)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test6(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=5)  
+    past = now-datetime.timedelta(days=6)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test7(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=6)  
+    past = now-datetime.timedelta(days=7)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
+def test8(request):
+    now=datetime.datetime.today() -datetime.timedelta(days=7)  
+    past = now-datetime.timedelta(days=8)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
+    get_new_data(now,past)
+    update_status()
+    return render(request, 'index.html')
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
