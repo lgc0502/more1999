@@ -38,12 +38,12 @@ body {
   z-index: 0;
 }
 #leafletmap {
-  width:60%;
+  width:70%;
   height: 450px;
   margin-top:10%;
   margin-left:10%;
   z-index: -100;
-  background: #F3EFF5;
+  background: rgb(243, 233, 217);
 }
 
 #map {
@@ -68,7 +68,7 @@ body {
   margin-bottom: 8%;
 }
 #Areachart {
-  width: 85%;
+  width: 75%;
   height: auto;
   float: left;
   padding-top: 5%;
