@@ -91,7 +91,7 @@ class Areachart extends Component {
                       return({x:new Date(d1),y: data[d1][d] +(9-3*i),y0:9-3*i})
                     })
                   }
-                  color={Palette[i]}
+                  color={(this.state.type[d]===1)?Palette[i]:"#ffffff"}
                   opacity={(this.state.type[d]===1)?1:0.2}  
                 />    
               )
