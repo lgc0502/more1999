@@ -62,7 +62,7 @@ class Map extends Component{
                    d === 0 ? '#FED976':
                             '#FFEDA0';
         }
-        fetch('./data/tainan.json')
+        fetch(this.props.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
