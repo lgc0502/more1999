@@ -54,12 +54,7 @@ class Areachart extends Component {
     })
     
   }
-  componentDidUpdate(){
-    this.setState({
-      dateCollection : Object.keys(this.props.res.Area), 
-      data: this.props.res.Area  ,
-    })
-  }
+  
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
