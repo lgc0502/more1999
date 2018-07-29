@@ -14,7 +14,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from parse.views import hello_world, village_visualization, daily_update, Donut_chart
+from parse.views import hello_world, village_visualization, Donut_chart, test
 
 
 urlpatterns = [
@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^$', hello_world),
     url(r'^village_visualization/$', village_visualization),
     url(r'^Donut/$', Donut_chart),
-    url(r'^daily_update/$', daily_update)
+    url(r'^test/$', test)
 ]

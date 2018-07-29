@@ -23,4 +23,19 @@ class API_DATA(models.Model):
     service_notice = models.TextField(blank=True)
     updated_datetime = models.DateTimeField(auto_now_add=False)
     expected_datetime = models.DateTimeField(auto_now_add=False)
-   
+class Test(models.Model):
+    service_request_id = models.CharField(max_length=100)
+    requested_datetime = models.DateTimeField(auto_now_add=False)
+    status = models.CharField(max_length=100)
+    area = models.CharField(max_length=100)
+    service_name = models.CharField(max_length=100)
+    subproject = models.CharField(max_length=100)
+    address_string = models.CharField(max_length=100)
+    updated_datetime = models.DateTimeField(auto_now_add=False)
+    expected_datetime = models.DateTimeField(auto_now_add=False)
+class Unfinish(models.Model):
+    service_request_id = models.CharField(max_length=100)
+    requested_datetime = models.DateTimeField(auto_now_add=False)
+    status = models.CharField(max_length=100)
+    updated_datetime = models.DateTimeField(auto_now_add=False)
+    expected_datetime = models.DateTimeField(auto_now_add=False)
