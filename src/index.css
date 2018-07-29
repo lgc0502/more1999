@@ -34,15 +34,15 @@ body {
   width: 50%;
   height:auto;
   margin-top:3%;
+  z-index: 0;
 }
 #leafletmap {
   width:60%;
   height: 450px;
   margin-top:10%;
+  z-index: -1;
 }
-#map {
-  height: 450px;
-}
+
 /*#Map_init {
   width: 100%;
   height: auto;
