@@ -36,7 +36,7 @@ class Donutchart extends Component {
                 key={`compare-${i}`}>
                 <span
                     key={`description-${i}`}
-                    className="chineseText ui container radial-title center aligned"
+                    className="ui container radial-title center aligned"
                     style={{
                         fontSize:16,
                         color:"#7a7979"}}>
