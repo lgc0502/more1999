@@ -56,7 +56,8 @@ class Areachart extends Component {
   }
   componentWillReceiveProps(){
     this.setState({
-      data: this.props.res.Area
+      data: this.props.res.Area,
+      dateCollection : Object.keys(this.props.res.Area), 
     })
   }
   render() { 

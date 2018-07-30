@@ -39,6 +39,7 @@ class Donutchart extends Component {
                     className="ui container radial-title center aligned"
                     style={{
                         fontSize:16,
+                        fontWeight:600,
                         color:"#7a7979"}}>
                     {type_copy[d]}
                 </span>   
