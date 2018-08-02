@@ -2,14 +2,15 @@ import React,{Component} from 'react';
 import {
   XYPlot,
   XAxis,
-  //YAxis,
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
+
 const Palette= ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
+const formatTime= timeFormat('%B %d')
 class Areachart extends Component {
 
   constructor(props) {
@@ -27,15 +28,11 @@ class Areachart extends Component {
         'dirty':1,
         'pipe':1,
         'animal':1 
-      }
+      },
+      typeCollection : Object.keys(props.res.Area[Object.keys(props.res.Area)[0]])
     }
   }
-  componentWillMount(){
-    this.setState({
-      typeCollection : Object.keys(this.state.data[this.state.dateCollection[0]])
-    })
-  }
-  componentWillUpdate(){
+  componentDidMount(){
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
       this.setState({
           type:{
@@ -49,23 +46,20 @@ class Areachart extends Component {
             'pipe':(selectedtype=== '民生管線')?1:0,
             'animal':(selectedtype=== '動物救援')?1:0, 
           }
-      })
+      },()=>console.log("changetype"))
       
     })
-    
   }
-  componentWillReceiveProps(){
-    this.setState({
-      data: this.props.res.Area,
-      dateCollection : Object.keys(this.props.res.Area), 
-    })
+  componentWillUnmount(){
+    this.eventEmitter.removeListener("showarea")
   }
+  
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
-    const formatTime= timeFormat('%B %d')
     const {data,dateCollection,typeCollection} = this.state
-    
+    console.log("render")
+    console.log(data)
     return (
       <XYPlot
         width={window.innerWidth*0.75}
