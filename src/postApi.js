@@ -4,8 +4,9 @@ import axios from "axios";
 let today = new Date()
 let end_date = today.getDate() - today.getDay()
 let begin_date = end_date -7
-
+console.log((today.getMonth()<10) ? today.getFullYear()+"-"+"0"+(today.getMonth()+1)+"-"+begin_date : today.getFullYear()+"-"+(today.getMonth()+1)+"-"+begin_date)
 export default {
+   
     requertPost:(selectedtown,selectedvill)=>{
         return axios.get('/village_visualization', {
             params:{

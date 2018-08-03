@@ -65,14 +65,6 @@ class Donutchart extends Component {
                     className="ui container radial-chart"  
                 >
                 </RadialChart>
-              {/*}  <span
-                    key={`radio-${i}`}
-                    className="chineseText ui container radial-title center aligned"
-                    style={{
-                        fontSize:14,
-                        color:"#999898"}}>
-                    {data[d][1]+'%'}
-                    </span>*/}    
                 </div>
             ))}
            </div>
