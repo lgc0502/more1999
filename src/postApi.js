@@ -2,9 +2,12 @@ import React,{Component} from "react"
 import axios from "axios";
 import date from "./Date"
 
+
+
 export default {
    
     requertPost:(selectedtown,selectedvill)=>{
+        console.log(date.lastweekdate())
         return axios.get('/village_visualization', {
             params:{
                 town:selectedtown,
