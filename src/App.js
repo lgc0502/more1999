@@ -7,7 +7,7 @@ import Donutchart from './Donutchart'
 import ButtonGroup from './ButtonGroup'
 import emitter from './events'
 import postApi from './postApi'
-
+import date from './Date'
 class App extends Component {
   constructor(props){
     super(props)
@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       isLoading: true,
       request_data: {},
+      date:null
     }
     
   }
@@ -25,6 +26,11 @@ class App extends Component {
         isLoading : false
       })
    })
+    date.lastweekdate().then(d=>
+      this.setState({
+        date:d
+      })
+    )
   }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
@@ -46,6 +52,7 @@ class App extends Component {
     return (
       
       <div> 
+        <h1 class="date">{this.state.date.begin}{this.state.date.end}</h1>
         <div className="ui container" id="Donutchart">
           <Donutchart
             {...request_data}/> </div>
