@@ -6,7 +6,6 @@ class Donutchart extends Component {
         super(props)
         this.state={
             type: Object.keys(props.res.Donut),
-            data: props.res.Donut,
             type_copy:{
                 'parking':'違規停車',
                 'light':'路燈故障',
@@ -20,14 +19,8 @@ class Donutchart extends Component {
             }
         }
     }
-    componentWillMount(){
-        
-    }
-    componentWillUpdate(){
-        
-    }
     render () {   
-        const {data,type} = this.state
+        const {type} = this.state
         const {type_copy} = this.state
        return (
            <div className="ui equal width centered grid row">  
@@ -36,10 +29,9 @@ class Donutchart extends Component {
                 key={`compare-${i}`}>
                 <span
                     key={`description-${i}`}
-                    className="ui container radial-title center aligned"
+                    className="ui container radial-title center aligned chineseText"
                     style={{
                         fontSize:16,
-                        fontWeight:600,
                         color:"#7a7979"}}>
                     {type_copy[d]}
                 </span>   
@@ -50,7 +42,7 @@ class Donutchart extends Component {
                         fontSize:18,
                         fontWeight:600,
                         color:"#d82109"}}>
-                    {data[d][0]+" 件"}
+                    {this.props.res.Donut[d][0]+" 件"}
                 </span>   
                 <RadialChart  
                     key={`Radial-${i}`}
@@ -59,7 +51,7 @@ class Donutchart extends Component {
                     innerRadius={35}
                     radius={40}
                     getAngle={d => d}
-                    data={[data[d][1],(100-data[d][1])]}
+                    data={[this.props.res.Donut[d][1],(100-this.props.res.Donut[d][1])]}
                     colorType="category"
                     colorRange={["#FFEFD5","#16982B"]}  
                     className="ui container radial-chart"  

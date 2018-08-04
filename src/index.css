@@ -34,17 +34,19 @@ body {
   width: 50%;
   height:auto;
   margin-top:3%;
-  z-index: 0;
+  z-index: 1000;
 }
 #leafletmap {
   width:70%;
   height: 450px;
   margin-top:10%;
   margin-left:10%;
-  z-index: -100;
   background: rgb(243, 233, 217);
 }
-
+.leaflet-top,.leaflet-bottom {
+  position: absolute;
+  z-index: 10;
+}
 #map {
   width:60%;
   height: 450px;
