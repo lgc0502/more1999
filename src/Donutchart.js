@@ -6,6 +6,7 @@ class Donutchart extends Component {
         super(props)
         this.state={
             type: Object.keys(props.res.Donut),
+            data:prop.res.Donut,
             type_copy:{
                 'parking':'違規停車',
                 'light':'路燈故障',
@@ -20,7 +21,7 @@ class Donutchart extends Component {
         }
     }
     render () {   
-        const {type} = this.state
+        const {data,type} = this.state
         const {type_copy} = this.state
        return (
            <div className="ui equal width centered grid row">  
@@ -42,7 +43,7 @@ class Donutchart extends Component {
                         fontSize:18,
                         fontWeight:600,
                         color:"#d82109"}}>
-                    {this.props.res.Donut[d][0]+" 件"}
+                    {data[d][0]+" 件"}
                 </span>   
                 <RadialChart  
                     key={`Radial-${i}`}
@@ -51,7 +52,7 @@ class Donutchart extends Component {
                     innerRadius={35}
                     radius={40}
                     getAngle={d => d}
-                    data={[this.props.res.Donut[d][1],(100-this.props.res.Donut[d][1])]}
+                    data={[data[d][1],(100-data[d][1])]}
                     colorType="category"
                     colorRange={["#FFEFD5","#16982B"]}  
                     className="ui container radial-chart"  
