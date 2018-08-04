@@ -17,7 +17,7 @@ class Areachart extends Component {
     super(props)
     this.state= {
       dateCollection : Object.keys(props.res.Area), 
-      data: props.res.Area  ,
+      //data: props.res.Area  ,
       type: {
         'parking':1,
         'light':1,
@@ -53,15 +53,11 @@ class Areachart extends Component {
   componentWillUnmount(){
     this.eventEmitter.removeListener("showarea")
   }
-  componentDidUpdate(){
-    this.setState({
-      data:this.props.res.Area
-    })
-  }
+  
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
-    const {data,dateCollection,typeCollection} = this.state
+    const {dateCollection,typeCollection} = this.state
     console.log(this.props.res.Area)
     console.log(data)
     console.log("render")
@@ -93,7 +89,7 @@ class Areachart extends Component {
                   data={
                     dateCollection.map((d1,i1)=>{  
 
-                      return({x:new Date(d1),y: data[d1][d] +(9-3*i),y0:9-3*i})
+                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(9-3*i),y0:9-3*i})
                     })
                   }
                   color={Palette[i]}
