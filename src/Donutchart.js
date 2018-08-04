@@ -6,7 +6,7 @@ class Donutchart extends Component {
         super(props)
         this.state={
             type: Object.keys(props.res.Donut),
-            data:prop.res.Donut,
+            data: props.res.Donut,
             type_copy:{
                 'parking':'違規停車',
                 'light':'路燈故障',
