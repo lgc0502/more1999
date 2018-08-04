@@ -27,9 +27,14 @@ export default {
         let begin_date = end_date -7
         begin_date  = (begin_date>0)?begin_date :crossmonth(today,begindatecross,enddatecross,begin_date,"begin")
         begin_date = (begin_date>10)?begin_date:"0"+begin_date
+
+        let begin_month = (enddatecross === 0 & begindatecross === 0)?today.getMonth()+1:today.getMonth()
+        begin_month = (today.getMonth()<10) ? "0"+begin_month:begin_month
+        let end_month = (enddatecross === 0)?today.getMonth()+1:today.getMonth()
+        end_month = (today.getMonth()<10) ? "0"+end_month:end_month
         //y-m-d
-        begin_date  = (today.getMonth()<10) ? today.getFullYear()+"-"+"0"+(enddatecross === 0&begindatecross == 0?today.getMonth()+1:today.getMonth())+"-"+begin_date : today.getFullYear()+"-"+(today.getMonth()+1)+"-"+begin_date;
-        end_date = (today.getMonth()<10) ? today.getFullYear()+"-"+"0"+(enddatecross === 0?today.getMonth()+1:today.getMonth())+"-"+end_date : today.getFullYear()+"-"+(today.getMonth()+1)+"-"+end_date;
+        begin_date  =today.getFullYear()+"-"+begin_month+"-"+begin_date 
+        end_date = today.getFullYear()+"-"+end_month+"-"+end_date
         
         return {
             begin:begin_date,
