@@ -5,11 +5,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #FFFFFF;
+  background-color: rgb(255, 218, 39);
 }
 .chineseText {
   font-family: 'Noto Sans TC',sans-serif;
-  font-weight: 600;
   font-size: 1em;
   letter-spacing: 2px;
    
@@ -52,23 +51,27 @@ body {
   height: 450px;
 }
 .date {
+  position: relative;
   height: auto;
   font-size: 16px;
   text-align: center;
-  color: #7a7979;
-  margin-top:20%;
+  color: #000000;
+  margin-top:2%;
   margin-bottom:2%;
+  letter-spacing: 5px;
 }
 .tainanstate {
-
+    position: relative;
     transform: translateY(50%);
     width: 100%;
     height:auto;
     text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: bolder;
-    font-size: 4em;
-    color: #7a7979;
+    font-size: 1.5em;
+    color: #000000;
 }
 #ButtonGroup{
   width: 15%;

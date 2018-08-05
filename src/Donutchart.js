@@ -33,7 +33,7 @@ class Donutchart extends Component {
                     className="ui container radial-title center aligned chineseText"
                     style={{
                         fontSize:16,
-                        color:"#7a7979"}}>
+                        color:"#000000"}}>
                     {type_copy[d]}
                 </span>   
                 <span
@@ -54,7 +54,7 @@ class Donutchart extends Component {
                     getAngle={d => d}
                     data={[data[d][1],(100-data[d][1])]}
                     colorType="category"
-                    colorRange={["#FFEFD5","#16982B"]}  
+                    colorRange={["#9e9e9e69","#16982B"]}  
                     className="ui container radial-chart"  
                 >
                 </RadialChart>
