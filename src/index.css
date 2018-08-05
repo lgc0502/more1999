@@ -59,6 +59,17 @@ body {
   margin-top:20%;
   margin-bottom:2%;
 }
+.tainanstate {
+
+    transform: translateY(50%);
+    width: 100%;
+    height:auto;
+    text-align: center;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: bolder;
+    font-size: 4em;
+    color: #7a7979;
+}
 #ButtonGroup{
   width: 15%;
   height: auto;

@@ -50,7 +50,8 @@ class App extends Component {
     return (
       
       <div> 
-        <h1 class="date">{this.state.date.begin+" ~ "+this.state.date.end}</h1>
+        <h1 class="date">{this.state.date.begin+"  -  "+this.state.date.end}</h1>
+        <h1 class="tainanstate">大台南各類通報</h1>
         <div className="ui container" id="Donutchart">
           <Donutchart
             {...request_data}/> </div>
