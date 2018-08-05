@@ -54,7 +54,8 @@ class Donutchart extends Component {
                     getAngle={d => d}
                     data={[data[d][1],(100-data[d][1])]}
                     colorType="category"
-                    colorRange={["#9e9e9e69","#16982B"]}  
+                    colorRange={["#9e9e9e69","#16982B"]} 
+                    stroke = {null} 
                     className="ui container radial-chart"  
                 >
                 </RadialChart>
