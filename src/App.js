@@ -69,7 +69,7 @@ class App extends Component {
         <div className="ui container" id="Areachart">
           <Areachart
             {...request_data}/> </div>
-  </div> 
+    </div> 
     )
   }
 }
