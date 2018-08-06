@@ -62,7 +62,7 @@ class Map extends Component{
                    d === 0 ? '#FED976':
                             '#FFEDA0';
         }
-        console.log(this.props.data.towngeo)
+        
         fetch(this.props.data.towngeo)
         .then(res => {
             if(res.status !== 200){
@@ -93,12 +93,15 @@ class Map extends Component{
         })
         var map = L.map('map',{
             center:[23.15,120.4],
-            zoom: 10
+            zoom: 10,
+            minZoom:10,
+            maxZoom:20,
+            zoomControl:false,
         })     
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
                     attribution:"&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" ,                    maxZoom:18,
                 }).addTo(map);    
-                
+        map.addControl(new L.Control.ZoomMin())
         var legend = L.control({position: 'bottomright'});
         legend.onAdd = function (map) {
 
@@ -115,7 +118,6 @@ class Map extends Component{
 
             return div;
         };
-
         legend.addTo(map);
     }
    
