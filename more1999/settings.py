@@ -109,7 +109,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'build/'),
 )
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-Q_CLUSTER = { 
+'''Q_CLUSTER = { 
 'name': 'DjangORM', 
 'workers': 1, 
 'timeout': 1800, 
@@ -117,4 +117,13 @@ Q_CLUSTER = {
 'queue_limit': 50, 
 'bulk': 10, 
 'orm': 'default' 
+}'''
+Q_CLUSTER = {
+    'name': 'TyndBroker',
+    'workers': 8,
+    'timeout': 30,
+    'retry': 60,
+    'bulk': 10,
+    'disque_nodes': os.environ['TYND_DISQUE_NODES'].split(','),
+    'disque_auth': os.environ['TYND_DISQUE_AUTH']
 }
