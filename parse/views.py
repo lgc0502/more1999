@@ -99,22 +99,26 @@ def data_preprocess(raw_data):
             address_string = description[0:point+1]
     
     if (address_string is not None):
-        if '台南' not in address_string:
-            address_string = '台南市' + address_string
-        if '到' in address_string:
-            address_string = address_string.replace('到', '*')
-        if(lat is None or lng is None):
-            geocode_result = gmaps.geocode(address_string, language='zh-TW')
-            lat = geocode_result[0]['geometry']['location']['lat']
-            lng = geocode_result[0]['geometry']['location']['lng']
-        reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
-        for i in reverse_geocode_result:
-            for c in i['address_components']:
-                if 'administrative_area_level_4' in c['types']:
-                    li = c['long_name']
-                if area is None:
-                    if 'administrative_area_level_3' in c['types']:
-                        area = c['long_name']
+        try:
+            if '台南' not in address_string:
+                address_string = '台南市' + address_string
+            if '到' in address_string:
+                address_string = address_string.replace('到', '*')
+            if(lat is None or lng is None):
+                    geocode_result = gmaps.geocode(address_string, language='zh-TW')
+                    lat = geocode_result[0]['geometry']['location']['lat']
+                    lng = geocode_result[0]['geometry']['location']['lng']
+            reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+            for i in reverse_geocode_result:
+                for c in i['address_components']:
+                    if 'administrative_area_level_4' in c['types']:
+                        li = c['long_name']
+                    if area is None:
+                        if 'administrative_area_level_3' in c['types']:
+                            area = c['long_name']
+        except:
+            print("geocoding-problem")
+            error = 1
     else:
         error = 1
     if(service_name is None):
@@ -151,7 +155,11 @@ def data_preprocess(raw_data):
         }
         return data
 
-def get_new_data(now,past):
+def get_new_data():
+    now=datetime.datetime.today()
+    past = now-datetime.timedelta(minutes = 40)  
+    now = now.strftime('%Y-%m-%d %H:%M:%S')
+    past = past.strftime('%Y-%m-%d %H:%M:%S')
     d = call_api_by_date(past, now)
     
     if d['root']['count'] != '0':
@@ -161,36 +169,44 @@ def get_new_data(now,past):
             else:
                 data = data_preprocess(d['root']['records']['record'][index])
             if data != -1:
+                print(data['service_request_id'])
                 search = API_DATA.objects.filter(service_request_id=data['service_request_id'])
                 if len(search) == 0: #newdata
-                    r1 = API_DATA(
-                        service_request_id = data['service_request_id'],
-                        requested_datetime = data['requested_datetime'],
-                        status = data['status'],
-                        area = data['area'],
-                        li = data['li'],
-                        keyword = data['keyword'],
-                        service_name = data['service_name'],
-                        subproject = data['subproject'],
-                        description = data['description'],
-                        lat = data['lat'],
-                        lng = data['lng'],
-                        address_string = data['address_string'],
-                        service_notice = data['service_notice'],
-                        updated_datetime = data['requested_datetime'],
-                        expected_datetime = data['requested_datetime']
-                    )
-                    r1.save()
+                    try:
+                        r1 = API_DATA(
+                            service_request_id = data['service_request_id'],
+                            requested_datetime = data['requested_datetime'],
+                            status = data['status'],
+                            area = data['area'],
+                            li = data['li'],
+                            keyword = data['keyword'],
+                            service_name = data['service_name'],
+                            subproject = data['subproject'],
+                            description = data['description'],
+                            lat = data['lat'],
+                            lng = data['lng'],
+                            address_string = data['address_string'],
+                            service_notice = data['service_notice'],
+                            updated_datetime = data['requested_datetime'],
+                            expected_datetime = data['requested_datetime']
+                        )
+                        r1.save()
+                        print("save")
+                    except:
+                        print("save data error")
                 search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
                 if len(search) == 0 and data['status'] != '已完工': #unfinish
-                    r1 = Unfinish(
-                        service_request_id = data['service_request_id'],
-                        requested_datetime = data['requested_datetime'],
-                        status = data['status'],
-                        updated_datetime = data['requested_datetime'],
-                        expected_datetime = data['requested_datetime']
-                    )
-                    r1.save()
+                    try:
+                        r1 = Unfinish(
+                            service_request_id = data['service_request_id'],
+                            requested_datetime = data['requested_datetime'],
+                            status = data['status'],
+                            updated_datetime = data['requested_datetime'],
+                            expected_datetime = data['requested_datetime']
+                        )
+                        r1.save()
+                    except:
+                        print("save unfinish error")
 
 def update_status():
     qid = ''
@@ -213,70 +229,14 @@ def update_status():
                     search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
                     search.delete()
 
-def test1(request):
-    now=datetime.datetime.today() 
-    past = now-datetime.timedelta(days=1)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
+def test(request):
+    get_new_data()
     update_status()
     return render(request, 'index.html')
-def test2(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=1)  
-    past = now-datetime.timedelta(days=2)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
+
+def update():
+    get_new_data()
     update_status()
-    return render(request, 'index.html')
-def test3(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=2)  
-    past = now-datetime.timedelta(days=3)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
-def test4(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=3)  
-    past = now-datetime.timedelta(days=4)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
-def test5(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=4)  
-    past = now-datetime.timedelta(days=5)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
-def test6(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=5)  
-    past = now-datetime.timedelta(days=6)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
-def test7(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=6)  
-    past = now-datetime.timedelta(days=7)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
-def test8(request):
-    now=datetime.datetime.today() -datetime.timedelta(days=7)  
-    past = now-datetime.timedelta(days=8)  
-    now = now.strftime('%Y-%m-%d %H:%M:%S')
-    past = past.strftime('%Y-%m-%d %H:%M:%S')
-    get_new_data(now,past)
-    update_status()
-    return render(request, 'index.html')
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
