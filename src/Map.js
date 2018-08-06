@@ -102,7 +102,8 @@ class Map extends Component{
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
                     attribution:"&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" ,                    maxZoom:18,
                 }).addTo(map);    
-        map.addControl(new ZoomMin())
+        var ZoomMin = L.Control.ZoomMin()
+        ZoomMin.addTo(map)
         // var legend = L.control({position: 'bottomright'});
         // legend.onAdd = function (map) {
 
