@@ -239,7 +239,6 @@ def update():
     update_status()
 
 def village_visualization(request):
-    return "apple"
     '''time_format = '%Y-%m-%d'
     #town = request.GET['town']
     town = "台南市"
@@ -286,8 +285,9 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
         categoryByTime['Area']=temp2
-    print(categoryByTime)
-    return JsonResponse(categoryByTime)'''
+    print(categoryByTime)'''
+    categoryByTime = {"hi":"test"}
+    return JsonResponse(categoryByTime)
 
 def Donut_chart(request):
     today=datetime.datetime.today()-datetime.timedelta(days=1)
