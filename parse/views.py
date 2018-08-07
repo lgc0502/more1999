@@ -253,14 +253,14 @@ def village_visualization(request):
     
     if town == '台南市':
         date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
-        for index in range(len(classification)):
+        '''for index in range(len(classification)):
             donut[eng_class[index]]=[0,0]
             donut[eng_class[index]][0]=len(date_search.filter(service_name = classification[index]))
             donut[eng_class[index]][1]=(donut[eng_class[index]][0]/len(date_search))*100
-        categoryByTime['Donut']=donut
+        categoryByTime['Donut']=donut'''
         temp={}
         temp2={}
-        for d in range(0,delta):
+        '''for d in range(0,delta):
             query_date = begin_date + datetime.timedelta(days=d)
             query_end = query_date + datetime.timedelta(days=1)
             date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end]) 
@@ -268,7 +268,7 @@ def village_visualization(request):
                 temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
-            temp={}
+            temp={}'''
         categoryByTime['Area']=temp2
     '''
     else:
