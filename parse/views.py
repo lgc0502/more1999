@@ -263,7 +263,7 @@ def village_visualization(request):
         categoryByTime['Donut']=donut
         temp={}
         temp2={}
-        '''for d in range(0,delta):
+        for d in range(0,delta):
             query_date = begin_date + datetime.timedelta(days=d)
             query_end = query_date + datetime.timedelta(days=1)
             date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end]) 
@@ -271,9 +271,9 @@ def village_visualization(request):
                 temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
-            temp={}'''
+            temp={}
         categoryByTime['Area']=len(date_search)
-    '''
+    
     else:
         temp={}
         temp2={}
@@ -286,7 +286,7 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
         categoryByTime['Area']=temp2
-    print(categoryByTime)'''
+    print(categoryByTime)
     #categoryByTime = {"hi":len(classification)}
     return JsonResponse(categoryByTime)
 
