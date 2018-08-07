@@ -11,7 +11,7 @@ from parse.models import API_DATA, Test, Unfinish
 from django.utils import timezone
 import json
 from django.http import JsonResponse
-
+import pytz
 
 
 
@@ -240,20 +240,18 @@ def update():
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
-    #town = request.GET['town']
-    town = "台南市"
-    #village = request.GET['village'] 
-    village = "西灣里"
-    begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format)
-    #begin_date = "2018-08-07"
-    end_date = datetime.datetime.strptime(request.GET['end_date'], time_format) 
-    #end_date = "2018-08-08"
+    tw = pytz.timezone('Asia/Taipei')
+    town = request.GET['town']
+    village = request.GET['village'] 
+    begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format).replace(tzinfo=tw)
+    end_date = datetime.datetime.strptime(request.GET['end_date'], time_format).replace(tzinfo=tw)
     delta =  (end_date-begin_date).days 
     categoryByTime={}
     classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
     eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
     donut={}
-    '''if town == '台南市':
+    
+    if town == '台南市':
         date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
         for index in range(len(classification)):
             donut[eng_class[index]]=[0,0]
@@ -272,7 +270,7 @@ def village_visualization(request):
             temp2[query_date_string]=temp
             temp={}
         categoryByTime['Area']=temp2
-
+    '''
     else:
         temp={}
         temp2={}
@@ -286,7 +284,7 @@ def village_visualization(request):
             temp2[query_date_string]=temp
         categoryByTime['Area']=temp2
     print(categoryByTime)'''
-    categoryByTime = {"hi":"test"}
+    
     return JsonResponse(categoryByTime)
 
 def Donut_chart(request):
