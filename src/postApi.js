@@ -16,6 +16,7 @@ export default {
                 end_date:date.lastweekdate().end,
             }
         })
+        
         .then(response=>{
             return {res:response.data}
         })
