@@ -281,6 +281,7 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
         categoryByTime['Area']=temp2
+    print(categoryByTime)
     return JsonResponse(categoryByTime)
 
 def Donut_chart(request):
