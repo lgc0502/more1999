@@ -240,10 +240,14 @@ def update():
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
-    town = request.GET['town']
-    village = request.GET['village'] 
-    begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format)
-    end_date = datetime.datetime.strptime(request.GET['end_date'], time_format) 
+    #town = request.GET['town']
+    town = "台南市"
+    #village = request.GET['village'] 
+    village = "西灣里"
+    #begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format)
+    begin_date = "2018-08-07"
+    #end_date = datetime.datetime.strptime(request.GET['end_date'], time_format) 
+    end_date = "2018-08-08"
     delta =  (end_date-begin_date).days 
     categoryByTime={}
     classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
