@@ -239,7 +239,7 @@ def update():
     update_status()
 
 def village_visualization(request):
-    '''time_format = '%Y-%m-%d'
+    time_format = '%Y-%m-%d'
     #town = request.GET['town']
     town = "台南市"
     #village = request.GET['village'] 
@@ -253,7 +253,7 @@ def village_visualization(request):
     classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
     eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
     donut={}
-    if town == '台南市':
+    '''if town == '台南市':
         date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
         for index in range(len(classification)):
             donut[eng_class[index]]=[0,0]
