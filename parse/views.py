@@ -269,7 +269,7 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
             temp={}'''
-        categoryByTime['Area']=len(classification)
+        categoryByTime['Area']=len(date_search)
     '''
     else:
         temp={}
