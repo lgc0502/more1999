@@ -272,7 +272,7 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
             temp={}
-        categoryByTime['Area']=len(date_search)
+        categoryByTime['Area']=temp2
     
     else:
         temp={}
@@ -286,8 +286,6 @@ def village_visualization(request):
             query_date_string = query_date.strftime('%Y-%m-%d')
             temp2[query_date_string]=temp
         categoryByTime['Area']=temp2
-    print(categoryByTime)
-    #categoryByTime = {"hi":len(classification)}
     return JsonResponse(categoryByTime)
 
 def Donut_chart(request):
