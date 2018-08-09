@@ -600,7 +600,6 @@ class React_leaflet extends Component{
        this.refs.geojson.leafletElement.resetStyle(e.target);
     }
     showtowninfo(e){
-        console.log("click")
         this.setState({
             selecttown:e.target.feature.properties.TOWNNAME,
             selecttownid:e.target.feature.properties.TOWNID
@@ -638,8 +637,7 @@ class React_leaflet extends Component{
         })
    }
     render(){
-        console.log(this.state.selecttown)
-        console.log(this.state.selecttownid)
+        
         if(this.state.isLoading){
             return (
              <div className="loaddata">

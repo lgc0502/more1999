@@ -57,7 +57,7 @@ class App extends Component {
             {...request_data}/> </div>
         <div className="hotzone">
           <h1 class="tainanstate">通報熱區</h1>
-          <div className="ui container" id="leafletmap">
+          <div className="ui container" id="Map">
             <React_leaflet
               data={this.props}/></div>
         </div>

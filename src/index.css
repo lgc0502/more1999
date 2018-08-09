@@ -1,32 +1,29 @@
 
-
-
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: rgb(255, 218, 39);
 }
-#root {
-  background-color: rgb(255, 255, 255);
-}
+
 .chineseText {
   font-family: 'Noto Sans TC',sans-serif;
   font-size: 1em;
-  letter-spacing: 2px;
-   
+  letter-spacing: 2px;  
 }
+
 #Donutchart {
   width: 85%;
   height:50vh;
   padding-left: 5%;
   padding-right: 5%
 }
+
 .compare_quantity {
   position: absolute;
   top:47%;
   left:0%;
 }
+
 .villdropdown ,.towndropdown{
   width: 50%;
   height: auto;
@@ -37,15 +34,25 @@ body {
   margin-top:3%;
   z-index: 1000;
 }
-.leafletmap {
-  width:70%;
-  height: 450px;
-  float:left; 
+#Map {
+  margin-top:10%;
+ 
 }
 .leaflet-top,.leaflet-bottom {
   position: absolute;
   z-index: 10;
 }
+.leafletmap {
+  width:70%;
+  height: 450px;
+  float:left; 
+}
+.Mapinfo {
+  float:left;
+  width:29%;
+  height:450px;
+  margin-left:1%;
+} 
 #map {
   width:70%;
   height: 450px;
