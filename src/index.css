@@ -35,6 +35,8 @@ body {
   z-index: 1000;
 }
 #Map {
+  width:90%;
+  height:500px;
   margin-top:10%;
  
 }

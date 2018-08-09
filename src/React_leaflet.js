@@ -579,6 +579,8 @@ class React_leaflet extends Component{
         this.state = {
             center:[23.15,120.35],
             zoom:10,
+            minZoom:10,
+            maxZoom:20,
             isLoading:true,
             selecttown:null,
             selecttownid:'R01'
@@ -648,13 +650,18 @@ class React_leaflet extends Component{
         const position =this.state.center
         return(
             <div>
-                <Map ref = 'map' className='leafletmap' center = {position} zoom={this.state.zoom}>
-                    <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
+                <Map ref = 'map' 
+                     className='leafletmap' 
+                     center = {position} 
+                     zoom={this.state.zoom} 
+                     minZoom={this.state.minZoom}
+                     maxZoom={this.state.maxZoom}>
+                    
                     <TileLayer
                         url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution = "&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                     />
-                    
+                    <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
                     <GeoJSON
                         ref = 'geojson'
                         data= {this.state.data}
