@@ -582,7 +582,7 @@ class React_leaflet extends Component{
             minZoom:10,
             maxZoom:20,
             isLoading:true,
-            selecttown:null,
+            selecttown:'天堂',
             selecttownid:'R01'
         }
         
