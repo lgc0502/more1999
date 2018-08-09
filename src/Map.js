@@ -52,6 +52,7 @@ class Map extends Component{
     }
     
     componentDidMount(){
+        var geojson;
         function getColor(d){
             return d > 100 ? '#FFEDA0':
                    d > 80  ? '#BD0026':
@@ -61,6 +62,30 @@ class Map extends Component{
                    d > 0   ? '#FEB24C':
                    d === 0 ? '#FED976':
                             '#FFEDA0';
+        }
+        function highlightFeature(e){
+            var layer = e.target;
+            layer.setStyle({
+                weight:3,
+                color: 'rgb(165,160,81)',
+                fillOpacity:0.7
+            });
+            if(!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
+                layer.bringToFront();
+            }
+        }
+        function resetHighlight(e){
+            geojson.resetStyle(e.target);
+        }
+        // function zoomToFeature(e){
+        //     map.fitBounds(e.target.getBounds())
+        // }
+        function onEachFeature(feature,layer){
+            layer.on({
+                mouseover : highlightFeature,
+                mouseout: resetHighlight,
+               //click: zoomToFeature
+            });
         }
         fetch('./data/tainan.json')
         .then(res => {
@@ -76,19 +101,21 @@ class Map extends Component{
                 
                 this.setState({
                   poplData:topology.features
-                },()=>L.geoJSON(this.state.poplData,{
-                    style:function(feature){
-                        return {
-                            fillColor:getColor(feature.properties.casenum),
-                            weight: 2,
-                            opacity: 1,
-                            color: 'white',
-                            fillOpacity: 0.7
-                        }
-                    }
-                
-                }).addTo(map))
-            })
+                },()=>{
+                    geojson = L.geoJSON(this.state.poplData,{
+                                    style:function(feature){
+                                        return {
+                                            fillColor:getColor(feature.properties.casenum),
+                                            weight: 2,
+                                            opacity: 1,
+                                            color: 'white',
+                                            fillOpacity: 0.7
+                                        }
+                                    },
+                                    onEachFeature: onEachFeature
+                                });
+                    geojson.addTo(map);
+                })
         })
         var map = L.map('map',{
             center:[23.15,120.35],
@@ -119,8 +146,8 @@ class Map extends Component{
                     attribution:"&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors" ,                    maxZoom:18,
                 }).addTo(map);
         
-    }
-   
+        }
+        )}
     render(){
         return(
             <div id="map"></div>

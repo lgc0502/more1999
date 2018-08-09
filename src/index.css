@@ -16,7 +16,6 @@ body {
   letter-spacing: 2px;
    
 }
-
 #Donutchart {
   width: 85%;
   height:50vh;
@@ -38,20 +37,19 @@ body {
   margin-top:3%;
   z-index: 1000;
 }
-#leafletmap {
+.leafletmap {
   width:70%;
   height: 450px;
- 
-  margin-left:10%;
-  background: rgb(243, 233, 217);
+  float:left; 
 }
 .leaflet-top,.leaflet-bottom {
   position: absolute;
   z-index: 10;
 }
 #map {
-  width:60%;
+  width:70%;
   height: 450px;
+  float:left;
 }
 .date {
   position: relative;
@@ -131,4 +129,56 @@ button {
   
 }
 
+button.easy-button-button{
+  position: relative;
+  margin-left: 1.5%;
+  margin-top:12%;
+  background-color: #ffffff;
+  border-color: rgb(0,0,0,.4);
+  border-radius: 5px;
+  width:33px;
+  height:34px;
+  z-index:9999;
+  cursor: pointer;
+}
+.info {
+  padding: 6px 8px;
+  font: 12px/14px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.legend {
+  position: relative ;
+  margin-top: 25%;
+  margin-left: 82%;
+  width:15%;
+  z-index: 9999;
+  line-height: 18px;
+  color: #555;
+  background-color: rgb(255,255,255,.8);
+  border-radius: 3px;
+  padding:1%;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  z-index: 9999;
+}
+.categoryaxe {
+  height:auto;
+  margin-left:2%;
+}
+text {
+  font-size: 1em;
+}
 
+rect{
+  height:4%; 
+  border-color: #ffffff;
+  border-radius: 2px;
+  
+}

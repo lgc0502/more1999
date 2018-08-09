@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import Map_init from './townMap'
-import Map from './Map'
+import React_leaflet from './React_leaflet'
 import Dropdown from './Dropdownsearch'
 import Areachart from './Areachart'
 import Donutchart from './Donutchart'
@@ -59,7 +58,7 @@ class App extends Component {
         <div className="hotzone">
           <h1 class="tainanstate">通報熱區</h1>
           <div className="ui container" id="leafletmap">
-            <Map
+            <React_leaflet
               data={this.props}/></div>
         </div>
          <div className="ui container" id="dropdown">
