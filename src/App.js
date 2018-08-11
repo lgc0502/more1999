@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import {BrowserRouter as Router,Route,PropsRoute,Link} from 'react-router-dom'
 import MainMenu from './MainMenu'
 import Historicalstatistics from './Historicalstatistics'
 import Instantnotification from './Instantnotification'
