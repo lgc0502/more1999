@@ -19,7 +19,7 @@ class App extends Component {
             <MainMenu/>
           </header>
             <div>
-              <Route exact path='/' component={Historicalstatistics} data={this.props}/>
+              <PropsRoute exact path='/' component={Historicalstatistics} data={this.props}/>
               <Route exact path='/instantnotification' component={Instantnotification}/>
             </div>
         </div>
