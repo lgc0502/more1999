@@ -12,6 +12,7 @@ class App extends Component {
   
   render() {
     console.log(this.props)
+    const data = this.props
     return (
       <Router>
         <div className="App"> 
@@ -19,7 +20,7 @@ class App extends Component {
             <MainMenu/>
           </header>
             <div>
-              <Route exact path='/' component={Historicalstatistics} {...this.props}/>
+              <Route exact path='/' component={Historicalstatistics} {...data}/>
               <Route exact path='/instantnotification' component={Instantnotification}/>
             </div>
         </div>
