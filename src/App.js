@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {BrowserRouter as Router,Route,PropsRoute,Link} from 'react-router-dom'
+import {Switch,Route,PropsRoute,Link} from 'react-router-dom'
 import MainMenu from './MainMenu'
 import Historicalstatistics from './Historicalstatistics'
 import Instantnotification from './Instantnotification'
@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     
     return (
-      <Router>
+      <Switch>
         <div className="App"> 
           <header className="App-header">
             <MainMenu/>
@@ -23,7 +23,7 @@ class App extends Component {
               <Route exact path='/instantnotification' component={Instantnotification}/>
             </div>
         </div>
-      </Router> 
+      </Switch> 
     )
   }
 }
