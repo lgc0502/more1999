@@ -19,8 +19,8 @@ class App extends Component {
             <MainMenu/>
           </header>
             <div>
-              <PropsRoute exact path='/' component={Historicalstatistics} data={this.props}/>
-              <Route exact path='/instantnotification' component={Instantnotification}/>
+              <PropsRoute path='/' component={Historicalstatistics} data={this.props}/>
+              <Route path='/instantnotification' component={Instantnotification}/>
             </div>
         </div>
       </Switch> 
