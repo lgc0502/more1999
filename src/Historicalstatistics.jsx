@@ -40,6 +40,7 @@ class Historicalstatistics extends Component {
   }
   render() {
     const {isLoading,request_data} = this.state
+    console.log("in his")
     console.log(this.props.route.towngeo)
    if(isLoading){
      return (
