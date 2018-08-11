@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import {Router,Route,PropsRoute,Link} from 'react-router-dom'
 import Header from './Header'
 import Main from './Main'
 
