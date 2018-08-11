@@ -40,7 +40,7 @@ class Historicalstatistics extends Component {
   }
   render() {
     const {isLoading,request_data} = this.state
-    
+    console.log(this.props)
    if(isLoading){
      return (
       <div class="loaddata">
@@ -49,6 +49,7 @@ class Historicalstatistics extends Component {
      )
    }
     return (
+      
         <div>
             <h1 className="date">{this.state.date.begin+"  -  "+this.state.date.end}</h1>
             <h1 className="tainanstate">大台南各類通報</h1>
