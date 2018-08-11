@@ -619,7 +619,7 @@ class React_leaflet extends Component{
     }
    componentDidMount(){
 
-        fetch(this.props.data.towngeo)
+        fetch(this.props.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -639,7 +639,7 @@ class React_leaflet extends Component{
         })
    }
     render(){
-        
+        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
