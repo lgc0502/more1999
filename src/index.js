@@ -5,11 +5,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-render((
+ReactDOM.render((
     <BrowserRouter>
         <App {...(root.dataset)}/>
     </BrowserRouter>
-),document.getElementById('root'))
+), document.getElementById('root'))
 
 
 registerServiceWorker();
