@@ -1,3 +1,5 @@
+import {BrowserRouter as Link} from 'react-router-dom'
+
 export default MainMenu = () =>{
     <div>
         <Link to="/">
