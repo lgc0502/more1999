@@ -4,8 +4,8 @@ import {BrowserRouter as Link} from 'react-router-dom'
 const Header = () =>{
     return(
         <header className="App-header">
-            <Link to="/"><Text>上週累積</Text></Link>
-            <Link to="/instantnotification"><Text>待處理通報</Text></Link>
+            <Link to="/"><text>上週累積</text></Link>
+            <Link to="/instantnotification"><text>待處理通報</text></Link>
         </header>
     )
 }
