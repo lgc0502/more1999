@@ -13,17 +13,17 @@ class App extends Component {
   render() {
     
     return (
-      <Switch>
+      
         <div className="App"> 
           <header className="App-header">
             <MainMenu/>
           </header>
-            <div>
+            <Switch>
               <PropsRoute path='/' component={Historicalstatistics} data={this.props}/>
               <Route path='/instantnotification' component={Instantnotification}/>
-            </div>
+            </Switch>
         </div>
-      </Switch> 
+       
     )
   }
 }
