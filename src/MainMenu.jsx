@@ -1,6 +1,7 @@
+import React from 'react';
 import {BrowserRouter as Link} from 'react-router-dom'
 
-export default MainMenu = () =>{
+const MainMenu = () =>{
     <div>
         <Link to="/">
             {"上週累積"}
@@ -10,3 +11,4 @@ export default MainMenu = () =>{
         </Link>
     </div>
 }
+export default MainMenu
