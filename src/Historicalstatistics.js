@@ -38,7 +38,6 @@ class Historicalstatistics extends Component {
   }
   render(){
     const {isLoading,request_data} = this.state
-    console.log(this.props.towngeo)
    if(isLoading){
      return (
       <div class="loaddata">
