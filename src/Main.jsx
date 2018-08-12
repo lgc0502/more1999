@@ -8,12 +8,11 @@ const Main=(props)=>{
     const data = props
     return(
         <main>
-            <Router>
-                <Switch>
-                    <Route exact path='/' render={()=>(<Historicalstatistics towngeo={data}/>)}/>
-                    <Route exact path='/instantnotification' component={Instantnotification}/>
-                </Switch>
-            </Router>
+            <Switch>
+                <Route exact path='/' render={()=>(<Historicalstatistics towngeo={data}/>)}/>
+                <Route exact path='/instantnotification' component={Instantnotification}/>
+            </Switch>
+            
         </main>
     )
 }
