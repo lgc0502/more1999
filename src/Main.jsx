@@ -1,14 +1,16 @@
 import React from 'react';
-import {Switch,Route,PropsRoute} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 import Historicalstatistics from './Historicalstatistics.js';
 import Instantnotification from './Instantnotification.js';
 
-const Main=(props)=>{
+const Main=()=>{
     return(
-        <Switch>
-            <PropsRoute exact path='/' component={Historicalstatistics} data={props}/>
-            <Route exact path='/instantnotification' component={Instantnotification}/>
-        </Switch>
+        <main>
+            <Switch>
+                <Route exact path='/' component={Historicalstatistics}/>
+                <Route exact path='/instantnotification' component={Instantnotification}/>
+            </Switch>
+        </main>
     )
 }
 
