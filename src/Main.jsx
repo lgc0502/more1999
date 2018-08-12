@@ -4,7 +4,7 @@ import Historicalstatistics from './Historicalstatistics.js';
 import Instantnotification from './Instantnotification.js';
 
 const Main=(props)=>{
-    console.log(props)
+    
     const data = props
     return(
         <main>
