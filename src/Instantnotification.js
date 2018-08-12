@@ -6,10 +6,19 @@ class Instantnotification extends Component{
     render(){
         return(
             <div>
-                <Dropdown/>
-                <Listgroup/> 
+                <h1>Roster</h1>
             </div>
         )
     }
 }
+// class Instantnotification extends Component{
+//     render(){
+//         return(
+//             <div>
+//                 <Dropdown/>
+//                 <Listgroup/> 
+//             </div>
+//         )
+//     }
+// }
 export default Instantnotification
