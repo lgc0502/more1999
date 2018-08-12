@@ -5,10 +5,11 @@ import Instantnotification from './Instantnotification.js';
 
 const Main=(props)=>{
     console.log(props)
+    const data = props
     return(
         <main>
             <Switch>
-                <Route exact path='/' render={(props)=>(<Historicalstatistics towngeo={props.towngeo}/>)}/>
+                <Route exact path='/' render={()=>(<Historicalstatistics towngeo={data}/>)}/>
                 <Route exact path='/instantnotification' component={Instantnotification}/>
             </Switch>
         </main>
