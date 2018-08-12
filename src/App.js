@@ -3,13 +3,18 @@ import Header from './Header'
 import Main from './Main'
 
 
-const App=(props) => {
+class App extends Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
     return (
         <div className="App"> 
           <Header/>
-          <Main {...props}/>    
+          <Main {...this.props}/>    
         </div>
     )
+  }
 }
 
-export default App
+export default App;
