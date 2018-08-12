@@ -618,7 +618,6 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-        console.log(this.props)
         console.log(this.props.towngeo)
         fetch(this.props.towngeo)
         .then(res => {
