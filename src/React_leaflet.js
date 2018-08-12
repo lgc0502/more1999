@@ -574,8 +574,8 @@ function getColor(d){
 }
 
 class React_leaflet extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             center:[23.15,120.35],
             zoom:10,

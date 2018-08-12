@@ -38,8 +38,7 @@ class Historicalstatistics extends Component {
   }
   render(){
     const {isLoading,request_data} = this.state
-    console.log(this.props.route)
-    console.log(this.props)
+   
    if(isLoading){
      return (
       <div class="loaddata">
@@ -61,7 +60,7 @@ class Historicalstatistics extends Component {
             <h1 class="tainanstate">通報熱區</h1>
             <div className="ui container" id="Map">
                 <React_leaflet
-                  data={this.props.route}/></div>
+                  data={this.props.towngeo}/></div>
             </div>
 
             <h1 class="tainanstate">鄉鎮里級查詢</h1>
