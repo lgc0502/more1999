@@ -619,7 +619,7 @@ class React_leaflet extends Component{
     }
    componentDidMount(){
 
-        fetch(this.props)
+        fetch(this.props.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
