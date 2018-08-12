@@ -8,7 +8,7 @@ const Main=(props)=>{
     return(
         <main>
             <Switch>
-                <Route exact path='/' render={(props)=>{return(<Historicalstatistics {...this.props}/>)}}/>
+                <Route exact path='/' render={(props)=>(<Historicalstatistics {...this.props}/>)}/>
                 <Route exact path='/instantnotification' component={Instantnotification}/>
             </Switch>
         </main>
