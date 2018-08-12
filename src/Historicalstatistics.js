@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-
 import React_leaflet from './React_leaflet'
 import Dropdown from './Dropdownsearch'
 import Areachart from './Areachart'
@@ -18,7 +17,6 @@ class Historicalstatistics extends Component {
       request_data: {},
       date:null
     }
-    
   }
   componentDidMount(){
     postApi.requertPost('台南市','null').then(data => {
