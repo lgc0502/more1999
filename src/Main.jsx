@@ -1,7 +1,7 @@
 import React from 'react';
-import {Switch,Route,PropsRoute} from 'react-router-dom'
-import Historicalstatistics from './Historicalstatistics.js'
-import Instantnotification from './Instantnotification.js'
+import {Switch,Route,PropsRoute} from 'react-router-dom';
+import Historicalstatistics from './Historicalstatistics.js';
+import Instantnotification from './Instantnotification.js';
 
 const Main=(props)=>{
     return(

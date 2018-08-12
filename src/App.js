@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import Header from './Header.jsx'
-import Main from './Main.jsx'
+import React, { Component } from "react";
+import Header from './Header.jsx';
+import Main from './Main.jsx';
 
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
     return (
         <div className="App"> 
           <Header/>
+          <Main/>
         </div>
     )
   }
