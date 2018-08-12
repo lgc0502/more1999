@@ -5,8 +5,8 @@ import Instantnotification from './Instantnotification'
 const Main = (props) =>{
     return(
         <Switch>
-            <PropsRoute path='/' component={Historicalstatistics} data={props}/>
-            <Route path='/instantnotification' component={Instantnotification}/>
+            <PropsRoute exact path='/' component={Historicalstatistics} data={props}/>
+            <Route exact path='/instantnotification' component={Instantnotification}/>
         </Switch>
     )
 }
