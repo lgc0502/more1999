@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import React_leaflet from './React_leaflet'
-import Dropdown from './Dropdownsearch'
-import Areachart from './Areachart'
-import Donutchart from './Donutchart'
-import ButtonGroup from './ButtonGroup'
-import emitter from './events'
-import postApi from './postApi'
-import date from './Date'
+import React_leaflet from './React_leaflet.js'
+import Dropdown from './Dropdownsearch.js'
+import Areachart from './Areachart.js'
+import Donutchart from './Donutchart.js'
+import ButtonGroup from './ButtonGroup.js'
+import emitter from './events.js'
+import postApi from './postApi.js'
+import date from './Date.js'
 
 class Historicalstatistics extends Component {
   constructor(props){

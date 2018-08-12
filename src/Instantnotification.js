@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import Listgroup from "./Listgroup"
-import Dropdown from './Dropdownsearch'
+import Listgroup from "./Listgroup.js"
+import Dropdown from './Dropdownsearch.js'
 class Instantnotification extends Component{
     render(){
         return(
