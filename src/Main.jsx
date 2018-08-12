@@ -3,12 +3,12 @@ import {Switch,Route,PropsRoute} from 'react-router-dom';
 import Historicalstatistics from './Historicalstatistics.js';
 import Instantnotification from './Instantnotification.js';
 
-const Main=(props)=>{
+const Main=()=>{
     return(
         <main>
             <Switch>
-                <PropsRoute exact path='/' component={Historicalstatistics} data={props}/>
-                <Route exact path='/instantnotification' component={Instantnotification}/>
+                <Route exact path='/' component={Instantnotification}/>
+                <Route exact path='/instantnotification' component={Historicalstatistics}/>
             </Switch>
         </main>
     )
