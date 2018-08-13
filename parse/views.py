@@ -304,8 +304,8 @@ def lw_time_num(begin_date, end_date, town, village):
         temp={}
     return time_num
     
-def tw_finish_rate(begin_date, end_date):
-    print(begin_date, end_date)
+#def tw_finish_rate(begin_date, end_date):
+    #print(begin_date, end_date)
 
 
 #def unfinish_detail():
