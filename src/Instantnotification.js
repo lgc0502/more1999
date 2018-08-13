@@ -7,8 +7,9 @@ class Instantnotification extends Component{
     render(){
         return(
             <div>
-                <Dropdown/>
-                <Listgroup/> 
+                <h1>haha</h1>
+                {/* <Dropdown/>
+                <Listgroup/>  */}
             </div>
         )
     }
