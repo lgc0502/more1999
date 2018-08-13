@@ -1,10 +1,17 @@
 
-body {
+ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
-
+.root{
+  width:100%;
+  height:auto;
+}
+Main {
+  margin-top:5%;
+}
+/*
 .chineseText {
   font-family: 'Noto Sans TC',sans-serif;
   font-size: 1em;
@@ -190,4 +197,4 @@ rect{
   border-color: #ffffff;
   border-radius: 2px;
   
-}
+} */

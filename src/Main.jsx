@@ -1,16 +1,15 @@
-import React from 'react';
-import {Router,Switch,Route} from 'react-router-dom';
-import Historicalstatistics from './Historicalstatistics.js';
-import Instantnotification from './Instantnotification.js';
+import React from 'react'
+import {Switch,Route} from 'react-router-dom'
+import Historicalstatistics from './Historicalstatistics'
+import Instantnotification from './Instantnotification'
 
-const Main=(props)=>{
-    
+const Main=(props)=>{ 
     const data = props
     return(
         <main>
             <Switch>
-                <Route exact path='/' render={()=>(<Historicalstatistics towngeo={data}/>)}/>
-                <Route exact path='instantnotification' component={Instantnotification}/>
+                <Route exact path="/" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
+                <Route exact path="/instant" component={Instantnotification}/>
             </Switch>   
         </main>
     )
