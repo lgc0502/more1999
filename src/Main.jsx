@@ -10,9 +10,8 @@ const Main=(props)=>{
         <main>
             <Switch>
                 <Route exact path='/' render={()=>(<Historicalstatistics towngeo={data}/>)}/>
-                <Route exact path='/instantnotification' component={Instantnotification}/>
-            </Switch>
-            
+                <Route exact path='instantnotification' component={Instantnotification}/>
+            </Switch>   
         </main>
     )
 }
