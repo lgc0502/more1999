@@ -13,7 +13,17 @@ import json
 from django.http import JsonResponse
 import pytz
 
-
+classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
+eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
+town_name=['新營區','鹽水區','白河區','柳營區','後壁區','東山區','麻豆區','下營區','六甲區','官田區',
+            '大內區','佳里區','學甲區','西港區','新化區','善化區','新市區','安定區','山上區','玉井區',
+            '楠西區','南化區','左鎮區','仁德區','歸仁區','關廟區','龍崎區','永康區','北區','七股區',
+            '將軍區','北門區','安南區','南區','東區','安平區','中西區']
+town_id=['R01','R02','R03','R04','R05','R06','R07','R08','R09','R10',
+        'R11','R12','R17','R13','R18','R19','R20','R21','R22','R23',
+        'R24','R25','R26','R27','R28','R29','R30','R31','D04','R14',
+        'R15','R16','D06','D02','D01','D07','D08']
+tw = pytz.timezone('Asia/Taipei')
 
 def get_Key():
     with open('./parse/config.json' , 'r') as reader:
@@ -156,22 +166,23 @@ def data_preprocess(raw_data):
         return data
 
 def get_new_data():
-    now=datetime.datetime.today()
-    past = now-datetime.timedelta(minutes = 40)  
+    now = datetime.datetime.today()  #check?
+    past = datetime.datetime.today()-datetime.timedelta(days = 1)
     now = now.strftime('%Y-%m-%d %H:%M:%S')
     past = past.strftime('%Y-%m-%d %H:%M:%S')
     d = call_api_by_date(past, now)
-    
+    process = 0
     if d['root']['count'] != '0':
-        for index in range(0,int(d['root']['count'])):
+         for index in range(0,int(d['root']['count'])):
             if d['root']['count'] == '1':
-                data = data_preprocess(d['root']['records']['record'])
+                raw_data = d['root']['records']['record']
             else:
-                data = data_preprocess(d['root']['records']['record'][index])
-            if data != -1:
-                print(data['service_request_id'])
-                search = API_DATA.objects.filter(service_request_id=data['service_request_id'])
-                if len(search) == 0: #newdata
+                raw_data = d['root']['records']['record'][index]
+            search = API_DATA.objects.filter(service_request_id=raw_data['service_request_id'])
+            if len(search) == 0: #new data
+                data = data_preprocess(raw_data)
+                process = 1
+                if data != -1:
                     try:
                         r1 = API_DATA(
                             service_request_id = data['service_request_id'],
@@ -187,27 +198,30 @@ def get_new_data():
                             lng = data['lng'],
                             address_string = data['address_string'],
                             service_notice = data['service_notice'],
-                            updated_datetime = data['requested_datetime'],
-                            expected_datetime = data['requested_datetime']
+                            updated_datetime = data['updated_datetime'],
+                            expected_datetime = data['expected_datetime']
                         )
                         r1.save()
                         print("save")
                     except:
                         print("save data error")
-                search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
-                if len(search) == 0 and data['status'] != '已完工': #unfinish
+            search = Unfinish.objects.filter(service_request_id=raw_data['service_request_id'])
+            if len(search) == 0 and raw_data['status'] != '已完工': #unfinish
+                if process != 1 :
+                    data = data_preprocess(raw_data)
+                if data != -1:
                     try:
                         r1 = Unfinish(
                             service_request_id = data['service_request_id'],
                             requested_datetime = data['requested_datetime'],
                             status = data['status'],
-                            updated_datetime = data['requested_datetime'],
-                            expected_datetime = data['requested_datetime']
+                            updated_datetime = data['updated_datetime'],
+                            expected_datetime = data['expected_datetime']
                         )
                         r1.save()
                     except:
                         print("save unfinish error")
-
+    
 def update_status():
     qid = ''
     search = Unfinish.objects.filter(status='未完成')
@@ -224,78 +238,95 @@ def update_status():
                 if data['status'] is None:
                     data['status'] = '未完成'
                 if '已' in data['status']:
-                    print(data['service_request_id'])
+                    print("**"+data['service_request_id'])
                     API_DATA.objects.filter(service_request_id=data['service_request_id']).update(status='已完工')
+                    API_DATA.objects.filter(service_request_id=data['service_request_id']).update(updated_datetime=data['updated_datetime'])
                     search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
                     search.delete()
 
 def test(request):
-    get_new_data()
-    update_status()
+    #get_new_data()
+    #update_status()
+    week_date()
     return render(request, 'index.html')
 
 def update():
     get_new_data()
     update_status()
 
+def week_date():
+    date = {}
+    time_format = '%Y-%m-%d'
+    now = datetime.datetime.today().strftime('%Y-%m-%d')
+    now = datetime.datetime.strptime(now, time_format).replace(tzinfo=tw)
+    weekday = (now.weekday()+1)%7
+    past = now-datetime.timedelta(days = weekday)
+    now = now+datetime.timedelta(days = 1)
+    date['today'] = now
+    date['week_begin'] = past
+    return date
+
+def lw_donut(begin_date, end_date):
+    donut = {}
+    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
+    for index in range(len(classification)):
+        donut[eng_class[index]]=[0,0]
+        donut[eng_class[index]][0]=len(date_search.filter(service_name = classification[index]))
+        if(len(date_search)!=0):
+            donut[eng_class[index]][1]=(donut[eng_class[index]][0]/len(date_search))*100
+        else:
+            donut[eng_class[index]][1] = 0
+    return donut
+
+def lw_hotzone(begin_date, end_date):
+    hotzone = {}
+    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date])
+    for index in range(len(town_name)):
+        #donut[town_id[index]]= 0
+        hotzone[town_id[index]]=len(date_search.filter(area = town_name[index]))
+    return hotzone
+
+def lw_time_num(begin_date, end_date, town, village):
+    temp={}
+    time_num={}
+    delta =  (end_date-begin_date).days 
+    for d in range(0,delta):
+        query_date = begin_date + datetime.timedelta(days=d)
+        query_end = query_date + datetime.timedelta(days=1)
+        if town == '台南市':
+            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end]) 
+        else:
+            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end], area=town, li=village) 
+        for index in range(len(classification)):
+            temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
+        query_date_string = query_date.strftime('%Y-%m-%d')
+        time_num[query_date_string]=temp
+        temp={}
+    return time_num
+    
+#def tw_finish_rate(begin_date, end_date):
+    #print(begin_date, end_date)
+
+
+#def unfinish_detail():
+
 def village_visualization(request):
     time_format = '%Y-%m-%d'
-    tw = pytz.timezone('Asia/Taipei')
     town = request.GET['town']
     village = request.GET['village'] 
     begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format).replace(tzinfo=tw)
     end_date = datetime.datetime.strptime(request.GET['end_date'], time_format).replace(tzinfo=tw)
-    delta =  (end_date-begin_date).days 
+    
     categoryByTime={}
-    classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
-    eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
-    donut={}
-    
     if town == '台南市':
-        date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
-        for index in range(len(classification)):
-            donut[eng_class[index]]=[0,0]
-            donut[eng_class[index]][0]=len(date_search.filter(service_name = classification[index]))
-            if(len(date_search)!=0):
-                donut[eng_class[index]][1]=(donut[eng_class[index]][0]/len(date_search))*100
-            else:
-                donut[eng_class[index]][1] = 0
-        categoryByTime['Donut']=donut
-        temp={}
-        temp2={}
-        for d in range(0,delta):
-            query_date = begin_date + datetime.timedelta(days=d)
-            query_end = query_date + datetime.timedelta(days=1)
-            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end]) 
-            for index in range(len(classification)):
-                temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
-            query_date_string = query_date.strftime('%Y-%m-%d')
-            temp2[query_date_string]=temp
-            temp={}
-        categoryByTime['Area']=temp2
-    
+        categoryByTime['Donut'] = lw_donut(begin_date, end_date)
+        categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
+        categoryByTime['Hotzone'] = lw_hotzone(begin_date, end_date)
     else:
-        temp={}
-        temp2={}
-        for d in range(0,delta):
-            query_date = begin_date + datetime.timedelta(days=d)
-            query_end = query_date + datetime.timedelta(days=1)
-            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end], area=town, li=village) 
-            for index in range(len(classification)):
-                temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
-            query_date_string = query_date.strftime('%Y-%m-%d')
-            temp2[query_date_string]=temp
-        categoryByTime['Area']=temp2
+        categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
+    thisweek = week_date()
+    tw_finish_rate(thisweek['week_begin'], thisweek['today'])
     return JsonResponse(categoryByTime)
 
-def Donut_chart(request):
-    today=datetime.datetime.today()-datetime.timedelta(days=1)
-    today_date = today.strftime('%Y-%m-%d')
-    weekday = today.weekday()
-    print(today)
-    past = today-datetime.timedelta(days=weekday)
-    past_date = past.strftime('%Y-%m-%d')
-    print(past_date)
-    
-    return render(request, 'index.html')
+
 
