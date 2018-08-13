@@ -247,7 +247,7 @@ def update_status():
 def test(request):
     #get_new_data()
     #update_status()
-    week_date()
+    unfinish_detail()
     return render(request, 'index.html')
 
 def update():
@@ -282,8 +282,12 @@ def lw_hotzone(begin_date, end_date):
     hotzone = {}
     date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date])
     for index in range(len(town_name)):
-        #donut[town_id[index]]= 0
-        hotzone[town_id[index]]=len(date_search.filter(area = town_name[index]))
+        hotzone[town_id[index]]={}
+        area_search = date_search.filter(area = town_name[index])
+        hotzone[town_id[index]]['total']=len(area_search)
+        hotzone[town_id[index]]['category']={}
+        for d in range(len(classification)):
+            hotzone[town_id[index]]['category'][eng_class[d]] = len(area_search.filter(service_name = classification[d]))
     return hotzone
 
 def lw_time_num(begin_date, end_date, town, village):
@@ -304,11 +308,38 @@ def lw_time_num(begin_date, end_date, town, village):
         temp={}
     return time_num
     
-#def tw_finish_rate(begin_date, end_date):
-    #print(begin_date, end_date)
+def tw_finish_rate(begin_date, end_date):
+    finish_donut={}
+    print(begin_date, end_date)
+    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date, end_date]) 
+    finished = date_search.filter(status = '已完工')
+    finish_donut['finish'] = [0,0]
+    finish_donut['unfinish'] = [0,0]
+    finish_donut['finish'][0] = len(finished)
+    finish_donut['unfinish'][0] = len(date_search)-len(finished)
+    if(len(date_search)!=0):
+        finish_donut['finish'][1] = 100*finish_donut['finish'][0]/len(date_search)
+        finish_donut['unfinish'][1] = 100*finish_donut['unfinish'][0]/len(date_search)
+    else:
+        finish_donut['finish'][1] = 0
+        finish_donut['unfinish'][1] = 0
+    return finish_donut
 
+def unfinish_detail():
+    detail=[]
+    temp={}
+    search = Unfinish.objects.all()
+    for index in range(len(search)):
+        id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
+        temp['category'] = id_search.values()[0]['service_name']
+        temp['date'] = id_search.values()[0]['requested_datetime'].strftime('%Y-%m-%d %H:%M:%S')
+        temp['address'] = id_search.values()[0]['address_string']
+        temp['description'] = id_search.values()[0]['description']
+        temp['area'] = id_search.values()[0]['area']
+        detail.append(temp)
+        temp = {}
+    return detail
 
-#def unfinish_detail():
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
@@ -322,10 +353,12 @@ def village_visualization(request):
         categoryByTime['Donut'] = lw_donut(begin_date, end_date)
         categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
         categoryByTime['Hotzone'] = lw_hotzone(begin_date, end_date)
+        categoryByTime['UnfinishList'] = unfinish_detail()
     else:
         categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
     thisweek = week_date()
     tw_finish_rate(thisweek['week_begin'], thisweek['today'])
+    #print(tw_finish_rate(thisweek['week_begin'], thisweek['today']))
     return JsonResponse(categoryByTime)
 
 
