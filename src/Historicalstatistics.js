@@ -9,16 +9,6 @@ import postApi from './postApi.js';
 import date from './Date.js';
 
 class Historicalstatistics extends Component {
-  render(){
-    return(
-        <div>
-            <h1>good</h1> 
-        </div>
-    )
-}
-}
-/*
-class Historicalstatistics extends Component {
   
   constructor(props){
     super(props)
@@ -29,18 +19,19 @@ class Historicalstatistics extends Component {
       date:null
     }
   }
-  componentDidMount(){
+  
+  componentDidUpdate(){
+    
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
         isLoading : false
       })
-   })
+    })
     this.setState({
       date:date.lastweekdate()
     })
-  }
-  componentDidUpdate(){
+
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
           request_data:{...data},
@@ -87,5 +78,4 @@ class Historicalstatistics extends Component {
     )
   }
 }
-*/
 export default Historicalstatistics
