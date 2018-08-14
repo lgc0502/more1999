@@ -9,6 +9,16 @@ import postApi from './postApi.js';
 import date from './Date.js';
 
 class Historicalstatistics extends Component {
+  render(){
+    return(
+        <div>
+            <h1>good</h1> 
+        </div>
+    )
+}
+}
+/*
+class Historicalstatistics extends Component {
   
   constructor(props){
     super(props)
@@ -77,5 +87,5 @@ class Historicalstatistics extends Component {
     )
   }
 }
-
+*/
 export default Historicalstatistics
