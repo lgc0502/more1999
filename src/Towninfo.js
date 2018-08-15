@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {XYPlot,YAxis,Hint,HorizontalBarSeries} from "react-vis"
+import {XYPlot,YAxis,HorizontalBarSeries} from "react-vis"
 const type = {"parking":'違規停車',"light":'路燈故障',"noise":'噪音舉發',"aisle":'騎樓舉發',"road":'道路維修',"traffic":'交通運輸',"dirty":'髒亂污染',"pipe":'民生管線',"animal":'動物救援'}
 export default class Towninfo extends Component {
     constructor(props){
         super(props)
 
     }
-    
-    
+
     render(){
        
         const categorynum = Object.keys(this.props.category).map((key,i)=>{
@@ -23,7 +22,7 @@ export default class Towninfo extends Component {
                  <XYPlot
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
-                    yType = 'ordinal'
+                    yType='ordinal'
                     xRange={[window.innerWidth*0.025,window.innerWidth*0.2]}
                  >
                  < YAxis 

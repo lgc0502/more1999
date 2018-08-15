@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import borders from 'react-vis/dist/plot/borders';
+
 
 const c = [
     {

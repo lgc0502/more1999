@@ -30,17 +30,17 @@ class Historicalstatistics extends Component {
       date:date.lastweekdate()
     })
   }
-  // componentWillReceiveProps(){
-  //   postApi.requertPost('台南市','null').then(data => {
-  //     this.setState({
-  //       request_data:data,
-  //       isLoading : false
-  //     })
-  //  })
-  //   this.setState({
-  //     date:date.lastweekdate()
-  //   })
-  // }
+  componentWillReceiveProps(){
+    postApi.requertPost('台南市','null').then(data => {
+      this.setState({
+        request_data:data,
+        isLoading : false
+      })
+   })
+    this.setState({
+      date:date.lastweekdate()
+    })
+  }
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({

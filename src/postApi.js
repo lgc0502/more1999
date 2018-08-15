@@ -1,8 +1,5 @@
-import React,{Component} from "react"
 import axios from "axios";
 import date from "./Date"
-
-
 
 export default {
 

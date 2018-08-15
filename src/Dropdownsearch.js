@@ -39,16 +39,16 @@ class Dropdownsearch extends Component {
       const view = townOptions.filter(({text}) => text === this.state.selectedtown)[0]
      
       return (
-        <div  className = "eight wide column villdropdown">
+        <div  className="eight wide column villdropdown">
             <Divider hidden/>
               <Dropdown
                 onChange={this.setVillValue.bind(this)}
                 selection
                 search
                 placeholder='村里'
-                options =  {view.minor}
+                options={view.minor}
                />
-            <div className ="ui animated button" onClick = {this.startloaddata.bind(this)}>
+            <div className="ui animated button" onClick={this.startloaddata.bind(this)}>
               <div className="visible content">查詢</div>
               <div className="hidden content">
                 <i className="down arrow icon"></i>
@@ -67,7 +67,7 @@ class Dropdownsearch extends Component {
                 selection
                 search
                 placeholder='區'
-                options =  {townOptions}
+                options={townOptions}
                // value = {selectedtown}
                />
             </div>

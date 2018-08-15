@@ -649,22 +649,22 @@ class React_leaflet extends Component{
         const position =this.state.center
         return(
             <div>
-                <Map ref = 'map' 
+                <Map ref='map' 
                      className='leafletmap' 
-                     center = {position} 
+                     center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
                      maxZoom={this.state.maxZoom}>
                     
                     <TileLayer
-                        url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution = "&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                     />
                     <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
                     <GeoJSON
-                        ref = 'geojson'
-                        data= {this.state.data}
-                        style ={(feature)=>{
+                        ref='geojson'
+                        data={this.state.data}
+                        style={(feature)=>{
                             return {
                                 fillColor:getColor(feature.properties.casenum),
                                 weight: 2,
@@ -673,14 +673,14 @@ class React_leaflet extends Component{
                                 fillOpacity: 0.7
                             }}
                         }
-                        onEachFeature = {this.onEachFeature.bind(this)}
+                        onEachFeature={this.onEachFeature.bind(this)}
                     />  
                     <Legend/>         
                 </Map>
                 <div className="Mapinfo leaflet">
                     <Towninfo town={this.state.selecttown}
                               efficiency={a[this.state.selecttownid].efficiency}
-                              category = {a[this.state.selecttownid].category}/>
+                              category={a[this.state.selecttownid].category}/>
                 </div>
             </div>
         )

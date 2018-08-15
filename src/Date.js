@@ -8,7 +8,7 @@ function crossmonth(today,cross,date,label){
     
     for (i=0;i<date31.length;i++)
     {
-        if (today.getMonth()+1 == date31[i] )
+        if (today.getMonth()+1 === date31[i] )
             return 31+date
     }
     return 30+date
