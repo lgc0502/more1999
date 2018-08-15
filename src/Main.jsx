@@ -9,7 +9,7 @@ const Main=(props)=>{
         <main>
             <Switch>
                 <Route exact path="/" component={Instantnotification}/>
-                <Route exact path="/history" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
+                <Route path="/history" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
             </Switch>   
         </main>
     )

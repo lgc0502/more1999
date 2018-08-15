@@ -39,6 +39,7 @@ class Historicalstatistics extends Component {
     })
   }
   render(){
+    console.log(this.props.location)
     const {isLoading,request_data} = this.state
    if(isLoading){
      return (
