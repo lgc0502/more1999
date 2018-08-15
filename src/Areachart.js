@@ -51,7 +51,7 @@ class Areachart extends Component {
     })
   }
   componentWillUnmount(){
-    this.eventEmitter.removeListener("showarea")
+    this.eventEmitter.removeAllListeners()
   }
   
   render() { 
