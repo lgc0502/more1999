@@ -30,6 +30,17 @@ class Historicalstatistics extends Component {
       date:date.lastweekdate()
     })
   }
+  componentWillReceiveProps(){
+    postApi.requertPost('台南市','null').then(data => {
+      this.setState({
+        request_data:data,
+        isLoading : false
+      })
+   })
+    this.setState({
+      date:date.lastweekdate()
+    })
+  }
  
   componentDidUpdate(){
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
@@ -39,7 +50,7 @@ class Historicalstatistics extends Component {
     })
   }
   render(){
-    console.log(this.props.location)
+    console.log(this.props)
     const {isLoading,request_data} = this.state
    if(isLoading){
      return (
@@ -79,5 +90,5 @@ class Historicalstatistics extends Component {
     )
   }
 }
-export default (props)=>{<Historicalstatistics key={props.location.state.id}/>}
+export default Historicalstatistics
     
