@@ -5,6 +5,7 @@ import Dropdown from './Dropdownsearch.js';
 
 class Instantnotification extends Component{
     render(){
+        console.log("render instant component")
         return(
             <div>
                 <Dropdown/>

@@ -17,7 +17,7 @@ const Header = ()=>{
             <NavLink 
                 to={{
                     pathname:'/history',
-                    state: {id: i+1}
+                   
                 }}
                 activeClassName="selected"
                 activeStyle={{
@@ -28,7 +28,7 @@ const Header = ()=>{
             <NavLink 
                 to={{
                     pathname:'/history',
-                    state: {id: i+1}
+                    
                 }}
                 activeClassName="selected"
                 activeStyle={{

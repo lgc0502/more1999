@@ -26,6 +26,9 @@ a {
   margin-left:15%;
   margin-top:5%;
 }
+.case {
+  text-align: left;
+}
 Main {
   margin-top:5%;
 }
@@ -50,8 +53,11 @@ Main {
 }
 
 .villdropdown ,.towndropdown{
-  width: 50%;
+  width: 40%;
   height: auto;
+}
+.villdropdown {
+  display:inline;
 }
 #dropdown {
   width: 50%;

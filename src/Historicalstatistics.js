@@ -20,6 +20,7 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
+    console.log("did mount history comonent")
     postApi.requertPost('台南市','null').then(data => {
       this.setState({
         request_data:data,
@@ -48,6 +49,10 @@ class Historicalstatistics extends Component {
           request_data:{...data},
         })
     })
+  }
+  componentWillUnmount(){
+    console.log("unmount history component")
+    this.eventEmitter.removeAllListeners()
   }
   render(){
     console.log(this.props)
