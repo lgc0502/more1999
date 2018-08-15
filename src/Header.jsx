@@ -6,7 +6,7 @@ const Header = ()=>{
         <header>
             <Link to='/'>即時通報通知</Link>
             <Link to={{
-                pathname:'/instant',
+                pathname:'/history',
                 state: {id: i+1}
             }}>上週通報累積</Link>
         </header>
