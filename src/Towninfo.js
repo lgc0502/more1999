@@ -28,7 +28,7 @@ export default class Towninfo extends Component {
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[window.innerWidth*0.025,window.innerWidth*0.2]}
+                    xRange={[35,window.innerWidth*0.18]}
                  >
                  < YAxis 
                     className="categoryaxe"
@@ -47,11 +47,13 @@ export default class Towninfo extends Component {
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[window.innerWidth*0.025,window.innerWidth*0.2]}
+                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
+                    xRange={[0,window.innerWidth*0.15]}
                  >
                  < YAxis 
                     className="categoryaxe"
                     width={window.innerWidth*0.06}
+                    orientation="right"
                     top={1}
                    />
                  <HorizontalBarSeries

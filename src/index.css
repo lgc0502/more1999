@@ -210,6 +210,14 @@ button.easy-button-button{
   margin-right: 8px;
   z-index: 9999;
 }
+.category{
+  position: absolute;
+  right:15%;
+}
+.time {
+  position: absolute;
+  left:5%;
+}
 .categoryaxe {
   height:auto;
   margin-left:2%;
