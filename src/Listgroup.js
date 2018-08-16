@@ -24,12 +24,13 @@ class Listgroup extends Component{
         super(props)
     }
     render(){
-        console.log(this.props)
+        
         const unfinishList = this.props.UnfinishList
+        console.log(unfinishList)
         return(
                <div className="overview">
                {
-                unfinishList.map((d)=>(
+                unfinishList.map((d)=>{
                 <div class="ui raised segment case">
                     <div className="listcategory">
                     {/*<svg className="icon" width="20" height="20">
@@ -47,7 +48,7 @@ class Listgroup extends Component{
                     <p style={{fill:"gray"}}>{d.date}</p>
                     </div>  
                 </div>
-                ))} </div>
+                })} </div>
                 
             
         )
