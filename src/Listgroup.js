@@ -22,13 +22,17 @@ import React,{Component} from 'react'
 class Listgroup extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            unfinishlist:props.UnfinishList
+        }
     }
     render(){
-        console.log(this.props.UnfinishList)
+        console.log(this.props)
+        const {unfinishlist} = this.state
+        console.log(unfinishlist)
         return(
                <div className="overview">
-               {
-                this.props.UnfinishList.map((d)=>{
+               {unfinishlist.map((d)=>{
                 <div class="ui raised segment case">
                     <div className="listcategory">
                     {/*<svg className="icon" width="20" height="20">
@@ -45,8 +49,7 @@ class Listgroup extends Component{
                     <p style={{color:"gray"}}>"處理中..."</p>
                     <p style={{fill:"gray"}}>{d.date}</p>
                     </div>  
-                </div>
-                })} </div>
+                </div>})} </div>
                 
             
         )
