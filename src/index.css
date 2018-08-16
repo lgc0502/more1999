@@ -211,13 +211,16 @@ button.easy-button-button{
   margin-right: 8px;
   z-index: 9999;
 }
-.time,.category,#mapinfo_time,#mapinfo_category {
+.time,.category {
   float:left;
 }
-.category ,#mapinfo_category{
+#mapinfo_time,#mapinfo_category{
+  float:left;
+}
+#mapinfo_category{
   margin-left:40%;
 }
-.time, #mapinfo_time {
+#mapinfo_time {
   margin-left:15%;
 }
 
