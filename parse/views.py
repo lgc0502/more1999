@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from datetime import datetime
+from datetime import datetime , date
 from lxml import etree
 import requests
 import datetime
@@ -167,7 +167,7 @@ def data_preprocess(raw_data):
 
 def get_new_data():
     now = datetime.datetime.today()  #check?
-    past = datetime.datetime.today()-datetime.timedelta(days = 1)
+    past = datetime.datetime.today()-datetime.timedelta(days = 2)
     now = now.strftime('%Y-%m-%d %H:%M:%S')
     past = past.strftime('%Y-%m-%d %H:%M:%S')
     d = call_api_by_date(past, now)
@@ -266,6 +266,13 @@ def week_date():
     date['week_begin'] = past
     return date
 
+def seconds_format(second):
+    days = int(second/(3600*24))
+    hours = int((second%(3600*24))/(3600))
+    minutes = int((second%3600)/(60))
+    delta_time = str(days)+':'+str(hours)+':'+str(minutes)
+    return delta_time
+
 def lw_donut(begin_date, end_date):
     donut = {}
     date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
@@ -286,8 +293,23 @@ def lw_hotzone(begin_date, end_date):
         area_search = date_search.filter(area = town_name[index])
         hotzone[town_id[index]]['total']=len(area_search)
         hotzone[town_id[index]]['category']={}
+        hotzone[town_id[index]]['time']={}
         for d in range(len(classification)):
+            delta = 0
+            total = 0
             hotzone[town_id[index]]['category'][eng_class[d]] = len(area_search.filter(service_name = classification[d]))
+            finish_task = area_search.filter(updated_datetime__range = [begin_date,end_date],status = '已完工',service_name = classification[d])
+            for i in range(len(finish_task)):
+                requested = finish_task.values()[i]['requested_datetime']
+                updated = finish_task.values()[i]['updated_datetime']
+                if requested != updated:
+                    delta = delta+(updated- requested).total_seconds()
+                    total = total+1
+            if total == 0:
+                delta_time = '0:0:0'
+            else:
+                delta_time = seconds_format(delta/total)
+            hotzone[town_id[index]]['time'][eng_class[d]] = delta_time
     return hotzone
 
 def lw_time_num(begin_date, end_date, town, village):
@@ -310,7 +332,6 @@ def lw_time_num(begin_date, end_date, town, village):
     
 def tw_finish_rate(begin_date, end_date):
     finish_donut={}
-    print(begin_date, end_date)
     date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date, end_date]) 
     finished = date_search.filter(status = '已完工')
     finish_donut['finish'] = [0,0]
@@ -329,6 +350,7 @@ def unfinish_detail():
     detail=[]
     temp={}
     search = Unfinish.objects.all()
+    now = datetime.datetime.today().replace(tzinfo=tw)
     for index in range(len(search)):
         id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
         temp['category'] = id_search.values()[0]['service_name']
@@ -336,9 +358,13 @@ def unfinish_detail():
         temp['address'] = id_search.values()[0]['address_string']
         temp['description'] = id_search.values()[0]['description']
         temp['area'] = id_search.values()[0]['area']
+        delta = (now - id_search.values()[0]['requested_datetime'].replace(tzinfo=tw)).total_seconds()
+        delta_time = seconds_format(delta)
+        temp['time'] = delta_time
         detail.append(temp)
         temp = {}
     return detail
+
 
 
 def village_visualization(request):
@@ -353,13 +379,13 @@ def village_visualization(request):
         categoryByTime['Donut'] = lw_donut(begin_date, end_date)
         categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
         categoryByTime['Hotzone'] = lw_hotzone(begin_date, end_date)
-        categoryByTime['UnfinishList'] = unfinish_detail()
     else:
         categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
-    thisweek = week_date()
-    tw_finish_rate(thisweek['week_begin'], thisweek['today'])
-    #print(tw_finish_rate(thisweek['week_begin'], thisweek['today']))
     return JsonResponse(categoryByTime)
 
-
-
+def this_week_data(request):
+    categoryByTime={}
+    thisweek = week_date()
+    categoryByTime['UnfinishList'] = unfinish_detail()
+    categoryByTime['FinishRate'] = tw_finish_rate(thisweek['week_begin'], thisweek['today'])
+    return JsonResponse(categoryByTime)
