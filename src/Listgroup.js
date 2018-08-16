@@ -23,11 +23,11 @@ class Listgroup extends Component{
     constructor(props){
         super(props)
         this.state = {
-            unfinishlist:props.UnfinishList
+            unfinishlist:props.res.UnfinishList
         }
     }
     render(){
-        console.log(this.props)
+        console.log(this.props.res)
         const {unfinishlist} = this.state
         console.log(unfinishlist)
         return(
