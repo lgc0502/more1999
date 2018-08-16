@@ -34,7 +34,7 @@ class Instantnotification extends Component{
         
         return(
             <div>
-                <Dropdown data={...request_data}/>
+                <Dropdown {...request_data}/>
                 <Listgroup/> 
             </div>
         )

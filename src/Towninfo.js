@@ -24,6 +24,7 @@ export default class Towninfo extends Component {
                 {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'} */}
                 <h4>各類別統計</h4>
                  <XYPlot
+                    className="category"
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
@@ -38,8 +39,25 @@ export default class Towninfo extends Component {
                     className="categorybar"
                     data={categorynum} 
                     color="rgb(190,194,63)"
-                 />
-                
+                 /> 
+                </XYPlot>
+                <XYPlot
+                    className="time"
+                    width={window.innerWidth*0.2}
+                    height={window.innerWidth*0.25}
+                    yType='ordinal'
+                    xRange={[window.innerWidth*0.025,window.innerWidth*0.2]}
+                 >
+                 < YAxis 
+                    className="categoryaxe"
+                    width={window.innerWidth*0.06}
+                    top={1}
+                   />
+                 <HorizontalBarSeries
+                    className="categorybar"
+                    data={categorynum} 
+                    color="rgb(190,194,63)"
+                 /> 
                 </XYPlot>
             </div>
         )
