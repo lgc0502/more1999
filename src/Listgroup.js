@@ -25,7 +25,7 @@ class Listgroup extends Component{
     }
     render(){
         console.log(this.props)
-        const unfinishList = this.props.data.unfinishList
+        const unfinishList = this.props.unfinishList
         return(
                <div className="overview">{
                 unfinishList.map((d)=>(

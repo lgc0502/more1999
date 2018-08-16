@@ -12,12 +12,16 @@ export default class Towninfo extends Component {
         const categorynum = Object.keys(this.props.category).map((key,i)=>{
             return {x:this.props.category[key],y:type[key]} 
         })
-        const responsetime = this.props.efficiency.split(":")
+        const responsetime = Object.keys(this.props.time).map((key,i)=>{
+            let time = this.props.time[key].split(":")
+            return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
+        })
+        
         return(
             <div className="ui segment">
                 <h3>{this.props.town}</h3>
-                <h4>平均處理時間</h4>
-                {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'}
+                {/* <h4>平均處理時間</h4>
+                {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'} */}
                 <h4>各類別統計</h4>
                  <XYPlot
                     width={window.innerWidth*0.2}

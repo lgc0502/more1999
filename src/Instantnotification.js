@@ -31,10 +31,10 @@ class Instantnotification extends Component{
            </div>
           )
         }
-       
+        
         return(
             <div>
-                <Dropdown data={this.state.request_data}/>
+                <Dropdown data={...request_data}/>
                 <Listgroup/> 
             </div>
         )

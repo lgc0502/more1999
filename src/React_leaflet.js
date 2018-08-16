@@ -648,6 +648,7 @@ class React_leaflet extends Component{
         })
    }
     render(){
+        
         if(this.state.isLoading){
             return (
              <div className="loaddata">
