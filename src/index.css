@@ -4,7 +4,7 @@
  body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: sans-serif; 
 }
 .grid-container {
  width:50%;
@@ -37,7 +37,7 @@ Main {
 }
 
 .chineseText {
-  font-family: 'Noto Sans TC',sans-serif;
+  /* font-family: 'Noto Sans TC',sans-serif; */
   font-size: 1em;
   letter-spacing: 2px;  
 }
@@ -113,7 +113,7 @@ Main {
     text-align: center;
     margin-top: 5%;
     margin-bottom: 3%;
-    font-family: 'Noto Sans TC', sans-serif;
+    /* font-family: 'Noto Sans TC', sans-serif; */
     font-weight: bolder;
     font-size: 1.5em;
     color: #000000;
