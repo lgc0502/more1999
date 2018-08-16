@@ -24,6 +24,7 @@ class Instantnotification extends Component{
 
     render(){
         const {isLoading,request_data} = this.state
+        console.log(request_data)
         if(isLoading){
           return (
            <div class="loaddata">
@@ -31,11 +32,10 @@ class Instantnotification extends Component{
            </div>
           )
         }
-        
         return(
             <div>
-                <Dropdown {...request_data}/>
-                <Listgroup/> 
+                <Dropdown/>
+                <Listgroup {...request_data}/> 
             </div>
         )
     }
