@@ -212,11 +212,21 @@ button.easy-button-button{
 }
 .category{
   position: absolute;
+  bottom:0%;
   right:15%;
 }
 .time {
   position: absolute;
+  bottom:0%;
   left:5%;
+}
+#mapinfo_time{
+  position: absolute;
+  left:5%;
+}
+#mapinfo_category{
+  position: absolute;
+  right:5%;
 }
 .categoryaxe {
   height:auto;

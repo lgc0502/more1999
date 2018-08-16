@@ -22,7 +22,8 @@ export default class Towninfo extends Component {
                 <h3>{this.props.town}</h3>
                 {/* <h4>平均處理時間</h4>
                 {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'} */}
-                <h4>各類別統計</h4>
+                <h4 id="mapinfo_time">平均處理時間</h4>
+                <h4 id="mapinfo_category">各類別統計</h4>
                  <XYPlot
                     className="category"
                     width={window.innerWidth*0.2}
@@ -30,7 +31,7 @@ export default class Towninfo extends Component {
                     yType='ordinal'
                     xRange={[35,window.innerWidth*0.18]}
                  >
-                 < YAxis 
+                 <YAxis 
                     className="categoryaxe"
                     width={window.innerWidth*0.06}
                     top={1}
@@ -41,21 +42,15 @@ export default class Towninfo extends Component {
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>
-                <h4>平均處理時間</h4>
+                
                 <XYPlot
                     className="time"
-                    width={window.innerWidth*0.2}
+                    width={window.innerWidth*0.2-window.innerWidth*0.06}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
                     xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
-                    xRange={[0,window.innerWidth*0.15]}
+                    xRange={[0,window.innerWidth*0.14]}
                  >
-                 < YAxis 
-                    className="categoryaxe"
-                    width={window.innerWidth*0.06}
-                    orientation="right"
-                    top={1}
-                   />
                  <HorizontalBarSeries
                     className="categorybar"
                     data={responsetime} 
