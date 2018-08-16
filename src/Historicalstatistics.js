@@ -70,26 +70,30 @@ class Historicalstatistics extends Component {
             <h1 className="tainanstate">大台南各類通報</h1>
             
             <div className="ui container" id="Donutchart">
-                <Donutchart
-                {...request_data}/></div>
-            <div className="hotzone">
+              <Donutchart
+                {...request_data}/>
+              </div>
             
-            <h1 class="tainanstate">通報熱區</h1>
-            <div className="ui container" id="Map">
-                <React_leaflet
-                  data={this.props.towngeo}/></div>
+            <div className="hotzone">
+              <h1 class="tainanstate">通報熱區</h1>
+              <div className="ui container" id="Map">
+                  <React_leaflet
+                    data={this.props.towngeo}
+                    {...request_data}/>
+              </div>
             </div>
 
             <h1 class="tainanstate">鄉鎮里級查詢</h1>
             <div className="ui container" id="dropdown">
-              <Dropdown/></div>
-            
+              <Dropdown/>
+            </div>
             <div className="ui container" id="ButtonGroup">
-              <ButtonGroup/></div>
-            
+              <ButtonGroup/>
+            </div>
             <div className="ui container" id="Areachart">
               <Areachart
-                {...request_data}/> </div>
+                {...request_data}/>
+            </div>
         </div>
     )
   }

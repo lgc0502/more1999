@@ -7,7 +7,17 @@ import Legend from './Legend'
 const a = {
     "R01":{
             total:10,
-            efficiency: '0:4:5',
+            time:{
+                'parking':"0:0:0",
+                'light':"0:0:0",
+                'noise':"0:0:0",
+                'aisle':"0:0:0",
+                'road':"0:0:0",
+                'traffic':"0:0:0",
+                'dirty':"0:0:0",
+                'pipe':"0:0:0",
+                'animal':"0:0:0",
+            },
             category:{
                 'parking':1,
                 'light':2,
@@ -618,7 +628,6 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-        console.log(this.props.data.towngeo)
         fetch(this.props.data.towngeo)
         .then(res => {
             if(res.status !== 200){
@@ -679,8 +688,8 @@ class React_leaflet extends Component{
                 </Map>
                 <div className="Mapinfo leaflet">
                     <Towninfo town={this.state.selecttown}
-                              efficiency={a[this.state.selecttownid].efficiency}
-                              category={a[this.state.selecttownid].category}/>
+                              time={this.props[this.state.selecttownid].time}
+                              category={this.props[this.state.selecttownid].category}/>
                 </div>
             </div>
         )
