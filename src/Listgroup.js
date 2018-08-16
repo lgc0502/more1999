@@ -33,7 +33,7 @@ class Listgroup extends Component{
         return(
                <div className="overview">
                {unfinishlist.map((d)=>{
-                <div class="ui raised segment case">
+                <div className="ui raised segment case">
                     <div className="listcategory">
                     {/*<svg className="icon" width="20" height="20">
                      <circle  style={{
@@ -41,17 +41,18 @@ class Listgroup extends Component{
                         cy:"10",
                         r:"4",
                         fill:"red" }}/></svg> */}
-                    <span className="categorydescription" style={{fontWeight:600}} >{d.category} </span></div>
+                        <span className="categorydescription" style={{fontWeight:600}} >{d.category} </span>
+                    </div>
                     <div className="casedescription">
-                    <p style={{marginTop:1 ,marginBottom:0.5}}>{d.area}</p>
-                    <p style={{marginTop:1 ,marginBottom:0.5}}>{d.address}</p>
-                    <p>{d.description}</p>
-                    <p style={{color:"gray"}}>"處理中..."</p>
-                    <p style={{fill:"gray"}}>{d.date}</p>
+                        <p style={{marginTop:1 ,marginBottom:0.5}}>{d.area}</p>
+                        <p style={{marginTop:1 ,marginBottom:0.5}}>{d.address}</p>
+                        <p>{d.description}</p>
+                        {/* <p style={{color:"gray"}}>"處理中..."</p> */}
+                        <p style={{fill:"gray"}}>{d.date}</p>
                     </div>  
-                </div>})} </div>
-                
-            
+                </div>
+                })} 
+                </div>  
         )
     }
 }
