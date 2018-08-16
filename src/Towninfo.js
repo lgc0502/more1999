@@ -18,7 +18,7 @@ export default class Towninfo extends Component {
         })
         
         return(
-            <div className="ui segment ">
+            <div height={500} className="ui segment">
                 <h3>{this.props.town}</h3>
                 <h4 id="mapinfo_time">平均處理時間</h4>
                 <h4 id="mapinfo_category">各類別統計</h4>
@@ -54,8 +54,6 @@ export default class Towninfo extends Component {
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>
-                
-               
             </div>
         )
     }

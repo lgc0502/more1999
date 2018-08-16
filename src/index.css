@@ -217,9 +217,7 @@ button.easy-button-button{
 .time {
   margin-left:10%;
 }
-.category {
-  margin-left:5%;
-}
+
 #mapinfo_time,#mapinfo_category{
   float:left;
 }
