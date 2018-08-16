@@ -41,7 +41,7 @@ export default class Towninfo extends Component {
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[35,window.innerWidth*0.18]}
+                    xRange={[45,window.innerWidth*0.18]}
                  >
                  <YAxis 
                     className="categoryaxe"
