@@ -36,7 +36,7 @@ class Instantnotification extends Component{
             <div>
                 <div className="ui segment dashboard">
                   <RadialChart  
-                      key={`dashboardRadial-${i}`}
+                      key={`dashboardRadial`}
                       width={window.innerWidth*0.6}
                       height={window.innerWidth*0.6}
                       innerRadius={35}
