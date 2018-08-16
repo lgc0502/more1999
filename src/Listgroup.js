@@ -40,13 +40,12 @@ class Listgroup extends Component{
                                 <p style={{marginTop:1 ,marginBottom:0.5}}>{d.area}</p>
                                 <p style={{marginTop:1 ,marginBottom:0.5}}>{d.address}</p>
                                 <p>{d.description}</p>
-                                {/* <p style={{color:"gray"}}>"處理中..."</p> */}
+                                <p style={{color:"gray"}}>處理中</p> 
                                 <p style={{fill:"gray"}}>{d.date}</p>
                             </div>  
                         </div>
                     ))
                 } 
-                <span>hihi</span>
             </div>  
         )
     }
