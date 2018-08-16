@@ -13,7 +13,7 @@ class Instantnotification extends Component{
           request_data: {},
         }
       }
-    componentWillReceiveProps(){
+    componentDidMount(){
         postApi.requertPost('./this_week_data','null','null').then(data => {
           this.setState({
             request_data:data,

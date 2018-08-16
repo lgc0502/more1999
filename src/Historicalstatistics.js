@@ -20,7 +20,6 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
-   
     postApi.requertPost('./village_visualization','台南市','null').then(data => {
       this.setState({
         request_data:data,
