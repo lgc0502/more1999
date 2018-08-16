@@ -18,7 +18,7 @@ export default class Towninfo extends Component {
         })
         
         return(
-            <div className="ui segment">
+            <div className="ui segment ">
                 <h3>{this.props.town}</h3>
                 {/* <h4>平均處理時間</h4>
                 {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'} */}

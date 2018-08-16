@@ -90,6 +90,9 @@ Main {
   height:500px;
   margin-left:1%;
 } 
+.Mapinfo .ui .segment {
+  height:500px;
+}
 #map {
   width:70%;
   height: 450px;
@@ -222,11 +225,11 @@ button.easy-button-button{
 }
 #mapinfo_time{
   position: absolute;
-  left:5%;
+  left:10%;
 }
 #mapinfo_category{
   position: absolute;
-  right:5%;
+  right:10%;
 }
 .categoryaxe {
   height:auto;
