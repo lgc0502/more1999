@@ -577,7 +577,7 @@ class React_leaflet extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:[23.15,120.35],
+            center:[23.15,120.4],
             zoom:10,
             minZoom:10,
             maxZoom:20,

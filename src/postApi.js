@@ -3,9 +3,9 @@ import date from "./Date"
 
 export default {
 
-    requertPost:(selectedtown,selectedvill)=>{
+    requertPost:(url,selectedtown,selectedvill)=>{
        
-        return axios.get('/village_visualization', {
+        return axios.get(url, {
             params:{
                 town:selectedtown,
                 village: selectedvill,

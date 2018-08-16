@@ -20,8 +20,8 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
-    console.log("did mount history comonent")
-    postApi.requertPost('台南市','null').then(data => {
+   
+    postApi.requertPost('./village_visualization','台南市','null').then(data => {
       this.setState({
         request_data:data,
         isLoading : false
@@ -51,11 +51,11 @@ class Historicalstatistics extends Component {
     })
   }
   componentWillUnmount(){
-    console.log("unmount history component")
+  
     this.eventEmitter.removeAllListeners()
   }
   render(){
-    console.log(this.props)
+    
     const {isLoading,request_data} = this.state
    if(isLoading){
      return (
