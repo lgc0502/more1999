@@ -90,9 +90,7 @@ Main {
   height:500px;
   margin-left:1%;
 } 
-.Mapinfo .ui .segment {
-  height:500px;
-}
+
 #map {
   width:70%;
   height: 450px;
@@ -213,24 +211,16 @@ button.easy-button-button{
   margin-right: 8px;
   z-index: 9999;
 }
-.category{
-  position: absolute;
-  bottom:0%;
-  right:15%;
+.time,.category,#mapinfo_time,#mapinfo_category {
+  float:left;
 }
-.time {
-  position: absolute;
-  bottom:0%;
-  left:5%;
+.category ,#mapinfo_category{
+  margin-left:40%;
 }
-#mapinfo_time{
-  position: absolute;
-  left:10%;
+.time, #mapinfo_time {
+  margin-left:15%;
 }
-#mapinfo_category{
-  position: absolute;
-  right:10%;
-}
+
 .categoryaxe {
   height:auto;
   margin-left:2%;

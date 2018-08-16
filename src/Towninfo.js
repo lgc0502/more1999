@@ -20,10 +20,22 @@ export default class Towninfo extends Component {
         return(
             <div className="ui segment ">
                 <h3>{this.props.town}</h3>
-                {/* <h4>平均處理時間</h4>
-                {responsetime[0]+'天'+responsetime[1]+'時'+responsetime[2]+'分'} */}
                 <h4 id="mapinfo_time">平均處理時間</h4>
                 <h4 id="mapinfo_category">各類別統計</h4>
+                <XYPlot
+                    className="time"
+                    width={window.innerWidth*0.2-window.innerWidth*0.06}
+                    height={window.innerWidth*0.25}
+                    yType='ordinal'
+                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
+                    xRange={[0,window.innerWidth*0.14]}
+                 >
+                 <HorizontalBarSeries
+                    className="categorybar"
+                    data={responsetime} 
+                    color="rgb(190,194,63)"
+                 /> 
+                </XYPlot>
                  <XYPlot
                     className="category"
                     width={window.innerWidth*0.2}
@@ -43,20 +55,7 @@ export default class Towninfo extends Component {
                  /> 
                 </XYPlot>
                 
-                <XYPlot
-                    className="time"
-                    width={window.innerWidth*0.2-window.innerWidth*0.06}
-                    height={window.innerWidth*0.25}
-                    yType='ordinal'
-                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
-                    xRange={[0,window.innerWidth*0.14]}
-                 >
-                 <HorizontalBarSeries
-                    className="categorybar"
-                    data={responsetime} 
-                    color="rgb(190,194,63)"
-                 /> 
-                </XYPlot>
+               
             </div>
         )
     }
