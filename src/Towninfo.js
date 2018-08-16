@@ -41,6 +41,7 @@ export default class Towninfo extends Component {
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>
+                <h4>平均處理時間</h4>
                 <XYPlot
                     className="time"
                     width={window.innerWidth*0.2}
@@ -55,7 +56,7 @@ export default class Towninfo extends Component {
                    />
                  <HorizontalBarSeries
                     className="categorybar"
-                    data={categorynum} 
+                    data={responsetime} 
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>

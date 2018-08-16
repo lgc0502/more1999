@@ -637,7 +637,7 @@ class React_leaflet extends Component{
             res.json().then(topology => {
                 
                 topology.features.map((d)=>{
-                    d.properties.casenum = a[d.properties.TOWNID].total
+                    d.properties.casenum = this.props.res.Hotzone[d.properties.TOWNID].total
                 })
                 this.setState({
                     data:topology.features,
@@ -689,8 +689,8 @@ class React_leaflet extends Component{
                 </Map>
                 <div className="Mapinfo leaflet">
                     <Towninfo town={this.state.selecttown}
-                              time={this.props[this.state.selecttownid].time}
-                              category={this.props[this.state.selecttownid].category}/>
+                              time={this.props.res.Hotzone[this.state.selecttownid].time}
+                              category={this.props.res.Hotzone[this.state.selecttownid].category}/>
                 </div>
             </div>
         )
