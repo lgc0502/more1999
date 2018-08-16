@@ -23,6 +23,7 @@ class Instantnotification extends Component{
       }
 
     render(){
+        console.log(this.state.request_data)
         const {isLoading,request_data} = this.state
         if(isLoading){
           return (
@@ -33,6 +34,9 @@ class Instantnotification extends Component{
         }
         return(
             <div>
+                <div className="dashboard">
+
+                </div>
                 <Listgroup {...request_data}/> 
             </div>
         )

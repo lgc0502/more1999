@@ -23,11 +23,15 @@ a {
   height:auto;
 }
 
-.overview{
+.overview,.dashboard{
   width:70%;
   height:auto;
   margin-left:15%;
   margin-top:5%;
+}
+.dashboard{
+  border-style:solid;
+  border-color:rgb(177,150,147);
 }
 .case {
   text-align: left;
