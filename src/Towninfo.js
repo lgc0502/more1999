@@ -18,7 +18,7 @@ export default class Towninfo extends Component {
         })
         
         return(
-            <div className="ui segment" style="height:500px" >
+            <div className="ui segment" style={{height:500}} >
                 <h3>{this.props.town}</h3>
                 <h4 id="mapinfo_time">平均處理時間</h4>
                 <h4 id="mapinfo_category">各類別統計</h4>
