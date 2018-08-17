@@ -29,8 +29,6 @@ class Instantnotification extends Component{
         const unfinishnum = request_data.res.FinishRate.unfinish[0]
         const finishrate = request_data.res.FinishRate.finish[1]
         const unfinishrate = request_data.res.FinishRate.unfinish[1]
-
-
         if(isLoading){
           return (
            <div class="loaddata">
