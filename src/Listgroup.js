@@ -13,7 +13,7 @@ class Listgroup extends Component{
         return(
             <div className="overview">
                 <table className="ui basic table">
-                <thread>
+                <thead>
                     <tr>
                         <th>地區</th>
                         <th>類別</th>
@@ -21,7 +21,7 @@ class Listgroup extends Component{
                         <th>狀態</th>
                         <th>通報時間</th>
                     </tr>
-                </thread>
+                </thead>
                 <tbody>
                 { 
                     unfinishlist.map((d,i)=>(

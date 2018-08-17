@@ -3,7 +3,7 @@ import Listgroup from "./Listgroup.js";
 import postApi from './postApi.js';
 import {XYPlot,RadialChart,HorizontalBarSeries, YAxis} from "react-vis";
 const color = ['#2e1f54','#f00a36','#ed3b21','#ff6908','#ffc719','#598c14','#335238','#4a8594','#706357']
-
+const type = {"parking":'違規停車',"light":'路燈故障',"noise":'噪音舉發',"aisle":'騎樓舉發',"road":'道路維修',"traffic":'交通運輸',"dirty":'髒亂污染',"pipe":'民生管線',"animal":'動物救援'}
 class Instantnotification extends Component{
     
     constructor(props){
@@ -25,8 +25,15 @@ class Instantnotification extends Component{
       }
 
     render(){
-       
         const {isLoading,request_data} = this.state
+        if(Object.keys(request_data).length !==0){
+          const f_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
+            return {x:request_data.res.Category[key][0],y:type[key]} 
+          })
+          const un_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
+            return {x:request_data.res.Category[key][1],y:type[key]} 
+          })
+        }
         console.log(request_data)
         if(isLoading){
           return (
@@ -48,7 +55,7 @@ class Instantnotification extends Component{
                       getAngle={d => d}
                       data={[request_data.res.FinishRate.finish[0],request_data.res.FinishRate.unfinish[0]]}
                       colorType="category"
-                      colorRange={["#b0a696",color]} 
+                      colorRange={["#b0a696","black"]} 
                       stroke={null} 
                       className="ui container radial-chart"  
                   >
@@ -76,35 +83,15 @@ class Instantnotification extends Component{
                   top={1}/>
                  <HorizontalBarSeries
                     className="categorybar"
-                    data={[
-                      {y:'違規停車',x:10},
-                      {y:'路燈故障',x:8},
-                      {y:'噪音舉發',x:1},
-                      {y:'騎樓舉發',x:0},
-                      {y:'道路維修',x:20},
-                      {y:'交通運輸',x:10},
-                      {y:'髒亂污染',x:5},
-                      {y:'民生管線',x:2},
-                      {y:'動物救援',x:10},
-                    ]} 
-                    color="rgb(190,194,63)"
+                    data={f_categorynum} 
+                    color={color}
                     style={{
                       borderRadius:5
                     }}
                  /> 
                  <HorizontalBarSeries
                     className="categorybar"
-                    data={[
-                      {y:'違規停車',x:20},
-                      {y:'路燈故障',x:18},
-                      {y:'噪音舉發',x:10},
-                      {y:'騎樓舉發',x:0},
-                      {y:'道路維修',x:25},
-                      {y:'交通運輸',x:15},
-                      {y:'髒亂污染',x:15},
-                      {y:'民生管線',x:20},
-                      {y:'動物救援',x:15},
-                    ]} 
+                    data={un_categorynum} 
                     color="#9e9e9e69"
                     style={{
                       borderRadius:5
