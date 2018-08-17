@@ -25,6 +25,12 @@ class Instantnotification extends Component{
     render(){
         console.log(this.state.request_data)
         const {isLoading,request_data} = this.state
+        const finishnum = request_data.res.finishRate.finish[0]
+        const unfinishnum = request_data.res.finishRate.unfinish[0]
+        const finishrate = request_data.res.finishRate.finish[1]
+        const unfinishrate = request_data.res.finishRate.unfinish[1]
+
+
         if(isLoading){
           return (
            <div class="loaddata">
@@ -37,12 +43,12 @@ class Instantnotification extends Component{
                 <div className="ui segment dashboard">
                   <RadialChart  
                       key={`dashboardRadial`}
-                      width={window.innerWidth*0.6}
-                      height={window.innerWidth*0.6}
+                      width={window.innerWidth*0.4}
+                      height={window.innerWidth*0.4}
                       innerRadius={35}
                       radius={40}
                       getAngle={d => d}
-                      data={[89,11]}
+                      data={[finishnum,unfinishnum]}
                       colorType="category"
                       colorRange={["#9e9e9e69","#16982B"]} 
                       stroke={null} 
@@ -50,7 +56,7 @@ class Instantnotification extends Component{
                   >
                   </RadialChart>
                   <h3>本週截至目前</h3>
-                  <h2>453 / 57</h2>
+                  <h2>${finishnum} / ${unfinishnum}</h2>
                   <h3>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
