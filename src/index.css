@@ -246,10 +246,18 @@ rect{
   border-radius: 2px;
   
 }
+.board{
+  width:100%;
+  height:50vh;
+}
 .dashboard:first-child{
   margin-left: 15%;
 }
 .dashboard {
-  width:35%;
+  width:34%;
   float: left;
+}
+.exploremap {
+  width:90%;
+  height:auto;
 }

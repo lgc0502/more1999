@@ -36,7 +36,7 @@ class Instantnotification extends Component{
         }
         return(
             <div>
-              <div>
+              <div className="board">
                 <div className="ui segment dashboard">
                   <RadialChart  
                       key={`dashboardRadial`}
@@ -66,7 +66,7 @@ class Instantnotification extends Component{
                     height={window.innerWidth*0.25}
                     yType='ordinal'
                     xRange={[0,window.innerWidth*0.14]}
-                    stackBy='y'
+                    stackBy='x'
                  >
                  <YAxis
                   className="categoryaxe"

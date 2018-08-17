@@ -49,7 +49,7 @@ class Exploremap extends Component{
         return(
             <div>
                 <Map ref='map' 
-                     className='leafletmap' 
+                     className='exploremap' 
                      center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
