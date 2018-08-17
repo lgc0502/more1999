@@ -25,10 +25,10 @@ class Instantnotification extends Component{
     render(){
         console.log(this.state.request_data)
         const {isLoading,request_data} = this.state
-        const finishnum = request_data.res.finishRate.finish[0]
-        const unfinishnum = request_data.res.finishRate.unfinish[0]
-        const finishrate = request_data.res.finishRate.finish[1]
-        const unfinishrate = request_data.res.finishRate.unfinish[1]
+        const finishnum = request_data.res.FinishRate.finish[0]
+        const unfinishnum = request_data.res.FinishRate.unfinish[0]
+        const finishrate = request_data.res.FinishRate.finish[1]
+        const unfinishrate = request_data.res.FinishRate.unfinish[1]
 
 
         if(isLoading){
