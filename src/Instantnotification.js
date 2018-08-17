@@ -63,10 +63,10 @@ class Instantnotification extends Component{
                 <div className="ui segment dashboard">
                 
                 <XYPlot
-                    width={window.innerWidth*0.4}
+                    width={window.innerWidth*0.32}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[45,window.innerWidth*0.38]}
+                    xRange={[45,window.innerWidth*0.3]}
                     stackBy='x'
                  >
                  <YAxis
