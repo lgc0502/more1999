@@ -86,7 +86,7 @@ class Instantnotification extends Component{
                  <HorizontalBarSeries
                     className="categorybar"
                     data={finish_bar_data} 
-                    color={color}
+                    color={(d,i)=>{return color[i]}}
                     style={{
                       borderRadius:5
                     }}
