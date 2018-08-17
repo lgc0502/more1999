@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-const i = 0
 const Header = ()=>{
     return(
         <header className='grid-container'>

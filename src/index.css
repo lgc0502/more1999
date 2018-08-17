@@ -251,10 +251,10 @@ rect{
   height:50vh;
 }
 .dashboard:first-child{
-  margin-top:1%;
   margin-left: 15%;
 }
 .dashboard:last-child{
+  margin-top:0%;
   margin-left: 2%;
 }
 .dashboard {

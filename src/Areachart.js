@@ -17,7 +17,6 @@ class Areachart extends Component {
     super(props)
     this.state= {
       dateCollection : Object.keys(props.res.Area), 
-      //data: props.res.Area  ,
       type: {
         'parking':1,
         'light':1,

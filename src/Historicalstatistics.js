@@ -20,18 +20,7 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
-    postApi.requertPost('./village_visualization','台南市','null').then(data => {
-      this.setState({
-        request_data:data,
-        isLoading : false
-      })
-   })
-    this.setState({
-      date:date.lastweekdate()
-    })
-  }
-  componentWillReceiveProps(){
-    postApi.requertPost('台南市','null').then(data => {
+    postApi.requertPost('./village_visualization','null').then(data => {
       this.setState({
         request_data:data,
         isLoading : false
@@ -72,7 +61,7 @@ class Historicalstatistics extends Component {
             <div className="ui container" id="Donutchart">
               <Donutchart
                 {...request_data}/>
-              </div>
+            </div>
             
             <div className="hotzone">
               <h1 class="tainanstate">通報熱區</h1>

@@ -3,7 +3,7 @@ import {Dropdown, Divider, Container} from 'semantic-ui-react'
 import townOptions from './townOptions'
 import emitter from './events'
 import postApi from './postApi'
-
+import date from "./Date"
 class Dropdownsearch extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +27,15 @@ class Dropdownsearch extends Component {
   }
 
   startloaddata(){
-    postApi.requertPost(this.state.selectedtown,this.state.selectedvill).then(data => {
+    let param = {
+      params:{
+        town:this.state.selectedtown,
+        village:this.state.selectedvill,
+        begin_date:date.lastweekdate().begin,
+        end_date:date.lastweekdate().end,
+      }
+    }
+    postApi.requertPost('./village_visualization',param).then(data => {
       this.setState({postContent: data},()=> emitter.emit("get_requestdata",this.state.postContent))
     })
 

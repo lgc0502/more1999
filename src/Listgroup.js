@@ -15,8 +15,8 @@ class Listgroup extends Component{
                 <table className="ui basic table">
                 <thread>
                     <tr>
-                        <th>類別</th>
                         <th>地區</th>
+                        <th>類別</th>
                         <th>描述</th>
                         <th>狀態</th>
                         <th>通報時間</th>
@@ -26,8 +26,8 @@ class Listgroup extends Component{
                 { 
                     unfinishlist.map((d,i)=>(
                         <tr key={d.category+i}>
-                            <td>{d.category}</td>
                             <td>{d.area}</td>
+                            <td>{d.category}</td>
                             <td>{d.description}</td>
                             <td>處理中...</td>
                             <td>{d.date}</td>

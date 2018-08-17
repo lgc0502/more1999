@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Listgroup from "./Listgroup.js";
-import Dropdown from './Dropdownsearch.js';
 import postApi from './postApi.js';
 import {XYPlot,RadialChart,HorizontalBarSeries, YAxis} from "react-vis";
+const color = ['#2e1f54','#f00a36','#ed3b21','#ff6908','#ffc719','#598c14','#335238','#4a8594','#706357']
 
 class Instantnotification extends Component{
     
@@ -14,8 +14,9 @@ class Instantnotification extends Component{
           request_data: {},
         }
       }
+
     componentDidMount(){
-        postApi.requertPost('./this_week_data','null','null').then(data => {
+        postApi.requertPost('./this_week_data','null').then(data => {
           this.setState({
             request_data:data,
             isLoading : false
@@ -47,7 +48,7 @@ class Instantnotification extends Component{
                       getAngle={d => d}
                       data={[request_data.res.FinishRate.finish[0],request_data.res.FinishRate.unfinish[0]]}
                       colorType="category"
-                      colorRange={["#9e9e9e69","#16982B"]} 
+                      colorRange={["#b0a696",color]} 
                       stroke={null} 
                       className="ui container radial-chart"  
                   >

@@ -3,17 +3,9 @@ import date from "./Date"
 
 export default {
 
-    requertPost:(url,selectedtown,selectedvill)=>{
+    requertPost:(url,param)=>{
        
-        return axios.get(url, {
-            params:{
-                town:selectedtown,
-                village: selectedvill,
-                begin_date:date.lastweekdate().begin,
-                end_date:date.lastweekdate().end,
-            }
-        })
-        
+        return axios.get(url,param)
         .then(response=>{
             return {res:response.data}
         })
