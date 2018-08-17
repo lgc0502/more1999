@@ -54,8 +54,8 @@ class Instantnotification extends Component{
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
                   <h3 style=
                       {{
-                        fontSize=12,
-                        fill='gray'
+                        fontSize:12,
+                        fill:'gray'
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
