@@ -12,6 +12,8 @@ class Instantnotification extends Component{
         this.state = {
           isLoading: true,
           request_data: {},
+          finish_bar_data:{},
+          unfinish_bar_data:{}
         }
       }
 
@@ -19,22 +21,21 @@ class Instantnotification extends Component{
         postApi.requertPost('./this_week_data','null').then(data => {
           this.setState({
             request_data:data,
-            isLoading : false
+            isLoading : false,
+            finish_bar_data: Object.keys(data.res.Category).map((key,i)=>{
+              return {x:data.res.Category[key][0],y:type[key]} 
+            }),
+            unfinish_bar_data:Object.keys(data.res.Category).map((key,i)=>{
+              return {x:data.res.Category[key][1],y:type[key]} 
+            })
           })
        })
       }
 
     render(){
-        const {isLoading,request_data} = this.state
-        const {f_categorynum},{un_categorynum};
-        if(Object.keys(request_data).length !==0){
-          f_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
-            return {x:request_data.res.Category[key][0],y:type[key]} 
-          })
-          un_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
-            return {x:request_data.res.Category[key][1],y:type[key]} 
-          })
-        }
+        const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
+       
+       
         console.log(request_data)
         if(isLoading){
           return (
@@ -84,7 +85,7 @@ class Instantnotification extends Component{
                   top={1}/>
                  <HorizontalBarSeries
                     className="categorybar"
-                    data={f_categorynum} 
+                    data={finish_bar_data} 
                     color={color}
                     style={{
                       borderRadius:5
@@ -92,7 +93,7 @@ class Instantnotification extends Component{
                  /> 
                  <HorizontalBarSeries
                     className="categorybar"
-                    data={un_categorynum} 
+                    data={un_finish_bar_data} 
                     color="#9e9e9e69"
                     style={{
                       borderRadius:5
