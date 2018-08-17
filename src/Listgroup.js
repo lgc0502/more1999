@@ -1,24 +1,6 @@
 import React,{Component} from 'react'
 
 
-// const c = [
-//     {
-//         category:"路燈故障",
-//         area:"永康區",
-//         address:'ccc',
-//          description:"中山北路的肯德基前有一隻狗正在過馬路",
-//         date:"2018-08-10"
-//     },
-//     {
-//         title:"路燈故障",
-//         subtitle:"9盞以下路燈故障",
-//         town:"永康區",
-//         status:"處理中...",
-//         description:"中山北路的肯德基前有一隻狗正在過馬路",
-//         date:"2018-08-10"
-//     }
-// ]
-
 class Listgroup extends Component{
     constructor(props){
         super(props)
@@ -30,22 +12,37 @@ class Listgroup extends Component{
         const {unfinishlist} = this.state
         return(
             <div className="overview">
-                {
+                <table className="ui basic table">
+                <thread>
+                    <tr>
+                        <th>類別</th>
+                        <th>地區</th>
+                        <th>描述</th>
+                        <th>狀態</th>
+                        <th>通報時間</th>
+                    </tr>
+                </thread>
+                <tbody>
+                { 
                     unfinishlist.map((d,i)=>(
-                        <div key={d.category+i} className="ui raised segment case">
-                            <div className="listcategory">
-                                <span className="categorydescription" style={{fontWeight:600}} >{d.category} </span>
-                            </div>
-                            <div className="casedescription">
-                                <p style={{marginTop:1 ,marginBottom:0.5}}>{d.area}</p>
-                                <p style={{marginTop:1 ,marginBottom:0.5}}>{d.address}</p>
-                                <p>{d.description}</p>
-                                <p style={{color:"gray"}}>處理中</p> 
-                                <p style={{fill:"gray"}}>{d.date}</p>
-                            </div>  
-                        </div>
+                        <tr key={d.category+i}>
+                            <td>{d.category}</td>
+                            <td>{d.area}</td>
+                            <td>{d.description}</td>
+                            <td>處理中...</td>
+                            <td>{d.date}</td>
+                     
+                            {/* <svg className="icon" width="20" height="20">
+                                <circle  style={{
+                                    cx:"10",
+                                    cy:"10",
+                                    r:"4",
+                                    fill:"orange" }}/></svg> */}
+                        </tr>
                     ))
                 } 
+                </tbody>
+                </table>
             </div>  
         )
     }
