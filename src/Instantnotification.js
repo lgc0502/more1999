@@ -61,11 +61,12 @@ class Instantnotification extends Component{
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
+                
                 <XYPlot
-                    width={window.innerWidth*0.2-window.innerWidth*0.06}
+                    width={window.innerWidth*0.4}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[0,window.innerWidth*0.14]}
+                    xRange={[45,window.innerWidth*0.38]}
                     stackBy='x'
                  >
                  <YAxis

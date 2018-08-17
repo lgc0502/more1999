@@ -8,7 +8,7 @@ class Exploremap extends Component{
         super(props)
         this.state = {
             center:[23.15,120.4],
-            zoom:13,
+            zoom:11,
             minZoom:10,
             maxZoom:20,
             isLoading:true,
