@@ -16,7 +16,9 @@ class Exploremap extends Component{
         }
         
     }
-    
+    handlebtnClick(){
+        this.refs.map.leafletElement.setView([23.15,120.35],10);
+    }
    componentDidMount(){
         fetch(this.props.data.towngeo)
         .then(res => {

@@ -36,13 +36,14 @@ class Instantnotification extends Component{
         }
         return(
             <div>
+              <div>
                 <div className="ui segment dashboard">
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
                       height={window.innerWidth*0.1}
-                      innerRadius={25}
-                      radius={40}
+                      innerRadius={35}
+                      radius={45}
                       getAngle={d => d}
                       data={[request_data.res.FinishRate.finish[0],request_data.res.FinishRate.unfinish[0]]}
                       colorType="category"
@@ -67,7 +68,10 @@ class Instantnotification extends Component{
                     xRange={[0,window.innerWidth*0.14]}
                     stackBy='y'
                  >
-                 <YAxis/>
+                 <YAxis
+                  className="categoryaxe"
+                  width={window.innerWidth*0.06}
+                  top={1}/>
                  <HorizontalBarSeries
                     className="categorybar"
                     data={[
@@ -89,15 +93,15 @@ class Instantnotification extends Component{
                  <HorizontalBarSeries
                     className="categorybar"
                     data={[
-                      {y:'違規停車',x:10},
-                      {y:'路燈故障',x:8},
-                      {y:'噪音舉發',x:1},
+                      {y:'違規停車',x:20},
+                      {y:'路燈故障',x:18},
+                      {y:'噪音舉發',x:10},
                       {y:'騎樓舉發',x:0},
-                      {y:'道路維修',x:20},
-                      {y:'交通運輸',x:10},
-                      {y:'髒亂污染',x:5},
-                      {y:'民生管線',x:2},
-                      {y:'動物救援',x:10},
+                      {y:'道路維修',x:25},
+                      {y:'交通運輸',x:15},
+                      {y:'髒亂污染',x:15},
+                      {y:'民生管線',x:20},
+                      {y:'動物救援',x:15},
                     ]} 
                     color="#9e9e9e69"
                     style={{
@@ -106,6 +110,7 @@ class Instantnotification extends Component{
                  /> 
                 </XYPlot>   
                 </div>
+              </div>
                 <Listgroup {...request_data}/> 
             </div>
         )
