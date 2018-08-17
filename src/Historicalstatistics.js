@@ -20,7 +20,14 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
-    postApi.requertPost('./village_visualization','null').then(data => {
+    postApi.requertPost('./village_visualization',{
+      params:{
+        town:'台南市',
+        village:'null',
+        begin_date:date.lastweekdate().begin,
+        end_date:date.lastweekdate().end,
+      }
+    }).then(data => {
       this.setState({
         request_data:data,
         isLoading : false
