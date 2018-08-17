@@ -5,7 +5,8 @@ class Explore extends Component {
     constructor(props){
         super(props);
         this.state = {
-            location:''
+            location:'',
+            lat_lng:''
         };
     }
     updateInputValue(evt){
@@ -16,6 +17,17 @@ class Explore extends Component {
     handleclick(){
         //postApi
         console.log(this.state.location)
+
+        // postApi.requertPost('./explore',{
+        //     params:{
+        //       location:this.state.location,
+        //     }
+        //   }).then(data => {
+        //     this.setState({
+        //       lat_lng:data,
+        //       isLoading : false
+        //     })
+        //  })
     }
     render(){
         return (
@@ -27,7 +39,7 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
-                <Exploremap data={this.props.towngeo}/>
+                <Exploremap point={[23.15,120.4]} data={this.props.towngeo}/>
             </div>
         )
     }

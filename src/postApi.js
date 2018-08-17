@@ -6,7 +6,6 @@ export default {
     requertPost:(url,param)=>{
         if (param ==="null")
         {
-            console.log("1")
             return axios.get(url)
             .then(response=>{
                 return {res:response.data}
@@ -17,7 +16,6 @@ export default {
             })
         }
         else{
-            console.log("2")
             return axios.get(url,param)
             .then(response=>{
                 return {res:response.data}

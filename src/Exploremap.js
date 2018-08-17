@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Map,TileLayer,GeoJSON} from 'react-leaflet'
+import {Map,TileLayer,GeoJSON,Marker} from 'react-leaflet'
 
 
 
@@ -37,7 +37,7 @@ class Exploremap extends Component{
         })
    }
     render(){
-        
+        const {point} = this.props
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -69,12 +69,12 @@ class Exploremap extends Component{
                                 weight: 2,
                                 opacity: 1,
                                 color: 'white',
-                                fillOpacity: 0.4
+                                fillOpacity: 0.2
                             }}
                         }
                        
                     />  
-                         
+                    <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
                 </Map>
               
             </div>
