@@ -38,8 +38,8 @@ class Instantnotification extends Component{
                 <div className="ui segment dashboard">
                   <RadialChart  
                       key={`dashboardRadial`}
-                      width={window.innerWidth*0.4}
-                      height={window.innerWidth*0.4}
+                      width={window.innerWidth*0.1}
+                      height={window.innerWidth*0.1}
                       innerRadius={35}
                       radius={40}
                       getAngle={d => d}
@@ -51,8 +51,12 @@ class Instantnotification extends Component{
                   >
                   </RadialChart>
                   <h3>本週截至目前</h3>
-                  <h2>${request_data.res.FinishRate.finish[0]} / ${request_data.res.FinishRate.unfinish[0]}</h2>
-                  <h3>處理 / 未處理</h3>
+                  <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
+                  <h3 style=
+                      {{
+                        fontSize=12,
+                        fill='gray'
+                      }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
                 </div>
