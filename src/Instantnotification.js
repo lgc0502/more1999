@@ -26,11 +26,12 @@ class Instantnotification extends Component{
 
     render(){
         const {isLoading,request_data} = this.state
+        const f_categorynum,un_categorynum;
         if(Object.keys(request_data).length !==0){
-          const f_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
+          f_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
             return {x:request_data.res.Category[key][0],y:type[key]} 
           })
-          const un_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
+          un_categorynum = Object.keys(request_data.res.Category).map((key,i)=>{
             return {x:request_data.res.Category[key][1],y:type[key]} 
           })
         }
