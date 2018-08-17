@@ -17,3 +17,4 @@ class Explore extends Component {
         )
     }
 }
+export default Explore
