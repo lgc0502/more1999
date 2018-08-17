@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch,Route} from 'react-router-dom'
 import Historicalstatistics from './Historicalstatistics'
 import Instantnotification from './Instantnotification'
+import Explore from './Explore'
 
 const Main=(props)=>{ 
     const data = props
