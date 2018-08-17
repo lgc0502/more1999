@@ -1,22 +1,9 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON} from 'react-leaflet'
 import L from 'leaflet'
-import Towninfo from './Towninfo'
-import Legend from './Legend'
 
-function getColor(d){
 
-    return d > 100 ? '#FFEDA0':
-           d > 80  ? '#BD0026':
-           d > 60  ? '#E31A1C':
-           d > 40  ? '#FC4E2A':
-           d > 20  ? '#FD8D3C':
-           d > 0   ? '#FEB24C':
-           d === 0 ? '#FED976':
-                    '#FFEDA0';
-}
-
-class React_leaflet extends Component{
+class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -25,41 +12,11 @@ class React_leaflet extends Component{
             minZoom:10,
             maxZoom:20,
             isLoading:true,
-            selecttown:'台南市',
-            selecttownid:'R01'
+           
         }
         
     }
-    highlightFeature(e){
-        let layer = e.target;
-        layer.setStyle({
-            weight:3,
-            color: 'rgb(165,160,81)',
-            fillOpacity:0.7
-        });
-        if(!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
-            layer.bringToFront();
-        }
-    }
-    resetHighlight(e){
-       this.refs.geojson.leafletElement.resetStyle(e.target);
-    }
-    showtowninfo(e){
-        this.setState({
-            selecttown:e.target.feature.properties.TOWNNAME,
-            selecttownid:e.target.feature.properties.TOWNID
-        })
-    }
-    onEachFeature(feature,layer){
-        layer.on({
-            mouseover:this.highlightFeature.bind(this),
-            mouseout: this.resetHighlight.bind(this),
-            click:this.showtowninfo.bind(this)
-        })
-    }
-    handlebtnClick(){
-        this.refs.map.leafletElement.setView([23.15,120.35],10);
-    }
+    
    componentDidMount(){
         fetch(this.props.data.towngeo)
         .then(res => {
@@ -69,9 +26,6 @@ class React_leaflet extends Component{
             }
             res.json().then(topology => {
                 
-                topology.features.map((d)=>{
-                    d.properties.casenum = this.props.res.Hotzone[d.properties.TOWNID].total
-                })
                 this.setState({
                     data:topology.features,
                     isLoading:false
@@ -109,24 +63,20 @@ class React_leaflet extends Component{
                         data={this.state.data}
                         style={(feature)=>{
                             return {
-                                fillColor:getColor(feature.properties.casenum),
+                                fillColor:'black',
                                 weight: 2,
                                 opacity: 1,
                                 color: 'white',
-                                fillOpacity: 0.7
+                                fillOpacity: 0.4
                             }}
                         }
-                        onEachFeature={this.onEachFeature.bind(this)}
+                       
                     />  
                     <Legend/>         
                 </Map>
-                <div className="Mapinfo leaflet">
-                    <Towninfo town={this.state.selecttown}
-                              time={this.props.res.Hotzone[this.state.selecttownid].time}
-                              category={this.props.res.Hotzone[this.state.selecttownid].category}/>
-                </div>
+              
             </div>
         )
     }
 }
-export default React_leaflet
+export default Exploremap

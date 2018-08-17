@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Listgroup from "./Listgroup.js";
 import Dropdown from './Dropdownsearch.js';
 import postApi from './postApi.js';
-import {RadialChart} from "react-vis";
+import {XYPlot,RadialChart,HorizontalBarSeries, YAxis} from "react-vis";
+
 class Instantnotification extends Component{
     
     constructor(props){
@@ -23,7 +24,7 @@ class Instantnotification extends Component{
       }
 
     render(){
-        console.log(this.state.request_data)
+       
         const {isLoading,request_data} = this.state
       
         if(isLoading){
@@ -40,7 +41,7 @@ class Instantnotification extends Component{
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
                       height={window.innerWidth*0.1}
-                      innerRadius={35}
+                      innerRadius={25}
                       radius={40}
                       getAngle={d => d}
                       data={[request_data.res.FinishRate.finish[0],request_data.res.FinishRate.unfinish[0]]}
@@ -59,6 +60,51 @@ class Instantnotification extends Component{
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
+                <XYPlot
+                    width={window.innerWidth*0.2-window.innerWidth*0.06}
+                    height={window.innerWidth*0.25}
+                    yType='ordinal'
+                    xRange={[0,window.innerWidth*0.14]}
+                    stackBy='y'
+                 >
+                 <YAxis/>
+                 <HorizontalBarSeries
+                    className="categorybar"
+                    data={[
+                      {y:'違規停車',x:10},
+                      {y:'路燈故障',x:8},
+                      {y:'噪音舉發',x:1},
+                      {y:'騎樓舉發',x:0},
+                      {y:'道路維修',x:20},
+                      {y:'交通運輸',x:10},
+                      {y:'髒亂污染',x:5},
+                      {y:'民生管線',x:2},
+                      {y:'動物救援',x:10},
+                    ]} 
+                    color="rgb(190,194,63)"
+                    style={{
+                      borderRadius:5
+                    }}
+                 /> 
+                 <HorizontalBarSeries
+                    className="categorybar"
+                    data={[
+                      {y:'違規停車',x:10},
+                      {y:'路燈故障',x:8},
+                      {y:'噪音舉發',x:1},
+                      {y:'騎樓舉發',x:0},
+                      {y:'道路維修',x:20},
+                      {y:'交通運輸',x:10},
+                      {y:'髒亂污染',x:5},
+                      {y:'民生管線',x:2},
+                      {y:'動物救援',x:10},
+                    ]} 
+                    color="#9e9e9e69"
+                    style={{
+                      borderRadius:5
+                    }}
+                 /> 
+                </XYPlot>   
                 </div>
                 <Listgroup {...request_data}/> 
             </div>

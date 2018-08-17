@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import React_leaflet from './React_leaflet.js';
+import Exploremap from './Exploremap.js';
 
 class Explore extends Component {
     render(){
@@ -12,7 +12,7 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
-                <React_leaflet data={this.props.towngeo}/>
+                <Exploremap data={this.props.towngeo}/>
             </div>
         )
     }
