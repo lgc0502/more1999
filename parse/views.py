@@ -247,7 +247,7 @@ def update_status():
 def test(request):
     #get_new_data()
     #update_status()
-    unfinish_detail()
+    #unfinish_detail()
     return render(request, 'index.html')
 
 def update():
@@ -365,7 +365,15 @@ def unfinish_detail():
         temp = {}
     return detail
 
-
+def tw_category(begin_date, end_date):
+    donut = {}
+    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
+    for index in range(len(classification)):
+        all = date_search.filter(service_name = classification[index])
+        donut[eng_class[index]]=[0,0]
+        donut[eng_class[index]][0]=len(all.filter(status = '已完工'))
+        donut[eng_class[index]][1]=len(all)-donut[eng_class[index]][0]
+    return donut
 
 def village_visualization(request):
     time_format = '%Y-%m-%d'
@@ -388,4 +396,5 @@ def this_week_data(request):
     thisweek = week_date()
     categoryByTime['UnfinishList'] = unfinish_detail()
     categoryByTime['FinishRate'] = tw_finish_rate(thisweek['week_begin'], thisweek['today'])
+    categoryByTime['Category'] = tw_category(thisweek['week_begin'], thisweek['today'])
     return JsonResponse(categoryByTime)
