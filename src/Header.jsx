@@ -27,15 +27,14 @@ const Header = ()=>{
             >上週通報累積</NavLink>
             <NavLink 
                 to={{
-                    pathname:'/history',
-                    
+                    pathname:'/explore',
                 }}
                 activeClassName="selected"
                 activeStyle={{
                     fontWeight: 'bold',
                     color: 'black'
                 }}
-            >上週通報累積</NavLink>
+            >探索周遭</NavLink>
             
         </header>
     )
