@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Map,TileLayer,GeoJSON,Marker} from 'react-leaflet'
+import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker} from 'react-leaflet'
 
 
 
@@ -74,6 +74,8 @@ class Exploremap extends Component{
                         }
                        
                     />  
+                    <CircleMarker center={point} fillColor="blue" radius={200}></CircleMarker>
+                    <Circle center={point} color="red" radius={20}></Circle>
                     <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
                 </Map>
               
