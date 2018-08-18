@@ -74,8 +74,7 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <CircleMarker center={point} fillColor="blue" radius={200}></CircleMarker>
-                    <Circle center={point} color="red" radius={20}></Circle>
+                    <Circle center={point} color="red" fillColor='#f03' fillOpacity={0.5} radius={1000}></Circle>
                     <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
                 </Map>
               
