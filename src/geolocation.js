@@ -8,7 +8,7 @@ function showPosition(position){
 }
 
 export default {
-    geyLocation:()=>{
+    getLocation:()=>{
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(showPosition);
         }else{
