@@ -245,8 +245,8 @@ def update_status():
                     search.delete()
 
 def test(request):
-    #get_new_data()
-    #update_status()
+    get_new_data()
+    update_status()
     #unfinish_detail()
     return render(request, 'index.html')
 
@@ -375,6 +375,34 @@ def tw_category(begin_date, end_date):
         donut[eng_class[index]][1]=len(all)-donut[eng_class[index]][0]
     return donut
 
+def position_search(qlat, qlng):
+    data = {}
+    detail=[]
+    temp={}
+    thisweek = week_date()
+    search = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'],thisweek['today']], 
+                    lat__range = [qlat-0.005,qlat+0.005], lng__range = [qlng-0.005,qlng+0.005])
+    for index in range(len(classification)):
+        all = search.filter(service_name = classification[index])
+        temp[eng_class[index]]=len(all)
+    data['category']=temp  
+    temp={}
+    for index in range(0,24):
+        all = search.filter(requested_datetime__hour = index)
+        temp[str(index)] = len(all)
+    data['hour']=temp
+    temp={}
+    for index in range(len(search)):
+        temp['category'] = search.values()[index]['service_name']
+        temp['date'] = search.values()[index]['requested_datetime'].strftime('%Y-%m-%d %H:%M:%S')
+        temp['description'] = search.values()[index]['description']
+        temp['status'] = search.values()[index]['status']
+        temp['position'] = [qlat, qlng]
+        detail.append(temp)
+        temp = {}
+    data['detail']=detail
+    return data
+
 def village_visualization(request):
     time_format = '%Y-%m-%d'
     town = request.GET['town']
@@ -398,3 +426,25 @@ def this_week_data(request):
     categoryByTime['FinishRate'] = tw_finish_rate(thisweek['week_begin'], thisweek['today'])
     categoryByTime['Category'] = tw_category(thisweek['week_begin'], thisweek['today'])
     return JsonResponse(categoryByTime)
+
+def explore(request): 
+    returndata={}
+    Query_address = request.GET['address'] 
+    if '台南' not in Query_address:
+        Query_address = '台南市' + Query_address
+    geocode_result = gmaps.geocode(Query_address, language='zh-TW')
+    lat = geocode_result[0]['geometry']['location']['lat']
+    lng = geocode_result[0]['geometry']['location']['lng']
+    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+    for i in reverse_geocode_result:
+        for c in i['address_components']:
+            if 'administrative_area_level_1' in c['types']:
+                city = c['long_name']
+    print(city)
+    if '台南' not in city:
+        print(city)
+        return JsonResponse(returndata)
+    else:
+        returndata = position_search(lat, lng)
+        return JsonResponse(returndata)
+    
