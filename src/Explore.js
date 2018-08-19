@@ -30,7 +30,7 @@ class Explore extends Component {
         //  })
     }
     render(){
-        console.log(this.props.location.state)
+        console.log(this.props)
         return (
             <div>
                 <h3>搜尋地點 查看通報狀況</h3>

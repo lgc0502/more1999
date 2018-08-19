@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import geolocation from './geolocation'
+
 const Header = ()=>{
     return(
         <header className='grid-container'>
@@ -27,7 +27,7 @@ const Header = ()=>{
             <NavLink 
                 to={{
                     pathname:'/explore',
-                    state:{position:geolocation.getLocation()}
+                    
                 }}
                 activeClassName="selected"
                 activeStyle={{
