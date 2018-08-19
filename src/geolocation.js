@@ -16,5 +16,5 @@ function showPosition(position){
     p['lat']=position.coords.latitude;
     p['lon']=position.coords.longitude;
     console.log(p)
-    return p
+    return position.coords.latitude
 }
