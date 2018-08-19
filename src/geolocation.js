@@ -4,7 +4,7 @@
 export default {
     getLocation:()=>{
         if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(showPosition(position));
+            navigator.geolocation.getCurrentPosition(showPosition);
         }else{
             alert("Geolocation is not supported by this brower.");
         }
@@ -12,9 +12,9 @@ export default {
     
 }
 function showPosition(position){
-    var position = new Object();
-    position['lat']=position.coords.latitude;
-    position['lon']=position.coords.longitude;
-    console.log(position)
-    return position
+    var p = new Object();
+    p['lat']=position.coords.latitude;
+    p['lon']=position.coords.longitude;
+    console.log(p)
+    return p
 }
