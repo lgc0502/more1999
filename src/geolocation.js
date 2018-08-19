@@ -1,6 +1,6 @@
 
 function showPosition(position){
-    let position = new Object();
+    var position = new Object();
     position['lat']=position.coords.latitude;
     position['lon']=position.coords.longitude;
     console.log(position)
