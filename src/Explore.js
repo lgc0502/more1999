@@ -31,8 +31,9 @@ class Explore extends Component {
         //  })
     }
     componentDidMount(){
+        console.log(geolocation.getLocation())
         this.setState({
-            lat_lng:[geolocation.getLocation().lat,geolocation.getLocation().lon],
+            // lat_lng:[geolocation.getLocation().lat,geolocation.getLocation().lon],
             isloading:false
         })
 
