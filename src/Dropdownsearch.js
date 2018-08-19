@@ -35,7 +35,7 @@ class Dropdownsearch extends Component {
         end_date:date.lastweekdate().end,
       }
     }
-    console.log(param)
+    
     postApi.requertPost('./village_visualization',{
       params:{
         town:this.state.selectedtown,
