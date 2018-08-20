@@ -275,7 +275,7 @@ rect{
   top:20%;
   left:21%;
 }
-#ratio span {
+span #ratio{ 
   position:absolute;
   top:45%;
   left:38%;
@@ -289,6 +289,6 @@ rect{
 .hint span{
   margin-left:2%;
 }
-#ratiohint h3{
+h3 #ratiohint {
   -webkit-text-fill-color:"#b0a696";
 }

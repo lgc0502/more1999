@@ -57,7 +57,7 @@ class Instantnotification extends Component{
                                     fill:"#598c14",
                                     }}/>
                                     </svg> 
-                <h3 className="hint">已處理</h3>
+                <span className="hint">已處理</span>
                 <svg className="hint" width="20" height="20">
                                 <circle  style={{
                                     cx:"15",
@@ -66,7 +66,7 @@ class Instantnotification extends Component{
                                     fill:"#b0a696",
                                     }}/>
                                     </svg> 
-                <h3 className="hint">處理中</h3>
+                <span className="hint">處理中</span>
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
@@ -88,7 +88,7 @@ class Instantnotification extends Component{
                                     fill:"#b0a696",
                                     opacity:0.4 }}/>
                                    </svg> 
-                  <span id="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(3)+"%"}</span>                  
+                  <span id="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(1)+"%"}</span>                  
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>

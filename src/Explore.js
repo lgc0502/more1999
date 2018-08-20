@@ -42,6 +42,8 @@ class Explore extends Component {
             lat_lng:[p.lat,p.lon],
             isloading:false
         },()=>{
+            console.log(this.state)
+            console.log(this.state.lat_lng[0])
             postApi.requertPost('./position',{
                 params:{
                   lat:this.state.lat_lng[0],
