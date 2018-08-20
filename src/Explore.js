@@ -31,9 +31,9 @@ class Explore extends Component {
         //  })
     }
     componentDidMount(){
-        console.log(geolocation.getLocation())
+        let p=geolocation.getLocation()
         this.setState({
-            // lat_lng:[geolocation.getLocation().lat,geolocation.getLocation().lon],
+            lat_lng:[p.lat,p.lon],
             isloading:false
         })
 
@@ -56,7 +56,7 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
-                <Exploremap point={[23.15,120.4]} data={this.props.towngeo}/>
+                <Exploremap point={[this.state.lat_lng.lat,this.state.lat_lng.lon]} data={this.props.towngeo}/>
             </div>
         )
     }
