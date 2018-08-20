@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import Exploremap from './Exploremap.js';
-import geolocation from './geolocation'
+import geolocation from './geolocation';
+import postApi from './postApi.js';
 class Explore extends Component {
     constructor(props){
         super(props);
