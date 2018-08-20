@@ -79,7 +79,7 @@ class Explore extends Component {
                     </button>
                 </div>
                 <Exploremap 
-                    point={[23.1,120.17]} 
+                    point={this.state.lat_lng} 
                     address={this.state.address}
                     category={this.state.category}//object
                     time={this.state.time}//object

@@ -79,7 +79,7 @@ class Exploremap extends Component{
                     <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
                     {
                     cases.map((d)=>{
-                         <CircleMarker center={[d.position[0],d.position[1]]} color="blue" fillColor='#f03' fillOpacity={0.5} radius={5}></CircleMarker>
+                         <CircleMarker className='cases-marker' center={[d.position[0],d.position[1]]} color="blue" fillColor='#f03' fillOpacity={0.5} radius={5}></CircleMarker>
                     })
                     }
                 </Map>
