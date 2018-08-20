@@ -429,7 +429,7 @@ def this_week_data(request):
 
 def explore(request): 
     returndata={}
-    Query_address = request.GET['address'] 
+    Query_address = request.GET['location'] 
     if '台南' not in Query_address:
         Query_address = '台南市' + Query_address
     geocode_result = gmaps.geocode(Query_address, language='zh-TW')
@@ -450,7 +450,7 @@ def explore(request):
 def position(request): 
     returndata={}
     lat = float(request.GET['lat'])
-    lng = float(request.GET['lng'])
+    lng = float(request.GET['lon'])
     poi_exist = 0
     poi = ''
     address_exist = 0
@@ -465,7 +465,6 @@ def position(request):
             if 'point_of_interest' in c['types']:
                 poi = c['long_name']
                 poi_exist = 1
-    print(reverse_geocode_result)
     if '台南' not in city:
         return JsonResponse(returndata)
     else:
