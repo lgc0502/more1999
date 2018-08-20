@@ -245,8 +245,8 @@ def update_status():
                     search.delete()
 
 def test(request):
-    get_new_data()
-    update_status()
+    #get_new_data()
+    #update_status()
     #unfinish_detail()
     return render(request, 'index.html')
 
@@ -446,5 +446,6 @@ def explore(request):
         return JsonResponse(returndata)
     else:
         returndata = position_search(lat, lng)
+        returndata['position']=[lat, lng]
         return JsonResponse(returndata)
     
