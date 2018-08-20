@@ -37,31 +37,27 @@ class Explore extends Component {
          })
     }
     componentDidMount(){
-        geolocation.getLocation().then(data=>{
-            console.log("data")
-            console.log(data)
+        geolocation.getLocation().then(d=>{
+            this.setState({
+                lat_lng:[d.coords.latitude,d.coords.lontitude],
+                isloading:false
+            },()=>{
+                postApi.requertPost('./position',{
+                    params:{
+                      lat:d.coords.latitude,
+                      lon:d.coords.lontitude,
+                    }
+                  }).then(data => {
+                      console.log(data)
+                        this.setState({
+                            category:data.category,//object
+                            time:data.hour,//object
+                            case:data.detail,//array
+                            isLoading : false
+                        })
+                 })
+            })
         })
-        this.setState({
-            lat_lng:[23.0,121.3],
-            isloading:false
-        },()=>{
-            postApi.requertPost('./position',{
-                params:{
-                  lat:23.0,
-                  lon:121.3,
-                }
-              }).then(data => {
-                  console.log(data)
-                    this.setState({
-                        category:data.category,//object
-                        time:data.hour,//object
-                        case:data.detail,//array
-                        isLoading : false
-                    })
-             })
-        })
-        
-
     }
     render(){
         console.log(this.state)

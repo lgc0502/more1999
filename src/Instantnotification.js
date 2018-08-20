@@ -89,6 +89,7 @@ class Instantnotification extends Component{
                                     opacity:0.4 }}/>
                                    </svg> 
                   <span id="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(1)+"%"}</span>                  
+                  <span style={{fill:"#b0a696"}}>complete</span>
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
