@@ -38,6 +38,8 @@ class Explore extends Component {
     }
     componentDidMount(){
         let p=geolocation.getLocation()
+        console.log("position here")
+        
         console.log(p)
         this.setState({
             lat_lng:[p.lat,p.lon],
