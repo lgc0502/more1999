@@ -39,7 +39,7 @@ class Explore extends Component {
         geolocation.getLocation().then(d=>{
             
             this.setState({
-                lat_lng:[d.coords.latitude,d.coords.longitude],
+                lat_lng:[22.997,120.211]//[d.coords.latitude,d.coords.longitude],
             },()=>{
                 postApi.requertPost('./position',{
                 
