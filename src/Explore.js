@@ -42,13 +42,13 @@ class Explore extends Component {
             console.log(data)
         })
         this.setState({
-            lat_lng:[p.latitude,p.longitude],
+            lat_lng:[23.0,121.3],
             isloading:false
         },()=>{
             postApi.requertPost('./position',{
                 params:{
-                  lat:p.latitude,
-                  lon:p.longitude,
+                  lat:23.0,
+                  lon:121.3,
                 }
               }).then(data => {
                   console.log(data)
