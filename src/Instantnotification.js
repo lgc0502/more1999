@@ -113,7 +113,7 @@ class Instantnotification extends Component{
                  <HorizontalBarSeries
                     className="categorybar"
                     data={finish_bar_data} 
-                    color={(d,i)=>{return color[i]}}
+                    color={"#598c14"}
                     style={{
                       borderRadius:5
                     }}
@@ -122,9 +122,7 @@ class Instantnotification extends Component{
                     className="categorybar"
                     data={unfinish_bar_data} 
                     color="#b0a696"
-                    style={{
-                      opacity:0.7
-                    }}
+                   
                  /> 
                 </XYPlot>   
                 </div>
