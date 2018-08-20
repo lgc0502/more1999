@@ -440,12 +440,38 @@ def explore(request):
         for c in i['address_components']:
             if 'administrative_area_level_1' in c['types']:
                 city = c['long_name']
-    print(city)
     if '台南' not in city:
-        print(city)
         return JsonResponse(returndata)
     else:
         returndata = position_search(lat, lng)
         returndata['position']=[lat, lng]
         return JsonResponse(returndata)
-    
+
+def position(request): 
+    returndata={}
+    lat = float(request.GET['lat'])
+    lng = float(request.GET['lng'])
+    poi_exist = 0
+    poi = ''
+    address_exist = 0
+    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+    for i in reverse_geocode_result:
+        if address_exist == 0:
+            address = i['formatted_address']
+            address_exist = 1
+        for c in i['address_components']:
+            if 'administrative_area_level_1' in c['types']:
+                city = c['long_name']
+            if 'point_of_interest' in c['types']:
+                poi = c['long_name']
+                poi_exist = 1
+    print(reverse_geocode_result)
+    if '台南' not in city:
+        return JsonResponse(returndata)
+    else:
+        returndata = position_search(lat, lng)
+        if poi_exist == 1:
+            returndata['address']=poi
+        else:
+            returndata['address']=address
+    return JsonResponse(returndata)
