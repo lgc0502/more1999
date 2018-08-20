@@ -1,8 +1,8 @@
 
 var geo_options={
     enableHighAccuracy: true,
-    maximumAge:30000,
-    timeout:27000,
+    maximumAge:60000,
+    timeout:30000,
 }
 var p=new Object();
 export default {
