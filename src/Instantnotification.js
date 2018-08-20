@@ -34,7 +34,7 @@ class Instantnotification extends Component{
 
     render(){
         const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
-        const finishrate = request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])
+        
        
         console.log(request_data)
         if(isLoading){
@@ -48,6 +48,22 @@ class Instantnotification extends Component{
             <div>
               <div className="board">
                 <div className="ui segment dashboard">
+                <svg className="hint" width="30" height="10">
+                                <circle  style={{
+                                    cx:"10",
+                                    cy:"10",
+                                    r:"30",
+                                    fill:"#598c14",
+                                    }}/>
+                                    <span>已處理</span></svg> 
+                <svg className="hint" width="30" height="10">
+                                <circle  style={{
+                                    cx:"10",
+                                    cy:"10",
+                                    r:"30",
+                                    fill:"#b0a696",
+                                    }}/>
+                                    <span>處理中</span></svg> 
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
@@ -68,7 +84,7 @@ class Instantnotification extends Component{
                                     r:"30",
                                     fill:"#b0a696",
                                     opacity:0.7 }}/>
-                                    <span>{finishrate}</span></svg> 
+                                    <span>{request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])}</span></svg> 
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
@@ -102,9 +118,9 @@ class Instantnotification extends Component{
                  <HorizontalBarSeries
                     className="categorybar"
                     data={unfinish_bar_data} 
-                    color="#9e9e9e69"
+                    color="#b0a696"
                     style={{
-                      borderRadius:5
+                      opacity:0.7
                     }}
                  /> 
                 </XYPlot>   

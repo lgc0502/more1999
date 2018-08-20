@@ -267,3 +267,6 @@ rect{
   height: 500px;
   margin-top: 3%;
 }
+.categorybar rect {
+  border-radius:5px;
+}
