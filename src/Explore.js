@@ -60,7 +60,7 @@ class Explore extends Component {
                     })
              })
         })
-        console.log(p)
+        
 
     }
     render(){
