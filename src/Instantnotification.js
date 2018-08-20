@@ -48,20 +48,20 @@ class Instantnotification extends Component{
             <div>
               <div className="board">
                 <div className="ui segment dashboard">
-                <svg className="hint" width="30" height="30">
+                <svg className="hint" width="20" height="20">
                                 <circle  style={{
                                     cx:"5",
                                     cy:"5",
-                                    r:"30",
+                                    r:"5",
                                     fill:"#598c14",
                                     }}/>
                                     </svg> 
                 <span>已處理</span>
-                <svg className="hint" width="30" height="30">
+                <svg className="hint" width="20" height="20">
                                 <circle  style={{
                                     cx:"5",
                                     cy:"5",
-                                    r:"30",
+                                    r:"5",
                                     fill:"#b0a696",
                                     }}/>
                                     </svg> 
@@ -79,7 +79,7 @@ class Instantnotification extends Component{
                       stroke={null} 
                       className="ui container radial-chart"  
                   >
-                  <svg width="30" height="30">
+                  <svg width="90" height="90">
                                 <circle  style={{
                                     cx:"10",
                                     cy:"10",
