@@ -45,8 +45,8 @@ class Explore extends Component {
             },()=>{
                 postApi.requertPost('./position',{
                     params:{
-                      lat:d.Position.coords.latitude,
-                      lon:d.Position.coords.lontitude,
+                      lat:d.coords.latitude,
+                      lon:d.coords.longitude,
                     }
                   }).then(data => {
                       console.log(data)
