@@ -77,17 +77,17 @@ class Instantnotification extends Component{
                       colorType="category"
                       colorRange={["#b0a696","#598c14"]} 
                       stroke={null} 
-                      className="ui container radial-chart"  
+                      className="ui container radial-chart instantdonut"  
                   >
-                  <svg width="90" height="90">
+                  <svg id="donutratio" width="90" height="90">
                                 <circle  style={{
-                                    cx:"10",
-                                    cy:"10",
-                                    r:"30",
+                                    cx:"40",
+                                    cy:"40",
+                                    r:"32",
                                     fill:"#b0a696",
-                                    opacity:0.7 }}/>
+                                    opacity:0.4 }}/>
                                    </svg> 
-                                   <span>{request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])}</span>                  
+                                   <span>{(request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])).toFixed(1)+"%"}</span>                  
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>

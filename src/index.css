@@ -270,3 +270,11 @@ rect{
 .categorybar rect {
   border-radius:5px;
 }
+#donutratio {
+  position:absolute;
+  top:20px;
+  left:21px;
+}
+.instantdonut{
+  position: relative;
+}
