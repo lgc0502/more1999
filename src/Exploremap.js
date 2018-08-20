@@ -27,7 +27,6 @@ class Exploremap extends Component{
                 return 
             }
             res.json().then(topology => {
-                
                 this.setState({
                     data:topology.features,
                     isLoading:false
@@ -38,7 +37,7 @@ class Exploremap extends Component{
    }
    
     render(){
-        const {point} = this.props
+        const {point,address,category,time,cases}= this.props
         console.log(this.props)
         if(this.state.isLoading){
             return (
@@ -78,6 +77,11 @@ class Exploremap extends Component{
                     />  
                     <Circle center={point} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
+                    {
+                    detail.map((d)=>{
+                         <CircleMarker center={[d.position[0],d.position[1]]} color="blue" fillColor='#f03' fillOpacity={0.5} radius={5}></CircleMarker>
+                    })
+                    }
                 </Map>
               
             </div>

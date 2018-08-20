@@ -1,6 +1,6 @@
 
 var geo_options={
-    enableHighAccuracy: true,
+    //enableHighAccuracy: true,
     maximumAge:60000,
     timeout:30000,
 }

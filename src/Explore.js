@@ -10,7 +10,7 @@ class Explore extends Component {
             lat_lng:'',
             category:{},
             time:{},
-            case:{},
+            cases:{},
             isloading:true
         };
     }
@@ -20,8 +20,7 @@ class Explore extends Component {
         });
     }
     handleclick(){
-        postApi
-        console.log(this.state.location)
+        
         postApi.requertPost('./explore',{
             params:{
               location:this.state.location,
@@ -45,15 +44,16 @@ class Explore extends Component {
                 postApi.requertPost('./position',{
                 
                     params:{
-                      lat:d.coords.latitude,
-                      lon:d.coords.longitude,
+                      lat:22.997,//d.coords.latitude,
+                      lon:120.211,//d.coords.longitude,
                     }
                   }).then(data => {
                       console.log(data)
                         this.setState({
-                            category:data.category,//object
-                            time:data.hour,//object
-                            case:data.detail,//array
+                            address:data.res.address,
+                            category:data.res.category,//object
+                            time:data.res.hour,//object
+                            cases:data.res.detail,//array
                             isLoading : false
                         })
                  })
@@ -80,9 +80,10 @@ class Explore extends Component {
                 </div>
                 <Exploremap 
                     point={[23.1,120.17]} 
+                    address={this.state.address}
                     category={this.state.category}//object
                     time={this.state.time}//object
-                    case={this.state.case}//array
+                    cases={this.state.case}//array
                     data={this.props.towngeo}/>
             </div>
         )
