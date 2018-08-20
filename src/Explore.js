@@ -83,7 +83,7 @@ class Explore extends Component {
                     address={this.state.address}
                     category={this.state.category}//object
                     time={this.state.time}//object
-                    cases={this.state.case}//array
+                    cases={this.state.cases}//array
                     data={this.props.towngeo}/>
             </div>
         )
