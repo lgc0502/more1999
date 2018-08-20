@@ -8,7 +8,7 @@ class Exploremap extends Component{
         super(props)
         this.state = {
             center:props.point,
-            zoom:11,
+            zoom:13,
             minZoom:10,
             maxZoom:20,
             isLoading:true,
@@ -36,8 +36,10 @@ class Exploremap extends Component{
             })
         })
    }
+   
     render(){
         const {point} = this.props
+        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -74,7 +76,7 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <Circle center={point} color="red" fillColor='#f03' fillOpacity={0.5} radius={1000}></Circle>
+                    <Circle center={point} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={point}><i class="fas fa-map-marker-alt"></i></Marker>    
                 </Map>
               

@@ -7,6 +7,9 @@ class Explore extends Component {
         this.state = {
             location:'',
             lat_lng:'',
+            category:{},
+            time:{},
+            case:{},
             isloading:true
         };
     }
@@ -18,28 +21,45 @@ class Explore extends Component {
     handleclick(){
         //postApi
         console.log(this.state.location)
-
-        // postApi.requertPost('./explore',{
-        //     params:{
-        //       location:this.state.location,
-        //     }
-        //   }).then(data => {
-        //     this.setState({
-        //       lat_lng:data,
-        //       isLoading : false
-        //     })
-        //  })
+        postApi.requertPost('./explore',{
+            params:{
+              location:this.state.location,
+            }
+          }).then(data => {
+            this.setState({
+              lat_lng:data.position,//array
+              category:data.category,//object
+              time:data.hour,//object
+              case:data.detail,//array
+              isLoading : false
+            })
+         })
     }
     componentDidMount(){
         let p=geolocation.getLocation()
         this.setState({
             lat_lng:[p.lat,p.lon],
             isloading:false
+        },()=>{
+            postApi.requertPost('./position',{
+                params:{
+                  position:this.state.lat_lng,
+                }
+              }).then(data => {
+                  console.log(data)
+                    this.setState({
+                        category:data.category,//object
+                        time:data.hour,//object
+                        case:data.detail,//array
+                        isLoading : false
+                    })
+             })
         })
+       
 
     }
     render(){
-        console.log(this.state.lat_lng)
+        console.log(this.state)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -56,7 +76,12 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
-                <Exploremap point={[this.state.lat_lng.lat,this.state.lat_lng.lon]} data={this.props.towngeo}/>
+                <Exploremap 
+                    point={[this.state.lat_lng.lat,this.state.lat_lng.lon]} 
+                    category={this.state.category}//object
+                    time={this.state.time}//object
+                    case={this.state.case}//array
+                    data={this.props.towngeo}/>
             </div>
         )
     }
