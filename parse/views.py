@@ -450,7 +450,7 @@ def explore(request):
 def position(request): 
     returndata={}
     lat = float(request.GET['lat'])
-    lng = float(request.GET['lng'])
+    lng = float(request.GET['lon'])
     poi_exist = 0
     poi = ''
     address_exist = 0
@@ -465,7 +465,6 @@ def position(request):
             if 'point_of_interest' in c['types']:
                 poi = c['long_name']
                 poi_exist = 1
-    print(reverse_geocode_result)
     if '台南' not in city:
         return JsonResponse(returndata)
     else:
