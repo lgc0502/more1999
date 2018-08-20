@@ -40,7 +40,7 @@ class Explore extends Component {
         geolocation.getLocation().then(d=>{
             console.log(d.coords)
             this.setState({
-                lat_lng:[d.coords.latitude,d.coords.lontitude],
+                lat_lng:[d.coords.latitude,d.coords.longitude],
                 isloading:false
             },()=>{
                 postApi.requertPost('./position',{

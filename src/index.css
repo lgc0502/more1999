@@ -267,7 +267,7 @@ rect{
   height: 500px;
   margin-top: 3%;
 }
-.categorybar rect {
+rect {
   border-radius:5px;
 }
 #donutratio {

@@ -118,13 +118,22 @@ class Instantnotification extends Component{
                     style={{
                       borderRadius:5
                     }}
-                 /> 
+                 />
+                 { 
+                  finish_bar_data.map((d)=>{
+                    <span>{d}</span>
+                  })
+                  }
                  <HorizontalBarSeries
                     className="categorybar"
                     data={unfinish_bar_data} 
-                    color="#b0a696"
-                   
+                    color="#c2e169"
                  /> 
+                  { 
+                  unfinish_bar_data.map((d)=>{
+                    <span>{d}</span>
+                  })
+                  }
                 </XYPlot>   
                 </div>
               </div>
