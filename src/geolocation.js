@@ -15,6 +15,6 @@ export default {
     
 }
 function showPosition(position){
-    p['lat']=position.coords.latitude;
-    p['lon']=position.coords.longitude;
+    p=position.coords;
+    
 }
