@@ -278,9 +278,9 @@ rect{
 span#ratio{ 
   position:absolute;
   top:45%;
-  left:38%;
+  left:36%;
   font-size: 1.4em;
-  fill:#598c14;
+  color:#598c14;
   font-weight:600;
 }
 .instantdonut{

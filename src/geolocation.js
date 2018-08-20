@@ -8,6 +8,8 @@ export default {
         }else{
             alert("Geolocation is not supported by this brower.");
         }
+        console.log("I got you")
+        console.log(p)
         return p;
     }
     
