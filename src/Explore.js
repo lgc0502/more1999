@@ -21,55 +21,53 @@ class Explore extends Component {
     }
     handleclick(){
         //postApi
-        console.log(this.state.location)
-        postApi.requertPost('./explore',{
-            params:{
-              location:this.state.location,
-            }
-          }).then(data => {
-            this.setState({
-              lat_lng:data.position,//array
-              category:data.category,//object
-              time:data.hour,//object
-              case:data.detail,//array
-              isLoading : false
-            })
-         })
+        // console.log(this.state.location)
+        // postApi.requertPost('./explore',{
+        //     params:{
+        //       location:this.state.location,
+        //     }
+        //   }).then(data => {
+        //     this.setState({
+        //       lat_lng:data.position,//array
+        //       category:data.category,//object
+        //       time:data.hour,//object
+        //       case:data.detail,//array
+        //       isLoading : false
+        //     })
+        //  })
     }
     componentDidMount(){
-        geolocation.getLocation().then(d=>{
+        // geolocation.getLocation().then(d=>{
             
-            this.setState({
-                lat_lng:[d.coords.latitude,d.coords.longitude],
-            },()=>{
-                console.log(d.coords.latitude)
-                console.log(d.coords.longitude)
-                postApi.requertPost('./position',{
-                    params:{
-                      lat:d.coords.latitude,
-                      lon:d.coords.longitude,
-                    }
-                  }).then(data => {
-                      console.log(data)
-                        this.setState({
-                            category:data.category,//object
-                            time:data.hour,//object
-                            case:data.detail,//array
-                            isLoading : false
-                        })
-                 })
-            })
-        })
+        //     this.setState({
+        //         lat_lng:[d.coords.latitude,d.coords.longitude],
+        //     },()=>{
+        //         postApi.requertPost('./position',{
+        //             params:{
+        //               lat:d.coords.latitude,
+        //               lon:d.coords.longitude,
+        //             }
+        //           }).then(data => {
+        //               console.log(data)
+        //                 this.setState({
+        //                     category:data.category,//object
+        //                     time:data.hour,//object
+        //                     case:data.detail,//array
+        //                     isLoading : false
+        //                 })
+        //          })
+        //     })
+        // })
     }
     render(){
-        console.log(this.state)
-        if(this.state.isLoading){
-            return (
-             <div className="loaddata">
-               <h3 id="load_text">還在找 ......</h3>
-             </div>
-            )
-        }
+       
+        // if(this.state.isLoading){
+        //     return (
+        //      <div className="loaddata">
+        //        <h3 id="load_text">還在找 ......</h3>
+        //      </div>
+        //     )
+        // }
         return (
             <div>
                 <h3>搜尋地點 查看通報狀況</h3>
@@ -80,10 +78,10 @@ class Explore extends Component {
                     </button>
                 </div>
                 <Exploremap 
-                    point={[this.state.lat_lng.lat,this.state.lat_lng.lon]} 
-                    category={this.state.category}//object
-                    time={this.state.time}//object
-                    case={this.state.case}//array
+                    point={[23.1,120.17]} 
+                    // category={this.state.category}//object
+                    // time={this.state.time}//object
+                    // case={this.state.case}//array
                     data={this.props.towngeo}/>
             </div>
         )
