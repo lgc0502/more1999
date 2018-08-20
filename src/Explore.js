@@ -38,9 +38,6 @@ class Explore extends Component {
     }
     componentDidMount(){
         let p=geolocation.getLocation()
-        console.log("position here")
-        
-        console.log(p)
         this.setState({
             lat_lng:[p.lat,p.lon],
             isloading:false
@@ -49,8 +46,8 @@ class Explore extends Component {
             console.log(this.state.lat_lng[0])
             postApi.requertPost('./position',{
                 params:{
-                  lat:this.state.lat_lng[0],
-                  lon:this.state.lat_lng[1],
+                  lat:p.lat,
+                  lon:p.lon,
                 }
               }).then(data => {
                   console.log(data)
