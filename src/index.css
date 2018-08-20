@@ -277,11 +277,15 @@ rect{
 }
 span#ratio{ 
   position:absolute;
-  top:45%;
-  left:35%;
+  top:40%;
+  left:32%;
   font-size: 1.3em;
   color:#598c14;
   font-weight:600;
+}
+span#ratio:last-child{
+  top:52%;
+  font-size: 0.5em;
 }
 .instantdonut{
   position: relative;

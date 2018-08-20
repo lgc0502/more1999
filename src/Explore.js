@@ -38,14 +38,15 @@ class Explore extends Component {
     }
     componentDidMount(){
         geolocation.getLocation().then(d=>{
+            console.log(d)
             this.setState({
-                lat_lng:[d.coords.latitude,d.coords.lontitude],
+                lat_lng:[d.position.coords.latitude,d.position.coords.lontitude],
                 isloading:false
             },()=>{
                 postApi.requertPost('./position',{
                     params:{
-                      lat:d.coords.latitude,
-                      lon:d.coords.lontitude,
+                      lat:d.position.coords.latitude,
+                      lon:d.position.coords.lontitude,
                     }
                   }).then(data => {
                       console.log(data)
