@@ -272,9 +272,20 @@ rect{
 }
 #donutratio {
   position:absolute;
-  top:20px;
-  left:21px;
+  top:20%;
+  left:21%;
+}
+#donutratio span {
+  position:absolute;
+  top:45%;
+  left:38%;
+  font-size: 1.4em;
+  fill:#598c14;
+  font-weight:600;
 }
 .instantdonut{
   position: relative;
+}
+.hint span{
+  margin-left:2%;
 }

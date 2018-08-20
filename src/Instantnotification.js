@@ -50,22 +50,22 @@ class Instantnotification extends Component{
                 <div className="ui segment dashboard">
                 <svg className="hint" width="20" height="20">
                                 <circle  style={{
-                                    cx:"5",
-                                    cy:"5",
+                                    cx:"15",
+                                    cy:"15",
                                     r:"5",
                                     fill:"#598c14",
                                     }}/>
                                     </svg> 
-                <span>已處理</span>
+                <span className="hint">已處理</span>
                 <svg className="hint" width="20" height="20">
                                 <circle  style={{
-                                    cx:"5",
-                                    cy:"5",
+                                    cx:"15",
+                                    cy:"15",
                                     r:"5",
                                     fill:"#b0a696",
                                     }}/>
                                     </svg> 
-                <span>處理中</span>
+                <span className="hint">處理中</span>
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
@@ -87,7 +87,7 @@ class Instantnotification extends Component{
                                     fill:"#b0a696",
                                     opacity:0.4 }}/>
                                    </svg> 
-                                   <span>{(request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])).toFixed(1)+"%"}</span>                  
+                                   <span>{(request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])).toFixed(3)*100+"%"}</span>                  
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
