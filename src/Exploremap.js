@@ -52,7 +52,7 @@ class Exploremap extends Component{
             <div>
                 <Map ref='map' 
                      className='exploremap' 
-                     center={position} 
+                     center={[22.99,120.21]} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
                      maxZoom={this.state.maxZoom}>
