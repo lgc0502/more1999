@@ -429,7 +429,7 @@ def this_week_data(request):
 
 def explore(request): 
     returndata={}
-    Query_address = request.GET['address'] 
+    Query_address = request.GET['location'] 
     if '台南' not in Query_address:
         Query_address = '台南市' + Query_address
     geocode_result = gmaps.geocode(Query_address, language='zh-TW')
