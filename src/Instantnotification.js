@@ -48,22 +48,24 @@ class Instantnotification extends Component{
             <div>
               <div className="board">
                 <div className="ui segment dashboard">
-                <svg className="hint" width="30" height="10">
+                <svg className="hint" width="30" height="30">
                                 <circle  style={{
-                                    cx:"10",
-                                    cy:"10",
+                                    cx:"5",
+                                    cy:"5",
                                     r:"30",
                                     fill:"#598c14",
                                     }}/>
-                                    <span>已處理</span></svg> 
-                <svg className="hint" width="30" height="10">
+                                    </svg> 
+                <span>已處理</span>
+                <svg className="hint" width="30" height="30">
                                 <circle  style={{
-                                    cx:"10",
-                                    cy:"10",
+                                    cx:"5",
+                                    cy:"5",
                                     r:"30",
                                     fill:"#b0a696",
                                     }}/>
-                                    <span>處理中</span></svg> 
+                                    </svg> 
+                <span>處理中</span>
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
@@ -77,14 +79,15 @@ class Instantnotification extends Component{
                       stroke={null} 
                       className="ui container radial-chart"  
                   >
-                  <svg className="icon" width="30" height="30">
+                  <svg width="30" height="30">
                                 <circle  style={{
                                     cx:"10",
                                     cy:"10",
                                     r:"30",
                                     fill:"#b0a696",
                                     opacity:0.7 }}/>
-                                    <span>{request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])}</span></svg> 
+                                   </svg> 
+                                   <span>{request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])}</span>                  
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
