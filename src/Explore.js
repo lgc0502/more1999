@@ -38,11 +38,12 @@ class Explore extends Component {
     }
     componentDidMount(){
         geolocation.getLocation().then(d=>{
-            console.log(d.coords)
+            
             this.setState({
                 lat_lng:[d.coords.latitude,d.coords.longitude],
-                isloading:false
             },()=>{
+                console.log(d.coords.latitude)
+                console.log(d.coords.longitude)
                 postApi.requertPost('./position',{
                     params:{
                       lat:d.coords.latitude,

@@ -127,7 +127,10 @@ class Instantnotification extends Component{
                  <HorizontalBarSeries
                     className="categorybar"
                     data={unfinish_bar_data} 
-                    color="#c2e169"
+                    color="#b0a696"
+                    style={{
+                      opacity:0.4
+                    }}
                  /> 
                   { 
                   unfinish_bar_data.map((d)=>{
