@@ -11,6 +11,7 @@ class Exploremap extends Component{
             zoom:13,
             minZoom:10,
             maxZoom:20,
+            data:{},
             isLoading:true,
            
         }
@@ -77,11 +78,6 @@ class Exploremap extends Component{
                     />  
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
-                    {/* {
-                    cases.map((d)=>{
-                         <CircleMarker className='cases-marker' center={[d.position[0],d.position[1]]} color="blue" fillColor='#f03' fillOpacity={0.5} radius={5}></CircleMarker>
-                    })
-                    } */}
                 </Map>
               
             </div>
