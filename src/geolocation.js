@@ -4,17 +4,13 @@ var p=new Object();
 export default {
     getLocation:()=>{
         if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(showPosition);
+            return new Promise((res,rej)=>{
+                navigator.geolocation.getCurrentPosition(res,rej);
+            })
         }else{
             alert("Geolocation is not supported by this brower.");
         }
-        console.log("I got you")
-        console.log(p)
-        return p;
+        
     }
-    
-}
-function showPosition(position){
-    p=position.coords;
     
 }
