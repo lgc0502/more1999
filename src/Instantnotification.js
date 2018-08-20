@@ -19,8 +19,7 @@ class Instantnotification extends Component{
 
     componentDidMount(){
         postApi.requertPost('./this_week_data','null').then(data => {
-          console.log(data)
-          
+        
           this.setState({
             request_data:data,
             isLoading : false,
@@ -58,7 +57,7 @@ class Instantnotification extends Component{
                                     fill:"#598c14",
                                     }}/>
                                     </svg> 
-                <span className="hint">已處理</span>
+                <h3 className="hint">已處理</h3>
                 <svg className="hint" width="20" height="20">
                                 <circle  style={{
                                     cx:"15",
@@ -67,7 +66,7 @@ class Instantnotification extends Component{
                                     fill:"#b0a696",
                                     }}/>
                                     </svg> 
-                <span className="hint">處理中</span>
+                <h3 className="hint">處理中</h3>
                   <RadialChart  
                       key={`dashboardRadial`}
                       width={window.innerWidth*0.1}
@@ -89,14 +88,13 @@ class Instantnotification extends Component{
                                     fill:"#b0a696",
                                     opacity:0.4 }}/>
                                    </svg> 
-                                   <span>{(request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0])).toFixed(3)*100+"%"}</span>                  
+                  <span id="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(3)+"%"}</span>                  
                   </RadialChart>
                   <h3>本週截至目前</h3>
                   <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
-                  <h3 style=
+                  <h3 id="ratiohint" style=
                       {{
                         fontSize:12,
-                        fill:"#b0a696"
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">

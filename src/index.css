@@ -275,7 +275,7 @@ rect{
   top:20%;
   left:21%;
 }
-#donutratio span {
+#ratio span {
   position:absolute;
   top:45%;
   left:38%;
@@ -288,4 +288,7 @@ rect{
 }
 .hint span{
   margin-left:2%;
+}
+#ratiohint h3{
+  -webkit-text-fill-color:"#b0a696";
 }
