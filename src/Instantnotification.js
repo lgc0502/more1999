@@ -20,6 +20,7 @@ class Instantnotification extends Component{
     componentDidMount(){
         postApi.requertPost('./this_week_data','null').then(data => {
           console.log(data)
+          
           this.setState({
             request_data:data,
             isLoading : false,
