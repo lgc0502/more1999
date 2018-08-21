@@ -80,8 +80,8 @@ class Exploremap extends Component{
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
                     <LayerGroup>
-                        {cases.map((d)=>
-                            <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>)
+                        {cases.map((d)=>(
+                            <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>))
                         }
                     </LayerGroup> 
                 </Map>
