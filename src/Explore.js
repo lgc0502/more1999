@@ -81,7 +81,7 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
-                <div>
+                <div className='current-location'>
                     <i class="fas fa-map-marker-alt"></i>
                     <span>{this.state.address}</span>
                 </div>
@@ -92,15 +92,16 @@ class Explore extends Component {
                     time={this.state.time}//object
                     cases={this.state.cases}//array
                     data={this.props.towngeo}/>
-                 <div className="ui segment dashboard">
+                 <div className="ui segment">
                     {Object.keys(this.state.category).map((t)=>(
-                        <div>
+                        <div className="explore-category">
                         <svg width="20" height="20">
                         <circle style={{
                                 cx:"10",
                                 cy:"10",
                                 r:"4",
                                 fill:typecolor[t] }}/></svg>
+                        <span>{t} : </span>
                         <span>{this.state.category.t}</span>
                         </div>
                     ))
