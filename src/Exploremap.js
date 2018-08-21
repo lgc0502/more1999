@@ -19,7 +19,7 @@ class Exploremap extends Component{
         
     }
     handlebtnClick(){
-        this.refs.map.leafletElement.setView([23.15,120.35],14);
+        this.refs.map.leafletElement.setView(this.props.point,14);
     }
    componentDidMount(){
         fetch(this.props.data.towngeo)
@@ -80,11 +80,9 @@ class Exploremap extends Component{
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
                     <LayerGroup>
-                        {
-                            cases.map((d)=>{
-                                <Marker position={d.position}><i class="fas fa-map-marker-alt"></i></Marker>    
-                                // <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>
-                            })
+                        {cases.map((d)=>
+                                //<Marker position={d.position}><i class="fas fa-map-marker-alt"></i></Marker>    
+                            <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>)
                         }
                     </LayerGroup>
                 </Map>
