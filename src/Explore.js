@@ -11,7 +11,7 @@ class Explore extends Component {
             category:{},
             time:{},
             cases:{},
-            isloading:true
+            isLoading:true
         };
     }
     updateInputValue(evt){
@@ -64,6 +64,7 @@ class Explore extends Component {
        console.log("explore")
         console.log(this.state)
        if(this.state.isLoading){
+           console.log("loading explore")
             return (
              <div className="loaddata">
                <h3 id="load_text">還在找 ......</h3>
