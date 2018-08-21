@@ -27,10 +27,10 @@ class Explore extends Component {
             }
           }).then(data => {
             this.setState({
-              lat_lng:data.position,//array
-              category:data.category,//object
-              time:data.hour,//object
-              case:data.detail,//array
+              lat_lng:data.res.position,//array
+              category:data.res.category,//object
+              time:data.res.hour,//object
+              case:data.res.detail,//array
               isLoading : false
             })
          })

@@ -18,6 +18,7 @@ export default {
         else{
             return axios.get(url,param)
             .then(response=>{
+                console.log("requrst successful")
                 return {res:response.data}
             })
             .catch(error=>{
