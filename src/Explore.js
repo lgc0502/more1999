@@ -2,7 +2,8 @@ import React ,{Component} from 'react';
 import Exploremap from './Exploremap.js';
 import geolocation from './geolocation';
 import postApi from './postApi.js';
-const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
+const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
+const typecolor = {"parking":'#2e1f54',"light":'#f00a36',"noise":'#ed3b21',"aisle":'#ff6908',"road":'#ffc719',"traffic":'#598c14',"dirty":'#335238',"pipe":'#4a8594' ,"animal":'#706357'};
 class Explore extends Component {
     constructor(props){
         super(props);
@@ -101,8 +102,8 @@ class Explore extends Component {
                                 cy:"10",
                                 r:"4",
                                 fill:typecolor[t] }}/></svg>
-                        <span>{t} : </span>
-                        <span>{this.state.category.t}</span>
+                        <span>{transtype[t]} : </span>
+                        <span>{this.state.category[t]}</span>
                         </div>
                     ))
                     }
