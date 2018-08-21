@@ -119,13 +119,7 @@ class Instantnotification extends Component{
                       borderRadius:5
                     }}
                  />
-                 <div>
-                 { 
-                  finish_bar_data.map((d)=>{
-                    <span>{d}</span>
-                  })
-                  }
-                  </div>
+                 
                  <HorizontalBarSeries
                     className="categorybar"
                     data={unfinish_bar_data} 
@@ -134,14 +128,22 @@ class Instantnotification extends Component{
                       opacity:0.4
                     }}
                  /> 
-                 <div>
+                
+                </XYPlot>  
+                <div>
+                 { 
+                  finish_bar_data.map((d)=>{
+                    <span>{d}</span>
+                  })
+                  }
+                  </div> 
+                  <div>
                   { 
                   unfinish_bar_data.map((d)=>{
                     <span>{d}</span>
                   })
                   }
                     </div>
-                </XYPlot>   
                 </div>
               </div>
                 <Listgroup {...request_data}/> 
