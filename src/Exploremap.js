@@ -1,7 +1,8 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker} from 'react-leaflet'
 
-
+                                           
+const casestype = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
 
 class Exploremap extends Component{
     constructor(props){
@@ -39,7 +40,6 @@ class Exploremap extends Component{
    
     render(){
         const {point,address,category,time,cases}= this.props
-        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -78,6 +78,13 @@ class Exploremap extends Component{
                     />  
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
+                    <div>
+                        {
+                            cases.map((d)=>{
+                                <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>
+                            })
+                        }
+                        </div>
                 </Map>
               
             </div>
