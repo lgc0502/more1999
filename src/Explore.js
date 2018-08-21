@@ -61,8 +61,9 @@ class Explore extends Component {
         })
     }
     render(){
-       
-        if(this.state.isLoading){
+       console.log("explore")
+        console.log(this.state)
+       if(this.state.isLoading){
             return (
              <div className="loaddata">
                <h3 id="load_text">還在找 ......</h3>
