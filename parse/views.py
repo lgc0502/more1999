@@ -397,7 +397,7 @@ def position_search(qlat, qlng):
         temp['date'] = search.values()[index]['requested_datetime'].strftime('%Y-%m-%d %H:%M:%S')
         temp['description'] = search.values()[index]['description']
         temp['status'] = search.values()[index]['status']
-        temp['position'] = [qlat, qlng]
+        temp['position'] = [search.values()[index]['lat'], search.values()[index]['lng']]
         detail.append(temp)
         temp = {}
     data['detail']=detail
