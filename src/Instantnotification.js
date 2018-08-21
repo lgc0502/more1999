@@ -131,15 +131,13 @@ class Instantnotification extends Component{
                 
                 </XYPlot>  
                 <div>
-                 {finish_bar_data.map((d)=>
-                    <span>{d}</span>)
-                  }
-                  </div> 
-                  <div>
-                  {unfinish_bar_data.map((d)=>
-                    <span>{d}</span>)
-                  }
-                    </div>
+                {finish_bar_data.map((d)=>
+                  <span>{d}</span>)}
+                </div> 
+                <div>
+                {unfinish_bar_data.map((d)=>
+                  <span>{d}</span>)}
+                </div>
                 </div>
               </div>
                 <Listgroup {...request_data}/> 
