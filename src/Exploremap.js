@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react-leaflet'
 
                                            
-const casestype = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
+const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
 
 class Exploremap extends Component{
     constructor(props){
@@ -81,7 +81,7 @@ class Exploremap extends Component{
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <CircleMarker center={d.position} color={casestype[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></CircleMarker>))
+                            <Circle center={d.position} color={typecolor[d.category]} fillColor={casestype[d.category]} fillOpacity={0.5} radius={5}></Circle>))
                         }
                     </LayerGroup> 
                 </Map>

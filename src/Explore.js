@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import Exploremap from './Exploremap.js';
 import geolocation from './geolocation';
 import postApi from './postApi.js';
+const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
 class Explore extends Component {
     constructor(props){
         super(props);
@@ -80,6 +81,10 @@ class Explore extends Component {
                         <i class="search icon"></i>
                     </button>
                 </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{this.state.address}</span>
+                </div>
                 <Exploremap 
                     point={this.state.lat_lng} 
                     address={this.state.address}
@@ -87,6 +92,20 @@ class Explore extends Component {
                     time={this.state.time}//object
                     cases={this.state.cases}//array
                     data={this.props.towngeo}/>
+                 <div className="ui segment dashboard">
+                    {Object.keys(this.state.category).map((t)=>(
+                        <div>
+                        <svg width="20" height="20">
+                        <circle style={{
+                                cx:"10",
+                                cy:"10",
+                                r:"4",
+                                fill:typecolor[t] }}/></svg>
+                        <span>{this.state.category.t}</span>
+                        </div>
+                    ))
+                    }
+                 </div>
             </div>
         )
     }

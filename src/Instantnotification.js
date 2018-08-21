@@ -99,7 +99,8 @@ class Instantnotification extends Component{
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
-                
+                {Object.keys(request_data.res.Category).map((t)=>(
+                  <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</span>))}
                 <XYPlot
                     width={window.innerWidth*0.32}
                     height={window.innerWidth*0.25}
@@ -130,8 +131,7 @@ class Instantnotification extends Component{
                  /> 
                 
                 </XYPlot>  
-                {Object.keys(request_data.res.Category).map((t)=>(
-                  <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</span>))}
+                
                 </div>
               </div>
                 <Listgroup {...request_data}/> 
