@@ -129,8 +129,6 @@ class Explore extends Component {
                 <XAxis  
                 XDomain={[beginhour,endhour]}
                 xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
-                tickFormat={(d)=>formatTime(d)}
-                tickTotal={6}
                 xType="time"
                 style={{
                     line:{stroke:"#ADDDE1"},
