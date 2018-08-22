@@ -144,7 +144,6 @@ class Explore extends Component {
                             })
                         }
                         />    
-                    )
                 </XYPlot>  
             </div>
         )
