@@ -124,15 +124,15 @@ class Explore extends Component {
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
                     Range={[window.innerWidth*0.1,window.innerWidth*0.6]}
-                    tickFormat={(d)=>formatTime(d)}
-                    tickTotal={24}
-                    xType="time"
+                   
                 >
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis  
                 XDomain={[beginhour,endhour]}
                 xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+                tickFormat={(d)=>formatTime(d)}
+                tickTotal={24}
                 xType="time"
                 style={{
                     line:{stroke:"#ADDDE1"},
