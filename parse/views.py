@@ -354,7 +354,8 @@ def unfinish_detail():
     for index in range(len(search)):
         id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
         temp['category'] = id_search.values()[0]['service_name']
-        temp['date'] = id_search.values()[0]['requested_datetime'].replace(tzinfo=tw).strftime('%Y-%m-%d %H:%M:%S')
+        timetmp = id_search.values()[0]['requested_datetime']+datetime.timedelta(hours = 8)
+        temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
         temp['address'] = id_search.values()[0]['address_string']
         temp['description'] = id_search.values()[0]['description']
         temp['area'] = id_search.values()[0]['area']
