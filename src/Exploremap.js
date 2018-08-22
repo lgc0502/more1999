@@ -81,7 +81,7 @@ class Exploremap extends Component{
                     <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Circle center={d.position} color={typecolor[d.category]} fillColor={typecolor[d.category]} fillOpacity={0.5} radius={4}></Circle>))
+                            <Marker position={d.position}><i class="fas fa-map-pin" style={{color:typecolor[d]}}></i></Marker>))  
                         }
                     </LayerGroup> 
                 </Map>
