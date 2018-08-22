@@ -79,7 +79,7 @@ class Exploremap extends Component{
                        
                     />  
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.99,120.21]} icon={currentlocation}></Marker>    
+                    <Marker position={[22.99,120.21]}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
                             <Marker position={d.position}></Marker>))  
