@@ -1,9 +1,19 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react-leaflet'
-
+import L from 'leaflet'
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'}
-
+const icon = {"違規停車":'parking-circle-slash',"路燈故障":'parking-circle-slash',"噪音舉發":'parking-circle-slash',"騎樓舉發":'parking-circle-slash',"道路維修":'parking-circle-slash',"交通運輸":'parking-circle-slash',"髒亂污染":'parking-circle-slash',"民生管線":'parking-circle-slash' ,"動物救援":'parking-circle-slash'}
+var currentlocation = L.AwesomeMarkers.icon({
+    icon: 'street-view',
+    markerColor: 'blue'
+});
+function creaticon(type){
+    return L.AwesomeMarkers.icon({
+        icon: icon[type],
+        markerColor: typecolor[type]
+    });
+}
 class Exploremap extends Component{
     constructor(props){
         super(props)
@@ -78,10 +88,10 @@ class Exploremap extends Component{
                        
                     />  
                     <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.99,120.21]}><i class="fas fa-map-marker-alt"></i></Marker>    
+                    <Marker position={[22.99,120.21]} icon={currentlocation}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Marker position={d.position}><i class="fas fa-map-pin" style={{color:typecolor[d]}}></i></Marker>))  
+                            <Marker position={d.position} icon={creaticon(d)}></Marker>))  
                         }
                     </LayerGroup> 
                 </Map>
