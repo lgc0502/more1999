@@ -131,7 +131,7 @@ class Explore extends Component {
                 <XAxis  
                 XDomain={[beginhour,endhour]}
                 xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
-                tickFormat={(d)=>formatTime(d)}
+                tickFormat={(d)=>(d)}
                 tickTotal={24}
                 xType="time"
                 style={{
@@ -143,7 +143,8 @@ class Explore extends Component {
                         className="area-series-example"
                         curve="curveMonotoneX"
                         data={
-                            Object.keys(this.state.time).map((d)=>{  
+
+                            Object.keys(this.state.time).map((d)=>{   
                                 
                                 return({x:d,y: this.state.time[d]})
                             })
