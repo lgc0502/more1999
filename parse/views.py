@@ -395,7 +395,8 @@ def position_search(qlat, qlng):
     temp={}
     for index in range(len(search)):
         temp['category'] = search.values()[index]['service_name']
-        temp['date'] = search.values()[index]['requested_datetime'].replace(tzinfo=tw).strftime('%Y-%m-%d %H:%M:%S')
+        timetmp = search.values()[index]['requested_datetime']+datetime.timedelta(hours = 8)
+        temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
         temp['description'] = search.values()[index]['description']
         temp['status'] = search.values()[index]['status']
         temp['position'] = [search.values()[index]['lat'], search.values()[index]['lng']]
