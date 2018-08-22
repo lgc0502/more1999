@@ -144,9 +144,8 @@ class Explore extends Component {
                         curve="curveMonotoneX"
                         data={
                             Object.keys(this.state.time).map((d)=>{  
-                                console.log(d)
-                                console.log(new Date(d))
-                                return({x:new Date(d),y: this.state.time[d]})
+                                
+                                return({x:d,y: this.state.time[d]})
                             })
                         }
                         />    
