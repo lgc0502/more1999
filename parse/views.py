@@ -354,7 +354,7 @@ def unfinish_detail():
     for index in range(len(search)):
         id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
         temp['category'] = id_search.values()[0]['service_name']
-        temp['date'] = id_search.values()[0]['requested_datetime'].strftime('%Y-%m-%d %H:%M:%S')
+        temp['date'] = id_search.values()[0]['requested_datetime'].replace(tzinfo=tw).strftime('%Y-%m-%d %H:%M:%S')
         temp['address'] = id_search.values()[0]['address_string']
         temp['description'] = id_search.values()[0]['description']
         temp['area'] = id_search.values()[0]['area']
@@ -394,7 +394,7 @@ def position_search(qlat, qlng):
     temp={}
     for index in range(len(search)):
         temp['category'] = search.values()[index]['service_name']
-        temp['date'] = search.values()[index]['requested_datetime'].strftime('%Y-%m-%d %H:%M:%S')
+        temp['date'] = search.values()[index]['requested_datetime'].replace(tzinfo=tw).strftime('%Y-%m-%d %H:%M:%S')
         temp['description'] = search.values()[index]['description']
         temp['status'] = search.values()[index]['status']
         temp['position'] = [search.values()[index]['lat'], search.values()[index]['lng']]
