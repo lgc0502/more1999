@@ -147,9 +147,9 @@ class Explore extends Component {
                         data={
 
                             Object.keys(this.state.time).map((d)=>{   
-                                console.log(x)
+                                console.log("x")
                                 console.log(d)
-                                console.log(y)
+                                console.log("y")
                                 console.log(this.state.time[d])
                                 return({x:d,y:this.state.time[d]})
                             })
