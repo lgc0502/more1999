@@ -5,6 +5,7 @@ import postApi from './postApi.js';
 import {
     XYPlot,
     XAxis,
+    YAxis,
     VerticalGridLines,
     HorizontalGridLines,
     AreaSeries
@@ -120,17 +121,17 @@ class Explore extends Component {
                     }
                  </div>
                  <XYPlot
-                    width={window.innerWidth}
+                    width={window.innerWidth*0.75}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
-                    Range={[window.innerWidth*0.1,window.innerWidth*0.6]}
+                    Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
                    
                 >
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis  
                 xDomain={[beginhour,endhour]}
-                xRange={[window.innerWidth*0.1,window.innerWidth*0.5]}
+                xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
                 tickValues={Object.keys(this.state.time)}
                 //tickFormat={(d)=>formatTime(d)}
                 tickTotal={24}
@@ -139,14 +140,18 @@ class Explore extends Component {
                     text:{fill:"#6b6b76",fontWeight: 400}
                 }}
                 />
+                <YAxis/>
                     <AreaSeries
                         className="area-series-example"
                         curve="curveMonotoneX"
                         data={
 
                             Object.keys(this.state.time).map((d)=>{   
-                                
-                                return({x:d,y: this.state.time[d]})
+                                console.log(x)
+                                console.log(d)
+                                console.log(y)
+                                console.log(this.state.time[d])
+                                return({x:d,y:this.state.time[d]})
                             })
                         }
                         />    
