@@ -120,7 +120,7 @@ class Explore extends Component {
                     }
                  </div>
                  <XYPlot
-                    width={window.innerWidth*0.75}
+                    width={window.innerWidth}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
                     Range={[window.innerWidth*0.1,window.innerWidth*0.6]}
@@ -129,8 +129,8 @@ class Explore extends Component {
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis  
-                XDomain={[beginhour,endhour]}
-                xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+                xDomain={[beginhour,endhour]}
+                xRange={[window.innerWidth*0.1,window.innerWidth*0.5]}
                 tickValues={Object.keys(this.state.time)}
                 //tickFormat={(d)=>formatTime(d)}
                 tickTotal={24}
