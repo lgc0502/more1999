@@ -40,7 +40,7 @@
   #load_text {
     position: absolute;
     top: 45%;
-    left: 45%;
+    left: 50%;
     font-size: 1em;
     font-family: 'Noto Sans TC', sans-serif;
   }
@@ -53,11 +53,10 @@
     height: 10vh;
     margin-bottom: 5%;
     text-align: center;
-    font-family: 'Noto Sans TC', sans-serif;
     letter-spacing: 10px;
-    font-weight: bolder;
-    font-size: 4em;
     color: rgb(216, 33, 9);
+    box-sizing: border-box;
+    font: bolder 10vmin 'Noto Sans TC', sans-serif;
   }
   
 </style>
@@ -66,11 +65,10 @@
   <div class="load">
     <h3 id="load_text">正在接通1999 ......</h3>
   </div>
-
   <h1 class="topic">台南視政廳</h1>
+  
   <div id="root" data-towngeo='/static/data/tainan.json'></div>
  
-  <div id="footer"></div>
   <script>
     $(window).on('load', function () {
       $(".topic").show();
