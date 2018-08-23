@@ -6,38 +6,34 @@ const color = ['#2e1f54','#f00a36','#ed3b21','#ff6908','#ffc719','#598c14','#335
 const type = {"parking":'違規停車',"light":'路燈故障',"noise":'噪音舉發',"aisle":'騎樓舉發',"road":'道路維修',"traffic":'交通運輸',"dirty":'髒亂污染',"pipe":'民生管線',"animal":'動物救援'}
 class Instantnotification extends Component{
     
-    constructor(props){
-        super(props)
-       
-        this.state = {
-          isLoading: true,
-          request_data: {},
-          finish_bar_data:{},
-          unfinish_bar_data:{}
-        }
-      }
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoading: true,
+      request_data: {},
+      finish_bar_data:{},
+      unfinish_bar_data:{}
+    }
+  }
 
-    componentDidMount(){
-        postApi.requertPost('./this_week_data','null').then(data => {
+  componentDidMount(){
+    postApi.requertPost('./this_week_data','null').then(data => {
         
-          this.setState({
-            request_data:data,
-            isLoading : false,
-            finish_bar_data: Object.keys(data.res.Category).map((key,i)=>{
-              return {x:data.res.Category[key][0],y:type[key]} 
-            }),
-            unfinish_bar_data:Object.keys(data.res.Category).map((key,i)=>{
-              return {x:data.res.Category[key][1],y:type[key]} 
-            })
+      this.setState({
+        request_data:data,
+        isLoading : false,
+        finish_bar_data: Object.keys(data.res.Category).map((key,i)=>{
+          return {x:data.res.Category[key][0],y:type[key]} 
+          }),
+        unfinish_bar_data:Object.keys(data.res.Category).map((key,i)=>{
+          return {x:data.res.Category[key][1],y:type[key]} 
           })
-       })
-      }
+      })
+    })
+  }
 
     render(){
         const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
-        
-       
-        console.log(request_data)
         if(isLoading){
           return (
            <div class="loaddata">
