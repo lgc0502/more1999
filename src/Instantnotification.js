@@ -99,8 +99,10 @@ class Instantnotification extends Component{
                       }}>處理 / 未處理</h3>
                 </div>
                 <div className="ui segment dashboard">
+                <div className="dectipte-data">
                 {Object.keys(request_data.res.Category).map((t)=>(
                   <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</span>))}
+                </div>
                 <XYPlot
                     width={window.innerWidth*0.32}
                     height={window.innerWidth*0.25}

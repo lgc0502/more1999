@@ -120,38 +120,47 @@ class Explore extends Component {
                     ))
                     }
                  </div>
+                 <h3>各時段通報數量統計</h3>
                  <XYPlot
-                    width={window.innerWidth*0.75}
+                    width={window.innerWidth*0.85}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
-                    Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
+                    Range={[window.innerWidth*0.1,window.innerWidth*0.8]}
                    
                 >
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis  
                 xDomain={[beginhour,endhour]}
-                xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+                xRange={[0,window.innerWidth*0.75]}
                 tickValues={Object.keys(this.state.time)}
-                //tickFormat={(d)=>formatTime(d)}
+                tickFormat={(d)=>{return d+":00"}}
                 tickTotal={24}
                 style={{
                     line:{stroke:"#ADDDE1"},
                     text:{fill:"#6b6b76",fontWeight: 400}
                 }}
                 />
-                <YAxis/>
+                <YAxis
+                     tickFormat={(d)=>{
+                        if(Math.floor(d)!=d)
+                        {
+                            return;
+                        }
+                        return d;
+                    }}
+                    style={{
+                        line:{stroke:"#ADDDE1"},
+                        text:{fill:"#6b6b76",fontWeight: 400}
+                        }}
+                        />
                     <AreaSeries
                         className="area-series-example"
                         curve="curveMonotoneX"
                         data={
 
                             Object.keys(this.state.time).map((d)=>{   
-                                console.log("x")
-                                console.log(d)
-                                console.log("y")
-                                console.log(this.state.time[d])
-                                return({x:d,y:this.state.time[d]})
+                                return({x:Number(d),y:this.state.time[d]})
                             })
                         }
                         />    
