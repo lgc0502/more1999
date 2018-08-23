@@ -131,6 +131,7 @@ class Explore extends Component {
                 <XAxis  
                 XDomain={[beginhour,endhour]}
                 xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+                tickValues={Object.keys(this.state.time)}
                 //tickFormat={(d)=>formatTime(d)}
                 tickTotal={24}
                 style={{
