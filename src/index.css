@@ -248,10 +248,10 @@ button.easy-button-button{
   margin-left:10%;
 }
 .ui.segment.history-mapinfo{
-  margin:0rem 1% 5%
+  margin:0rem 0.5% 5%
 }
 .history-mapinfo{
-  width:30%;
+  width:32%;
   float: left;
 }
 #mapinfo_time,#mapinfo_category{

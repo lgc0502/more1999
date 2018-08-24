@@ -24,8 +24,7 @@ export default class Towninfo extends Component {
             console.log(time[0])
             if(time[0]!='0' & time[0]!=0)
             {
-               
-                responsetime[d]=[0]+'天'+time[1]+'時'+time[2]+'分' 
+                responsetime[d]=time[0]+'天'+time[1]+'時'+time[2]+'分' 
             }
             else{
                 responsetime[d]=time[1]+'時'+time[2]+'分'
