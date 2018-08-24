@@ -28,7 +28,13 @@ span,h3{
   height:55vmin;
 }
 .dashboard {
-  width:34%;
+  width:30%;
+  height:50vmin;
+  float: left;
+  border:solid rgb(177,150,147);
+}
+.dashboard:last-child {
+  width:38%;
   height:50vmin;
   float: left;
   border:solid rgb(177,150,147);
@@ -41,7 +47,7 @@ span,h3{
   margin-left:2%;
 }
 .instant-descript-data{
-  width:5%;
+  width:15%;
   height: auto;
 }
 .instant-descript-data ,.instant-category-chart{
@@ -282,7 +288,7 @@ span.ratio:last-child{
 .instantdonut{
   position: relative;
 }
-.hint circle{
+svg.hint{
   width: 2vw;
   height:3vh;
 }
