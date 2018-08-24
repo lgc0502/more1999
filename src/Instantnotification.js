@@ -92,19 +92,16 @@ class Instantnotification extends Component{
               <YAxis
                 className="categoryaxe"
                 width={window.innerWidth*0.06}
-                yRange={[0,window.innerWidth*0.22]}
                 top={1}/>
               <HorizontalBarSeries
                 className="categorybar"
                 data={finish_bar_data} 
-                yRange={[0,window.innerWidth*0.22]}
                 color={"#598c14"}
                 style={{borderRadius:5}}/>
              
               <HorizontalBarSeries
                 className="categorybar"
                 data={unfinish_bar_data} 
-                yRange={[0,window.innerWidth*0.22]}
                 color="#b0a696"
                 style={{opacity:0.4}}/> 
              

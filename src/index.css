@@ -53,8 +53,11 @@ span,h3{
   float: left;
 }
 .categoryaxe {
-  height:auto;
   margin-left:2%;
+}
+.categoryaxe,.categorybar{
+  height: 50vmin;
+  
 }
 .caseslist{
   width:70%;
