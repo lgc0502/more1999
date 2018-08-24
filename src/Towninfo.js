@@ -13,11 +13,10 @@ export default class Towninfo extends Component {
             return {x:this.props.category[key],y:type[key]} 
         })
         const responsetime = Object.keys(this.props.time).map((key,i)=>{
-            console.log(key)
-            console.log(time)
             let time = this.props.time[key].split(":")
             return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
         })
+        console.log(categorynum)
         console.log(responsetime)
         return(
             <div className="ui segment" style={{height:500}} >
@@ -29,7 +28,7 @@ export default class Towninfo extends Component {
                     width={window.innerWidth*0.2-window.innerWidth*0.06}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
+                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x})),0]}
                     xRange={[0,window.innerWidth*0.06]}
                  >
                  <HorizontalBarSeries
