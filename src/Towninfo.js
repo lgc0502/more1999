@@ -38,7 +38,7 @@ export default class Towninfo extends Component {
                 </XYPlot>
                 <div className="history-descript-data">
                 {Object.keys(this.props.time).map((key)=>(
-                  <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span> / <span style={{color:"#b0a696"}}>{request_data.res.Category[key][1]}</span></p>))}
+                  <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>))}
                 </div>
                  <XYPlot
                     className="category"
