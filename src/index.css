@@ -42,14 +42,17 @@ span,h3{
   margin-top:0%;
   margin-left:2%;
 }
-.instant-descript-data{
+.instant-descript-data,.history-descript-data{
   position: absolute;
   top:7%;
   left:15%;
   width:15%;
   height: auto;
 }
-.instant-descript-data ,.instant-category-chart{
+.history-descript-data:last-child{
+  left:30%;
+}
+.instant-descript-data ,.instant-category-chart.history-descript-data{
   float: left;
 }
 .categoryaxe {
