@@ -86,7 +86,7 @@ class Instantnotification extends Component{
               height={window.innerWidth*0.25}
               yType='ordinal'
               xRange={[95,window.innerWidth*0.3]}
-              yRange={[0,window.innerWidth*0.25]}
+              yRange={[0,window.innerWidth*0.22]}
               stackBy='x'
               className="instant-category-chart">
               <YAxis
