@@ -49,8 +49,12 @@ span,h3{
   width:15%;
   height: auto;
 }
+.history-descript-data{
+  top:22%;
+  left:33%;
+}
 .history-descript-data:last-child{
-  left:30%;
+  left:52%;
 }
 .instant-descript-data ,.instant-category-chart.history-descript-data{
   float: left;
