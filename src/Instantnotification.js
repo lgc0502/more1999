@@ -36,9 +36,7 @@ class Instantnotification extends Component{
 
   render(){
     const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
-    console.log(request_data)
-    console.log(finish_bar_data)
-    console.log(unfinish_bar_data)
+    
     if(isLoading){
       return (
         <div class="loaddata">
@@ -74,36 +72,39 @@ class Instantnotification extends Component{
               <span className="ratio">complete</span>
             </RadialChart>
            
-            <h3>本週截至目前</h3>
+            <h3>本週截至目前通報</h3>
             <h2>{request_data.res.FinishRate.finish[0]} / {request_data.res.FinishRate.unfinish[0]}</h2>
             <h3 id="ratiohint" style={{fontSize:12}}>處理 / 未處理</h3>
           </div>
           <div className="ui segment dashboard">
             <div className="instant-descript-data">
-              {Object.keys(transtype).map((key)=>(
+              {Object.keys(request_data.res.Category).map((key)=>(
                   <p><span style={{color:"#598c14"}}>{request_data.res.Category[key][0]}</span> / <span style={{color:"#b0a696"}}>{request_data.res.Category[key][1]}</span></p>))}
             </div>
             <XYPlot
               width={window.innerWidth*0.32}
               height={window.innerWidth*0.25}
               yType='ordinal'
-              xRange={[90,window.innerWidth*0.3]}
-              yRange={[0,window.innerWidth*0.22]}
+              xRange={[95,window.innerWidth*0.3]}
+              yRange={[0,window.innerWidth*0.25]}
               stackBy='x'
               className="instant-category-chart">
               <YAxis
                 className="categoryaxe"
                 width={window.innerWidth*0.06}
+                yRange={[0,window.innerWidth*0.22]}
                 top={1}/>
               <HorizontalBarSeries
                 className="categorybar"
                 data={finish_bar_data} 
+                yRange={[0,window.innerWidth*0.22]}
                 color={"#598c14"}
                 style={{borderRadius:5}}/>
              
               <HorizontalBarSeries
                 className="categorybar"
                 data={unfinish_bar_data} 
+                yRange={[0,window.innerWidth*0.22]}
                 color="#b0a696"
                 style={{opacity:0.4}}/> 
              
