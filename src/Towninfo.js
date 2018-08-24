@@ -31,9 +31,9 @@ export default class Towninfo extends Component {
                 <div>
                 {Object.keys(this.props.category).map((key,i)=>(
                     <div className={`ui ${palette[i]} segment history-mapinfo`}>
-                    <p><span style={{color:(this.props.category[key]==='0')?"#b0a696":"#000"}}>{type[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]==='0')?"#b0a696":"#000"}}>平均處理時間{responsetime[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]==='0')?"#b0a696":"#000"}}>通報數{this.props.category[key]}</span></p>
+                    <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>{type[key]}</span></p>
+                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>處理時間{responsetime[key]}</span></p>
+                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>通報數{this.props.category[key]}</span></p>
                     </div>     
                 ))}
                 </div>

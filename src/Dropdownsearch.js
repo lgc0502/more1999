@@ -55,7 +55,7 @@ class Dropdownsearch extends Component {
       const view = townOptions.filter(({text}) => text === this.state.selectedtown)[0]
      
       return (
-        <div className="villdropdown">
+        <div className="dropdown">
             <Divider hidden/>
               <Dropdown
                 onChange={this.setVillValue.bind(this)}
@@ -76,7 +76,7 @@ class Dropdownsearch extends Component {
     return (
      
           <div className="grid-container">
-            <div className="towndropdown">
+            <div className="dropdown">
               <Divider hidden/>
               <Dropdown
                 onChange={this.setTownValue.bind(this)}

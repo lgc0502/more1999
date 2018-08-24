@@ -97,18 +97,20 @@ Main {
   left:0%;
 }
 
-.villdropdown ,.towndropdown{
+.dropdown {
   width: 40%;
   height: auto;
+  float: left;
 }
-.villdropdown {
-  display:inline;
-}
+
 #dropdown {
-  width: 50%;
-  height:auto;
+  width: 70%;
+  height:15vh;
   margin-top:3%;
   z-index: 1000;
+}
+.visible content{
+  margin-left: 10%;
 }
 #Map {
   width:90%;
