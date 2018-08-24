@@ -22,12 +22,12 @@ export default class Towninfo extends Component {
             <div className="ui segment" style={{height:500}} >
                 <h3>{this.props.town}</h3>
                 <div>
-                {Object.keys(this.props.category).map((key)=>{
+                {Object.keys(this.props.category).map((key)=>(
                     <div className="ui segment history-mapinfo">
                       <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>
                       <p><span style={{color:"#598c14"}}>{this.props.category[key]}</span></p>
                     </div>     
-                })}
+                ))}
                 </div>
                 {/* <h4 id="mapinfo_time">平均處理時間</h4>
                 <h4 id="mapinfo_category">各類別統計</h4>
