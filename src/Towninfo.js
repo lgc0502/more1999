@@ -19,9 +19,9 @@ export default class Towninfo extends Component {
         const responsetime = this.props.time.map((d)=>{
             let time = d.split(":")
             if(time[0]===0)
-                return time[1]+'時'+time[2]+'分'
+                return (time[1]+'時'+time[2]+'分')
             else
-                return time[0]+'天'+time[1]+'時'+time[2]+'分' 
+                return (time[0]+'天'+time[1]+'時'+time[2]+'分') 
         })
        console.log(responsetime)
         return(
