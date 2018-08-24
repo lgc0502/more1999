@@ -245,7 +245,9 @@ button.easy-button-button{
 .time {
   margin-left:10%;
 }
-
+.history-mapinfo{
+  float: left;
+}
 #mapinfo_time,#mapinfo_category{
   float:left;
 }
