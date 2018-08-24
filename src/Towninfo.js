@@ -20,10 +20,10 @@ export default class Towninfo extends Component {
         var responsetime = new Object;
         Object.keys(this.props.time).map((d)=>{
             let time = this.props.time[d].split(":")
-            if(time[0]==='0')
-                responsetime[d]=time[1]+'時'+time[2]+'分'
-            else
+            if(time[0]!='0' & time[0]!=0)
                 responsetime[d]=[0]+'天'+time[1]+'時'+time[2]+'分' 
+            else
+                responsetime[d]=time[1]+'時'+time[2]+'分'
         })
         return(
             <div className="ui segment" style={{height:500}} >
@@ -32,8 +32,8 @@ export default class Towninfo extends Component {
                 {Object.keys(this.props.category).map((key,i)=>(
                     <div className={`ui ${palette[i]} segment history-mapinfo`}>
                     <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>{type[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>處理時間{responsetime[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>通報數{this.props.category[key]}</span></p>
+                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>處理時間 {responsetime[key]}</span></p>
+                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>通報數 {this.props.category[key]}</span></p>
                     </div>     
                 ))}
                 </div>

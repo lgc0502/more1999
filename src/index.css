@@ -4,9 +4,9 @@ body {
   font-family: sans-serif; 
 }
 .grid-container {
- width:50%;
- height:auto;
- margin-left:25%;
+ width:100%;
+ height:20vh;
+ margin-left:20%;
 }
 a {
   padding-left:2%;
@@ -248,10 +248,10 @@ button.easy-button-button{
   margin-left:10%;
 }
 .ui.segment.history-mapinfo{
-  margin:0rem 2% 5%
+  margin:0rem 1% 5%
 }
 .history-mapinfo{
-  width:29%;
+  width:30%;
   float: left;
 }
 #mapinfo_time,#mapinfo_category{
