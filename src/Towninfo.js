@@ -9,21 +9,28 @@ export default class Towninfo extends Component {
 
     render(){
        
-        const categorynum = Object.keys(this.props.category).map((key,i)=>{
-            return {x:this.props.category[key],y:type[key]} 
-        })
+        // const categorynum = Object.keys(this.props.category).map((key,i)=>{
+        //     return {x:this.props.category[key],y:type[key]} 
+        // })
+        // const responsetime = Object.keys(this.props.time).map((key,i)=>{
+        //     let time = this.props.time[key].split(":")
+        //     return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
+        // })
         const responsetime = Object.keys(this.props.time).map((key,i)=>{
             let time = this.props.time[key].split(":")
-            return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
+            if(time[0]===0)
+                return {key:time[1]+'時'+time[2]+'分'}
+            else
+                return {key:time[0]+'天'+time[1]+'時'+time[2]+'分'} 
         })
-        console.log(categorynum)
-        console.log(responsetime)
+       
         return(
             <div className="ui segment" style={{height:500}} >
                 <h3>{this.props.town}</h3>
                 <div>
                 {Object.keys(this.props.category).map((key)=>(
                     <div className="ui segment history-mapinfo">
+                    <p><span style={{color:"#598c14"}}>{key}</span></p>
                       <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>
                       <p><span style={{color:"#598c14"}}>{this.props.category[key]}</span></p>
                     </div>     
