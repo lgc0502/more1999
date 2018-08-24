@@ -78,13 +78,13 @@ class Instantnotification extends Component{
           <div className="ui segment dashboard">
             <div className="instant-descript-data">
               {Object.keys(request_data.res.Category).map((t)=>(
-                  <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</span>))}
+                  <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}+' '</span>))}
             </div>
             <XYPlot
               width={window.innerWidth*0.32}
               height={window.innerWidth*0.25}
               yType='ordinal'
-              xRange={[45,window.innerWidth*0.3]}
+              xRange={[90,window.innerWidth*0.3]}
               stackBy='x'
               className="instant-category-chart">
               <YAxis

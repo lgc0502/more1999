@@ -31,13 +31,9 @@ span,h3{
   width:30%;
   height:50vmin;
   float: left;
-  border:solid rgb(177,150,147);
 }
 .dashboard:last-child {
   width:38%;
-  height:50vmin;
-  float: left;
-  border:solid rgb(177,150,147);
 }
 .board .dashboard:first-child{
   margin-left: 15%;
