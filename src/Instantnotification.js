@@ -36,6 +36,9 @@ class Instantnotification extends Component{
 
   render(){
     const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
+    console.log(request_data)
+    console.log(finish_bar_data)
+    console.log(unfinish_bar_data)
     if(isLoading){
       return (
         <div class="loaddata">
