@@ -30,8 +30,8 @@ export default class Towninfo extends Component {
                 <div>
                 {Object.keys(this.props.category).map((key)=>(
                     <div className="ui segment history-mapinfo">
-                    <p><span style={{color:"#598c14"}}>{key}</span></p>
-                      <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>
+                    <p><span style={{color:"#598c14"}}>{type[key]}</span></p>
+                      <p><span style={{color:"#598c14"}}>{responsetime[key]}</span></p>
                       <p><span style={{color:"#598c14"}}>{this.props.category[key]}</span></p>
                     </div>     
                 ))}

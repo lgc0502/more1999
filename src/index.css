@@ -245,9 +245,11 @@ button.easy-button-button{
 .time {
   margin-left:10%;
 }
+.ui.segment.history-mapinfo{
+  margin:0rem 2% 5%
+}
 .history-mapinfo{
-  width:15%;
-  margin-left: 5%;
+  width:29%;
   float: left;
 }
 #mapinfo_time,#mapinfo_category{
