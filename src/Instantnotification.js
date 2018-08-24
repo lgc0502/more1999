@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import postApi from './postApi.js';
-import {XYPlot,RadialChart,HorizontalBarSeries,YAxis,Hint} from "react-vis";
+import {XYPlot,RadialChart,HorizontalBarSeries,YAxis} from "react-vis";
 import Listgroup from "./Listgroup.js";
 
 const palette = ['#2e1f54','#f00a36','#ed3b21','#ff6908','#ffc719','#598c14','#335238','#4a8594','#706357']
@@ -96,25 +96,13 @@ class Instantnotification extends Component{
                 data={finish_bar_data} 
                 color={"#598c14"}
                 style={{borderRadius:5}}/>
-              <Hint value={finish_bar_data}>
-                <div style={{background:'black'}}>
-                {finish_bar_data.map((d)=>(
-                  <p>{d}</p>
-                ))}
-                </div>
-              </Hint>
+             
               <HorizontalBarSeries
                 className="categorybar"
                 data={unfinish_bar_data} 
                 color="#b0a696"
                 style={{opacity:0.4}}/> 
-              <Hint value={unfinish_bar_data}>
-                <div style={{background:'black'}}>
-                {unfinish_bar_data.map((d)=>(
-                  <p>{d}</p>
-                ))}
-                </div>
-              </Hint>
+             
             </XYPlot>  
           </div>
         </div>
