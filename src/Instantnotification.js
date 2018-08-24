@@ -78,7 +78,7 @@ class Instantnotification extends Component{
           <div className="ui segment dashboard">
             <div className="instant-descript-data">
               {Object.keys(request_data.res.Category).map((t)=>(
-                  <span>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}+' '</span>))}
+                  <p>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</p>))}
             </div>
             <XYPlot
               width={window.innerWidth*0.32}

@@ -43,6 +43,9 @@ span,h3{
   margin-left:2%;
 }
 .instant-descript-data{
+  position: absolute;
+  top:2%;
+  left:15%;
   width:15%;
   height: auto;
 }
