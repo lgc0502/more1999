@@ -18,7 +18,7 @@ export default class Towninfo extends Component {
         // })
         var responsetime = new Object;
         Object.keys(this.props.time).map((d)=>{
-            let time = d.split(":")
+            let time = this.props.time[d].split(":")
             if(time[0]===0)
                 responsetime[d]=time[1]+'時'+time[2]+'分'
             else
