@@ -4,7 +4,7 @@ var geo_options={
     maximumAge:60000,
     timeout:30000,
 }
-var p=new Object();
+
 export default {
     getLocation:()=>{
         if(navigator.geolocation){

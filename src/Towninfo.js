@@ -16,14 +16,14 @@ export default class Towninfo extends Component {
         //     let time = this.props.time[key].split(":")
         //     return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
         // })
-        const responsetime = Object.keys(this.props.time).map((key,i)=>{
-            let time = this.props.time[key].split(":")
+        const responsetime = this.props.time.map((d)=>{
+            let time = d.split(":")
             if(time[0]===0)
-                return {key:time[1]+'時'+time[2]+'分'}
+                return time[1]+'時'+time[2]+'分'
             else
-                return {key:time[0]+'天'+time[1]+'時'+time[2]+'分'} 
+                return time[0]+'天'+time[1]+'時'+time[2]+'分' 
         })
-       
+       console.log(responsetime)
         return(
             <div className="ui segment" style={{height:500}} >
                 <h3>{this.props.town}</h3>
