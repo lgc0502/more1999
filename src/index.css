@@ -20,7 +20,7 @@ a {
   height:auto;
 }
 span,h3{
-  font: 4vmin 'Noto Sans TC', sans-serif;
+  font: 1rem 'Noto Sans TC', sans-serif;
 }
 
 .board{
@@ -267,7 +267,7 @@ rect {
   top:20%;
   left:21%;
 }
-span .ratio{ 
+span.ratio{ 
   position:absolute;
   top:8vmin;
   left:32%;
@@ -275,7 +275,7 @@ span .ratio{
   color:#598c14;
   font-weight:600;
 }
-span .ratio:last-child{
+span.ratio:last-child{
   top:11vmin;
   font-size: 0.5em;
 }
@@ -283,8 +283,8 @@ span .ratio:last-child{
   position: relative;
 }
 .hint circle{
-  width: 7vw;;
-  height:3.55vh;
+  width: 2vw;
+  height:3vh;
 }
 
 h3#ratiohint {
