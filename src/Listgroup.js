@@ -11,7 +11,7 @@ class Listgroup extends Component{
     render(){
         const {unfinishlist} = this.state
         return(
-            <div className="overview">
+            <div className="caseslist">
                 <table className="ui basic table">
                 <thead>
                     <tr>
