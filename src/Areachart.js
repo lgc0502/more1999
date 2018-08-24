@@ -63,13 +63,13 @@ class Areachart extends Component {
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[window.innerWidth*0.1,window.innerWidth*0.6]}
+        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
        >
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
-           xRange={[window.innerWidth*0.1,window.innerWidth*0.6]}
+           xRange={[0,window.innerWidth*0.65]}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={6}
            xType="time"
@@ -86,7 +86,7 @@ class Areachart extends Component {
                   data={
                     dateCollection.map((d1,i1)=>{  
 
-                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(9-3*i),y0:9-3*i})
+                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(40-5*i),y0:40-5*i})
                     })
                   }
                   color={Palette[i]}
