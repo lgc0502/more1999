@@ -4,8 +4,8 @@ import {XYPlot,RadialChart,HorizontalBarSeries,YAxis} from "react-vis";
 import Listgroup from "./Listgroup.js";
 
 const palette = ['#2e1f54','#f00a36','#ed3b21','#ff6908','#ffc719','#598c14','#335238','#4a8594','#706357']
-const type = {"parking":'違規停車',"light":'路燈故障',"noise":'噪音舉發',"aisle":'騎樓舉發',"road":'道路維修',"traffic":'交通運輸',"dirty":'髒亂污染',"pipe":'民生管線',"animal":'動物救援'}
 
+const transtype = {"animal":'動物救援',"pipe":'民生管線',"dirty":'髒亂污染',"traffic":'交通運輸',"road":'道路維修',"aisle":'騎樓舉發',"noise":'噪音舉發',"light":'路燈故障',"parking":'違規停車'}
 class Instantnotification extends Component{
     
   constructor(props){
@@ -25,10 +25,10 @@ class Instantnotification extends Component{
         request_data:data,
         isLoading : false,
         finish_bar_data: Object.keys(data.res.Category).map((key,i)=>{
-          return {x:data.res.Category[key][0],y:type[key]} 
+          return {x:data.res.Category[key][0],y:transtype[key]} 
           }),
         unfinish_bar_data:Object.keys(data.res.Category).map((key,i)=>{
-          return {x:data.res.Category[key][1],y:type[key]} 
+          return {x:data.res.Category[key][1],y:transtype[key]} 
           })
       })
     })
@@ -80,8 +80,8 @@ class Instantnotification extends Component{
           </div>
           <div className="ui segment dashboard">
             <div className="instant-descript-data">
-              {Object.keys(request_data.res.Category).map((t)=>(
-                  <p>{request_data.res.Category[t][0]} / {request_data.res.Category[t][1]}</p>))}
+              {Object.keys(transtype).map((key)=>(
+                  <p><span style={{color:"#598c14"}}>{request_data.res.Category[key][0]}</span> / <span style={{color:"#b0a696"}}>{request_data.res.Category[key][1]}</span></p>))}
             </div>
             <XYPlot
               width={window.innerWidth*0.32}
