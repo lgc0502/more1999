@@ -24,12 +24,13 @@ export default class Towninfo extends Component {
                 <h4 id="mapinfo_time">平均處理時間</h4>
                 <h4 id="mapinfo_category">各類別統計</h4>
                 <XYPlot
-                    className="time"
+                    className="categorybar time"
                     width={window.innerWidth*0.2-window.innerWidth*0.06}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
                     xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x})),0]}
                     xRange={[0,window.innerWidth*0.06]}
+                    yRange={[0,window.innerWidth*0.23]}
                  >
                  <HorizontalBarSeries
                     className="categorybar"
@@ -42,11 +43,12 @@ export default class Towninfo extends Component {
                   <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>))}
                 </div>
                  <XYPlot
-                    className="category"
+                    className="categorybar category"
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
                     xRange={[95,window.innerWidth*0.18]}
+                    yRange={[0,window.innerWidth*0.23]}
                  >
                  <YAxis 
                     className="categoryaxe"
