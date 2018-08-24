@@ -28,7 +28,7 @@ export default class Towninfo extends Component {
                     height={window.innerWidth*0.25}
                     yType='ordinal'
                     xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x}))+10,0]}
-                    xRange={[0,window.innerWidth*0.14]}
+                    xRange={[0,window.innerWidth*0.1]}
                  >
                  <HorizontalBarSeries
                     className="categorybar"
@@ -36,12 +36,16 @@ export default class Towninfo extends Component {
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>
+                <div className="history-descript-data">
+                {Object.keys(this.props.time).map((key)=>(
+                  <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span> / <span style={{color:"#b0a696"}}>{request_data.res.Category[key][1]}</span></p>))}
+                </div>
                  <XYPlot
                     className="category"
                     width={window.innerWidth*0.2}
                     height={window.innerWidth*0.25}
                     yType='ordinal'
-                    xRange={[45,window.innerWidth*0.18]}
+                    xRange={[95,window.innerWidth*0.18]}
                  >
                  <YAxis 
                     className="categoryaxe"
@@ -54,6 +58,11 @@ export default class Towninfo extends Component {
                     color="rgb(190,194,63)"
                  /> 
                 </XYPlot>
+               
+                <div className="history-descript-data">
+                {Object.keys(this.props.category).map((key)=>(
+                  <p><span style={{color:"#598c14"}}>{this.props.category[key]}</span></p>))}
+                </div>
             </div>
         )
     }

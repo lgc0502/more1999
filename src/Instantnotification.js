@@ -108,6 +108,7 @@ class Instantnotification extends Component{
             </XYPlot>  
           </div>
         </div>
+        <h3>即時未處理通報案件</h3>
         <Listgroup {...request_data}/> 
       </div>
     )

@@ -52,15 +52,14 @@ class Historicalstatistics extends Component {
   render(){
     
     const {isLoading,request_data} = this.state
-   if(isLoading){
-     return (
-      <div class="loaddata">
-        <h3 id="load_text">正在接通1999 ......</h3>
-      </div>
-     )
-   }
-    return (
-         
+    if(isLoading){
+      return (
+        <div class="loaddata">
+          <h3 id="load_text">正在接通1999 ......</h3>
+        </div>
+      )
+    }
+    return (   
         <div>
             <h1 className="date">{this.state.date.begin+"  -  "+this.state.date.end}</h1>
             <h1 className="tainanstate">大台南各類通報</h1>
