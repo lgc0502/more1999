@@ -131,6 +131,7 @@ def data_preprocess(raw_data):
                             area = c['long_name']
         except:
             print("geocoding-problem")
+            li = '未知'
             error = 1
     else:
         error = 1
