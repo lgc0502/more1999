@@ -50,8 +50,10 @@ class Historicalstatistics extends Component {
     this.eventEmitter.removeAllListeners()
   }
   render(){
-    console.log("re-render history")
+    
     const {isLoading,request_data} = this.state
+    console.log("re-render history")
+    console.log(request_data)
     if(isLoading){
       return (
         <div class="loaddata">

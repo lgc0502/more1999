@@ -82,6 +82,7 @@ class React_leaflet extends Component{
    }
     render(){
         console.log("re-render react-leaflet")
+        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
