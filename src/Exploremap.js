@@ -1,10 +1,17 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react-leaflet'
-
+import L from 'leaflet'
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
-const icon = {"違規停車":'far fa-parking-circle-slash',"路燈故障":'parking-circle-slash',"噪音舉發":'parking-circle-slash',"騎樓舉發":'parking-circle-slash',"道路維修":'parking-circle-slash',"交通運輸":'parking-circle-slash',"髒亂污染":'parking-circle-slash',"民生管線":'parking-circle-slash' ,"動物救援":'parking-circle-slash'};
-
+const iconUrl={"違規停車":'Asset1',"路燈故障":'Asset2',"噪音舉發":'Asset3',"騎樓舉發":'Asset4',"道路維修":'Asset5',"交通運輸":'Asset6',"髒亂污染":'Asset7',"民生管線":'Asset8' ,"動物救援":'Asset9'}
+function createicon(url){
+    return L.icon({
+        iconUrl:url,
+        iconSize:[38,95],
+        iconAnchor:[22,94],
+        popupAnchor:[-3,-76],  
+    });
+}
 class Exploremap extends Component{
     constructor(props){
         super(props)
@@ -82,7 +89,7 @@ class Exploremap extends Component{
                     <Marker position={[22.9972,120.2119]}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Circle center={d.position} color="white" fillColor={typecolor[d.category]} fillOpacity={1} radius={20}><i className={icon[d.category]}></i></Circle>))
+                            <Marker position={d.position} icon={createicon(iconUrl[d.category])}></Marker>))
                         }
                     </LayerGroup> 
                 </Map>

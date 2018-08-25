@@ -6,6 +6,8 @@ import Explore from './Explore'
 
 const Main=(props)=>{ 
     const data = props
+    console.log("main")
+    console.log(data)
     return(
         <main>
             <Switch>

@@ -14,7 +14,7 @@ export default class Towninfo extends Component {
         Object.keys(this.props.time).map((d)=>{
             let time = this.props.time[d].split(":")
             
-            if(time[0]===0 & time[1]===0 & time[2]===0){
+            if(time[0]==='0' & time[1]==='0' & time[2]==='0'){
                 responsetime[d]='-' 
             }
             else if(time[0]!='0' & time[0]!=0)
@@ -33,8 +33,8 @@ export default class Towninfo extends Component {
                 {Object.keys(this.props.category).map((key,i)=>(
                     <div className={`ui ${palette[i]} segment history-mapinfo`} style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>
                       <p><span >{type[key]}</span></p>
-                      <p><span style={{color:"#b0a696"}}>處理時間</span>{responsetime[key]}</p>
-                      <p><span style={{color:"#b0a696"}}>通報數</span>({this.props.category[key]}===0)?{this.props.category[key]}:-</p>
+                      <p><span style={{color:"#b0a696"}}>處理時間 </span>{responsetime[key]}</p>
+                      <p><span style={{color:"#b0a696"}}>通報數 </span>{this.props.category[key]}</p>
                     </div>     
                 ))}
                 </div>
