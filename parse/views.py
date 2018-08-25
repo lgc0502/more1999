@@ -62,6 +62,7 @@ def call_api_by_id(sid):
     return x
 
 def data_preprocess(raw_data):
+    print(raw_data)
     service_request_id = raw_data['service_request_id']#
     requested_datetime = raw_data['requested_datetime']#
     status = raw_data['status']#
@@ -119,10 +120,13 @@ def data_preprocess(raw_data):
                     lat = geocode_result[0]['geometry']['location']['lat']
                     lng = geocode_result[0]['geometry']['location']['lng']
             reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+            print(reverse_geocode_result)
             for i in reverse_geocode_result:
                 for c in i['address_components']:
                     if 'administrative_area_level_4' in c['types']:
                         li = c['long_name']
+                    else:
+                        li = '未知'
                     if area is None:
                         if 'administrative_area_level_3' in c['types']:
                             area = c['long_name']
@@ -245,8 +249,8 @@ def update_status():
                     search.delete()
 
 def test(request):
-    #get_new_data()
-    #update_status()
+    get_new_data()
+    update_status()
     #unfinish_detail()
     return render(request, 'index.html')
 
