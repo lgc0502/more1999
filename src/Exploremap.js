@@ -7,7 +7,7 @@ const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音�
 function createicon(url){
     return L.icon({
         iconUrl:url,
-        iconSize:[38,95],
+        iconSize:[38,38],
         iconAnchor:[22,94],
         popupAnchor:[-3,-76],  
     });
@@ -86,10 +86,16 @@ class Exploremap extends Component{
                        
                     />  
                     <Circle center={[22.9972,120.2119]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.9972,120.2119]}></Marker>    
+                    <Marker position={[22.9972,120.2119]}
+                        onClick={()=>{
+                            this.Marker.leafletElement.bindPopup("hi");
+                        }}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}></Marker>))
+                            <Marker position={d.position} onClick={()=>{
+                                this.Marker.leafletElement.bindPopup(`${d.address}`);
+                            }} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
+                            </Marker>))
                         }
                     </LayerGroup> 
                 </Map>
