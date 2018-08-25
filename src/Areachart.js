@@ -57,19 +57,20 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const {dateCollection,typeCollection} = this.state
-    console.log("re-render areachart")
+   console.log(timestamp_begin)
+   console.log(timestamp_end)
     return (
       <XYPlot
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
+        Range={[0,window.innerWidth*0.7]}
        >
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
-           xRange={[0,window.innerWidth*0.65]}
+           xRange={[10,window.innerWidth*0.65]}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={6}
            xType="time"

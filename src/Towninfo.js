@@ -10,23 +10,19 @@ export default class Towninfo extends Component {
 
     render(){
        
-        // const categorynum = Object.keys(this.props.category).map((key,i)=>{
-        //     return {x:this.props.category[key],y:type[key]} 
-        // })
-        // const responsetime = Object.keys(this.props.time).map((key,i)=>{
-        //     let time = this.props.time[key].split(":")
-        //     return {x:time[0]*24*60*60+time[1]*3600+time[2]*60,y:type[key]} 
-        // })
         var responsetime = new Object;
         Object.keys(this.props.time).map((d)=>{
             let time = this.props.time[d].split(":")
             
-            if(time[0]!='0' & time[0]!=0)
+            if(time[0]===0 & time[1]===0 & time[2]===0){
+                responsetime[d]='-' 
+            }
+            else if(time[0]!='0' & time[0]!=0)
             {
-                responsetime[d]=time[0]+'天'+time[1]+'時'+time[2]+'分' 
+                responsetime[d]=time[0]+'天'+time[1]+'小時'+time[2]+'分' 
             }
             else{
-                responsetime[d]=time[1]+'時'+time[2]+'分'
+                responsetime[d]=time[1]+'小時'+time[2]+'分'
             }
         })
        
@@ -35,58 +31,13 @@ export default class Towninfo extends Component {
                 <h2>{this.props.town}</h2>
                 <div>
                 {Object.keys(this.props.category).map((key,i)=>(
-                    <div className={`ui ${palette[i]} segment history-mapinfo`}>
-                    <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>{type[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>處理時間 {responsetime[key]}</span></p>
-                      <p><span style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>通報數 {this.props.category[key]}</span></p>
+                    <div className={`ui ${palette[i]} segment history-mapinfo`} style={{color:(this.props.category[key]===0)?"#b0a696":"#000"}}>
+                      <p><span >{type[key]}</span></p>
+                      <p><span style={{color:"#b0a696"}}>處理時間</span>{responsetime[key]}</p>
+                      <p><span style={{color:"#b0a696"}}>通報數</span>({this.props.category[key]}===0)?{this.props.category[key]}:-</p>
                     </div>     
                 ))}
                 </div>
-                {/* <h4 id="mapinfo_time">平均處理時間</h4>
-                <h4 id="mapinfo_category">各類別統計</h4>
-                <XYPlot
-                    className="categorybar time"
-                    width={window.innerWidth*0.2-window.innerWidth*0.06}
-                    height={window.innerWidth*0.25}
-                    yType='ordinal'
-                    xDomain={[Math.max.apply(Math,responsetime.map((d)=>{return d.x})),0]}
-                    xRange={[0,window.innerWidth*0.06]}
-                    yRange={[0,window.innerWidth*0.23]}
-                 >
-                 <HorizontalBarSeries
-                    className="categorybar"
-                    data={responsetime} 
-                    color="rgb(190,194,63)"
-                 /> 
-                </XYPlot>
-                <div className="history-descript-data">
-                {Object.keys(this.props.time).map((key)=>(
-                  <p><span style={{color:"#598c14"}}>{this.props.time[key]}</span></p>))}
-                </div>
-                 <XYPlot
-                    className="categorybar category"
-                    width={window.innerWidth*0.2}
-                    height={window.innerWidth*0.25}
-                    yType='ordinal'
-                    xRange={[95,window.innerWidth*0.18]}
-                    yRange={[0,window.innerWidth*0.23]}
-                 >
-                 <YAxis 
-                    className="categoryaxe"
-                    width={window.innerWidth*0.06}
-                    top={1}
-                   />
-                 <HorizontalBarSeries
-                    className="categorybar"
-                    data={categorynum} 
-                    color="rgb(190,194,63)"
-                 /> 
-                </XYPlot>
-               
-                <div className="history-descript-data">
-                {Object.keys(this.props.category).map((key)=>(
-                  <p><span style={{color:"#598c14"}}>{this.props.category[key]}</span></p>))}
-                </div> */}
             </div>
         )
     }
