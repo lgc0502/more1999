@@ -55,7 +55,7 @@ class Areachart extends Component {
   
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0])
-    const timestamp_end = new Date(this.state.dateCollection[0]) 
+    const timestamp_end = new Date(this.state.dateCollection[7]) 
     const {dateCollection,typeCollection} = this.state
    console.log(timestamp_begin)
    console.log(timestamp_end)

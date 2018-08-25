@@ -56,8 +56,8 @@ class Explore extends Component {
                 postApi.requertPost('./position',{
                 
                     params:{
-                      lat:22.997,//d.coords.latitude,
-                      lon:120.211,//d.coords.longitude,
+                      lat:22.9972,//d.coords.latitude,
+                      lon:120.2119,//d.coords.longitude,
                     }
                   }).then(data => {
                       console.log(data)
@@ -73,8 +73,7 @@ class Explore extends Component {
         })
     }
     render(){
-       console.log("explore")
-       console.log(this.state)
+       
        const beginhour=0;
        const endhour=23; 
        if(this.state.isLoading){
@@ -87,7 +86,7 @@ class Explore extends Component {
         }
         return (
             <div>
-                <h3>搜尋地點 查看通報狀況</h3>
+                <h2>搜尋地點 查看通報狀況</h2>
                 <div className="ui large input">
                     <input type="text" placeholder="Search..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
                     <button className="ui icon button" onClick={this.handleclick.bind(this)}>
@@ -120,7 +119,7 @@ class Explore extends Component {
                     ))
                     }
                  </div>
-                 <h3>各時段通報數量統計</h3>
+                 <h2>各時段通報數量統計</h2>
                  <XYPlot
                     width={window.innerWidth*0.85}
                     height={window.innerWidth*0.35}

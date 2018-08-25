@@ -3,7 +3,7 @@ import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react
 
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
-// const icon = {"違規停車":'parking-circle-slash',"路燈故障":'parking-circle-slash',"噪音舉發":'parking-circle-slash',"騎樓舉發":'parking-circle-slash',"道路維修":'parking-circle-slash',"交通運輸":'parking-circle-slash',"髒亂污染":'parking-circle-slash',"民生管線":'parking-circle-slash' ,"動物救援":'parking-circle-slash'};
+const icon = {"違規停車":'far fa-parking-circle-slash',"路燈故障":'parking-circle-slash',"噪音舉發":'parking-circle-slash',"騎樓舉發":'parking-circle-slash',"道路維修":'parking-circle-slash',"交通運輸":'parking-circle-slash',"髒亂污染":'parking-circle-slash',"民生管線":'parking-circle-slash' ,"動物救援":'parking-circle-slash'};
 
 class Exploremap extends Component{
     constructor(props){
@@ -54,7 +54,7 @@ class Exploremap extends Component{
             <div>
                 <Map ref='map' 
                      className='exploremap' 
-                     center={[22.99,120.21]} 
+                     center={[22.9972,120.2119]} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
                      maxZoom={this.state.maxZoom}>
@@ -78,11 +78,11 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <Circle center={[22.99,120.21]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.99,120.21]}></Marker>    
+                    <Circle center={[22.9972,120.2119]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
+                    <Marker position={[22.9972,120.2119]}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Circle center={d.position} color="white" fillColor={typecolor[d.category]} fillOpacity={1} radius={20}></Circle>))
+                            <Circle center={d.position} color="white" fillColor={typecolor[d.category]} fillOpacity={1} radius={20}><i className={icon[d.category]}></i></Circle>))
                         }
                     </LayerGroup> 
                 </Map>
