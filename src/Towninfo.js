@@ -20,8 +20,7 @@ export default class Towninfo extends Component {
         var responsetime = new Object;
         Object.keys(this.props.time).map((d)=>{
             let time = this.props.time[d].split(":")
-            console.log(this.props.time[d])
-            console.log(time[0])
+            
             if(time[0]!='0' & time[0]!=0)
             {
                 responsetime[d]=time[0]+'天'+time[1]+'時'+time[2]+'分' 
@@ -30,10 +29,10 @@ export default class Towninfo extends Component {
                 responsetime[d]=time[1]+'時'+time[2]+'分'
             }
         })
-        console.log(responsetime)
+       
         return(
             <div className="ui segment" style={{height:500}} >
-                <h3>{this.props.town}</h3>
+                <h2>{this.props.town}</h2>
                 <div>
                 {Object.keys(this.props.category).map((key,i)=>(
                     <div className={`ui ${palette[i]} segment history-mapinfo`}>

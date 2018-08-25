@@ -66,6 +66,10 @@ span,h3{
   height: 45vmin;
   
 }
+header.grid-container{
+  margin-left: 0%;
+  height: 10vh;
+}
 .caseslist{
   width:70%;
   height:auto;

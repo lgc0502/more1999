@@ -9,8 +9,8 @@ import {
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
 
-const Palette= ["#5E86C1","#33E6CC","#7400A1","#E6005C","#A52A2A","#FF2400","#FFBF00","	#9ACD32","#1E90FF"]
-const formatTime= timeFormat('%B %d')
+const Palette = ['red','orange','yellow','olive','green','teal','blue','violet','purple']
+const formatTime= timeFormat('%m/%d %a')
 class Areachart extends Component {
 
   constructor(props) {
@@ -85,8 +85,7 @@ class Areachart extends Component {
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
-
-                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(40-5*i),y0:40-5*i})
+                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }
                   color={Palette[i]}

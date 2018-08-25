@@ -48,7 +48,9 @@ class Dropdownsearch extends Component {
     })
 
   }
-  
+  componentWillUnmount(){
+    this.eventEmitter.removeAllListeners()
+  }
   render() {
     const getMajorMethod = () => {
     
