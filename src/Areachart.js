@@ -57,7 +57,7 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[0]) 
     const {dateCollection,typeCollection} = this.state
-  
+    console.log("re-render areachart")
     return (
       <XYPlot
         width={window.innerWidth*0.75}
