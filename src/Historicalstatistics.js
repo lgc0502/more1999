@@ -39,6 +39,7 @@ class Historicalstatistics extends Component {
   }
  
   componentDidUpdate(){
+    console.log("share data in history")
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
           request_data:{...data},
