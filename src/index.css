@@ -1,53 +1,171 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-.topic {
-  display: none;
-  position:relative;
-  transform: translateY(50%);
-  width: 100%;
-  height:40vh;
-  text-align: center;
-  font-size: 5em;
-  color: rgb(216, 33, 9);
-}
-
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #FFFFFF;
+  font-family: sans-serif; 
 }
+.grid-container {
+ width:100%;
+ height:20vh;
+ margin-left:20%;
+}
+a {
+  padding-left:2%;
+  padding-right:2%;
+  color: #000000;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+.root{
+  width:100%;
+  height:auto;
+}
+span,h3{
+  font: 1rem 'Noto Sans TC', sans-serif;
+}
+
+.board{
+  width:100%;
+  height:55vmin;
+}
+.dashboard {
+  width:30%;
+  height:50vmin;
+  float: left;
+}
+.dashboard:last-child {
+  width:38%;
+}
+.board .dashboard:first-child{
+  margin-left: 15%;
+}
+.board .dashboard:last-child{
+  margin-top:0%;
+  margin-left:2%;
+}
+.instant-descript-data,.history-descript-data{
+  position: absolute;
+  top:7%;
+  left:15%;
+  width:15%;
+  height: auto;
+}
+.history-descript-data{
+  top:22%;
+  left:33%;
+}
+.history-descript-data:last-child{
+  left:52%;
+}
+.instant-descript-data ,.instant-category-chart.history-descript-data{
+  float: left;
+}
+.categoryaxe {
+  margin-left:2%;
+}
+.categoryaxe,.categorybar{
+  height: 45vmin;
+  
+}
+header.grid-container{
+  margin-left: 0%;
+  height: 10vh;
+}
+.caseslist{
+  width:70%;
+  height:auto;
+  margin-left:15%;
+}
+.case {
+  text-align: left;
+}
+Main {
+  margin-top:5%;
+}
+
 .chineseText {
-  font-family: 'Noto Sans TC',sans-serif;
-  font-weight: 400;
-  font-size: 0.5em;
+  /* font-family: 'Noto Sans TC',sans-serif; */
+  font-size: 1em;
+  letter-spacing: 2px;  
 }
 
 #Donutchart {
   width: 85%;
-  height:35vh;
+  height:50vh;
   padding-left: 5%;
   padding-right: 5%
 }
+
 .compare_quantity {
   position: absolute;
-  top:42%;
+  top:47%;
   left:0%;
 }
-.villdropdown ,.towndropdown{
-  width: 50%;
-  height: auto;
-}
-#dropdown {
-  width: 50%;
-  height:auto;
-  margin-top:3%;
-}
-#Map {
-  width: 100%;
+
+.dropdown {
+  width: 40%;
   height: auto;
   float: left;
-  padding-top:2%;
-  padding-bottom: 5%;
+}
+
+#dropdown {
+  width: 70%;
+  height:15vh;
+  margin-top:3%;
+  z-index: 1000;
+}
+.visible content{
+  margin-left: 10%;
+}
+#Map {
+  width:90%;
+  height:500px;
+  margin-top:10%;
+ 
+}
+.leaflet-top,.leaflet-bottom {
+  position: absolute;
+  z-index: 10000;
+}
+.leafletmap {
+  position:relative;
+  width:50%;
+  height: 500px;
+  float:left; 
+}
+.Mapinfo {
+  float:left;
+  width:49%;
+  height:500px;
+  margin-left:1%;
+} 
+
+#map {
+  width:70%;
+  height: 450px;
+  float:left;
+}
+.date {
+  position: relative;
+  height: auto;
+  font-size: 16px;
+  text-align: center;
+  color: #000000;
+  margin-top:2%;
+  margin-bottom:2%;
+  letter-spacing: 5px;
+}
+.tainanstate {
+    position: relative;
+    transform: translateY(50%);
+    width: 100%;
+    height:auto;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    /* font-family: 'Noto Sans TC', sans-serif; */
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: #000000;
 }
 #ButtonGroup{
   width: 15%;
@@ -60,16 +178,20 @@ body {
   margin-bottom: 8%;
 }
 #Areachart {
-  width: 85%;
+  width: 75%;
   height: auto;
   float: left;
   padding-top: 5%;
   
 }
-
-button {
-  margin-left: 25%;
+.hotzone {
+  background-color: #FFFFFF;
 }
+#footer {
+  width:100%;
+  height: 150px;
+}
+
 .ratio-container {
   position: relative;
   height: 0;
@@ -84,5 +206,124 @@ button {
   bottom:0;
 }
 
+button.easy-button-button{
+  position: absolute;
+  left: 1.2%;
+  top:15%;
+  background-color: #ffffff;
+  border-color: rgb(0,0,0,.4);
+  border-radius: 5px;
+  width:33px;
+  height:34px;
+  z-index:9999;
+  cursor: pointer;
+}
+.info {
+  padding: 6px 8px;
+  font: 12px/14px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.legend {
+  position: absolute ;
+  bottom: 10%;
+  right: 3%;
+  width:15%;
+  z-index: 9999;
+  line-height: 18px;
+  color: #555;
+  background-color: rgb(255,255,255,.8);
+  border-radius: 3px;
+  padding:1%;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  z-index: 9999;
+}
+.time,.category {
+  float:left;
+}
+.time {
+  margin-left:10%;
+}
+.ui.segment.history-mapinfo{
+  margin:0rem 0.5% 5%
+}
+.history-mapinfo{
+  width:32%;
+  float: left;
+}
+#mapinfo_time,#mapinfo_category{
+  float:left;
+}
+#mapinfo_category{
+  margin-left:40%;
+}
+#mapinfo_time {
+  margin-left:15%;
+}
 
 
+text {
+  font-size: 1em;
+}
+
+rect{
+  height:4%; 
+  border-color: #ffffff;
+  border-radius: 2px;
+  
+}
+
+
+.exploremap {
+  width:100%;
+  height: 500px;
+  margin-top: 3%;
+}
+rect {
+  border-radius:5px;
+}
+#donutratio {
+  position:absolute;
+  top:20%;
+  left:21%;
+}
+span.ratio{ 
+  position:absolute;
+  top:8vmin;
+  left:32%;
+  font-size: 1.3em;
+  color:#598c14;
+  font-weight:600;
+}
+span.ratio:last-child{
+  top:11vmin;
+  font-size: 0.5em;
+}
+.instantdonut{
+  position: relative;
+}
+svg.hint{
+  width: 2vw;
+  height:3vh;
+}
+
+h3#ratiohint {
+  font-size: 1em;
+  color:#b0a696;
+  
+}
+.current-location{
+  margin-top: 5%;
+  width:100%;
+  height:10vh;
+}
+.explore-category{
+  float:left;
+}

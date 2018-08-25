@@ -1,50 +1,17 @@
-import React, { Component } from "react"
-import Map from './townMap'
-import Dropdown from './Dropdownsearch'
-import Areachart from './Areachart'
-import Donutchart from './Donutchart'
-import ButtonGroup from './ButtonGroup'
-import emitter from './events'
-import postApi from './postApi'
-
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      request_data: postApi.requertPost('台南市','null').then(data => {       
-          return data
-       })
-    }
-  }
+import React from "react";
+import Header from "./Header.jsx";
+import Main from "./Main.jsx";
+import "./App.css";
+const App =(props)=> {
   
-  componentDidUpdate(){
-    this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
-        this.setState({
-          request_data:data,
-        })
-    })
-  }
-  render() { 
-    console.log("app.js")
-    console.log(this.state.request_data)
     return (
-      <div> 
-        <div className="ui container" id="Donutchart">
-          <Donutchart
-            data={this.state.request_data}/> </div>
-        <div className="ui container" id="dropdown">
-          <Dropdown/></div>
-        <div className="ui container" id="Map">
-          <Map
-            data = {this.props}/></div>
-        <div className="ui container" id="ButtonGroup">
-          <ButtonGroup/></div>
-        <div className="ui container" id="Areachart">
-          <Areachart
-            data={this.state.request_data}/> </div>
-       </div> 
-    )
-  }
+        <div className="App"> 
+          <Header/>
+          <Main {...props}/>
+        </div>
+    );
 }
 
-export default App
+
+
+export default App;

@@ -3,7 +3,7 @@ import {Dropdown, Divider, Container} from 'semantic-ui-react'
 import townOptions from './townOptions'
 import emitter from './events'
 import postApi from './postApi'
-
+import date from "./Date"
 class Dropdownsearch extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +27,23 @@ class Dropdownsearch extends Component {
   }
 
   startloaddata(){
-    postApi.requertPost(this.state.selectedtown,this.state.selectedvill).then(data => {
+    let param = {
+      params:{
+        town:this.state.selectedtown,
+        village:this.state.selectedvill,
+        begin_date:date.lastweekdate().begin,
+        end_date:date.lastweekdate().end,
+      }
+    }
+    
+    postApi.requertPost('./village_visualization',{
+      params:{
+        town:this.state.selectedtown,
+        village:this.state.selectedvill,
+        begin_date:date.lastweekdate().begin,
+        end_date:date.lastweekdate().end,
+      }
+    }).then(data => {
       this.setState({postContent: data},()=> emitter.emit("get_requestdata",this.state.postContent))
     })
 
@@ -39,16 +55,16 @@ class Dropdownsearch extends Component {
       const view = townOptions.filter(({text}) => text === this.state.selectedtown)[0]
      
       return (
-        <div  className = "eight wide column villdropdown">
+        <div className="dropdown">
             <Divider hidden/>
               <Dropdown
                 onChange={this.setVillValue.bind(this)}
                 selection
                 search
                 placeholder='村里'
-                options =  {view.minor}
+                options={view.minor}
                />
-            <div className ="ui animated button" onClick = {this.startloaddata.bind(this)}>
+            <div className="ui animated button" onClick={this.startloaddata.bind(this)}>
               <div className="visible content">查詢</div>
               <div className="hidden content">
                 <i className="down arrow icon"></i>
@@ -59,20 +75,20 @@ class Dropdownsearch extends Component {
     }
     return (
      
-          <Container className="ui grid">
-            <div className="eight wide column towndropdown">
+          <div className="grid-container">
+            <div className="dropdown">
               <Divider hidden/>
               <Dropdown
                 onChange={this.setTownValue.bind(this)}
                 selection
                 search
                 placeholder='區'
-                options =  {townOptions}
+                options={townOptions}
                // value = {selectedtown}
                />
             </div>
                {getMajorMethod()}
-        </Container>
+        </div>
        
       
     )

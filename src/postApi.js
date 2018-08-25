@@ -1,32 +1,32 @@
-import React,{Component} from "react"
 import axios from "axios";
-
-let today = new Date()
-let end_date = today.getDate() - today.getDay()
-let begin_date = end_date -7
+import date from "./Date"
 
 export default {
 
-    requertPost:(selectedtown,selectedvill)=>{
-        console.log(selectedtown)
-        return axios.get('/village_visualization', {
-            params:{
-                town:selectedtown,
-                village: selectedvill,
-                begin_date:(today.getMonth()<10) ? today.getFullYear()+"-"+"0"+(today.getMonth()+1)+"-"+begin_date : today.getFullYear()+"-"+(today.getMonth()+1)+"-"+begin_date,
-                end_date:(today.getMonth()<10) ? today.getFullYear()+"-"+"0"+(today.getMonth()+1)+"-"+end_date : today.getFullYear()+"-"+(today.getMonth()+1)+"-"+end_date,
-            }
-        })
-        .then(response=>{
-            alert("ok")
-            console.log(response.data)
-            return {
-                requestdata: response.data
-            }
-        })
-        .catch(error=>{
-            alert("error")
-            console.log(error)
-        })
+    requertPost:(url,param)=>{
+        if (param ==="null")
+        {
+            return axios.get(url)
+            .then(response=>{
+                return {res:response.data}
+            })
+            .catch(error=>{
+                alert("error")
+                console.log(error)
+            })
+        }
+        else{
+            return axios.get(url,param)
+            .then(response=>{
+                console.log("requrst successful")
+                return {res:response.data}
+            })
+            .catch(error=>{
+                alert("error")
+                console.log(error)
+            })
+        }
+
+        
     }
 }
