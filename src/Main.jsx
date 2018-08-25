@@ -6,14 +6,13 @@ import Explore from './Explore'
 
 const Main=(props)=>{ 
     const data = props
-    console.log("main")
-    console.log(data)
+   
     return(
         <main>
             <Switch>
                 <Route exact path="/" component={Instantnotification}/>
                 <Route path="/history" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
-                <Route path="/explore" render={()=>(<Explore  towngeo={data}/>)}/>
+                <Route path="/explore" render={()=>(<Explore  datapath={data}/>)}/>
             </Switch>   
         </main>
     )

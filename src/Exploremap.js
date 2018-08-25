@@ -3,7 +3,7 @@ import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react
 import L from 'leaflet'
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
-const iconUrl={"違規停車":'Asset1',"路燈故障":'Asset2',"噪音舉發":'Asset3',"騎樓舉發":'Asset4',"道路維修":'Asset5',"交通運輸":'Asset6',"髒亂污染":'Asset7',"民生管線":'Asset8' ,"動物救援":'Asset9'}
+const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
 function createicon(url){
     return L.icon({
         iconUrl:url,
@@ -89,7 +89,7 @@ class Exploremap extends Component{
                     <Marker position={[22.9972,120.2119]}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Marker position={d.position} icon={createicon(iconUrl[d.category])}></Marker>))
+                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}></Marker>))
                         }
                     </LayerGroup> 
                 </Map>

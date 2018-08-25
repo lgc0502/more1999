@@ -103,7 +103,7 @@ class Explore extends Component {
                     category={this.state.category}//object
                     time={this.state.time}//object
                     cases={this.state.cases}//array
-                    data={this.props.towngeo}/>
+                    data={this.props.datapath}/>
                  <div className="ui segment">
                     {Object.keys(this.state.category).map((t)=>(
                         <div className="explore-category">
