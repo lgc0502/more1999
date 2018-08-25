@@ -16,7 +16,9 @@ class Historicalstatistics extends Component {
     this.state = {
       isLoading: true,
       request_data: {},
-      date:null
+      date:null,
+      hotzonedata:{},
+      villdata:{}
     }
   }
   componentDidMount(){
@@ -29,7 +31,9 @@ class Historicalstatistics extends Component {
       }
     }).then(data => {
       this.setState({
-        request_data:data,
+        //request_data:data,
+        hotzonedata:data,
+        villdata:data,
         isLoading : false
       })
    })
@@ -42,7 +46,8 @@ class Historicalstatistics extends Component {
     console.log("share data in history")
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
-          request_data:{...data},
+          //request_data:{...data},
+          villdata:{...data}
         },()=>{console.log("res data again")})
     })
   }
@@ -52,9 +57,9 @@ class Historicalstatistics extends Component {
   }
   render(){
     
-    const {isLoading,request_data} = this.state
+    const {isLoading,hotzonedata,villdata} = this.state
     console.log("re-render history")
-    console.log(request_data)
+    
     if(isLoading){
       return (
         <div class="loaddata">
@@ -77,7 +82,7 @@ class Historicalstatistics extends Component {
               <div className="ui container" id="Map">
                   <React_leaflet
                     data={this.props.towngeo}
-                    {...request_data}/>
+                    {...hotzonedata}/>
               </div>
             </div>
 
@@ -90,7 +95,7 @@ class Historicalstatistics extends Component {
             </div>
             <div className="ui container" id="Areachart">
               <Areachart
-                {...request_data}/>
+                {...villdata}/>
             </div>
         </div>
     )
