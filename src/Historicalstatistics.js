@@ -43,7 +43,7 @@ class Historicalstatistics extends Component {
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
           request_data:{...data},
-        })
+        },()=>{console.log("res data again")})
     })
   }
   componentWillUnmount(){
