@@ -74,7 +74,7 @@ class Historicalstatistics extends Component {
             
             <div className="ui container" id="Donutchart">
               <Donutchart
-                {...request_data}/>
+                {...hotzonedata}/>
             </div>
             
             <div className="hotzone">
