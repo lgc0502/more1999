@@ -32,12 +32,14 @@ class Explore extends Component {
         });
     }
     handleclick(){
-        
+        console.log(this.state.location)
         postApi.requertPost('./explore',{
             params:{
               location:this.state.location,
             }
           }).then(data => {
+              console.log("explore get data")
+              console.log(data)
             this.setState({
               lat_lng:data.res.position,//array
               category:data.res.category,//object
@@ -73,11 +75,10 @@ class Explore extends Component {
         })
     }
     render(){
-       
+       console.log("re-render explore")
        const beginhour=0;
        const endhour=23; 
        if(this.state.isLoading){
-           console.log("loading explore")
             return (
              <div className="loaddata">
                <h3 id="load_text">還在找 ......</h3>
