@@ -17,7 +17,6 @@ class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:props.point,
             zoom:15,
             minZoom:11,
             maxZoom:30,
@@ -56,8 +55,8 @@ class Exploremap extends Component{
              </div>
             )
           }
-        const position =this.state.center
-        console.log(this.props)
+        const position =this.props.point
+       
         const myviews = L.icon({
             iconUrl:`${this.props.data.icon}myview.png`,
             iconSize:[38,38],
