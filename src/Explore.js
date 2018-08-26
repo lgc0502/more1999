@@ -32,16 +32,16 @@ class Explore extends Component {
         });
     }
     handleclick(){
-        console.log(this.state.location)
+        
         postApi.requertPost('./explore',{
             params:{
               location:this.state.location,
             }
           }).then(data => {
-              console.log("explore get data")
-              console.log(data)
+              
             this.setState({
               lat_lng:data.res.position,//array
+              address:this.state.location,
               category:data.res.category,//object
               time:data.res.hour,//object
               case:data.res.detail,//array
@@ -62,7 +62,7 @@ class Explore extends Component {
                       lon:d.coords.longitude,
                     }
                   }).then(data => {
-                      console.log(data)
+                     
                         this.setState({
                             address:data.res.address,
                             category:data.res.category,//object
@@ -76,6 +76,7 @@ class Explore extends Component {
     }
     render(){
        console.log("re-render explore")
+       console.log(this.state)
        const beginhour=0;
        const endhour=23; 
        if(this.state.isLoading){
