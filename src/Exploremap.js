@@ -18,7 +18,7 @@ class Exploremap extends Component{
         super(props)
         this.state = {
             center:props.point,
-            zoom:14,
+            zoom:15,
             minZoom:11,
             maxZoom:30,
             data:{},
@@ -28,7 +28,7 @@ class Exploremap extends Component{
         
     }
     handlebtnClick(){
-        this.refs.map.leafletElement.setView(this.props.point,14);
+        this.refs.map.leafletElement.setView(this.props.point,15);
     }
    componentDidMount(){
         fetch(this.props.data.towngeo)
@@ -68,7 +68,7 @@ class Exploremap extends Component{
             <div>
                 <Map ref='map' 
                      className='exploremap' 
-                     center={[22.9972,120.2119]} 
+                     center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
                      maxZoom={this.state.maxZoom}>
@@ -92,11 +92,8 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <Circle center={[22.9972,120.2119]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.9972,120.2119]}
-                        onClick={()=>{
-                            this.Marker.leafletElement.bindPopup("hi");
-                        }}></Marker>    
+                    <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
+                    <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
                             <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>

@@ -51,13 +51,13 @@ class Explore extends Component {
         geolocation.getLocation().then(d=>{
             
             this.setState({
-                lat_lng:[22.997,120.211]//[d.coords.latitude,d.coords.longitude],
+                lat_lng:[d.coords.latitude,d.coords.longitude],
             },()=>{
                 postApi.requertPost('./position',{
                 
                     params:{
-                      lat:22.9972,//d.coords.latitude,
-                      lon:120.2119,//d.coords.longitude,
+                      lat:d.coords.latitude,
+                      lon:d.coords.longitude,
                     }
                   }).then(data => {
                       console.log(data)
