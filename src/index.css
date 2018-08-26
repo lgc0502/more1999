@@ -72,7 +72,8 @@ header.grid-container{
 }
 .explore-cases-legend{
   width:100%;
-  margin-left:20%;
+  height:10vh;
+  margin-left:10%;
 }
 .caseslist{
   width:70%;
