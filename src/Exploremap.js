@@ -92,9 +92,8 @@ class Exploremap extends Component{
                         }}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Marker position={d.position} onClick={()=>{
-                                this.Marker.leafletElement.bindPopup(`${d.address}`);
-                            }} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
+                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
+                                <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }
                     </LayerGroup> 
