@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
-import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react-leaflet'
+import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup,Popup} from 'react-leaflet'
 import L from 'leaflet'
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
 const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
+
 function createicon(url){
     return L.icon({
         iconUrl:url,
@@ -57,6 +58,12 @@ class Exploremap extends Component{
           }
         const position =this.state.center
         console.log(this.props)
+        const myviews = L.icon({
+            iconUrl:`${this.props.data.icon}myview.png`,
+            iconSize:[38,38],
+            iconAnchor:[22,94],
+            popupAnchor:[-3,-76],  
+        });
         return(
             <div>
                 <Map ref='map' 

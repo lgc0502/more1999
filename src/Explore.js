@@ -104,17 +104,17 @@ class Explore extends Component {
                     time={this.state.time}//object
                     cases={this.state.cases}//array
                     data={this.props.datapath}/>
-                 <div className="ui segment">
+                 <div className='explore-cases-legend'>
                     {Object.keys(this.state.category).map((t)=>(
                         <div className="explore-category">
-                        <svg width="20" height="20">
-                        <circle style={{
-                                cx:"10",
-                                cy:"10",
-                                r:"4",
-                                fill:typecolor[t] }}/></svg>
-                        <span>{transtype[t]} : </span>
-                        <span>{this.state.category[t]}</span>
+                            <svg width="20" height="20">
+                            <circle style={{
+                                    cx:"10",
+                                    cy:"10",
+                                    r:"4",
+                                    fill:typecolor[t] }}/></svg>
+                            <span>{transtype[t]} : </span>
+                            <span>{this.state.category[t]}</span>
                         </div>
                     ))
                     }

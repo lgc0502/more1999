@@ -70,6 +70,10 @@ header.grid-container{
   margin-left: 0%;
   height: 10vh;
 }
+.explore-cases-legend{
+  width:100%;
+  margin-left:20%;
+}
 .caseslist{
   width:70%;
   height:auto;
@@ -325,5 +329,6 @@ h3#ratiohint {
   height:10vh;
 }
 .explore-category{
+  margin:1%;
   float:left;
 }
