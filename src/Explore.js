@@ -44,7 +44,7 @@ class Explore extends Component {
               address:this.state.location,
               category:data.res.category,//object
               time:data.res.hour,//object
-              case:data.res.detail,//array
+              cases:data.res.detail,//array
               isLoading : false
             })
          })
