@@ -75,8 +75,7 @@ class Explore extends Component {
         })
     }
     render(){
-       console.log("re-render explore")
-       console.log(this.state)
+     
        const beginhour=0;
        const endhour=23; 
        if(this.state.isLoading){

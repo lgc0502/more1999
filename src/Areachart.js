@@ -64,15 +64,15 @@ class Areachart extends Component {
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[0,window.innerWidth*0.7]}
+        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
        >
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
-           xRange={[10,window.innerWidth*0.65]}
+           xRange={[0,window.innerWidth*0.65]}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={6}
+           tickTotal={7}
            xType="time"
            style={{
             line:{stroke:"#ADDDE1"},

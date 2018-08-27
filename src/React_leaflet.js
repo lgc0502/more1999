@@ -88,8 +88,6 @@ class React_leaflet extends Component{
             )
           }
         const position =this.state.center
-        console.log("react-leaflet")
-        console.log(this.props)
         return(
             <div>
                 <Map ref='map' 

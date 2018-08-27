@@ -22,12 +22,14 @@ class Historicalstatistics extends Component {
     }
   }
   componentDidMount(){
+    let dateForres = false;
+    let dateForshow = true;
     postApi.requertPost('./village_visualization',{
       params:{
         town:'台南市',
         village:'null',
-        begin_date:date.lastweekdate().begin,
-        end_date:date.lastweekdate().end,
+        begin_date:date.lastweekdate(dateForres).begin,
+        end_date:date.lastweekdate(dateForres).end,
       }
     }).then(data => {
       this.setState({
@@ -37,16 +39,16 @@ class Historicalstatistics extends Component {
       })
    })
     this.setState({
-      date:date.lastweekdate()
+      date:date.lastweekdate(dateForshow)
     })
   }
  
   componentDidUpdate(){
-    console.log("share data in history")
+   
     this.eventEmitter = emitter.addListener("get_requestdata",(data)=>{   
         this.setState({
           villdata:{...data}
-        },()=>{console.log("res data again")})
+        })
     })
   }
   componentWillUnmount(){
@@ -55,8 +57,6 @@ class Historicalstatistics extends Component {
   render(){
     
     const {isLoading,request_data,villdata} = this.state
-    console.log("re-render history")
-    
     if(isLoading){
       return (
         <div class="loaddata">
