@@ -12,6 +12,7 @@ from django.utils import timezone
 import json
 from django.http import JsonResponse
 import pytz
+from operator import itemgetter
 
 classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
 eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
@@ -372,8 +373,13 @@ def tw_finish_rate(begin_date, end_date):
 def unfinish_detail():
     detail=[]
     temp={}
-    search = Unfinish.objects.all()
+    time_format = '%Y-%m-%d'
     now = datetime.datetime.today().replace(tzinfo=tw)
+    now1 = (datetime.datetime.today()+datetime.timedelta(days = 1)).strftime('%Y-%m-%d')
+    now1 = datetime.datetime.strptime(now1, time_format).replace(tzinfo=tw)
+    past = (datetime.datetime.today()-datetime.timedelta(days = 4)).strftime('%Y-%m-%d')
+    past = datetime.datetime.strptime(past, time_format).replace(tzinfo=tw)
+    search = Unfinish.objects.filter(requested_datetime__range = [past, now1])
     for index in range(len(search)):
         id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
         temp['category'] = id_search.values()[0]['service_name']
@@ -387,7 +393,8 @@ def unfinish_detail():
         temp['time'] = delta_time
         detail.append(temp)
         temp = {}
-    return detail
+    detail_list = sorted(detail, key=itemgetter('time'))
+    return detail_list
 
 def tw_category(begin_date, end_date):
     donut = {}
