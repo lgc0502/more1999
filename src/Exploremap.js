@@ -91,7 +91,7 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
+                    <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(

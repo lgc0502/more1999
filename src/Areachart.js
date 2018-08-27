@@ -71,7 +71,7 @@ class Areachart extends Component {
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
            xRange={[0,window.innerWidth*0.65]}
-           tickValues={Object.keys(dateCollection)}
+           tickValues={dateCollection}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
            xType="time"
