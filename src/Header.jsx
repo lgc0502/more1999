@@ -1,10 +1,9 @@
 import React from 'react'
-import {NavLink,Router} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const Header = ()=>{
     return(
         <header className='grid-container'>
-        <Router>
             <NavLink 
                 exact
                 to='/'
@@ -35,8 +34,7 @@ const Header = ()=>{
                     fontWeight: 'bold',
                     color: 'black'
                 }}
-            >探索周遭</NavLink>
-        </Router>  
+            >探索周遭</NavLink> 
         </header>
     )
 }
