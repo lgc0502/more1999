@@ -6,12 +6,11 @@ import Legend from './Legend'
 
 function getColor(d){
 
-    return d > 100 ? '#FFEDA0':
-           d > 80  ? '#BD0026':
-           d > 60  ? '#E31A1C':
-           d > 40  ? '#FC4E2A':
-           d > 20  ? '#FD8D3C':
-           d > 0   ? '#FEB24C':
+    return d > 100  ? '#BD0026':
+           d > 80  ? '#E31A1C':
+           d > 60  ? '#FC4E2A':
+           d > 40  ? '#FD8D3C':
+           d > 20   ? '#FEB24C':
            d === 0 ? '#FED976':
                     '#FFEDA0';
 }
@@ -89,6 +88,8 @@ class React_leaflet extends Component{
             )
           }
         const position =this.state.center
+        console.log("react-leaflet")
+        console.log(this.props)
         return(
             <div>
                 <Map ref='map' 
