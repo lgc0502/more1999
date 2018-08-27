@@ -111,6 +111,7 @@ def data_preprocess(raw_data):
     
     if (address_string is not None):
         try:
+            li = '未知'
             if '台南' not in address_string:
                 address_string = '台南市' + address_string
             if '到' in address_string:
@@ -125,13 +126,12 @@ def data_preprocess(raw_data):
                 for c in i['address_components']:
                     if 'administrative_area_level_4' in c['types']:
                         li = c['long_name']
-                    else:
-                        li = '未知'
                     if area is None:
                         if 'administrative_area_level_3' in c['types']:
                             area = c['long_name']
         except:
             print("geocoding-problem")
+            li = '未知'
             error = 1
     else:
         error = 1
