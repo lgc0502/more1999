@@ -1,13 +1,14 @@
 import React,{Component} from 'react'
-import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup} from 'react-leaflet'
+import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup,Popup} from 'react-leaflet'
 import L from 'leaflet'
                                            
 const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
 const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
+
 function createicon(url){
     return L.icon({
         iconUrl:url,
-        iconSize:[38,95],
+        iconSize:[38,38],
         iconAnchor:[22,94],
         popupAnchor:[-3,-76],  
     });
@@ -16,8 +17,7 @@ class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:props.point,
-            zoom:14,
+            zoom:15,
             minZoom:11,
             maxZoom:30,
             data:{},
@@ -27,7 +27,7 @@ class Exploremap extends Component{
         
     }
     handlebtnClick(){
-        this.refs.map.leafletElement.setView(this.props.point,14);
+        this.refs.map.leafletElement.setView(this.props.point,15);
     }
    componentDidMount(){
         fetch(this.props.data.towngeo)
@@ -55,13 +55,19 @@ class Exploremap extends Component{
              </div>
             )
           }
-        const position =this.state.center
-        console.log(this.props)
+        const position =this.props.point
+       
+        const myviews = L.icon({
+            iconUrl:`${this.props.data.icon}myview.png`,
+            iconSize:[38,38],
+            iconAnchor:[22,94],
+            popupAnchor:[-3,-76],  
+        });
         return(
             <div>
                 <Map ref='map' 
                      className='exploremap' 
-                     center={[22.9972,120.2119]} 
+                     center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
                      maxZoom={this.state.maxZoom}>
@@ -85,11 +91,13 @@ class Exploremap extends Component{
                         }
                        
                     />  
-                    <Circle center={[22.9972,120.2119]} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
-                    <Marker position={[22.9972,120.2119]}></Marker>    
+                    <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={500}></Circle>
+                    <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(
-                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}></Marker>))
+                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
+                                <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
+                            </Marker>))
                         }
                     </LayerGroup> 
                 </Map>

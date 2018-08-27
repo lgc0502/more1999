@@ -38,11 +38,13 @@ class Explore extends Component {
               location:this.state.location,
             }
           }).then(data => {
+              
             this.setState({
               lat_lng:data.res.position,//array
+              address:this.state.location,
               category:data.res.category,//object
               time:data.res.hour,//object
-              case:data.res.detail,//array
+              cases:data.res.detail,//array
               isLoading : false
             })
          })
@@ -51,16 +53,16 @@ class Explore extends Component {
         geolocation.getLocation().then(d=>{
             
             this.setState({
-                lat_lng:[22.997,120.211]//[d.coords.latitude,d.coords.longitude],
+                lat_lng:[d.coords.latitude,d.coords.longitude],
             },()=>{
                 postApi.requertPost('./position',{
                 
                     params:{
-                      lat:22.9972,//d.coords.latitude,
-                      lon:120.2119,//d.coords.longitude,
+                      lat:d.coords.latitude,
+                      lon:d.coords.longitude,
                     }
                   }).then(data => {
-                      console.log(data)
+                     
                         this.setState({
                             address:data.res.address,
                             category:data.res.category,//object
@@ -73,11 +75,11 @@ class Explore extends Component {
         })
     }
     render(){
-       
+       console.log("re-render explore")
+       console.log(this.state)
        const beginhour=0;
        const endhour=23; 
        if(this.state.isLoading){
-           console.log("loading explore")
             return (
              <div className="loaddata">
                <h3 id="load_text">還在找 ......</h3>
@@ -104,17 +106,17 @@ class Explore extends Component {
                     time={this.state.time}//object
                     cases={this.state.cases}//array
                     data={this.props.datapath}/>
-                 <div className="ui segment">
+                 <div className='explore-cases-legend'>
                     {Object.keys(this.state.category).map((t)=>(
                         <div className="explore-category">
-                        <svg width="20" height="20">
-                        <circle style={{
-                                cx:"10",
-                                cy:"10",
-                                r:"4",
-                                fill:typecolor[t] }}/></svg>
-                        <span>{transtype[t]} : </span>
-                        <span>{this.state.category[t]}</span>
+                            <svg width="20" height="20">
+                            <circle style={{
+                                    cx:"10",
+                                    cy:"10",
+                                    r:"4",
+                                    fill:typecolor[t] }}/></svg>
+                            <span>{transtype[t]} : </span>
+                            <span>{this.state.category[t]}</span>
                         </div>
                     ))
                     }
