@@ -6,8 +6,8 @@ function getColor(d){
            d > 60  ? '#FC4E2A':
            d > 40  ? '#FD8D3C':
            d > 20   ? '#FEB24C':
-           d === 0 ? '#FED976':
-                    '#FFEDA0';
+           d === 0 ? '#FFEDA0':
+                    '#FED976';
 }
 function legendinfo(grades,i){
     if (grades[i + 1])
