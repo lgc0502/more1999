@@ -377,7 +377,7 @@ def unfinish_detail():
     now = datetime.datetime.today().replace(tzinfo=tw)
     now1 = (datetime.datetime.today()+datetime.timedelta(days = 1)).strftime('%Y-%m-%d')
     now1 = datetime.datetime.strptime(now1, time_format).replace(tzinfo=tw)
-    past = (datetime.datetime.today()-datetime.timedelta(days = 4)).strftime('%Y-%m-%d')
+    past = (datetime.datetime.today()-datetime.timedelta(days = 2)).strftime('%Y-%m-%d')
     past = datetime.datetime.strptime(past, time_format).replace(tzinfo=tw)
     search = Unfinish.objects.filter(requested_datetime__range = [past, now1])
     for index in range(len(search)):
