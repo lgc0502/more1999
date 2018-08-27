@@ -9,7 +9,7 @@ function createicon(url){
     return L.icon({
         iconUrl:url,
         iconSize:[38,38],
-        iconAnchor:[22,94],
+        iconAnchor:[19,19],
         popupAnchor:[-3,-76],  
     });
 }
@@ -60,7 +60,7 @@ class Exploremap extends Component{
         const myviews = L.icon({
             iconUrl:`${this.props.data.icon}myview.png`,
             iconSize:[38,38],
-            iconAnchor:[22,94],
+            iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
         return(

@@ -45,7 +45,7 @@ class Areachart extends Component {
             'pipe':(selectedtype=== '民生管線')?1:0,
             'animal':(selectedtype=== '動物救援')?1:0, 
           }
-      },()=>console.log("changetype"))
+      })
       
     })
   }
@@ -71,6 +71,7 @@ class Areachart extends Component {
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
            xRange={[0,window.innerWidth*0.65]}
+           tickValues={Object.keys(dateCollection)}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
            xType="time"
