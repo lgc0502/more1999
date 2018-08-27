@@ -62,7 +62,6 @@ def call_api_by_id(sid):
     return x
 
 def data_preprocess(raw_data):
-    print(raw_data)
     service_request_id = raw_data['service_request_id']#
     requested_datetime = raw_data['requested_datetime']#
     status = raw_data['status']#
@@ -121,7 +120,6 @@ def data_preprocess(raw_data):
                     lat = geocode_result[0]['geometry']['location']['lat']
                     lng = geocode_result[0]['geometry']['location']['lng']
             reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
-            print(reverse_geocode_result)
             for i in reverse_geocode_result:
                 for c in i['address_components']:
                     if 'administrative_area_level_4' in c['types']:
@@ -292,6 +290,27 @@ def lw_donut(begin_date, end_date):
 def lw_hotzone(begin_date, end_date):
     hotzone = {}
     date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date])
+    hotzone['ALL']={}
+    hotzone['ALL']['total']=len(date_search)
+    hotzone['ALL']['category']={}
+    hotzone['ALL']['time']={}
+    for d in range(len(classification)):
+        delta = 0
+        total = 0
+        hotzone['ALL']['category'][eng_class[d]] = len(date_search.filter(service_name = classification[d]))
+        finish_task = date_search.filter(updated_datetime__range = [begin_date,end_date],status = '已完工',service_name = classification[d])
+        for i in range(len(finish_task)):
+                requested = finish_task.values()[i]['requested_datetime']
+                updated = finish_task.values()[i]['updated_datetime']
+                if requested != updated:
+                    delta = delta+(updated- requested).total_seconds()
+                    total = total+1
+        if total == 0:
+            delta_time = '0:0:0'
+        else:
+            delta_time = seconds_format(delta/total)
+        hotzone['ALL']['time'][eng_class[d]] = delta_time   
+
     for index in range(len(town_name)):
         hotzone[town_id[index]]={}
         area_search = date_search.filter(area = town_name[index])
