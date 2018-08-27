@@ -412,7 +412,7 @@ def position_search(qlat, qlng):
     temp={}
     thisweek = week_date()
     search = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'],thisweek['today']], 
-                    lat__range = [qlat-0.008,qlat+0.008], lng__range = [qlng-0.008,qlng+0.008])
+                    lat__range = [qlat-0.007,qlat+0.007], lng__range = [qlng-0.007,qlng+0.007])
     for index in range(len(classification)):
         all = search.filter(service_name = classification[index])
         temp[eng_class[index]]=len(all)
