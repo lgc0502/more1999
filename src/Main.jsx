@@ -13,6 +13,7 @@ const Main=(props)=>{
                 <Route exact path="/" component={Instantnotification}/>
                 <Route path="/history" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
                 <Route path="/explore" render={()=>(<Explore  datapath={data}/>)}/>
+                <Route component={Instantnotification}/>
             </Switch>   
         </main>
     )

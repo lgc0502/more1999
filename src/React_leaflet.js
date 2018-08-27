@@ -26,7 +26,7 @@ class React_leaflet extends Component{
             maxZoom:20,
             isLoading:true,
             selecttown:'台南市',
-            selecttownid:'R01'
+            selecttownid:'ALL'
         }
         
     }
