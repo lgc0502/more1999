@@ -124,9 +124,11 @@ class Explore extends Component {
                  </div>
                  <h2>各時段通報數量統計</h2>
                  <XYPlot
-                    onNearestX= {Object.keys(this.state.time).map((d)=>{   
+                    onNearestX= {(value, {index}) =>
+                    this.setState({crosshairValues: Object.keys(this.state.time).map((d)=>{   
                         return({x:Number(d),y:this.state.time[d]})
-                    }).map(d=>d[index])}
+                    }).map(d => d[index])})}
+                   
                     width={window.innerWidth*0.85}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
