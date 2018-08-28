@@ -59,22 +59,20 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
-    console.log(dateCollection)
-    console.log(typeCollection)
+   
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[window.innerWidth*0.15,window.innerWidth*0.6]}>
+        Range={[0,window.innerWidth*0.7]}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           XDomain={[0,6]}
-           xRange={[10,window.innerWidth*0.55]}
+           XDomain={[0,8]}
+           xRange={[0,window.innerWidth*0.6]}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
@@ -82,10 +80,10 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  // onNearestX={(value,{index})=>
-                  //     this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
-                  //       return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
-                  //     }).map(d=>d[index])})}
+                  onNearestX={(value,{index})=>
+                      this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
+                        return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                      }).map(d=>d[index])})}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
@@ -99,7 +97,7 @@ class Areachart extends Component {
                 />    
               )
             )}
-          {/* <Crosshair values={this.state.crosshairValues}/> */}
+          <Crosshair values={this.state.crosshairValues}/>
           </XYPlot>  
     );
   }

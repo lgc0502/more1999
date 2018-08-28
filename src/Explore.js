@@ -8,7 +8,8 @@ import {
     YAxis,
     VerticalGridLines,
     HorizontalGridLines,
-    AreaSeries
+    AreaSeries,
+    Crosshair
   } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 const formatTime= timeFormat('%H')
@@ -23,7 +24,8 @@ class Explore extends Component {
             category:{},
             time:{},
             cases:{},
-            isLoading:true
+            isLoading:true,
+            crosshairValues: []
         };
     }
     updateInputValue(evt){
@@ -122,6 +124,9 @@ class Explore extends Component {
                  </div>
                  <h2>各時段通報數量統計</h2>
                  <XYPlot
+                    onNearestX= {Object.keys(this.state.time).map((d)=>{   
+                        return({x:Number(d),y:this.state.time[d]})
+                    }).map(d=>d[index])}
                     width={window.innerWidth*0.85}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
@@ -142,7 +147,7 @@ class Explore extends Component {
                 }}
                 />
                 <YAxis
-                     tickFormat={(d)=>{
+                    tickFormat={(d)=>{
                         if(Math.floor(d)!=d)
                         {
                             return;
@@ -152,18 +157,16 @@ class Explore extends Component {
                     style={{
                         line:{stroke:"#ADDDE1"},
                         text:{fill:"#6b6b76",fontWeight: 400}
-                        }}
-                        />
-                    <AreaSeries
-                        className="area-series-example"
-                        curve="curveMonotoneX"
-                        data={
-
-                            Object.keys(this.state.time).map((d)=>{   
-                                return({x:Number(d),y:this.state.time[d]})
-                            })
-                        }
-                        />    
+                        }}/>
+                <AreaSeries
+                    className="area-series-example"
+                    curve="curveMonotoneX"
+                    data={
+                        Object.keys(this.state.time).map((d)=>{   
+                            return({x:Number(d),y:this.state.time[d]})
+                        })
+                    }/>    
+                 <Crosshair values={this.state.crosshairValues}/>
                 </XYPlot>  
             </div>
         )
