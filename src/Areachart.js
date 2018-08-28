@@ -73,10 +73,9 @@ class Areachart extends Component {
         <XAxis  
            XDomain={[timestamp_begin,timestamp_end]}
            xRange={[0,window.innerWidth*0.65]}
-           tickValues={dateCollection.map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
-           xType="ordinal"
+         //  xType="ordinal"
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
