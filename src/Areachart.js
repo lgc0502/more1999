@@ -82,10 +82,10 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  onNearestX={(value,{index})=>{
-                    if(i===0)
-                      this.setState({crosshairValues:data.map(d => d[index])})
-                      }}
+                  // onNearestX={(value,{index})=>{
+                  //   if(i===0)
+                  //     this.setState({crosshairValues:data.map(d => d[index])})
+                  //     }}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
@@ -99,7 +99,7 @@ class Areachart extends Component {
                 />    
               )
             )}
-          <Crosshair values={this.state.crosshairValues}/>
+          {/* <Crosshair values={this.state.crosshairValues}/> */}
           </XYPlot>  
     );
   }
