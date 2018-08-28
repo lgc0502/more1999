@@ -83,7 +83,7 @@ class Areachart extends Component {
         <XAxis  
            xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.65]}
-           xType='time'
+           xType='ordinal'
            tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
