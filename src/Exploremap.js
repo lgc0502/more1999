@@ -3,7 +3,7 @@ import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup,Popup} from 
 import L from 'leaflet'
                                            
 
-const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
+const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"undefined":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
 
 function createicon(url){
     return L.icon({
@@ -98,7 +98,7 @@ class Exploremap extends Component{
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(                              
-                            <Marker position={d.position} icon={(d.category==="髒亂污染"?createicon(this.props.data.icon+iconUrl["髒亂污染"]):createicon(this.props.data.icon+iconUrl[d.category]))}>
+                            <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
                                 <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }

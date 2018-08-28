@@ -12,6 +12,7 @@ import emitter from './events'
 
 const Palette = ['red','orange','yellow','olive','green','teal','blue','violet','purple']
 const formatTime= timeFormat('%m/%d %a')
+const ONE_DAY = 86400000
 class Areachart extends Component {
 
   constructor(props) {
@@ -56,7 +57,7 @@ class Areachart extends Component {
   }
   
   render() { 
-    const timestamp_begin = new Date(this.state.dateCollection[0])
+    const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
 
@@ -67,26 +68,22 @@ class Areachart extends Component {
         })
       ))
     
-
-    console.log(data)
-    console.log(this.state.crosshairValues)
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
+        xDomain={[timestamp_begin,timestamp_begin+7*ONE_DAY]}
         Range={[0,window.innerWidth*0.7]}
-        stackBy="y">
+        xType="time">
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           xDomain={[timestamp_begin,timestamp_end]}
-           xRange={[10,window.innerWidth*0.65]}
-           xType='ordinal'
-           tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
+           //xRange={[10,window.innerWidth*0.65]}
+           //tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={7}
+           //tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
@@ -103,7 +100,7 @@ class Areachart extends Component {
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
-                      return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                      return({x:new Date(d1).getTime(),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }
                   color={Palette[i]}
