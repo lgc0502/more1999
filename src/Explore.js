@@ -160,7 +160,7 @@ class Explore extends Component {
                     onNearestX= {(value, {index}) =>
                     this.setState({crosshairValues: Object.keys(this.state.time).map((d)=>{   
                         return({x:Number(d),y:this.state.time[d]})
-                    }).map(d => {console.log(d);return d[index]})})}
+                    }).map(d => {console.log(d[index]);return d})})}
                     className="area-series-example"
                     curve="curveMonotoneX"
                     data={

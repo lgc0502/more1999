@@ -74,10 +74,10 @@ class Areachart extends Component {
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           xDomain={[0,8]}
+           xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.7]}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={9}
+           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}

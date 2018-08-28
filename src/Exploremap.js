@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup,Popup} from 'react-leaflet'
 import L from 'leaflet'
                                            
-const typecolor = {"違規停車":'#2e1f54',"路燈故障":'#f00a36',"噪音舉發":'#ed3b21',"騎樓舉發":'#ff6908',"道路維修":'#ffc719',"交通運輸":'#598c14',"髒亂污染":'#335238',"民生管線":'#4a8594' ,"動物救援":'#706357'};
+
 const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂及污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
 
 function createicon(url){
@@ -64,7 +64,7 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
-        console.log(cases)
+        console.log(cases.category)
         return(
             <div>
                 <Map ref='map' 
@@ -96,7 +96,7 @@ class Exploremap extends Component{
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
-                        {cases.map((d)=>(
+                        {cases.map((d)=>(                                      
                             <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
                                 <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
