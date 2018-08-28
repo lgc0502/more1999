@@ -14,7 +14,7 @@ from django.http import JsonResponse
 import pytz
 from operator import itemgetter
 
-classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
+classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂汙染','民生管線','動物救援']
 eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
 town_name=['新營區','鹽水區','白河區','柳營區','後壁區','東山區','麻豆區','下營區','六甲區','官田區',
             '大內區','佳里區','學甲區','西港區','新化區','善化區','新市區','安定區','山上區','玉井區',
