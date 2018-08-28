@@ -59,7 +59,16 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
-    console.log(this.props.res.Area)
+
+    
+    const data = typeCollection.map((d,i)=>(
+        dateCollection.map((d1,i1)=>{  
+            return({x:new Date(d1),y: this.props.res.Area[d1][d] })
+        })
+      ))
+    
+
+    console.log(data)
     
     return (
       <XYPlot
