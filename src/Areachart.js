@@ -67,7 +67,7 @@ class Areachart extends Component {
             return({x:new Date(d1),y: this.props.res.Area[d1][d] })
         })
       ))
-    
+    console.log(Object.keys(this.props.res.Area).map(d=>formatTime(d)))
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -83,7 +83,7 @@ class Areachart extends Component {
            //xRange={[10,window.innerWidth*0.65]}
            //tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
-           //tickTotal={7}
+           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
