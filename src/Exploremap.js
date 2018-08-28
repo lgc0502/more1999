@@ -67,7 +67,12 @@ class Exploremap extends Component{
         
         return(
             <div>
-               
+                {cases.map((d)=>{       
+    
+                    console.log(typeof(d.category))                  
+                    console.log(`${iconUrl.d.category}`)
+                })
+                        }
                 <Map ref='map' 
                      className='exploremap' 
                      center={position} 
@@ -98,7 +103,7 @@ class Exploremap extends Component{
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(                              
-                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[(d.category==='髒亂及污染'?'髒亂及污染':d.category)]}`)}>
+                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl.d.category}`)}>
                                 <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }

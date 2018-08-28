@@ -135,7 +135,7 @@ class Explore extends Component {
                 <HorizontalGridLines />
                 <XAxis  
                     xDomain={[beginhour,endhour]}
-                    xRange={[0,window.innerWidth*0.85]}
+                    xRange={[0,window.innerWidth*0.8]}
                     tickValues={Object.keys(this.state.time)}
                     tickFormat={(d)=>{return d+":00"}}
                     tickTotal={24}

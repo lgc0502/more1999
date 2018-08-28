@@ -82,13 +82,15 @@ class Areachart extends Component {
         <XAxis  
            xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.65]}
+           tickValues={Object.keys(this.state.res.Area)}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={9}
+           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
           }}
         />
+        {typeCollection.map((d,i)=>{console.log(i);console.log((i===0?"num":"str"));})}
          {typeCollection.map((d,i)=>(
               <AreaSeries
                   onNearestX={(value,{index})=>{
