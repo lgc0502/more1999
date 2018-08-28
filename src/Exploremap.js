@@ -64,7 +64,7 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
-        console.log(cases.category)
+        console.log(cases)
         return(
             <div>
                 <Map ref='map' 
