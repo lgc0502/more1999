@@ -67,15 +67,14 @@ class Areachart extends Component {
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}>
+        Range={[window.innerWidth*0.15,window.innerWidth*0.6]}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           XDomain={[timestamp_begin,timestamp_end]}
-           xRange={[0,window.innerWidth*0.65]}
+           XDomain={[0,6]}
+           xRange={[10,window.innerWidth*0.55]}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
-         //  xType="ordinal"
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
