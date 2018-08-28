@@ -14,7 +14,8 @@ from django.http import JsonResponse
 import pytz
 from operator import itemgetter
 
-classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂汙染','民生管線','動物救援']
+classification=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂及汙染','民生管線','動物救援']
+return_category=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂汙染','民生管線','動物救援']
 eng_class=["parking","light","noise","aisle","road","traffic","dirty","pipe", "animal"]
 town_name=['新營區','鹽水區','白河區','柳營區','後壁區','東山區','麻豆區','下營區','六甲區','官田區',
             '大內區','佳里區','學甲區','西港區','新化區','善化區','新市區','安定區','山上區','玉井區',
@@ -383,6 +384,8 @@ def unfinish_detail():
     for index in range(len(search)):
         id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
         temp['category'] = id_search.values()[0]['service_name']
+        if(temp['category'] == '髒亂及汙染'):
+            temp['category']='髒亂汙染'
         timetmp = id_search.values()[0]['requested_datetime']+datetime.timedelta(hours = 8)
         temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
         temp['address'] = id_search.values()[0]['address_string']
@@ -425,6 +428,8 @@ def position_search(qlat, qlng):
     temp={}
     for index in range(len(search)):
         temp['category'] = search.values()[index]['service_name']
+        if(temp['category'] == '髒亂及汙染'):
+            temp['category']='髒亂汙染'
         timetmp = search.values()[index]['requested_datetime']+datetime.timedelta(hours = 8)
         temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
         temp['description'] = search.values()[index]['description']
