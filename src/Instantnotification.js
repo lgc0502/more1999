@@ -92,6 +92,7 @@ class Instantnotification extends Component{
               <YAxis
                 className="categoryaxe"
                 width={window.innerWidth*0.06}
+                style={{strokeOpacity:0}}
                 top={1}/>
               <HorizontalBarSeries
                 className="categorybar"

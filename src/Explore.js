@@ -87,7 +87,7 @@ class Explore extends Component {
              </div>
             )
         }
-        console.log(this.state.crosshairValues)
+       
         return (
             <div>
                 <h2>搜尋地點 查看通報狀況</h2>
@@ -166,7 +166,9 @@ class Explore extends Component {
                             return({x:Number(d),y:this.state.time[d]})
                         })
                     }/>    
-                 <Crosshair values={this.state.crosshairValues}/>
+                 <Crosshair values={this.state.crosshairValues}
+                            titleFormat={{title:'時間',value:d.x }}
+                            itemFormat={{title:'件數',value:d.y}}/>
                 </XYPlot>  
             </div>
         )
