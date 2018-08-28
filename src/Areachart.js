@@ -59,6 +59,8 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
+    console.log(dateCollection)
+    console.log(typeCollection)
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -82,10 +84,10 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  onNearestX={(value,{index})=>
-                      this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
-                        return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
-                      }).map(d=>d[index])})}
+                  // onNearestX={(value,{index})=>
+                  //     this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
+                  //       return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                  //     }).map(d=>d[index])})}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
@@ -99,7 +101,7 @@ class Areachart extends Component {
                 />    
               )
             )}
-          <Crosshair values={this.state.crosshairValues}/>
+          {/* <Crosshair values={this.state.crosshairValues}/> */}
           </XYPlot>  
     );
   }
