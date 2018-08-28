@@ -76,13 +76,14 @@ class Areachart extends Component {
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[0,window.innerWidth*0.7]}>
+        Range={[0,window.innerWidth*0.7]}
+        stackBy="y">
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
            xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.65]}
-           tickValues={Object.keys(this.props.res.Area)}
+           tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
            style={{
