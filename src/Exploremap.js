@@ -66,7 +66,7 @@ class Exploremap extends Component{
         });
         const {cases} = this.states.cases.map(d=>{
             if(d.category==='髒亂污染')
-                d.category = dirty
+                d.category = "dirty"
         })
         return(
             <div>
