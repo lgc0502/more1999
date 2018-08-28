@@ -69,6 +69,7 @@ class Areachart extends Component {
     
 
     console.log(data)
+    console.log(this.state.crosshairValues)
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -91,6 +92,7 @@ class Areachart extends Component {
          {typeCollection.map((d,i)=>(
               <AreaSeries
                   onNearestX={(value,{index})=>{
+                    console.log(index)
                     if(i===0)
                       this.setState({crosshairValues:data.map(d => d[index])})
                       }}

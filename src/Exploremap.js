@@ -64,15 +64,10 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
-        console.log(cases[0].category)
+        
         return(
             <div>
-                {cases.map((d)=>{
-                    console.log(d)
-                    console.log(d.category)
-                    console.log(iconUrl['髒亂及污染'])
-                    console.log(iconUrl[d.category]) 
-                })}
+               
                 <Map ref='map' 
                      className='exploremap' 
                      center={position} 
@@ -102,8 +97,8 @@ class Exploremap extends Component{
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
-                        {cases.map((d)=>(                                      
-                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[d.category]}`)}>
+                        {cases.map((d)=>(                              
+                            <Marker position={d.position} icon={createicon(`${this.props.data.icon}${iconUrl[(d.category==='髒亂及污染'?'髒亂及污染':d.category)]}`)}>
                                 <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }
