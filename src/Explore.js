@@ -87,6 +87,7 @@ class Explore extends Component {
              </div>
             )
         }
+        console.log(this.state.crosshairValues)
         return (
             <div>
                 <h2>搜尋地點 查看通報狀況</h2>
@@ -159,7 +160,7 @@ class Explore extends Component {
                     onNearestX= {(value, {index}) =>
                     this.setState({crosshairValues: Object.keys(this.state.time).map((d)=>{   
                         return({x:Number(d),y:this.state.time[d]})
-                    }).map(d => d[index])})}
+                    }).map(d => {console.log(d);return d[index]})})}
                     className="area-series-example"
                     curve="curveMonotoneX"
                     data={
