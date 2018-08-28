@@ -83,6 +83,7 @@ class Areachart extends Component {
         <XAxis  
            xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.65]}
+           xType='time'
            tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
@@ -91,20 +92,17 @@ class Areachart extends Component {
             text:{fill:"#6b6b76",fontWeight: 400}
           }}
         />
-        {typeCollection.map((d,i)=>{console.log(i);console.log((i===0?"num":"str"));})}
          {typeCollection.map((d,i)=>(
               <AreaSeries
                   onNearestX={(value,{index})=>{
-                    console.log(index)
                     if(i===0)
-                      this.setState({crosshairValues:data.map(d => d[index])})
+                      this.setState({crosshairValues:data.map(d => {return d[index]})})
                       }}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
-                      console.log(d1)
                       return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }

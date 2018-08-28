@@ -80,6 +80,7 @@ class Explore extends Component {
      
        const beginhour=0;
        const endhour=23; 
+       console.log(this.state)
        if(this.state.isLoading){
             return (
              <div className="loaddata">
