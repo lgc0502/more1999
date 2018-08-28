@@ -69,7 +69,8 @@ class Areachart extends Component {
     
 
     console.log(data)
-    
+    console.log(timestamp_begin)
+    console.log(timestamp_end)
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -80,10 +81,10 @@ class Areachart extends Component {
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           xDomain={[timestamp_begin-1,timestamp_end+1]}
-           xRange={[10,window.innerWidth*0.7]}
+           xDomain={[timestamp_begin,timestamp_end]}
+           xRange={[10,window.innerWidth*0.65]}
            tickFormat={(d)=>formatTime(d)}
-           tickTotal={7}
+           //tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
@@ -91,15 +92,16 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  // onNearestX={(value,{index})=>{
-                  //   if(i===0)
-                  //     this.setState({crosshairValues:data.map(d => d[index])})
-                  //     }}
+                  onNearestX={(value,{index})=>{
+                    if(i===0)
+                      this.setState({crosshairValues:data.map(d => d[index])})
+                      }}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
+                      console.log(d1)
                       return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }
@@ -108,7 +110,7 @@ class Areachart extends Component {
                 />    
               )
             )}
-          {/* <Crosshair values={this.state.crosshairValues}/> */}
+          <Crosshair values={this.state.crosshairValues}/>
           </XYPlot>  
     );
   }
