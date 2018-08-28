@@ -4,7 +4,8 @@ import {
   XAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  AreaSeries
+  AreaSeries,
+  Crosshair
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
@@ -28,7 +29,8 @@ class Areachart extends Component {
         'pipe':1,
         'animal':1 
       },
-      typeCollection : Object.keys(props.res.Area[Object.keys(props.res.Area)[0]])
+      typeCollection : Object.keys(props.res.Area[Object.keys(props.res.Area)[0]]),
+      crosshairValues: []
     }
   }
   componentDidMount(){
@@ -57,15 +59,13 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
-   console.log(timestamp_begin)
-   console.log(timestamp_end)
     return (
       <XYPlot
+        onMouseLeave={()=>this.setState({crosshairValues:[]})}
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}
-       >
+        Range={[window.innerWidth*0.1,window.innerWidth*0.7]}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
@@ -82,6 +82,10 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
+                  onNearestX={(value,{index})=>
+                      this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
+                        return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                      }).map(d=>d[index])})}
                   key={`AreaSeries-${d}`}
                   className="area-series-example"
                   curve="curveMonotoneX"
@@ -95,6 +99,7 @@ class Areachart extends Component {
                 />    
               )
             )}
+          <Crosshair values={this.state.crosshairValues}/>
           </XYPlot>  
     );
   }
