@@ -123,30 +123,25 @@ class Explore extends Component {
                     }
                  </div>
                  <h2>各時段通報數量統計</h2>
-                 <XYPlot
-                    onNearestX= {(value, {index}) =>
-                    this.setState({crosshairValues: Object.keys(this.state.time).map((d)=>{   
-                        return({x:Number(d),y:this.state.time[d]})
-                    }).map(d => d[index])})}
-                   
+                 <XYPlot 
+                    onMouseLeave={()=>this.setState({crosshairValues:[]})}
                     width={window.innerWidth*0.85}
                     height={window.innerWidth*0.35}
                     className="ui container centered grid"
-                    Range={[window.innerWidth*0.1,window.innerWidth*0.8]}
-                   
+                    Range={[window.innerWidth*0.1,window.innerWidth*0.8]}  
                 >
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <XAxis  
-                xDomain={[beginhour,endhour]}
-                xRange={[0,window.innerWidth*0.75]}
-                tickValues={Object.keys(this.state.time)}
-                tickFormat={(d)=>{return d+":00"}}
-                tickTotal={24}
-                style={{
-                    line:{stroke:"#ADDDE1"},
-                    text:{fill:"#6b6b76",fontWeight: 400}
-                }}
+                    xDomain={[beginhour,endhour]}
+                    xRange={[0,window.innerWidth*0.75]}
+                    tickValues={Object.keys(this.state.time)}
+                    tickFormat={(d)=>{return d+":00"}}
+                    tickTotal={24}
+                    style={{
+                        line:{stroke:"#ADDDE1"},
+                        text:{fill:"#6b6b76",fontWeight: 400}
+                    }}
                 />
                 <YAxis
                     tickFormat={(d)=>{
@@ -161,6 +156,10 @@ class Explore extends Component {
                         text:{fill:"#6b6b76",fontWeight: 400}
                         }}/>
                 <AreaSeries
+                    onNearestX= {(value, {index}) =>
+                    this.setState({crosshairValues: Object.keys(this.state.time).map((d)=>{   
+                        return({x:Number(d),y:this.state.time[d]})
+                    }).map(d => d[index])})}
                     className="area-series-example"
                     curve="curveMonotoneX"
                     data={

@@ -71,8 +71,9 @@ class Areachart extends Component {
         <HorizontalGridLines />
         <XAxis  
            XDomain={[0,8]}
-           xRange={[0,window.innerWidth*0.6]}
+           xRange={[10,window.innerWidth*0.7]}
            tickFormat={(d)=>formatTime(d)}
+           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
@@ -80,8 +81,9 @@ class Areachart extends Component {
         />
          {typeCollection.map((d,i)=>(
               <AreaSeries
-                  onNearestX={(value,{index})=>
+                onNearestX={(value,{index})=>
                       this.setState({crosshairValues:dateCollection.map((d1,i1)=>{  
+                        console.log("ij")
                         return({x:new Date(d1),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                       }).map(d=>d[index])})}
                   key={`AreaSeries-${d}`}
