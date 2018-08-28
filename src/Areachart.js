@@ -69,8 +69,6 @@ class Areachart extends Component {
     
 
     console.log(data)
-    console.log(timestamp_begin)
-    console.log(timestamp_end)
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -84,7 +82,7 @@ class Areachart extends Component {
            xDomain={[timestamp_begin,timestamp_end]}
            xRange={[10,window.innerWidth*0.65]}
            tickFormat={(d)=>formatTime(d)}
-           //tickTotal={7}
+           tickTotal={9}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}

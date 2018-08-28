@@ -67,6 +67,12 @@ class Exploremap extends Component{
         console.log(cases[0].category)
         return(
             <div>
+                {cases.map((d)=>{
+                    console.log(d)
+                    console.log(d.category)
+                    console.log(iconUrl['髒亂及污染'])
+                    console.log(iconUrl[d.category]) 
+                })}
                 <Map ref='map' 
                      className='exploremap' 
                      center={position} 
