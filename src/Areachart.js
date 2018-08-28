@@ -59,12 +59,8 @@ class Areachart extends Component {
     const timestamp_begin = new Date(this.state.dateCollection[0])
     const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
-    const data = typeCollection.map((d,i)=>
-                  {dateCollection.map((d1,i1)=>{  
-                    return({x:new Date(d1),y: this.props.res.Area[d1][d]})
-                  })})
-    console.log(data)
-    console.log(this.state.crosshairValues)
+    console.log(this.props.res.Area)
+    
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
@@ -75,7 +71,7 @@ class Areachart extends Component {
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           xDomain={[timestamp_begin,timestamp_end]}
+           xDomain={[timestamp_begin-1,timestamp_end+1]}
            xRange={[10,window.innerWidth*0.7]}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}

@@ -133,13 +133,13 @@ Main {
 }
 .leafletmap {
   position:relative;
-  width:50%;
+  width:40%;
   height: 500px;
   float:left; 
 }
 .Mapinfo {
   float:left;
-  width:49%;
+  width:60%;
   height:500px;
   margin-left:1%;
 } 
