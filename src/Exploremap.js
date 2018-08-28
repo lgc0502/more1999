@@ -98,7 +98,7 @@ class Exploremap extends Component{
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(                              
-                            <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
+                            <Marker position={d.position} icon={(d.category==="髒亂污染"?createicon(this.props.data.icon+iconUrl["髒亂污染"]):createicon(this.props.data.icon+iconUrl[d.category]))}>
                                 <Popup>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }
