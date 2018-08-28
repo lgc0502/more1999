@@ -167,8 +167,8 @@ class Explore extends Component {
                         })
                     }/>    
                  <Crosshair values={this.state.crosshairValues}
-                            titleFormat={{title:'時間',value:d.x }}
-                            itemFormat={{title:'件數',value:d.y}}/>
+                            titleFormat={(d)=>({title:'時間',value:d[0].x })}
+                            itemFormat={(d)=>({title:'件數',value:d.y})}/>
                 </XYPlot>  
             </div>
         )
