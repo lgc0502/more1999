@@ -74,7 +74,7 @@ class Areachart extends Component {
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        xDomain={[timestamp_begin,timestamp_begin+7*ONE_DAY]}
+        xDomain={[timestamp_begin,timestamp_begin+6*ONE_DAY]}
         Range={[0,window.innerWidth*0.7]}
         xType="time">
         <VerticalGridLines />
