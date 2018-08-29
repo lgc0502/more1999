@@ -80,8 +80,6 @@ class Areachart extends Component {
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
-           //xRange={[10,window.innerWidth*0.65]}
-           //tickValues={Object.keys(this.props.res.Area).map(d=>formatTime(d))}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
            style={{
@@ -100,6 +98,8 @@ class Areachart extends Component {
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
+                      console.log(new Date(d1).getTime())
+                      console.log(this.props.res.Area[d1][d])
                       return({x:new Date(d1).getTime(),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }

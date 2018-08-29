@@ -65,8 +65,12 @@ class Exploremap extends Component{
             popupAnchor:[-3,-76],  
         });
         const cases = this.props.cases.map(d=>{
+            console.log(d.category)
             if(d.category==='髒亂污染')
+            {
+                console.log("in")
                 d.category = "dirty"
+            }
             return d
         })
         return(
