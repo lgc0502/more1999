@@ -67,14 +67,14 @@ class Areachart extends Component {
             return({x:new Date(d1),y: this.props.res.Area[d1][d] })
         })
       ))
-    console.log(Object.keys(this.props.res.Area).map(d=>formatTime(d)))
+    
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
         width={window.innerWidth*0.75}
         height={window.innerWidth*0.35}
         className="ui container centered grid"
-        xDomain={[timestamp_begin,timestamp_begin+6*ONE_DAY]}
+        xDomain={[timestamp_begin-ONE_DAY,timestamp_begin+6*ONE_DAY]}
         Range={[0,window.innerWidth*0.7]}
         xType="time">
         <VerticalGridLines />

@@ -67,6 +67,7 @@ class Exploremap extends Component{
         const cases = this.props.cases.map(d=>{
             if(d.category==='髒亂污染')
                 d.category = "dirty"
+            return d
         })
         return(
             <div>
