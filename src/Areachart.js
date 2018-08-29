@@ -97,7 +97,7 @@ class Areachart extends Component {
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
-                      return({x:timestamp_begin+i1*ONE_DAY.getTime(),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                      return({x:timestamp_begin+i1*ONE_DAY,y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }
                   color={Palette[i]}
