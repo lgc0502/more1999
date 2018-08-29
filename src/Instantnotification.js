@@ -36,7 +36,7 @@ class Instantnotification extends Component{
 
   render(){
     const {isLoading,request_data,finish_bar_data,unfinish_bar_data} = this.state
-    
+    console.log(this.props)
     if(isLoading){
       return (
         <div class="loaddata">
