@@ -58,13 +58,12 @@ class Areachart extends Component {
   
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
-    const timestamp_end = new Date(this.state.dateCollection[6]) 
     const {dateCollection,typeCollection} = this.state
 
     
     const data = typeCollection.map((d,i)=>(
         dateCollection.map((d1,i1)=>{  
-            return({x:new Date(d1),y: this.props.res.Area[d1][d] })
+            return({x:timestamp_end+i1*ONE_DAY,y: this.props.res.Area[d1][d] })
         })
       ))
     console.log(data)
@@ -82,6 +81,7 @@ class Areachart extends Component {
         <HorizontalGridLines />
         <XAxis  
            tickFormat={(d)=>formatTime(d)}
+           tickTotal={7}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
@@ -97,7 +97,7 @@ class Areachart extends Component {
                   curve="curveMonotoneX"
                   data={
                     dateCollection.map((d1,i1)=>{  
-                      return({x:new Date(d1).getTime(),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
+                      return({x:timestamp_end+i1*ONE_DAY.getTime(),y: this.props.res.Area[d1][d] +(450-30*i),y0:450-30*i})
                     })
                   }
                   color={Palette[i]}

@@ -64,14 +64,16 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
+        
+                 
         const cases = this.props.cases.map(d=>{
-            console.log(d.category)
-            console.log(typeof(d.category))
-            if((d.category==="髒亂污染")===true)
-            {
-                console.log("in")
-                d.category = "dirty"
-            }
+            var s = d.category;
+                 for(var i = 0; i < s.length; i++) {
+                     if(s.charCodeAt(i) < 0x4E00 || s.charCodeAt(i) > 0x9FA5) {
+                         alert("輸入非中文，請重新輸入"); 
+                         break;
+                     }
+                }
             return d
         })
         return(
