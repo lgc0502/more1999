@@ -1,3 +1,275 @@
+@media only screen and (max-width:680px) {
+  span {
+    font-size: 2vmin;
+  }
+
+  p {
+    font-size: 0.5vmin;
+    margin: 1.2vmin;
+  }
+
+  .ui.segment.dashboard {
+    width: 80%;
+    margin-right: 10vmin;
+  }
+
+  
+  .radial-title-block,.compare_quantity-block{
+    width: 40%;
+    height:60vmin;
+   
+  } 
+  .radial-chart-block {
+    width: 80%;
+    height: 60vmin;
+   
+  }
+  #Map{width:100%;}
+  .leafletmap{ width:100%;}
+  .Mapinfo { width:100%; } 
+  .exploremap {
+    width:100%;
+    margin-top: 3%;
+  }
+  .explore-cases-legend{
+    width:100%;
+    height:-webkit-fill-available;
+    margin-left:10%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 2.5vmin 'Noto Sans TC', sans-serif;
+}
+
+h2 {
+  font-size: 3.5vmin;
+}
+
+h3,
+span {
+  font-size: 2.5vmin;
+}
+
+p {
+  font-size: 1vmin;
+}
+
+a {
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #000000;
+  letter-spacing: 1px;
+}
+
+.container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+#root,
+header,
+main {
+  width: 100%;
+  height: auto;
+  margin-top: 2%;
+}
+
+/*instant*/
+.instant {
+  width: 100%;
+}
+
+.instant:first-child {
+  height: 60vmin;
+  margin-bottom: 5%
+}
+
+.dashboard {
+  width: 40%;
+  height: 60vmin;
+  float: left;
+  margin: auto;
+}
+
+.board .dashboard {
+  margin-left: 10vmin;
+}
+
+.board .dashboard:last-child {
+  margin-top: 0%;
+}
+
+.caseslist {
+  width: 85%;
+  height: auto;
+  margin-left: 10vmin;
+}
+
+svg.hint {
+  width: 2vw;
+  height: 3vh;
+}
+
+span.hint {
+  width: 5vw;
+  height: 3vh;
+  margin: 0 2vmin 0 3vmin;
+}
+
+.instantdonut {
+  margin: auto;
+}
+
+span.ratio {
+  font-weight: 600;
+  color: #598c14;
+}
+
+h3#ratiohint {
+  color: #b0a696;
+}
+
+.instant-descript-data,
+.history-descript-data {
+  position: absolute;
+  top: 7%;
+  left: 17%;
+  width: 15%;
+}
+
+.instant-descript-data,
+.instant-category-chart.history-descript-data {
+  float: left;
+}
+
+rect {
+  height: 4%;
+  border-color: #ffffff;
+  border-radius: 2px;
+}
+
+.date {
+  position: relative;
+  height: auto;
+  text-align: center;
+  color: #000000;
+  margin: 2%;
+  letter-spacing: 5px;
+}
+
+#Donutchart {
+  width: 100%;
+  height: 55vmin;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 0.8rem;
+}
+.radial-chart,.radial-title,.compare_quantity{
+  float: left;
+}
+
+h3.radial-title {
+  margin:2vmin 4.5vmin 0 4.2vmin;
+}
+.radial-title :first-child{
+  margin-left:3vmin;
+}
+.compare_quantity{
+  margin:2vmin 5vmin 0 7.5vmin;
+}
+.compare_quantity :first-child{
+  margin-left:3vmin;
+}
+
+.hotzone {
+  background-color: #FFFFFF;
+  width:100%;
+}
+
+button.easy-button-button{
+  position: absolute;
+  left: 1.2%;
+  top:15%;
+  background-color: #ffffff;
+  border-color: rgb(0,0,0,.4);
+  border-radius: 5px;
+  width:33px;
+  height:34px;
+  z-index:9999;
+  cursor: pointer;
+}
+#Map {
+  width:100%;
+  height:-webkit-fill-available;
+  margin-top:10%;
+  float:left;
+}
+.leafletmap {
+  position:relative;
+  width:44%;
+  height: -webkit-fill-available;
+  float:left;
+}
+
+.Mapinfo {
+  float:left;
+  width:55%;
+  height:-webkit-fill-available;
+  margin-left:1%;
+  float:left;
+} 
+.ui.segment.history-mapinfo{
+  margin:0 0.5% 5%
+}
+.history-mapinfo{
+  width:32%;
+  float: left;
+}
+.dropdown {
+  width: 40%;
+  height: auto;
+  float: left;
+}
+#dropdown {
+  width: 70%;
+  height:15vh;
+  margin-top:3%;
+  z-index: 1000;
+}
+#ButtonGroup{
+  width: 15%;
+  height: auto;
+  float: left;
+  padding-top: 5%;
+  padding-left:5%; 
+}
+#ButtonGroup button {
+  margin-bottom: 8%;
+}
+#Areachart {
+  width: 75%;
+  height: auto;
+  float: left;
+  padding-top: 5%;
+  
+}
+.exploremap {
+  width:80%;
+  height: -webkit-fill-available;
+  margin-top: 3%;
+  float: left;
+}
+.explore-cases-legend{
+  width:10%;
+  height:-webkit-fill-available;
+  float: left;
+}
+/*
 body {
   margin: 0;
   padding: 0;
@@ -22,7 +294,6 @@ a {
 span,h3{
   font: 1rem 'Noto Sans TC', sans-serif;
 }
-
 .board{
   width:100%;
   height:55vmin;
@@ -86,32 +357,26 @@ header.grid-container{
 Main {
   margin-top:5%;
 }
-
 .chineseText {
-  /* font-family: 'Noto Sans TC',sans-serif; */
   font-size: 1em;
   letter-spacing: 2px;  
 }
-
 #Donutchart {
   width: 85%;
   height:50vh;
   padding-left: 5%;
   padding-right: 5%
 }
-
 .compare_quantity {
   position: absolute;
   top:47%;
   left:0%;
 }
-
 .dropdown {
   width: 40%;
   height: auto;
   float: left;
 }
-
 #dropdown {
   width: 70%;
   height:15vh;
@@ -143,7 +408,6 @@ Main {
   height:500px;
   margin-left:1%;
 } 
-
 #map {
   width:70%;
   height: 450px;
@@ -167,7 +431,6 @@ Main {
     text-align: center;
     margin-top: 5%;
     margin-bottom: 3%;
-    /* font-family: 'Noto Sans TC', sans-serif; */
     font-weight: bolder;
     font-size: 1.5em;
     color: #000000;
@@ -196,7 +459,6 @@ Main {
   width:100%;
   height: 150px;
 }
-
 .ratio-container {
   position: relative;
   height: 0;
@@ -272,28 +534,21 @@ button.easy-button-button{
 #mapinfo_time {
   margin-left:15%;
 }
-
-
 text {
   font-size: 1em;
 }
-
 rect{
   height:4%; 
   border-color: #ffffff;
   border-radius: 2px;
   
 }
-
-
 .exploremap {
   width:100%;
   height: 500px;
   margin-top: 3%;
 }
-rect {
-  border-radius:5px;
-}
+
 #donutratio {
   position:absolute;
   top:20%;
@@ -333,3 +588,4 @@ h3#ratiohint {
   margin:1%;
   float:left;
 }
+*/
