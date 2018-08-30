@@ -7,7 +7,9 @@
     font-size: 0.5vmin;
     margin: 1.2vmin;
   }
-
+  text {
+    font-size: 3vmin;
+  }
   .ui.segment.dashboard {
     width: 80%;
     margin-right: 10vmin;
@@ -56,7 +58,9 @@ span {
 p {
   font-size: 1vmin;
 }
-
+text {
+  font-size: 2vmin;
+}
 a {
   padding-left: 2%;
   padding-right: 2%;
@@ -76,7 +80,7 @@ header,
 main {
   width: 100%;
   height: auto;
-  margin-top: 2%;
+  margin-top: 10%;
 }
 
 /*instant*/
@@ -134,7 +138,7 @@ h3#ratiohint {
   color: #b0a696;
 }
 
-.instant-descript-data,
+
 .history-descript-data {
   position: absolute;
   top: 7%;
@@ -142,7 +146,7 @@ h3#ratiohint {
   width: 15%;
 }
 
-.instant-descript-data,
+
 .instant-category-chart.history-descript-data {
   float: left;
 }
@@ -169,7 +173,7 @@ rect {
   padding-right: 5%;
   font-size: 0.8rem;
 }
-.radial-chart,.radial-title,.compare_quantity{
+.history-radial-chart,.radial-title,.compare_quantity{
   float: left;
 }
 

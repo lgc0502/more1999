@@ -56,7 +56,7 @@ class Donutchart extends Component {
                     colorType="category"
                     colorRange={["#9e9e9e69","#16982B"]} 
                     stroke={null} 
-                    className="ui container radial-chart"  
+                    className="ui container history-radial-chart"  
                 >
                 </RadialChart>
                 </div>

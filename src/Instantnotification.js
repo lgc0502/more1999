@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import postApi from './postApi.js';
-import {XYPlot,RadialChart,HorizontalBarSeries,YAxis} from "react-vis";
+import {XYPlot,RadialChart,HorizontalBarSeries,YAxis,LabelSeries} from "react-vis";
 import Listgroup from "./Listgroup.js";
 
 const transtype = {"animal":'動物救援',"pipe":'民生管線',"dirty":'髒亂污染',"traffic":'交通運輸',"road":'道路維修',"aisle":'騎樓舉發',"noise":'噪音舉發',"light":'路燈故障',"parking":'違規停車'}
@@ -49,7 +49,7 @@ class Instantnotification extends Component{
         request_data:data,
         isLoading : false,
         finish_bar_data: Object.keys(data.res.Category).map((key,i)=>{
-          return {x:data.res.Category[key][0],y:transtype[key]} 
+          return {x:data.res.Category[key][0],y:transtype[key],label:data.res.Category[key][0]+'/'+data.res.Category[key][1],style:{fill:"#598c14"}} 
           }),
         unfinish_bar_data:Object.keys(data.res.Category).map((key,i)=>{
           return {x:data.res.Category[key][1],y:transtype[key]} 
@@ -104,10 +104,7 @@ class Instantnotification extends Component{
             <span id="ratiohint" style={{fontSize:12}}><font color="#598c14">處理</font> / <font color="#b0a696">未處理</font></span>
           </div>
           <div className="ui segment dashboard">
-          <div width={this.state.width*0.2} height={this.state.height} className="instant-descript-data">
-              {Object.keys(request_data.res.Category).map((key)=>(
-                  <p><span style={{color:"#598c14"}}>{request_data.res.Category[key][0]}</span> / <span style={{color:"#b0a696"}}>{request_data.res.Category[key][1]}</span></p>))}
-            </div>
+         
             <XYPlot
               width={this.state.width}
               height={this.state.height}
@@ -132,7 +129,12 @@ class Instantnotification extends Component{
                 data={unfinish_bar_data} 
                 color="#b0a696"
                 style={{opacity:0.4}}/> 
-             
+               <LabelSeries
+              allowOffsetToBeReversed
+              data={finish_bar_data}
+              labelAnchorX="text-after-edge"
+              labelAnchorY="baseline"
+             />
             </XYPlot>  
           </div>
         </div>
