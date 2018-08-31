@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 const Header = ()=>{
     return(
-        <header className='grid-container'>
+        <header>
             <NavLink 
                 exact
                 to='/'

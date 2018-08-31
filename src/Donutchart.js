@@ -1,10 +1,12 @@
 import React,{Component} from 'react'
 import {RadialChart} from "react-vis"
-
+import ReactDOM from 'react-dom';
 class Donutchart extends Component {
     constructor(props){
         super(props)
         this.state={
+            width:props.width||-1,
+            height:props.height||-1,
             type: Object.keys(props.res.Donut),
             data: props.res.Donut,
             type_copy:{
@@ -20,46 +22,68 @@ class Donutchart extends Component {
             }
         }
     }
+    updateSize(){
+        try{
+          const parentDom = ReactDOM.findDOMNode(this).parentNode;
+          let {width,height} = this.props;
+          
+          if(!width){
+            width = parentDom.offsetWidth;
+            
+            if(width>600){
+              width = width
+              height = width*0.2
+            }else{
+              width = width
+              height = width*0.2
+            }
+          }
+          
+          this.setState({width,height});
+        }catch(ignore){}
+      }
+      componentDidMount(){
+        this.updateSize();
+        window.addEventListener('resize',this.updateSize.bind(this));
+      }
+      componentWillUnmount(){
+        window.removeEventListener('resize',this.updateSize.bind(this));
+      }
     render () {   
         const {data,type}=this.state
         const {type_copy}=this.state
        return (
-           <div className="ui equal width centered grid row">  
+           <div className="radial-chart-block">  
             {type.map((d,i)=>(  
-               <div className="column"
-                key={`compare-${i}`}>
-                <span
-                    key={`description-${i}`}
-                    className="ui container radial-title center aligned chineseText"
-                    style={{
-                        fontSize:16,
-                        color:"#000000"}}>
-                    {type_copy[d]}
-                </span>   
-                <span
-                    key={`quantity-${i}`}
-                    className="compare_quantity ui container radial-title center aligned"
-                    style={{
-                        fontSize:18,
-                        fontWeight:600,
-                        color:"#d82109"}}>
-                    {data[d][0]+" 件"}
-                </span>   
-                <RadialChart  
-                    key={`Radial-${i}`}
-                    width={window.innerWidth*0.6/9}
-                    height={window.innerWidth*0.6/8}
-                    innerRadius={35}
-                    radius={40}
-                    getAngle={d => d}
-                    data={[data[d][1],(100-data[d][1])]}
-                    colorType="category"
-                    colorRange={["#9e9e9e69","#16982B"]} 
-                    stroke={null} 
-                    className="ui container history-radial-chart"  
-                >
-                </RadialChart>
-                </div>
+              
+              <RadialChart  
+              key={`Radial-${i}`}        
+              width={(this.state.width>600?this.state.width/10:this.state.width*0.4)}
+              height={(this.state.width>600?this.state.width/10:this.state.width*0.4)}
+              innerRadius={(this.state.width>600?this.state.width/30:this.state.width*0.1)}
+              radius={(this.state.width>600?this.state.width/25:this.state.width*0.12)}
+              data={[{angle:data[d][1],label:this.state.type_copy[d],subLabel:data[d][0]+'件'},{angle:100-data[d][1]}]}
+              colorType="category"
+              colorRange={["#9e9e9e69","#16982B"]} 
+              stroke={null} 
+              className="history-radial-chart"  
+          >
+          <LabelSeries
+           allowOffsetToBeReversed
+           data={[{x:0, y:0,label:data[d][0]+'件'}]}
+           labelAnchorX="middle"
+           labelAnchorY="hanging"
+           style={{fill:"#16982B",fontWeight:600,}}
+          />
+          <LabelSeries
+           allowOffsetToBeReversed
+           data={[{x:0, y:0,label:this.state.type_copy[d]}]}
+           labelAnchorX="middle"
+           labelAnchorY="baseline"
+           style={{fontWeight:600,}}
+          />
+          </RadialChart>
+               
             ))}
            </div>
            

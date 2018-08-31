@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import Exploremap from './Exploremap.js';
 import geolocation from './geolocation';
 import postApi from './postApi.js';
+import ReactDOM from 'react-dom';
 import {
     XYPlot,
     XAxis,
@@ -19,6 +20,7 @@ class Explore extends Component {
     constructor(props){
         super(props);
         this.state = {
+            width:props.width||-1,
             location:'',
             lat_lng:'',
             category:{},
@@ -28,6 +30,26 @@ class Explore extends Component {
             crosshairValues: []
         };
     }
+    updateSize(){
+        try{
+          const parentDom = ReactDOM.findDOMNode(this).parentNode;
+          let {width,height} = this.props;
+          
+          if(!width){
+            width = parentDom.offsetWidth;
+            
+            if(width>600){
+              width = width
+              height = width*0.2
+            }else{
+              width = width
+              height = width*0.2
+            }
+          }
+          
+          this.setState({width,height});
+        }catch(ignore){}
+      }
     updateInputValue(evt){
         this.setState({
             location:evt.target.value
@@ -52,6 +74,8 @@ class Explore extends Component {
          })
     }
     componentDidMount(){
+        this.updateSize();
+        window.addEventListener('resize',this.updateSize.bind(this));
         geolocation.getLocation().then(d=>{
             
             this.setState({
@@ -76,11 +100,14 @@ class Explore extends Component {
             })
         })
     }
+    componentWillUnmount(){
+        window.removeEventListener('resize',this.updateSize.bind(this));
+      }
     render(){
      
        const beginhour=0;
        const endhour=23; 
-       console.log(this.state)
+      
        if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -127,8 +154,8 @@ class Explore extends Component {
                  <h2>各時段通報數量統計</h2>
                  <XYPlot 
                     onMouseLeave={()=>this.setState({crosshairValues:[]})}
-                    width={window.innerWidth*0.85}
-                    height={window.innerWidth*0.35}
+                    width={this.state.width*0.85}
+                    height={this.state.width*0.35}
                     className="ui container centered grid"
                     Range={[window.innerWidth*0.1,window.innerWidth*0.75]}  
                 >
@@ -136,10 +163,11 @@ class Explore extends Component {
                 <HorizontalGridLines />
                 <XAxis  
                     xDomain={[beginhour,endhour]}
-                    xRange={[0,window.innerWidth*0.8]}
+                    xRange={[0,this.state.width*0.8]}
                     tickValues={Object.keys(this.state.time)}
                     tickFormat={(d)=>{return d+":00"}}
                     tickTotal={24}
+                    tickLabelAngle={(this.state.width>600?0:90)}
                     style={{
                         line:{stroke:"#ADDDE1"},
                         text:{fill:"#6b6b76",fontWeight: 400}

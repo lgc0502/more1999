@@ -1,45 +1,9 @@
-@media only screen and (max-width:680px) {
-  span {
-    font-size: 2vmin;
-  }
-
-  p {
-    font-size: 0.5vmin;
-    margin: 1.2vmin;
-  }
-  text {
-    font-size: 3vmin;
-  }
-  .ui.segment.dashboard {
-    width: 80%;
-    margin-right: 10vmin;
-  }
-
-  
-  .radial-title-block,.compare_quantity-block{
-    width: 40%;
-    height:60vmin;
-   
-  } 
-  .radial-chart-block {
-    width: 80%;
-    height: 60vmin;
-   
-  }
-  #Map{width:100%;}
-  .leafletmap{ width:100%;}
-  .Mapinfo { width:100%; } 
-  .exploremap {
-    width:100%;
-    margin-top: 3%;
-  }
-  .explore-cases-legend{
-    width:100%;
-    height:-webkit-fill-available;
-    margin-left:10%;
-  }
+.container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -48,6 +12,7 @@ body {
 
 h2 {
   font-size: 3.5vmin;
+  margin:auto;
 }
 
 h3,
@@ -59,7 +24,7 @@ p {
   font-size: 1vmin;
 }
 text {
-  font-size: 2vmin;
+  font-size: 1rem;
 }
 a {
   padding-left: 2%;
@@ -68,19 +33,14 @@ a {
   letter-spacing: 1px;
 }
 
-.container {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-}
+
 
 #root,
 header,
 main {
   width: 100%;
   height: auto;
-  margin-top: 10%;
+  margin-top: 2%;
 }
 
 /*instant*/
@@ -138,19 +98,6 @@ h3#ratiohint {
   color: #b0a696;
 }
 
-
-.history-descript-data {
-  position: absolute;
-  top: 7%;
-  left: 17%;
-  width: 15%;
-}
-
-
-.instant-category-chart.history-descript-data {
-  float: left;
-}
-
 rect {
   height: 4%;
   border-color: #ffffff;
@@ -168,31 +115,19 @@ rect {
 
 #Donutchart {
   width: 100%;
-  height: 55vmin;
-  padding-left: 5%;
-  padding-right: 5%;
+  height:60vmin;
+  padding:10vmin 5% ;
+ 
   font-size: 0.8rem;
 }
-.history-radial-chart,.radial-title,.compare_quantity{
+.history-radial-chart{
   float: left;
-}
-
-h3.radial-title {
-  margin:2vmin 4.5vmin 0 4.2vmin;
-}
-.radial-title :first-child{
-  margin-left:3vmin;
-}
-.compare_quantity{
-  margin:2vmin 5vmin 0 7.5vmin;
-}
-.compare_quantity :first-child{
-  margin-left:3vmin;
 }
 
 .hotzone {
   background-color: #FFFFFF;
   width:100%;
+  height:auto;
 }
 
 button.easy-button-button{
@@ -209,24 +144,43 @@ button.easy-button-button{
 }
 #Map {
   width:100%;
-  height:-webkit-fill-available;
+  height:75vmin;
   margin-top:10%;
-  float:left;
+  
 }
 .leafletmap {
   position:relative;
   width:44%;
-  height: -webkit-fill-available;
+  height: 75vmin;
   float:left;
 }
 
 .Mapinfo {
   float:left;
   width:55%;
-  height:-webkit-fill-available;
+  height:50vmin;
   margin-left:1%;
   float:left;
 } 
+.legend {
+  position: absolute ;
+  bottom: 10%;
+  right: 3%;
+  width:100px;
+  z-index: 9999;
+  line-height: 18px;
+  color: #555;
+  background-color: rgb(255,255,255,.8);
+  border-radius: 3px;
+  padding:1%;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  z-index: 9999;
+}
 .ui.segment.history-mapinfo{
   margin:0 0.5% 5%
 }
@@ -242,7 +196,7 @@ button.easy-button-button{
 #dropdown {
   width: 70%;
   height:15vh;
-  margin-top:3%;
+  margin-top:auto;
   z-index: 1000;
 }
 #ButtonGroup{
@@ -262,17 +216,77 @@ button.easy-button-button{
   padding-top: 5%;
   
 }
+.exploremap,.explore-cases-legend{
+  height: 50vmin;
+  margin: 1rem 0;
+  float: left;
+}
 .exploremap {
   width:80%;
-  height: -webkit-fill-available;
-  margin-top: 3%;
-  float: left;
 }
 .explore-cases-legend{
-  width:10%;
-  height:-webkit-fill-available;
-  float: left;
+  width:20%;
 }
+.explorearea {
+  margin:2rem 0;
+}
+@media only screen and (max-width:680px) {
+  span {
+    font-size: 2vmin;
+  }
+
+  p {
+    font-size: 0.5vmin;
+  }
+  text {
+    font-size: 2rem;
+  }
+  .ui.segment.dashboard {
+    width: 80%;
+    margin-right: 10vmin;
+  }
+  #Donutchart,.hotzone{
+    width:100%;
+    height:1000px;
+  }
+  #dropdown {
+    width: 100%;
+    height:15vh;
+    margin:0 2vmin;
+  }
+  #Areachart {
+    width: 100%;
+    
+  }
+  .exploremap {
+    width:100%;
+  }
+  .radial-chart-block {
+    width: 100%;
+    height: -webkit-fill-available;
+   
+  }
+  .leafletmap {
+    width:100vmin;
+  }
+  .Mapinfo {
+    width:100vmin; 
+  } 
+  .exploremap {
+    width:100%;
+    margin-top: 3%;
+  }
+  .explore-cases-legend{
+    width:100%;
+    height:-webkit-fill;
+    margin-left:10%;
+  }
+  #ButtonGroup{
+    width: 90%;
+   
+  }
+}
+
 /*
 body {
   margin: 0;

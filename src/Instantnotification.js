@@ -94,11 +94,9 @@ class Instantnotification extends Component{
               className="ui container radial-chart instantdonut">
               {/* <svg id="donutratio" width="90" height="90">
                 <circle  style={{cx:"40%",cy:"40%",r:"32",fill:"#b0a696",opacity:0.4 }}/></svg>  */}
-              <span className="ratio">完成度</span>
-              <span className="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(1)+"%"}</span>                  
-              
             </RadialChart>
-           
+            <span className="ratio">完成度</span>
+            <span className="ratio">{((request_data.res.FinishRate.finish[0]/(request_data.res.FinishRate.finish[0]+request_data.res.FinishRate.unfinish[0]))*100).toFixed(1)+"%"}</span>                  
             <h3>本週截至目前通報</h3>
             <h3><font color="#598c14">{request_data.res.FinishRate.finish[0]}</font> / <font color="#b0a696">{request_data.res.FinishRate.unfinish[0]}</font></h3>
             <span id="ratiohint" style={{fontSize:12}}><font color="#598c14">處理</font> / <font color="#b0a696">未處理</font></span>
@@ -138,7 +136,7 @@ class Instantnotification extends Component{
             </XYPlot>  
           </div>
         </div>
-        <h3>即時未處理通報案件</h3>
+        <h2>即時未處理通報案件</h2>
         <Listgroup {...request_data}/> 
       </div>
     )

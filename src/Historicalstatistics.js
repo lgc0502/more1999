@@ -57,8 +57,7 @@ class Historicalstatistics extends Component {
   render(){
     
     const {isLoading,request_data,villdata} = this.state
-    console.log(request_data)
-    console.log(villdata)
+    
     if(isLoading){
       return (
         <div class="loaddata">
@@ -71,28 +70,28 @@ class Historicalstatistics extends Component {
             <h1 className="date">{this.state.date.begin+"  -  "+this.state.date.end}</h1>
             <h1 className="tainanstate">大台南各類通報</h1>
             
-            <div className="ui container" id="Donutchart">
+            <div id="Donutchart">
               <Donutchart
                 {...request_data}/>
             </div>
             
             <div className="hotzone">
-              <h1 class="tainanstate">通報熱區</h1>
-              <div className="ui container" id="Map">
+              <h2 style={{clear:"left"}}>通報熱區</h2>
+              <div id="Map">
                   <React_leaflet
                     data={this.props.towngeo}
                     {...request_data}/>
               </div>
             </div>
 
-            <h1 class="tainanstate">鄉鎮里級查詢</h1>
+            <h2 >鄉鎮里級查詢</h2>
             <div className="ui container" id="dropdown">
               <Dropdown/>
             </div>
-            <div className="ui container" id="ButtonGroup">
+            <div id="ButtonGroup">
               <ButtonGroup/>
             </div>
-            <div className="ui container" id="Areachart">
+            <div id="Areachart">
               <Areachart
                 {...villdata}/>
             </div>

@@ -9,7 +9,7 @@ import {
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
-
+import ReactDOM from 'react-dom';
 const Palette = ['red','orange','yellow','olive','green','teal','blue','violet','purple']
 const formatTime= timeFormat('%m/%d %a')
 const ONE_DAY = 86400000
@@ -18,6 +18,8 @@ class Areachart extends Component {
   constructor(props) {
     super(props)
     this.state= {
+      width:props.width||-1,
+      height:props.height||-1,
       dateCollection : Object.keys(props.res.Area), 
       type: {
         'parking':1,
@@ -33,6 +35,26 @@ class Areachart extends Component {
       typeCollection : Object.keys(props.res.Area[Object.keys(props.res.Area)[0]]),
       crosshairValues: []
     }
+  }
+  updateSize(){
+    try{
+      const parentDom = ReactDOM.findDOMNode(this).parentNode;
+      let {width,height} = this.props;
+      
+      if(!width){
+        width = parentDom.offsetWidth;
+        
+        if(width>600){
+          width = width
+          height = width*0.45
+        }else{
+          width = width
+          height = width
+        }
+      }
+      
+      this.setState({width,height});
+    }catch(ignore){}
   }
   componentDidMount(){
     this.eventEmitter = emitter.addListener("showarea",(selectedtype)=>{
@@ -66,22 +88,23 @@ class Areachart extends Component {
             return({x:timestamp_begin+i1*ONE_DAY,y: this.props.res.Area[d1][d] })
         })
       ))
-    console.log(data)
-    console.log(this.state.crosshairValues)
+    
     return (
       <XYPlot
         onMouseLeave={()=>this.setState({crosshairValues:[]})}
-        width={window.innerWidth*0.75}
-        height={window.innerWidth*0.35}
+        width={this.state.width}
+        height={this.state.height}
         className="ui container centered grid"
-        xDomain={[timestamp_begin-ONE_DAY,timestamp_begin+6*ONE_DAY]}
+       
         Range={[0,window.innerWidth*0.7]}
         xType="time">
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis  
+           xDomain={[timestamp_begin-ONE_DAY,timestamp_begin+6*ONE_DAY]}
            tickFormat={(d)=>formatTime(d)}
            tickTotal={7}
+           tickLabelAngle={(this.state.width>600?0:90)}
            style={{
             line:{stroke:"#ADDDE1"},
             text:{fill:"#6b6b76",fontWeight: 400}
