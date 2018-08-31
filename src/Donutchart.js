@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {RadialChart} from "react-vis"
+import {RadialChart,LabelSeries} from "react-vis"
 import ReactDOM from 'react-dom';
 class Donutchart extends Component {
     constructor(props){
