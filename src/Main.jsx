@@ -43,6 +43,7 @@ class Main extends Component(){
       }
     render(){
         const {overview,cityreport,personalreport,isLoading} = this.state;
+        console.log(this.props)
         if(isLoading){
             return (
               <div class="loaddata">
@@ -53,8 +54,8 @@ class Main extends Component(){
         return(
             <main>
                 <Overview {...overview}/> 
-                <Cityreport towngeo={...this.props} {...cityreport}/>
-                <Personalreport datapath={...this.props} position={this.state.lat_lng} {...personalreport}/>
+                <Cityreport towngeo={this.props.towngeo} {...cityreport}/>
+                <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/>
             </main>
         )
     }
