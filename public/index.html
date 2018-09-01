@@ -46,7 +46,6 @@
   }
 
   .topic {
-    display: none;
     position: relative;
     transform: translateY(50%);
     width: 100%;
@@ -64,14 +63,15 @@
   <div class="load">
     <h3 id="load_text">正在接通1999 ......</h3>
   </div>
-  <h1 class="topic">台南視政廳</h1>
   
-  <div id="root" data-towngeo='/static/data/tainan.json' data-icon='/static/image/'></div>
+  <div id="root" 
+      data-logo='/static/image/logo.png'
+      data-towngeo='/static/data/tainan.json' 
+      data-icon='/static/image/'>
+  </div>
  
   <script>
     $(window).on('load', function () {
-      $(".topic").show();
-      $(".date").show();
       $('.load').remove();
     });
   </script>

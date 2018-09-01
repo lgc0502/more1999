@@ -40,9 +40,14 @@ header,
 main {
   width: 100%;
   height: auto;
-  margin-top: 2%;
 }
-
+#root{
+  margin-top: 5rem;
+}
+header,
+main {
+  margin-top: 2rem;
+}
 /*instant*/
 .instant {
   width: 100%;

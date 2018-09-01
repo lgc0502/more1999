@@ -1,22 +1,63 @@
-import React from 'react'
-import {Switch,Route} from 'react-router-dom'
-import Historicalstatistics from './Historicalstatistics'
-import Instantnotification from './Instantnotification'
-import Explore from './Explore'
+import React, { Component } from 'react';
+import postApi from './postApi.js';
+import geolocation from './geolocation';
+import Overview from './Overview';
+import Cityreport from './Cityreport';
+import Personalreport from './Personalreport';
 
-const Main=(props)=>{ 
-    const data = props
-   
-    return(
-        <main>
-            <Switch>
-                <Route exact path="/" component={Instantnotification}/>
-                <Route path="/history" render={()=>(<Historicalstatistics towngeo={data}/>)}/>
-                <Route path="/explore" render={()=>(<Explore  datapath={data}/>)}/>
-                <Route component={Instantnotification}/>
-            </Switch>   
-        </main>
-    )
+class Main extends Component(){ 
+    constructor(props){
+        super(props);
+        this.state={
+            lat_lng:[],
+            overview:null,
+            cityreport:null,
+            personalreport:null,
+            isLoading : true,
+        }
+    }
+
+    componentDidMount(){
+        this.updateSize();
+        window.addEventListener('resize',this.updateSize.bind(this));
+        
+        geolocation.getLocation().then(d=>{     
+            this.setState({
+                lat_lng:[d.coords.latitude,d.coords.longitude],
+            },()=>{
+                postApi.requertPost('./Nobug',{
+                    params:{
+                      lat:d.coords.latitude,
+                      lon:d.coords.longitude,
+                    }
+                  }).then(data => {
+                        this.setState({
+                            overview:data.res.Response.Overview,
+                            cityreport:data.res.Response.Cityreport,
+                            personalreport:data.res.Response.Personalreport,
+                            isLoading : false
+                        })
+                 })
+            })
+        })
+      }
+    render(){
+        const {overview,cityreport,personalreport,isLoading} = this.state;
+        if(isLoading){
+            return (
+              <div class="loaddata">
+                <h3 id="load_text">正在接通1999 ......</h3>
+              </div>
+            )
+          }
+        return(
+            <main>
+                <Overview {...overview}/> 
+                <Cityreport towngeo={...this.props} {...cityreport}/>
+                <Personalreport datapath={...this.props} position={this.state.lat_lng} {...personalreport}/>
+            </main>
+        )
+    }
 }
 
    

@@ -1,40 +1,10 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
 
-const Header = ()=>{
+const Header = (props)=>{
     return(
         <header>
-            <NavLink 
-                exact
-                to='/'
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    color: 'black'
-                }}
-            >即時通報通知</NavLink>
-            <NavLink 
-                to={{
-                    pathname:'/history',
-                   
-                }}
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    color: 'black'
-                }}
-            >上週通報累積</NavLink>
-            <NavLink 
-                to={{
-                    pathname:'/explore',
-                    
-                }}
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    color: 'black'
-                }}
-            >探索周遭</NavLink> 
+            <img src={this.props.logo} className="logo" alt="Tainan City Hall"/>
+            <h1 className="topic">台南視政廳</h1>
         </header>
     )
 }

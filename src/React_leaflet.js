@@ -1,9 +1,9 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON} from 'react-leaflet'
 import L from 'leaflet'
-import Towninfo from './Towninfo'
 import Legend from './Legend'
-
+import Barchart from './Barchart.js';
+import Areachart from './Areachart.js';
 function getColor(d){
 
     return d > 100  ? '#BD0026':
@@ -69,7 +69,7 @@ class React_leaflet extends Component{
             res.json().then(topology => {
                 
                 topology.features.map((d)=>{
-                    d.properties.casenum = this.props.res.Hotzone[d.properties.TOWNID].total
+                    d.properties.casenum = this.props.Hotzone[d.properties.TOWNID]
                 })
                 this.setState({
                     data:topology.features,
@@ -87,7 +87,8 @@ class React_leaflet extends Component{
              </div>
             )
           }
-        const position =this.state.center
+        const position =this.state.center;
+        const towninfo = this.props.Detail[this.state.selecttownid];
         return(
             <div>
                 <Map ref='map' 
@@ -118,10 +119,19 @@ class React_leaflet extends Component{
                     />  
                     <Legend/>         
                 </Map>
-                <div className="Mapinfo leaflet">
-                    <Towninfo town={this.state.selecttown}
-                              time={this.props.res.Hotzone[this.state.selecttownid].time}
-                              category={this.props.res.Hotzone[this.state.selecttownid].category}/>
+                <div className="Map-description">
+                    <Barchart
+                        id="Category"
+                        data={towninfo.Category}/>
+                    <Barchart
+                        id="Time"
+                        data={towninfo.Time}/>
+                    <Areachart
+                        id="DailyNum"
+                        data={towninfo.DailyNum}/>
+                    <Areachart
+                        id="HourNum"
+                        data={towninfo.HourNum}/>
                 </div>
             </div>
         )
