@@ -78,6 +78,16 @@ class Explore extends Component {
             })
          })
     }
+    all(){
+        this.setState({
+            data:this.props.All
+        })
+    }
+    unfinish(){
+        this.setState({
+            data:this.props.Unfinish
+        })
+    }
     componentDidMount(){
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
@@ -91,13 +101,13 @@ class Explore extends Component {
        const endhour=23; 
        const {lat_lng,category,time,cases,address} = this.state;
        const {Category,Time,DailyNum,HourNum} = this.props;
-       if(this.state.isLoading){
-            return (
-             <div className="loaddata">
-               <h3 id="load_text">還在找 ......</h3>
-             </div>
-            )
-        }
+    //    if(this.state.isLoading){
+    //         return (
+    //          <div className="loaddata">
+    //            <h3 id="load_text">還在找 ......</h3>
+    //          </div>
+    //         )
+    //     }
        
         return (
             <div>
@@ -111,6 +121,10 @@ class Explore extends Component {
                 <div className='current-location'>
                     <i class="fas fa-map-marker-alt"></i>
                     <span>{this.state.address}</span>
+                </div>
+                <div className="ui buttons">
+                    <button className="ui button" onClick={this.all.bind(this)}>全部</button>
+                    <button className="ui button" onClick={this.unfinish.bind(this)}>未完工</button>
                 </div>
                 <Exploremap 
                     point={lat_lng} 

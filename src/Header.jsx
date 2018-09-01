@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Header = (props)=>{
+    console.log(props.logo)
     return(
         <header>
-            <img src={props.logo} className="logo" alt="Tainan City Hall"/>
+            <img src={window.location.origin+'/image/logo.png'} className="logo" alt="Tainan City Hall"/>
+            {/* <img src={props.logo} className="logo" alt="Tainan City Hall"/> */}
             <h1 className="topic">台南視政廳</h1>
         </header>
     )

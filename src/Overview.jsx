@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import {XYPlot,RadialChart,YAxis,LabelSeries} from "react-vis";
 
+const testdata = {
+    FinishNum:70,
+    UnFinishNum:30,
+    CompleteRate:70,
+    TotalNum:100
+}
 class Overview extends Component{ 
 
     constructor(props){
@@ -21,8 +27,8 @@ class Overview extends Component{
             width = parentDom.offsetWidth;
             
             if(width>600){
-              width = width*0.35
-              height = width*0.8
+              width = width*0.3
+              height = width*0.3
             }else{
               width = width*0.7
               height = width*0.75
@@ -37,21 +43,21 @@ class Overview extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
+        console.log(window.innerWidth)
+        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = testdata//this.props
         return(
             <div className="Overview">
                 <div className="Overview-chart">
                     <RadialChart  
                         key={`OverviewRadialChart`}
-                        width={window.innerWidth*0.2}
-                        height={window.innerWidth*0.2}
+                        width={this.state.width}
+                        height={this.state.width}
                         className="radial-chart"
-                        innerRadius={window.innerWidth*0.05-window.innerWidth*0.01}
-                        radius={window.innerWidth*0.05}
-                        getAngle={d => d}
-                        data={[FinishNum,UnFinishNum]}
+                        innerRadius={this.state.width*0.2}
+                        radius={this.state.width*0.25}
+                        data={[{angle:FinishNum},{angle:UnFinishNum}]}
                         colorType="category"
-                        colorRange={["#DCC7AA","#6B7A8F"]} 
+                        colorRange={["#DCC7AA","#454f5d"]} 
                         stroke={null}>
                     <LabelSeries
                         allowOffsetToBeReversed
@@ -69,9 +75,9 @@ class Overview extends Component{
                     />
                     </RadialChart>
                 </div>
-                <div className="Overview-description">
-                    <h3>本週截至目前通報{TotalNum}件</h3>
-                    <h3><font color="#598c14">{FinishNum}件完工</font> / <font color="#b0a696">{UnFinishNum}處理中</font></h3>
+                <div className="flexbox Overview-description">
+                    <h2>本週截至目前通報{TotalNum}件</h2>
+                    <h2><font color="#598c14">{FinishNum}件完工</font> / <font color="#b0a696">{UnFinishNum}件處理中</font></h2>
                 </div>
             </div>
         )

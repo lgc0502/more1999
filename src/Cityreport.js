@@ -8,6 +8,7 @@ class Cityreport extends Component{
         this.state = {
             width:props.width||-1,
             height:props.height||-1,
+            data:props.Thisweek,
         }
     }
 
@@ -31,6 +32,16 @@ class Cityreport extends Component{
           this.setState({width,height});
         }catch(ignore){}
     }
+    thisweekdata(){
+        this.setState({
+            data:this.props.Thisweek
+        })
+    }
+    lastweekdata(){
+        this.setState({
+            data:this.props.Lastweek
+        })
+    }
     componentDidMount(){
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
@@ -38,10 +49,14 @@ class Cityreport extends Component{
     render(){
         return(
             <div className="Cityreport">
+                <div className="ui buttons">
+                    <button className="ui button" onClick={this.thisweekdata.bind(this)}>本週</button>
+                    <button className="ui button" onClick={this.lastweekdata.bind(this)}>上週</button>
+                </div>
                 <div className="Map-chart" id="Map">
                     <React_leaflet
                         data={this.props.towngeo}
-                        {...this.state}/>
+                        {...this.state.data}/>
                 </div>
             </div>
         )
