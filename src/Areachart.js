@@ -58,7 +58,16 @@ class Areachart extends Component {
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const {dateCollection,typeCollection} = this.state
-    
+    const data = typeCollection.map((d,i)=>(
+      dateCollection.map((date,i1)=>{  
+        if(this.props.id==="DailyNum")
+          return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date] })
+        else if(this.props.id==="HourNum")
+          return({x:timestamp_begin+i1*ONE_HOUR,y: this.props.data[date] })
+         
+      })
+    ))
+ 
     return (
       <div className="ui segment">
         <XYPlot

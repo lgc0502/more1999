@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import postApi from './postApi.js';
 import geolocation from './geolocation';
 import Overview from './Overview';
 import Cityreport from './Cityreport';
 import Personalreport from './Personalreport';
 
-class Main extends Component(){ 
+class Main extends Component{ 
     constructor(props){
         super(props);
         this.state={
@@ -16,7 +17,26 @@ class Main extends Component(){
             isLoading : true,
         }
     }
-
+    updateSize(){
+        try{
+          const parentDom = ReactDOM.findDOMNode(this).parentNode;
+          let {width,height} = this.props;
+          
+          if(!width){
+            width = parentDom.offsetWidth;
+            
+            if(width>600){
+              width = width
+              height = width*0.45
+            }else{
+              width = width
+              height = width
+            }
+          }
+          
+          this.setState({width,height});
+        }catch(ignore){}
+      }
     componentDidMount(){
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
@@ -44,9 +64,10 @@ class Main extends Component(){
     render(){
         const {overview,cityreport,personalreport,isLoading} = this.state;
         console.log(this.props)
+        console.log(this.state)
         if(isLoading){
             return (
-              <div class="loaddata">
+              <div className="loaddata">
                 <h3 id="load_text">正在接通1999 ......</h3>
               </div>
             )
