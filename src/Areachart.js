@@ -57,13 +57,13 @@ class Areachart extends Component {
     const data = typeCollection.map((d,i)=>(
       dateCollection.map((date,i1)=>{  
         if(this.props.id==="DailyNum")
-          return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date] })
+          return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date][d] })
         else if(this.props.id==="HourNum")
-          return({x:timestamp_begin+i1*ONE_HOUR,y: this.props.data[date] })
+          return({x:timestamp_begin+i1*ONE_HOUR,y: this.props.data[date][d] })
          
       })
     ))
-   
+   console.log((this.props.id==="DailyNum"?7:24))
     return (
         <XYPlot
           width={this.state.width}

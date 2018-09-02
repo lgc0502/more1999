@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import {XYPlot,VerticalBarSeries,XAxis,YAxis,LabelSeries} from "react-vis";
+import {XYPlot,VerticalBarSeries,XAxis,YAxis,LabelSeries ,VerticalGridLines,HorizontalGridLines} from "react-vis";
 const transtype = {"animal":'動物救援',"pipe":'民生管線',"dirty":'髒亂污染',"traffic":'交通運輸',"road":'道路維修',"aisle":'騎樓舉發',"noise":'噪音舉發',"light":'路燈故障',"parking":'違規停車'}
 class Barchart extends Component{
     
@@ -56,6 +56,8 @@ class Barchart extends Component{
                     height={this.state.height}
                     xType='ordinal'
                     className="Barchart">
+                    <VerticalGridLines />
+                    <HorizontalGridLines />
                     <XAxis
                         tickLabelAngle={-45}/>
                     <YAxis/>

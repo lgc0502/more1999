@@ -61,7 +61,7 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-    fetch(this.props.data.towngeo)//fetch('/data/tainan.json')
+   fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)

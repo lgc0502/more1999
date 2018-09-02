@@ -24,7 +24,7 @@ class Explore extends Component {
         super(props);
         this.state = {
             
-            width:props.width||-1,
+            width:props.width||0,
             location:'',
             lat_lng:props.position,
             category:props.Detail.category,
