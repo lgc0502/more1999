@@ -98,13 +98,13 @@ class Personalreport extends Component {
      
        const beginhour=0;
        const endhour=23; 
-       if(this.state.isLoading){
-            return (
-             <div className="loaddata">
-               <h3 id="load_text">還在找 ......</h3>
-             </div>
-            )
-        }
+    //    if(this.state.isLoading){
+    //         return (
+    //          <div className="loaddata">
+    //            <h3 id="load_text">還在找 ......</h3>
+    //          </div>
+    //         )
+    //     }
         console.log('personal')
         console.log(this.state.width)
         console.log(this.state)
