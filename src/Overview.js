@@ -42,7 +42,8 @@ class Overview extends Component{
         return(
             <div className="Overview">
                 <div className="Overview-chart">
-                    <RadialChart  
+                    <RadialChart
+                        animation  
                         key={`OverviewRadialChart`}
                         width={this.state.width}
                         height={this.state.width}
