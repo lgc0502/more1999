@@ -287,16 +287,16 @@ def Area_statistic(begin,end):
     returndata['All']={}
     returndata['All']['TotalNum'] = len(all_data)
     returndata['All']['Category'] = Category_statistic(all_data)
-    returndata['All']['HourNum'] = Time_statistic(all_data)
+    returndata['All']['HourNum'] = Hour_statistic(all_data)
     returndata['All']['DailyNum'] = WeekDay_statistic(all_data,begin,end)
     for index in range(len(town_name)):
         area_data = all_data.filter(area = town_name[index]) 
         returndata[town_id[index]]={}
         returndata[town_id[index]]['TotalNum'] = len(area_data)
         returndata[town_id[index]]['Category'] = Category_statistic(area_data)
-        returndata[town_id[index]]['HourNum'] = Time_statistic(area_data)
+        returndata[town_id[index]]['HourNum'] = Hour_statistic(area_data)
         returndata[town_id[index]]['DailyNum'] = WeekDay_statistic(area_data,begin,end)
-        returndata[town_id[index]]['Time']
+        returndata[town_id[index]]['Time'] = Time_statistic(area_data,begin,end)
     return returndata
 
 def Category_statistic(obj):
@@ -305,7 +305,7 @@ def Category_statistic(obj):
         returndata[eng_class[index]] = obj.filter(service_name = classification[index]).count()
     return returndata
 
-def Time_statistic(obj):
+def Hour_statistic(obj):
     returndata = {}
     for index in range(0,24):
         returndata[str(index)+':00'] = obj.filter(requested_datetime__hour = index).count()
@@ -319,7 +319,10 @@ def WeekDay_statistic(obj,begin,end):
         date = query_date.strftime('%Y-%m-%d')
         returndata[date] = obj.filter(requested_datetime__range = [query_date,query_end]).count()
     return returndata
-    
+
+def Time_statistic(obj,begin,end):
+
+    return returndata
 def Cityreport():
     returndata = {}
     Date = week_date()
@@ -338,6 +341,8 @@ def Personalreport():
     return {}
 
 def Data_return(request):
+    lat = float(request.GET['lat'])
+    lng = float(request.GET['lon'])
     Response = {}
     Response['Overview'] = overview()
     Response['Cityreport'] = Cityreport()
