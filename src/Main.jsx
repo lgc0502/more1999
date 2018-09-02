@@ -45,15 +45,15 @@ class Main extends Component{
      
         if(isLoading){
             return (
-              <div className="loaddata">
+              <div className="load">
                 <h3 id="load_text">正在接通1999 ......</h3>
               </div>
             )
           }
         return(
             <main>
-                 <Overview {...overview}/> 
-                 <Cityreport towngeo={this.props.towngeo} {...cityreport}/> 
+                <Overview {...overview}/> 
+                <Cityreport towngeo={this.props.towngeo} {...cityreport}/> 
                 <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/>
             </main>
         )

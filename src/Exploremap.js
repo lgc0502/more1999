@@ -69,7 +69,7 @@ class Exploremap extends Component{
             <div>
                
                 <Map ref='map' 
-                     className='exploremap' 
+                     className='"Personal-chart"' 
                      center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
@@ -105,18 +105,26 @@ class Exploremap extends Component{
                     </LayerGroup> 
                 </Map>
                 <div className="Personal-description">
-                    <Barchart
-                        id="Category"
-                        data={Category}/>
-                    <Barchart
-                        id="Time"
-                        data={Time}/>
-                    <Areachart
-                        id="DailyNum"
-                        data={DailyNum}/>
-                    <Areachart
-                        id="HourNum"
-                        data={HourNum}/>
+                    <div className="ui segment description-block">
+                        <Barchart
+                            id="Category"
+                            data={Category}/>
+                    </div>
+                    <div className="ui segment description-block">
+                        <Barchart
+                            id="Time"
+                            data={Time}/>
+                    </div>
+                    <div className="ui segment description-block">
+                        <Areachart
+                            id="DailyNum"
+                            data={DailyNum}/>
+                    </div>
+                    <div className="ui segment description-block">
+                        <Areachart
+                            id="HourNum"
+                            data={HourNum}/>
+                    </div>
                 </div>
                 
             </div>
