@@ -29,7 +29,7 @@ class Main extends Component{
                       lon:d.coords.longitude,
                     }
                   }).then(data => {
-                      console.log(data)
+                        console.log(data)
                         this.setState({
                             overview:data.res.Overview,
                             cityreport:data.res.Cityreport,
@@ -45,7 +45,7 @@ class Main extends Component{
      
         if(isLoading){
             return (
-              <div className="load">
+              <div className="loaddata">
                 <h3 id="load_text">正在接通1999 ......</h3>
               </div>
             )

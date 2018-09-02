@@ -105,8 +105,9 @@ class Personalreport extends Component {
              </div>
             )
         }
-    console.log('personal')
-    console.log(this.state)
+        console.log('personal')
+        console.log(this.state.width)
+        console.log(this.state)
    
         return (
             <div className="Personalreport">
