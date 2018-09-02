@@ -29,6 +29,7 @@ class Main extends Component{
                       lon:d.coords.longitude,
                     }
                   }).then(data => {
+                      console.log(data)
                         this.setState({
                             overview:data.res.Overview,
                             cityreport:data.res.Cityreport,

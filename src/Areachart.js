@@ -63,7 +63,7 @@ class Areachart extends Component {
          
       })
     ))
-   console.log((this.props.id==="DailyNum"?7:24))
+  
     return (
         <XYPlot
           width={this.state.width}
