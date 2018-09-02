@@ -41,42 +41,42 @@ class Main extends Component{
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
         
-        // geolocation.getLocation().then(d=>{     
-        //     this.setState({
-        //         lat_lng:[d.coords.latitude,d.coords.longitude],
-        //     },()=>{
-        //         postApi.requertPost('./Nobug',{
-        //             params:{
-        //               lat:d.coords.latitude,
-        //               lon:d.coords.longitude,
-        //             }
-        //           }).then(data => {
-        //                 this.setState({
-        //                     overview:data.res.Overview,
-        //                     cityreport:data.res.Cityreport,
-        //                     personalreport:data.res.Personalreport,
-        //                     isLoading : false
-        //                 })
-        //          })
-        //     })
-        // })
+        geolocation.getLocation().then(d=>{     
+            this.setState({
+                lat_lng:[d.coords.latitude,d.coords.longitude],
+            },()=>{
+                postApi.requertPost('./Nobug',{
+                    params:{
+                      lat:d.coords.latitude,
+                      lon:d.coords.longitude,
+                    }
+                  }).then(data => {
+                        this.setState({
+                            overview:data.res.Overview,
+                            cityreport:data.res.Cityreport,
+                            personalreport:data.res.Personalreport,
+                            isLoading : false
+                        })
+                 })
+            })
+        })
       }
     render(){
         const {overview,cityreport,personalreport,isLoading} = this.state;
         console.log(this.props)
         console.log(this.state)
-        // if(isLoading){
-        //     return (
-        //       <div className="loaddata">
-        //         <h3 id="load_text">正在接通1999 ......</h3>
-        //       </div>
-        //     )
-        //   }
+        if(isLoading){
+            return (
+              <div className="loaddata">
+                <h3 id="load_text">正在接通1999 ......</h3>
+              </div>
+            )
+          }
         return(
             <main>
                 <Overview {...overview}/> 
-                {/* <Cityreport towngeo={this.props.towngeo} {...cityreport}/>
-                <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/> */}
+                <Cityreport towngeo={this.props.towngeo} {...cityreport}/>
+                <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/>
             </main>
         )
     }
