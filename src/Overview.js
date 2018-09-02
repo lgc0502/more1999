@@ -38,7 +38,7 @@ class Overview extends Component{
     render(){
        console.log('overview')
        console.log(this.props)
-        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
+        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = testdata//this.props
         return(
             <div className="Overview">
                 <div className="Overview-chart">
@@ -58,14 +58,14 @@ class Overview extends Component{
                         data={[{x:0, y:0,label:'完成度'}]}
                         labelAnchorX="middle"
                         labelAnchorY="hanging"
-                        style={{fill:"#F7882F",fontWeight:600,}}
+                        style={{fill:"#DCC7AA",fontWeight:600,fontSize:"2vmin",}}
                     />
                     <LabelSeries
                         allowOffsetToBeReversed
                         data={[{x:0, y:0,label:(CompleteRate*100).toFixed(1)+"%"}]}
                         labelAnchorX="middle"
                         labelAnchorY="baseline"
-                        style={{fill:"#F7882F",fontWeight:600,}}
+                        style={{fill:"#454f5d",fontWeight:600,fontSize:"3.5vmin"}}
                     />
                     </RadialChart>
                 </div>

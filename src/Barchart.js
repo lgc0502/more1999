@@ -20,13 +20,9 @@ class Barchart extends Component{
           if(!width){
             width = parentDom.offsetWidth;
             
-            if(width>600){
-              width = width
-              height = width
-            }else{
-              width = width*0.7
-              height = width*0.75
-            }
+            width = width*0.85
+            height = width*0.65
+            
           }
           
           this.setState({width,height});
@@ -59,7 +55,7 @@ class Barchart extends Component{
                     <VerticalGridLines />
                     <HorizontalGridLines />
                     <XAxis
-                        tickLabelAngle={-45}/>
+                        tickLabelAngle={-30}/>
                     <YAxis/>
                     <VerticalBarSeries
                         data={barchartdata} 

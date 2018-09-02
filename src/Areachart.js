@@ -14,7 +14,6 @@ const Palette = ['red','orange','yellow','olive','green','teal','blue','violet',
 const formatDay= timeFormat('%a');
 const formatHour= timeFormat('%H');
 const ONE_DAY = 86400000
-const ONE_HOUR = 3600000
 class Areachart extends Component {
 
   constructor(props) {
@@ -59,7 +58,7 @@ class Areachart extends Component {
         if(this.props.id==="DailyNum")
           return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date][d] })
         else if(this.props.id==="HourNum")
-          return({x:timestamp_begin+i1*ONE_HOUR,y: this.props.data[date][d] })
+          return({x:date,y: this.props.data[date][d] })
          
       })
     ))
@@ -69,16 +68,16 @@ class Areachart extends Component {
           width={this.state.width}
           height={this.state.height}
           className="Areachart"
-          Range={[0,this.state.width*0.8]}
-          xType="time"
+          xRange={[0,this.state.width*0.9]}
+          xType={(this.props.id==="DailyNum"?'time':'linear')}
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis  
             xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
-            // tickFormat={(d)=>{(this.props.id==="DailyNum"?formatDay(d):(d))}}
-            tickTotal={(this.props.id==="DailyNum"?7:24)}
-            tickLabelAngle={-45}
+            xRange={[0,this.state.width*0.8]}
+            tickFormat={(this.props.id==="DailyNum"?(d)=>formatDay(d):(d)=>{return d+":00"})}
+            tickTotal={(this.props.id==="DailyNum"?3:6)}
             style={{
               line:{stroke:"#ADDDE1"},
               text:{fill:"#6b6b76",fontWeight: 400}

@@ -19,7 +19,7 @@ class React_leaflet extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:[23.15,120.3],
+            center:[23.16,120.3],
             zoom:10,
             minZoom:10,
             maxZoom:20,
@@ -61,7 +61,7 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-   fetch('/static/data/tainan.json')
+    fetch('/data/tainan.json')//fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -95,7 +95,7 @@ class React_leaflet extends Component{
         return(
             <div>
                 <Map ref='map' 
-                     className='leafletmap' 
+                     className='Map-chart' 
                      center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}

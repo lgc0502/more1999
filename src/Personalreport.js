@@ -116,11 +116,11 @@ class Personalreport extends Component {
                 <div className="ui large input">
                     <input type="text" placeholder="Search..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
                     <button className="ui icon button" onClick={this.handleclick.bind(this)}>
-                        <i class="search icon"></i>
+                        <i className="search icon"></i>
                     </button>
                 </div>
                 <div className='current-location'>
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i className="fas fa-map-marker-alt"></i>
                     <span>{this.state.address}</span>
                 </div>
                 <div className="ui buttons">
