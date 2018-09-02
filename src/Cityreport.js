@@ -476,7 +476,8 @@ class Cityreport extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-
+        console.log('cityreport')
+        console.log(this.state.data)
         return(
             <div className="Cityreport">
                 <div className="ui buttons">

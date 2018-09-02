@@ -108,7 +108,9 @@ class Explore extends Component {
     //          </div>
     //         )
     //     }
-       
+    console.log('personal')
+    console.log(this.state)
+    console.log(this.props)
         return (
             <div>
                 <h2>搜尋地點 查看通報狀況</h2>

@@ -38,7 +38,8 @@ class Overview extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-       
+       console.log('overview')
+       console.log(this.props)
         const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
         return(
             <div className="Overview">
