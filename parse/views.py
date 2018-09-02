@@ -381,15 +381,16 @@ def Time_statistic(obj,begin,end):
 def Cityreport():
     returndata = {}
     Date = week_date()
-    returndata['Detail'] = {}
-    returndata['Hotzone'] = {}
-    returndata['Detail']['Thisweek'] = Area_statistic(Date['week_begin'], Date['today'])
-    returndata['Detail']['Lastweek'] = Area_statistic(Date['last_begin'], Date['last_end'])
-    returndata['Hotzone']['Thisweek'] = {}
-    returndata['Hotzone']['Lastweek'] = {}
+    returndata['Thisweek'] = {}
+    returndata['Thisweek']['Detail'] = Area_statistic(Date['week_begin'], Date['today'])
+    returndata['Lastweek'] = {}
+    returndata['Lastweek']['Detail'] = Area_statistic(Date['last_begin'], Date['last_end'])
+    
+    returndata['Thisweek']['Hotzone'] = {}
+    returndata['Lastweek']['Hotzone'] = {}
     for index in range(len(town_name)):
-        returndata['Hotzone']['Lastweek'][town_id[index]] = returndata['Detail']['Lastweek'][town_id[index]]['TotalNum']
-        returndata['Hotzone']['Thisweek'][town_id[index]] = returndata['Detail']['Thisweek'][town_id[index]]['TotalNum']
+        returndata['Lastweek']['Hotzone'][town_id[index]] = returndata['Lastweek']['Detail'][town_id[index]]['TotalNum']
+        returndata['Thisweek']['Hotzone'][town_id[index]] = returndata['Thisweek']['Detail'][town_id[index]]['TotalNum']
     return returndata
 
 def Personalreport(qlat, qlng):
