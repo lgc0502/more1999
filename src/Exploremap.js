@@ -49,7 +49,7 @@ class Exploremap extends Component{
    
     render(){
 
-        const {Category,DailyNum,Detail,HourNum,Time,position}= this.props
+        const {Category,DailyNum,cases,HourNum,Time,position}= this.props
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -97,7 +97,7 @@ class Exploremap extends Component{
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
-                        {Detail.map((d)=>(                              
+                        {cases.map((d)=>(                              
                             <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
                                 <Popup>{d.category}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))

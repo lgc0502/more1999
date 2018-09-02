@@ -71,6 +71,7 @@ class React_leaflet extends Component{
                 
                 topology.features.map((d)=>{
                     d.properties.casenum = this.props.Hotzone[d.properties.TOWNID]
+                  
                 })
                 this.setState({
                     data:topology.features,
