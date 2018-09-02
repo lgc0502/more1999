@@ -315,18 +315,18 @@ def Area_statistic(begin,end):
         total = 0
         second = 0
         for index in range(len(town_name)):
-            print("==",returndata[town_id[index]]['Time'][eng_class[d]]['Num'],returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'])
+            #print("==",returndata[town_id[index]]['Time'][eng_class[d]]['Num'],returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'])
             second = second + (returndata[town_id[index]]['Time'][eng_class[d]]['Seconds']*returndata[town_id[index]]['Time'][eng_class[d]]['Num'])
             total = total + returndata[town_id[index]]['Time'][eng_class[d]]['Num']
-            print(second,total)
+            #print(second,total)
         if total == 0:
             returndata['All']['Time'][eng_class[d]]['Seconds'] = 0
         else:
             returndata['All']['Time'][eng_class[d]]['Seconds'] = int(second/total)
-            print("**",returndata['All']['Time'][eng_class[d]]['Seconds'])
+            #print("**",returndata['All']['Time'][eng_class[d]]['Seconds'])
         returndata['All']['Time'][eng_class[d]]['Formated'] = seconds_format(returndata['All']['Time'][eng_class[d]]['Seconds'])
         returndata['All']['Time'][eng_class[d]]['Num'] = total
-        print('------------------------')
+        #print('------------------------')
     return returndata
 
 def Category_statistic(obj):
@@ -338,7 +338,7 @@ def Category_statistic(obj):
 def Hour_statistic(obj):
     returndata = {}
     for index in range(0,24):
-        returndata[str(index)+':00'] = obj.filter(requested_datetime__hour = index).count()
+        returndata[index] = obj.filter(requested_datetime__hour = index).count()
     return returndata
    
 def WeekDay_statistic(obj,begin,end):
@@ -387,8 +387,17 @@ def Cityreport():
         returndata['Hotzone']['Thisweek'][town_id[index]] = returndata['Detail']['Thisweek'][town_id[index]]['TotalNum']
     return returndata
 
-def Personalreport():
-    return {}
+def Personalreport(qlat, qlng):
+    returndata = {}
+    Date = week_date()
+    POI_obj = API_DATA.objects.filter(requested_datetime__range = [Date['week_begin'], Date['today']], 
+                    lat__range = [qlat-0.007,qlat+0.007], lng__range = [qlng-0.007,qlng+0.007]).values('area', 
+                    'status', 'requested_datetime','service_name','updated_datetime')
+    returndata['Category'] = Category_statistic(POI_obj)
+    returndata['HourNum'] = Hour_statistic(POI_obj)
+    returndata['DailyNum'] = WeekDay_statistic(POI_obj,Date['week_begin'], Date['today'])
+    returndata['Time'] = Time_statistic(POI_obj, Date['week_begin'], Date['today'])
+    return returndata
 
 def Data_return(request):
     lat = float(request.GET['lat'])
@@ -396,7 +405,29 @@ def Data_return(request):
     Response = {}
     Response['Overview'] = overview()
     Response['Cityreport'] = Cityreport()
-    Response['Personalreport'] = Personalreport()
+    poi_exist = 0
+    poi = ''
+    address_exist = 0
+    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+    for i in reverse_geocode_result:
+        if address_exist == 0:
+            address = i['formatted_address']
+            address_exist = 1
+        for c in i['address_components']:
+            if 'administrative_area_level_1' in c['types']:
+                city = c['long_name']
+            if 'point_of_interest' in c['types']:
+                poi = c['long_name']
+                poi_exist = 1
+    if '台南' not in city:
+        Response['Personalreport'] = Personalreport(22.997234,120.211936) 
+        Response['Personalreport']['Address']='台南火車站'
+    else:
+        Response['Personalreport'] = Personalreport(lat, lng) 
+        if poi_exist == 1:
+            Response['Personalreport']['Address']=poi
+        else:
+            Response['Personalreport']['Address']=address
     return JsonResponse(Response)
 
 
