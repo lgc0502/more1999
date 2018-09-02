@@ -21,9 +21,7 @@ class Overview extends Component{
     updateSize(){
         try{
           const parentDom = ReactDOM.findDOMNode(this).parentNode;
-          console.log(parentDom)
           let {width,height} = this.props;
-          console.log(width)
           if(!width){
             width = parentDom.offsetWidth;
             width = width*0.3
