@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import {XYPlot,RadialChart,YAxis,LabelSeries} from "react-vis";
+import {RadialChart,LabelSeries} from "react-vis";
 
 const testdata = {
     FinishNum:70,
@@ -24,8 +24,8 @@ class Overview extends Component{
           let {width,height} = this.props;
           if(!width){
             width = parentDom.offsetWidth;
-            width = width*0.3
-            height = width*0.3
+            width = width*0.3;
+            height = width*0.3;
           }
           
           this.setState({width,height});

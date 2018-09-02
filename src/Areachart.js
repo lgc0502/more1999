@@ -12,7 +12,6 @@ import emitter from './events'
 import ReactDOM from 'react-dom';
 const Palette = ['red','orange','yellow','olive','green','teal','blue','violet','purple'];
 const formatDay= timeFormat('%a');
-const formatHour= timeFormat('%H');
 const ONE_DAY = 86400000
 class Areachart extends Component {
 
