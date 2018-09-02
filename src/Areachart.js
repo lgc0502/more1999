@@ -34,14 +34,9 @@ class Areachart extends Component {
       
       if(!width){
         width = parentDom.offsetWidth;
-        
-        if(width>600){
-          width = width
-          height = width*0.45
-        }else{
-          width = width
-          height = width
-        }
+        width = width*0.95
+        height = width*0.9
+      
       }
       
       this.setState({width,height});
@@ -56,6 +51,7 @@ class Areachart extends Component {
   }
   
   render() { 
+    
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const {dateCollection,typeCollection} = this.state
     const data = typeCollection.map((d,i)=>(
@@ -67,27 +63,22 @@ class Areachart extends Component {
          
       })
     ))
- 
+   
     return (
-      <div className="ui segment">
         <XYPlot
           width={this.state.width}
           height={this.state.height}
           className="Areachart"
-          Range={[0,window.innerWidth*0.7]}
+          Range={[0,this.state.width*0.8]}
           xType="time"
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis  
-            xDomain={(this.props.id==="DailyNum"?[timestamp_begin-ONE_DAY,timestamp_begin+6*ONE_DAY]:[timestamp_begin-ONE_HOUR,timestamp_begin+23*ONE_HOUR])}
-            tickFormat={(d)=>{
-              if(this.props.id==="DailyNum")
-                formatDay(d)
-              else if(this.props.id==="HourNum")
-                formatHour(d) }}
+            xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
+            // tickFormat={(d)=>{(this.props.id==="DailyNum"?formatDay(d):(d))}}
             tickTotal={(this.props.id==="DailyNum"?7:24)}
-            tickLabelAngle={(this.state.width>600?0:90)}
+            tickLabelAngle={-45}
             style={{
               line:{stroke:"#ADDDE1"},
               text:{fill:"#6b6b76",fontWeight: 400}
@@ -102,10 +93,12 @@ class Areachart extends Component {
                     curve="curveMonotoneX"
                     data={
                       dateCollection.map((date,dateIndex)=>{  
-                        if(this.props.id==="DailyNum")
-                          return({x:timestamp_begin+dateIndex*ONE_DAY,y: this.props.data[date] +(450-30*typeIndex),y0:450-30*typeIndex})
-                        else if(this.props.id==="HourNum")
-                          return({x:timestamp_begin+dateIndex*ONE_HOUR,y: this.props.data[date] +(450-30*typeIndex),y0:450-30*typeIndex})
+                        if(this.props.id==="DailyNum"){
+                          return({x:timestamp_begin+dateIndex*ONE_DAY,y: this.props.data[date][type] +(450-30*typeIndex),y0:450-30*typeIndex})
+                        }
+                        else if(this.props.id==="HourNum"){
+                          return({x:date,y: this.props.data[date][type] +(450-30*typeIndex),y0:450-30*typeIndex})
+                        }
                       })
                     }
                     color={Palette[typeIndex]}
@@ -114,7 +107,6 @@ class Areachart extends Component {
               )}
             <Crosshair values={this.state.crosshairValues}/>
             </XYPlot>  
-      </div>
     );
   }
 }

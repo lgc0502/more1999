@@ -17,8 +17,21 @@
   height:auto;
   float: left;
 }
-
-
+.Map-chart {
+  width:60vmin;
+  height:auto;
+  float: left;
+}
+.Map-description {
+  width:50%;
+  height:auto;
+  float: left;
+}
+.description-block{
+  width:50%;
+  height:auto;
+  float: left;
+}
 .container {
   display: -webkit-flex;
   display: flex;
@@ -49,7 +62,7 @@ p {
   font-size: 1vmin;
 }
 text {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 a {
   padding-left: 2%;
@@ -129,7 +142,7 @@ h3#ratiohint {
 }
 
 rect {
-  height: 4%;
+  width: 4%;
   border-color: #ffffff;
   border-radius: 2px;
 }
@@ -269,7 +282,7 @@ button.easy-button-button{
     font-size: 0.5vmin;
   }
   text {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .ui.segment.dashboard {
     width: 80%;

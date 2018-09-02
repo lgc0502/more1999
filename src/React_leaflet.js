@@ -25,7 +25,8 @@ class React_leaflet extends Component{
             maxZoom:20,
             isLoading:true,
             selecttown:'台南市',
-            selecttownid:'ALL'
+            selecttownid:'All',
+            data:''
         }
         
     }
@@ -60,7 +61,7 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-        fetch(this.props.data.towngeo)
+        fetch('/data/tainan.json')//fetch(this.props.data.towngeo)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -80,6 +81,7 @@ class React_leaflet extends Component{
         })
    }
     render(){
+        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -89,6 +91,7 @@ class React_leaflet extends Component{
           }
         const position =this.state.center;
         const towninfo = this.props.Detail[this.state.selecttownid];
+        console.log(towninfo)
         return(
             <div>
                 <Map ref='map' 
@@ -120,18 +123,26 @@ class React_leaflet extends Component{
                     <Legend/>         
                 </Map>
                 <div className="Map-description">
-                    <Barchart
-                        id="Category"
-                        data={towninfo.Category}/>
-                    <Barchart
-                        id="Time"
-                        data={towninfo.Time}/>
-                    <Areachart
-                        id="DailyNum"
-                        data={towninfo.DailyNum}/>
-                    <Areachart
-                        id="HourNum"
-                        data={towninfo.HourNum}/>
+                    <div className="ui segment description-block">
+                        <Barchart
+                            id="Category"
+                            data={towninfo.Category}/> 
+                    </div>
+                    <div className="ui segment description-block">
+                        <Barchart
+                            id="Time"
+                            data={towninfo.Time}/>
+                    </div>
+                    <div className="ui segment description-block">
+                        <Areachart
+                            id="DailyNum"
+                            data={towninfo.DailyNum}/>
+                    </div>
+                    <div className="ui segment description-block">
+                        <Areachart
+                            id="HourNum"
+                            data={towninfo.HourNum}/>
+                    </div>
                 </div>
             </div>
         )

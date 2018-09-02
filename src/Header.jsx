@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Header = (props)=>{
-    console.log(props.logo)
     return(
         <header>
             {/* <img src={window.location.origin+'/image/logo.png'} className="logo" alt="Tainan City Hall"/> */}

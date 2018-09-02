@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import {XYPlot,RadialChart,YAxis,LabelSeries} from "react-vis";
 
-const testdata = {
-    FinishNum:70,
-    UnFinishNum:30,
-    CompleteRate:70,
-    TotalNum:100
-}
+// const testdata = {
+//     FinishNum:70,
+//     UnFinishNum:30,
+//     CompleteRate:70,
+//     TotalNum:100
+// }
 class Overview extends Component{ 
 
     constructor(props){
@@ -43,8 +43,8 @@ class Overview extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        console.log(window.innerWidth)
-        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = testdata//this.props
+       
+        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
         return(
             <div className="Overview">
                 <div className="Overview-chart">
