@@ -315,6 +315,7 @@ def Area_statistic(begin,end):
         total = 0
         second = 0
         for index in range(len(town_name)):
+            print("==",returndata[town_id[index]]['Time'][eng_class[d]]['Num'],returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'])
             second = second + (returndata[town_id[index]]['Time'][eng_class[d]]['Seconds']*returndata[town_id[index]]['Time'][eng_class[d]]['Num'])
             total = total + returndata[town_id[index]]['Time'][eng_class[d]]['Num']
             print(second,total)
@@ -322,7 +323,9 @@ def Area_statistic(begin,end):
             returndata['All']['Time'][eng_class[d]]['Seconds'] = 0
         else:
             returndata['All']['Time'][eng_class[d]]['Seconds'] = int(second/total)
+            print("**",returndata['All']['Time'][eng_class[d]]['Seconds'])
         returndata['All']['Time'][eng_class[d]]['Formated'] = seconds_format(returndata['All']['Time'][eng_class[d]]['Seconds'])
+        returndata['All']['Time'][eng_class[d]]['Num'] = total
         print('------------------------')
     return returndata
 
