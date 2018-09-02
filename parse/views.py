@@ -424,7 +424,7 @@ def Personalreport(qlat, qlng):
         detail.append(temp)
         temp = {}
     returndata['Detail']=detail
-    returndata['Unfinisgh']=unfinish
+    returndata['Unfinish']=unfinish
     return returndata
 
 def Data_return(request):
