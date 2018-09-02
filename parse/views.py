@@ -268,6 +268,13 @@ def week_date():
     date['last_begin'] = last_begin
     return date
 
+def seconds_format(second):
+    days = int(second/(3600*24))
+    hours = int((second%(3600*24))/(3600))
+    minutes = int((second%3600)/(60))
+    delta_time = str(days)+'天'+str(hours)+'小時'+str(minutes)+'分鐘'
+    return delta_time
+
 def overview():
     returndata = {}
     thisweek = week_date()
@@ -283,7 +290,7 @@ def overview():
 
 def Area_statistic(begin,end):
     returndata = {}
-    all_data = API_DATA.objects.filter(requested_datetime__range = [begin, end]).values('area', 'requested_datetime','service_name','updated_datetime')
+    all_data = API_DATA.objects.filter(requested_datetime__range = [begin, end]).values('area', 'status', 'requested_datetime','service_name','updated_datetime')
     returndata['All']={}
     returndata['All']['TotalNum'] = len(all_data)
     returndata['All']['Category'] = Category_statistic(all_data)
@@ -297,6 +304,26 @@ def Area_statistic(begin,end):
         returndata[town_id[index]]['HourNum'] = Hour_statistic(area_data)
         returndata[town_id[index]]['DailyNum'] = WeekDay_statistic(area_data,begin,end)
         returndata[town_id[index]]['Time'] = Time_statistic(area_data,begin,end)
+        for d in range(len(classification)):
+            if(returndata[town_id[index]]['Category'][eng_class[d]] == 0):
+                returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = '無案件發生'
+            if(returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'] == 0 and returndata[town_id[index]]['Category'][eng_class[d]] != 0):
+                returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
+    returndata['All']['Time']={}
+    for d in range(len(classification)):
+        returndata['All']['Time'][eng_class[d]] = {}
+        total = 0
+        second = 0
+        for index in range(len(town_name)):
+            second = second + (returndata[town_id[index]]['Time'][eng_class[d]]['Seconds']*returndata[town_id[index]]['Time'][eng_class[d]]['Num'])
+            total = total + returndata[town_id[index]]['Time'][eng_class[d]]['Num']
+            print(second,total)
+        if total == 0:
+            returndata['All']['Time'][eng_class[d]]['Seconds'] = 0
+        else:
+            returndata['All']['Time'][eng_class[d]]['Seconds'] = int(second/total)
+        returndata['All']['Time'][eng_class[d]]['Formated'] = seconds_format(returndata['All']['Time'][eng_class[d]]['Seconds'])
+        print('------------------------')
     return returndata
 
 def Category_statistic(obj):
@@ -322,6 +349,25 @@ def WeekDay_statistic(obj,begin,end):
 
 def Time_statistic(obj,begin,end):
     returndata = {}
+    for index in range(len(classification)):
+        total = 0
+        delta = 0
+        returndata[eng_class[index]]={}
+        finish_obj = obj.filter(status = '已完工', service_name = classification[index])
+        for i in range(len(finish_obj)):
+            requested = finish_obj.values()[i]['requested_datetime']
+            updated = finish_obj.values()[i]['updated_datetime']
+            if requested != updated:
+                delta = delta+(updated- requested).total_seconds()
+                total = total+1
+        if total == 0:
+            delta_time = '0:0:0'
+        else:
+            delta_time = seconds_format(delta/total)
+        returndata[eng_class[index]]['Seconds'] = delta  
+        returndata[eng_class[index]]['Num'] = total  
+        returndata[eng_class[index]]['Formated'] = delta_time   
+
     return returndata
 
 def Cityreport():
