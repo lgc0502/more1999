@@ -327,6 +327,11 @@ def Area_statistic(begin,end):
         returndata['All']['Time'][eng_class[d]]['Formated'] = seconds_format(returndata['All']['Time'][eng_class[d]]['Seconds'])
         returndata['All']['Time'][eng_class[d]]['Num'] = total
         #print('------------------------')
+    for d in range(len(classification)):
+        if(returndata['All']['Category'][eng_class[d]] == 0):
+            returndata['All']['Time'][eng_class[d]]['Formated'] = '無案件發生'
+        if(returndata['All']['Time'][eng_class[d]]['Seconds'] == 0 and returndata['All']['Category'][eng_class[d]] != 0):
+            returndata['All']['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
     return returndata
 
 def Category_statistic(obj):
@@ -397,6 +402,29 @@ def Personalreport(qlat, qlng):
     returndata['HourNum'] = Hour_statistic(POI_obj)
     returndata['DailyNum'] = WeekDay_statistic(POI_obj,Date['week_begin'], Date['today'])
     returndata['Time'] = Time_statistic(POI_obj, Date['week_begin'], Date['today'])
+    for d in range(len(classification)):
+        if(returndata['Category'][eng_class[d]] == 0):
+            returndata['Time'][eng_class[d]]['Formated'] = '無案件發生'
+        if(returndata['Time'][eng_class[d]]['Seconds'] == 0 and returndata['Category'][eng_class[d]] != 0):
+            returndata['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
+    detail=[]
+    temp={}
+    unfinish=[]
+    for index in range(len(POI_obj)):
+        for d in range(len(classification)):
+            if POI_obj.values()[index]['service_name'] == classification[d]:
+                temp['category'] = eng_class[d]
+        timetmp = POI_obj.values()[index]['requested_datetime']+datetime.timedelta(hours = 8)
+        temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
+        temp['description'] = POI_obj.values()[index]['description']
+        temp['status'] = POI_obj.values()[index]['status']
+        temp['position'] = [POI_obj.values()[index]['lat'], POI_obj.values()[index]['lng']]
+        if temp['status'] == '未完成':
+            unfinish.append(temp)
+        detail.append(temp)
+        temp = {}
+    returndata['Detail']=detail
+    returndata['Unfinish']=unfinish
     return returndata
 
 def Data_return(request):
