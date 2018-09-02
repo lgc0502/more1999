@@ -459,9 +459,28 @@ def Data_return(request):
             Response['Personalreport']['Address']=address
     return JsonResponse(Response)
 
-
 def explore(request): 
-    return render(request, 'index.html')
+    Response={}
+    Query_address = request.GET['location'] 
+    if '台南' not in Query_address:
+        Query_address = '台南市' + Query_address
+    geocode_result = gmaps.geocode(Query_address, language='zh-TW')
+    lat = geocode_result[0]['geometry']['location']['lat']
+    lng = geocode_result[0]['geometry']['location']['lng']
+    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
+    for i in reverse_geocode_result:
+        for c in i['address_components']:
+            if 'administrative_area_level_1' in c['types']:
+                city = c['long_name']
+    if '台南' not in city:
+        Response = Personalreport(22.997234,120.211936) 
+        Response['position']=[22.997234,120.211936]
+        Response['result']= 'failed'
+    else:
+        Response = Personalreport(lat, lng)
+        Response['position']=[lat, lng]
+        Response['result']= 'success'
+    return JsonResponse(Response)
 
 def test(request):
     get_new_data()
