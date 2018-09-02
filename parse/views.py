@@ -321,7 +321,7 @@ def WeekDay_statistic(obj,begin,end):
     return returndata
 
 def Time_statistic(obj,begin,end):
-
+    returndata = {}
     return returndata
 
 def Cityreport():
