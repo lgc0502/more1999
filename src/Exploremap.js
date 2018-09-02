@@ -4,8 +4,8 @@ import L from 'leaflet'
 import Areachart from './Areachart.js'
 import Barchart from './Barchart.js';                                          
 
-const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
-
+const iconUrl={"parking":'Asset1.png',"light":'Asset2.png',"noise":'Asset3.png',"aisle":'Asset4.png',"road":'Asset5.png',"traffic":'Asset6.png',"dirty":'Asset7.png',"pipe":'Asset8.png' ,"animal":'Asset9.png'}
+const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
 function createicon(url){
     return L.icon({
         iconUrl:url,
@@ -69,7 +69,7 @@ class Exploremap extends Component{
             <div>
                
                 <Map ref='map' 
-                     className='"Personal-chart"' 
+                     className="Personal-chart" 
                      center={position} 
                      zoom={this.state.zoom} 
                      minZoom={this.state.minZoom}
@@ -99,7 +99,7 @@ class Exploremap extends Component{
                     <LayerGroup>
                         {cases.map((d)=>(                              
                             <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
-                                <Popup>{d.category}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
+                                <Popup>{transtype[d.category]}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }
                     </LayerGroup> 
