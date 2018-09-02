@@ -18,6 +18,7 @@ class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
+            center:props.lat_lng,
             zoom:15,
             minZoom:11,
             maxZoom:30,
@@ -49,7 +50,7 @@ class Exploremap extends Component{
    
     render(){
 
-        const {Category,DailyNum,cases,HourNum,Time,position}= this.props
+        const {Category,DailyNum,cases,HourNum,Time}= this.props
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -64,6 +65,7 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
+        const position = this.state.lat_lng;
         console.log(position)
         return(
             <div>
