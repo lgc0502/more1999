@@ -51,6 +51,8 @@ class Areachart extends Component {
   render() { 
     console.log("Areachart")
     console.log(this.state.width)
+    console.log(this.props.data)
+    console.log(Object.keys(this.props.data[Object.keys(props.data)[0]]))
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const {dateCollection,typeCollection} = this.state
     const data = typeCollection.map((d,i)=>(

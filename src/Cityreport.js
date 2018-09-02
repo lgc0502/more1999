@@ -476,8 +476,7 @@ class Cityreport extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        console.log('Cityreport')
-        console.log(this.state.width)
+   
         return(
             <div className="Cityreport">
                 <div className="btnbar">
