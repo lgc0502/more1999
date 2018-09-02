@@ -63,7 +63,7 @@ class Overview extends Component{
                     />
                     <LabelSeries
                         allowOffsetToBeReversed
-                        data={[{x:0, y:0,label:CompleteRate+'%'}]}
+                        data={[{x:0, y:0,label:(CompleteRate*100).toFixed(1)+"%"}]}
                         labelAnchorX="middle"
                         labelAnchorY="baseline"
                         style={{fill:"#F7882F",fontWeight:600,}}
