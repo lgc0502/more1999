@@ -323,6 +323,7 @@ def WeekDay_statistic(obj,begin,end):
 def Time_statistic(obj,begin,end):
 
     return returndata
+
 def Cityreport():
     returndata = {}
     Date = week_date()
@@ -345,8 +346,8 @@ def Data_return(request):
     lng = float(request.GET['lon'])
     Response = {}
     Response['Overview'] = overview()
-    Response['Cityreport'] = Cityreport()
-    Response['Personalreport'] = Personalreport()
+    '''Response['Cityreport'] = Cityreport()
+    Response['Personalreport'] = Personalreport()'''
     return JsonResponse(Response)
 
 
