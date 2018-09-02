@@ -17,12 +17,12 @@
   height:auto;
   float: left;
 }
-.Map-chart {
+.Map-chart,.Personal-chart {
   width:60vmin;
   height:auto;
   float: left;
 }
-.Map-description {
+.Map-description,.Personal-description {
   width:50%;
   height:auto;
   float: left;

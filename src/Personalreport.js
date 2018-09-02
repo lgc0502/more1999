@@ -13,24 +13,25 @@ import {
     Crosshair
   } from "react-vis";
 import {timeFormat} from 'd3-time-format'
-import Areachart from './Areachart.js'
-import Barchart from './Barchart.js';
+
 
 const formatTime= timeFormat('%H')
 const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
 const typecolor = {"parking":'#2e1f54',"light":'#f00a36',"noise":'#ed3b21',"aisle":'#ff6908',"road":'#ffc719',"traffic":'#598c14',"dirty":'#335238',"pipe":'#4a8594' ,"animal":'#706357'};
-class Explore extends Component {
+class Personalreport extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
             width:props.width||0,
             location:'',
             lat_lng:props.position,
-            category:props.Detail.category,
-            time:props.Detail.hour,
-            cases:props.Detail.detail,
-            address:props.Detail.address,
+            Category:props.Category,
+            DailyNum:props.DailyNum,
+            HourNum:props.HourNum,
+            Time:props.Time,
+            cases:props.Detail,
+            unfinishcases:props.Unfinish,
+            address:props.Address,
             isLoading:true,
             crosshairValues: []
         };
@@ -99,8 +100,6 @@ class Explore extends Component {
      
        const beginhour=0;
        const endhour=23; 
-       const {lat_lng,category,time,cases,address} = this.state;
-       const {Category,Time,DailyNum,HourNum} = this.props;
     //    if(this.state.isLoading){
     //         return (
     //          <div className="loaddata">
@@ -110,7 +109,7 @@ class Explore extends Component {
     //     }
     console.log('personal')
     console.log(this.state)
-    console.log(this.props)
+   
         return (
             <div>
                 <h2>搜尋地點 查看通報狀況</h2>
@@ -128,30 +127,14 @@ class Explore extends Component {
                     <button className="ui button" onClick={this.all.bind(this)}>全部</button>
                     <button className="ui button" onClick={this.unfinish.bind(this)}>未完工</button>
                 </div>
-                <Exploremap 
-                    point={lat_lng} 
-                    address={address}
-                    category={category}//object
-                    time={time}//object
-                    cases={cases}//array
-                    data={this.props.datapath}/>
-                 <div className="Map-description">
-                    <Barchart
-                        id="Category"
-                        data={Category}/>
-                    <Barchart
-                        id="Time"
-                        data={Time}/>
-                    <Areachart
-                        id="DailyNum"
-                        data={DailyNum}/>
-                    <Areachart
-                        id="HourNum"
-                        data={HourNum}/>
+                <div className="Personal-chart">
+                    <Exploremap 
+                        {...this.state}
+                        data={this.props.datapath}/>
                 </div>
-                
+             
             </div>
         )
     }
 }
-export default Explore
+export default Personalreport

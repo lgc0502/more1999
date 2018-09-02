@@ -1,7 +1,8 @@
 import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON,Marker,Circle,CircleMarker,LayerGroup,Popup} from 'react-leaflet'
 import L from 'leaflet'
-                                           
+import Areachart from './Areachart.js'
+import Barchart from './Barchart.js';                                          
 
 const iconUrl={"違規停車":'Asset1.png',"路燈故障":'Asset2.png',"噪音舉發":'Asset3.png',"騎樓舉發":'Asset4.png',"道路維修":'Asset5.png',"交通運輸":'Asset6.png',"髒亂污染":'Asset7.png',"民生管線":'Asset8.png' ,"動物救援":'Asset9.png'}
 
@@ -27,10 +28,10 @@ class Exploremap extends Component{
         
     }
     handlebtnClick(){
-        this.refs.map.leafletElement.setView(this.props.point,15);
+        this.refs.map.leafletElement.setView(this.props.position,15);
     }
    componentDidMount(){
-        fetch(this.props.data.towngeo)
+        fetch(this.props.data.datapath)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -48,7 +49,7 @@ class Exploremap extends Component{
    
     render(){
 
-        const {point,address,category,time,cases}= this.props
+        const {Category,DailyNum,Detail,HourNum,Time,position}= this.props
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -56,7 +57,6 @@ class Exploremap extends Component{
              </div>
             )
           }
-        const position =this.props.point
        
         const myviews = L.icon({
             iconUrl:`${this.props.data.icon}myview.png`,
@@ -97,14 +97,28 @@ class Exploremap extends Component{
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
-                        {cases.map((d)=>(                              
+                        {Detail.map((d)=>(                              
                             <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
                                 <Popup>{d.category}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }
                     </LayerGroup> 
                 </Map>
-              
+                <div className="Personal-description">
+                    <Barchart
+                        id="Category"
+                        data={Category}/>
+                    <Barchart
+                        id="Time"
+                        data={Time}/>
+                    <Areachart
+                        id="DailyNum"
+                        data={DailyNum}/>
+                    <Areachart
+                        id="HourNum"
+                        data={HourNum}/>
+                </div>
+                
             </div>
         )        
     }
