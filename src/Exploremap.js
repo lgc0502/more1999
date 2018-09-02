@@ -80,7 +80,7 @@ class Exploremap extends Component{
                         attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                     />
                     <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
-                    <GeoJSON
+                    {/* <GeoJSON
                         ref='geojson'
                         data={this.state.data}
                         style={(feature)=>{
@@ -93,7 +93,7 @@ class Exploremap extends Component{
                             }}
                         }
                        
-                    />  
+                    />   */}
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>

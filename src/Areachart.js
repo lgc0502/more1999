@@ -62,7 +62,8 @@ class Areachart extends Component {
          
       })
     ))
-  
+    console.log(dateCollection)
+    console.log(typeCollection)
     return (
         <XYPlot
           width={this.state.width}
@@ -83,7 +84,7 @@ class Areachart extends Component {
               text:{fill:"#6b6b76",fontWeight: 400}
             }}
           />
-          {typeCollection.map((type,typeIndex)=>(
+          {typeCollection.map((type,typeIndex)=>{
                 <AreaSeries
                     onNearestX={(value,{index})=>{
                         this.setState({crosshairValues:data.map(d => {return d[index]})})
@@ -102,7 +103,7 @@ class Areachart extends Component {
                     }
                     color={Palette[typeIndex]}
                   />    
-                )
+                  }
               )}
             <Crosshair values={this.state.crosshairValues}/>
             </XYPlot>  
