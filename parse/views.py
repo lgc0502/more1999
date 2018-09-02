@@ -32,7 +32,7 @@ def get_Key():
         jf = json.loads(reader.read())
     return jf['API_KEY']
 gmaps = googlemaps.Client(key=get_Key())
-def hello_world(request):
+def home(request):
     return render(request, 'index.html')
 
 def new_node(key, value):
@@ -248,12 +248,6 @@ def update_status():
                     search = Unfinish.objects.filter(service_request_id=data['service_request_id'])
                     search.delete()
 
-def test(request):
-    get_new_data()
-    update_status()
-    #unfinish_detail()
-    return render(request, 'index.html')
-
 def update():
     get_new_data()
     update_status()
@@ -266,248 +260,95 @@ def week_date():
     weekday = (now.weekday()+1)%7
     past = now-datetime.timedelta(days = weekday)
     now = now+datetime.timedelta(days = 1)
+    last_end = past
+    last_begin = last_end-datetime.timedelta(days = 7)
     date['today'] = now
     date['week_begin'] = past
+    date['last_end'] = last_end
+    date['last_begin'] = last_begin
     return date
 
-def seconds_format(second):
-    days = int(second/(3600*24))
-    hours = int((second%(3600*24))/(3600))
-    minutes = int((second%3600)/(60))
-    delta_time = str(days)+':'+str(hours)+':'+str(minutes)
-    return delta_time
+def overview():
+    returndata = {}
+    thisweek = week_date()
+    all_data = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'], thisweek['today']]) 
+    returndata['TotalNum'] = len(all_data)
+    returndata['FinishNum'] = len( all_data.filter(status = '已完工') )
+    returndata['UnFinishNum'] = returndata['TotalNum'] - returndata['FinishNum']
+    if returndata['TotalNum'] != 0:
+        returndata['CompleteRate'] = returndata['FinishNum']/returndata['TotalNum']
+    else:
+        returndata['CompleteRate'] = 0
+    return returndata
 
-def lw_donut(begin_date, end_date):
-    donut = {}
-    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
-    for index in range(len(classification)):
-        donut[eng_class[index]]=[0,0]
-        donut[eng_class[index]][0]=len(date_search.filter(service_name = classification[index]))
-        if(len(date_search)!=0):
-            donut[eng_class[index]][1]=(donut[eng_class[index]][0]/len(date_search))*100
-        else:
-            donut[eng_class[index]][1] = 0
-    return donut
-
-def lw_hotzone(begin_date, end_date):
-    hotzone = {}
-    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date])
-    hotzone['ALL']={}
-    hotzone['ALL']['total']=len(date_search)
-    hotzone['ALL']['category']={}
-    hotzone['ALL']['time']={}
-    for d in range(len(classification)):
-        delta = 0
-        total = 0
-        hotzone['ALL']['category'][eng_class[d]] = len(date_search.filter(service_name = classification[d]))
-        finish_task = date_search.filter(updated_datetime__range = [begin_date,end_date],status = '已完工',service_name = classification[d])
-        for i in range(len(finish_task)):
-                requested = finish_task.values()[i]['requested_datetime']
-                updated = finish_task.values()[i]['updated_datetime']
-                if requested != updated:
-                    delta = delta+(updated- requested).total_seconds()
-                    total = total+1
-        if total == 0:
-            delta_time = '0:0:0'
-        else:
-            delta_time = seconds_format(delta/total)
-        hotzone['ALL']['time'][eng_class[d]] = delta_time   
-
+def Area_statistic(begin,end):
+    returndata = {}
+    all_data = API_DATA.objects.filter(requested_datetime__range = [begin, end]).values('area', 'requested_datetime','service_name','updated_datetime')
+    returndata['All']={}
+    returndata['All']['TotalNum'] = len(all_data)
+    returndata['All']['Category'] = Category_statistic(all_data)
+    returndata['All']['HourNum'] = Time_statistic(all_data)
+    returndata['All']['DailyNum'] = WeekDay_statistic(all_data,begin,end)
     for index in range(len(town_name)):
-        hotzone[town_id[index]]={}
-        area_search = date_search.filter(area = town_name[index])
-        hotzone[town_id[index]]['total']=len(area_search)
-        hotzone[town_id[index]]['category']={}
-        hotzone[town_id[index]]['time']={}
-        for d in range(len(classification)):
-            delta = 0
-            total = 0
-            hotzone[town_id[index]]['category'][eng_class[d]] = len(area_search.filter(service_name = classification[d]))
-            finish_task = area_search.filter(updated_datetime__range = [begin_date,end_date],status = '已完工',service_name = classification[d])
-            for i in range(len(finish_task)):
-                requested = finish_task.values()[i]['requested_datetime']
-                updated = finish_task.values()[i]['updated_datetime']
-                if requested != updated:
-                    delta = delta+(updated- requested).total_seconds()
-                    total = total+1
-            if total == 0:
-                delta_time = '0:0:0'
-            else:
-                delta_time = seconds_format(delta/total)
-            hotzone[town_id[index]]['time'][eng_class[d]] = delta_time
-    return hotzone
+        area_data = all_data.filter(area = town_name[index]) 
+        returndata[town_id[index]]={}
+        returndata[town_id[index]]['TotalNum'] = len(area_data)
+        returndata[town_id[index]]['Category'] = Category_statistic(area_data)
+        returndata[town_id[index]]['HourNum'] = Time_statistic(area_data)
+        returndata[town_id[index]]['DailyNum'] = WeekDay_statistic(area_data,begin,end)
+        returndata[town_id[index]]['Time']
+    return returndata
 
-def lw_time_num(begin_date, end_date, town, village):
-    temp={}
-    time_num={}
-    delta =  (end_date-begin_date).days 
-    for d in range(0,delta):
-        query_date = begin_date + datetime.timedelta(days=d)
-        query_end = query_date + datetime.timedelta(days=1)
-        if town == '台南市':
-            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end]) 
-        else:
-            date_search = API_DATA.objects.filter(requested_datetime__range = [query_date,query_end], area=town, li=village) 
-        for index in range(len(classification)):
-            temp[eng_class[index]]=len(date_search.filter(service_name = classification[index]))
-        query_date_string = query_date.strftime('%Y-%m-%d')
-        time_num[query_date_string]=temp
-        temp={}
-    return time_num
-    
-def tw_finish_rate(begin_date, end_date):
-    finish_donut={}
-    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date, end_date]) 
-    finished = date_search.filter(status = '已完工')
-    finish_donut['finish'] = [0,0]
-    finish_donut['unfinish'] = [0,0]
-    finish_donut['finish'][0] = len(finished)
-    finish_donut['unfinish'][0] = len(date_search)-len(finished)
-    if(len(date_search)!=0):
-        finish_donut['finish'][1] = 100*finish_donut['finish'][0]/len(date_search)
-        finish_donut['unfinish'][1] = 100*finish_donut['unfinish'][0]/len(date_search)
-    else:
-        finish_donut['finish'][1] = 0
-        finish_donut['unfinish'][1] = 0
-    return finish_donut
-
-def unfinish_detail():
-    detail=[]
-    temp={}
-    time_format = '%Y-%m-%d'
-    now = datetime.datetime.today().replace(tzinfo=tw)
-    now1 = (datetime.datetime.today()+datetime.timedelta(days = 1)).strftime('%Y-%m-%d')
-    now1 = datetime.datetime.strptime(now1, time_format).replace(tzinfo=tw)
-    past = (datetime.datetime.today()-datetime.timedelta(days = 2)).strftime('%Y-%m-%d')
-    past = datetime.datetime.strptime(past, time_format).replace(tzinfo=tw)
-    search = Unfinish.objects.filter(requested_datetime__range = [past, now1])
-    for index in range(len(search)):
-        id_search = API_DATA.objects.filter(service_request_id = search.values()[index]['service_request_id'])
-        temp['category'] = id_search.values()[0]['service_name']
-        if(temp['category'] == '髒亂及汙染'):
-            temp['category']='髒亂汙染'
-        timetmp = id_search.values()[0]['requested_datetime']+datetime.timedelta(hours = 8)
-        temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
-        temp['address'] = id_search.values()[0]['address_string']
-        temp['description'] = id_search.values()[0]['description']
-        temp['area'] = id_search.values()[0]['area']
-        delta = (now - id_search.values()[0]['requested_datetime'].replace(tzinfo=tw)).total_seconds()
-        delta_time = seconds_format(delta)
-        temp['time'] = delta_time
-        detail.append(temp)
-        temp = {}
-    detail_list = sorted(detail, key=itemgetter('time'))
-    return detail_list
-
-def tw_category(begin_date, end_date):
-    donut = {}
-    date_search = API_DATA.objects.filter(requested_datetime__range = [begin_date,end_date]) 
+def Category_statistic(obj):
+    returndata = {}
     for index in range(len(classification)):
-        all = date_search.filter(service_name = classification[index])
-        donut[eng_class[index]]=[0,0]
-        donut[eng_class[index]][0]=len(all.filter(status = '已完工'))
-        donut[eng_class[index]][1]=len(all)-donut[eng_class[index]][0]
-    return donut
+        returndata[eng_class[index]] = obj.filter(service_name = classification[index]).count()
+    return returndata
 
-def position_search(qlat, qlng):
-    data = {}
-    detail=[]
-    temp={}
-    thisweek = week_date()
-    search = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'],thisweek['today']], 
-                    lat__range = [qlat-0.007,qlat+0.007], lng__range = [qlng-0.007,qlng+0.007])
-    for index in range(len(classification)):
-        all = search.filter(service_name = classification[index])
-        temp[eng_class[index]]=len(all)
-    data['category']=temp  
-    temp={}
+def Time_statistic(obj):
+    returndata = {}
     for index in range(0,24):
-        all = search.filter(requested_datetime__hour = index)
-        temp[str(index)] = len(all)
-    data['hour']=temp
-    temp={}
-    for index in range(len(search)):
-        temp['category'] = search.values()[index]['service_name']
-        if(temp['category'] == '髒亂及汙染'):
-            temp['category']='髒亂汙染'
-        timetmp = search.values()[index]['requested_datetime']+datetime.timedelta(hours = 8)
-        temp['date'] = timetmp.strftime('%Y-%m-%d %H:%M:%S')
-        temp['description'] = search.values()[index]['description']
-        temp['status'] = search.values()[index]['status']
-        temp['position'] = [search.values()[index]['lat'], search.values()[index]['lng']]
-        detail.append(temp)
-        temp = {}
-    data['detail']=detail
-    return data
-
-def village_visualization(request):
-    time_format = '%Y-%m-%d'
-    town = request.GET['town']
-    village = request.GET['village'] 
-    begin_date = datetime.datetime.strptime(request.GET['begin_date'], time_format).replace(tzinfo=tw)
-    end_date = datetime.datetime.strptime(request.GET['end_date'], time_format).replace(tzinfo=tw)
+        returndata[str(index)+':00'] = obj.filter(requested_datetime__hour = index).count()
+    return returndata
+   
+def WeekDay_statistic(obj,begin,end):
+    returndata = {}
+    for d in range(0,7):
+        query_date = begin + datetime.timedelta(days=d)
+        query_end = query_date + datetime.timedelta(days=1)
+        date = query_date.strftime('%Y-%m-%d')
+        returndata[date] = obj.filter(requested_datetime__range = [query_date,query_end]).count()
+    return returndata
     
-    categoryByTime={}
-    if town == '台南市':
-        categoryByTime['Donut'] = lw_donut(begin_date, end_date)
-        categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
-        categoryByTime['Hotzone'] = lw_hotzone(begin_date, end_date)
-    else:
-        categoryByTime['Area'] = lw_time_num(begin_date, end_date, town, village)
-    return JsonResponse(categoryByTime)
+def Cityreport():
+    returndata = {}
+    Date = week_date()
+    returndata['Detail'] = {}
+    returndata['Hotzone'] = {}
+    returndata['Detail']['Thisweek'] = Area_statistic(Date['week_begin'], Date['today'])
+    returndata['Detail']['Lastweek'] = Area_statistic(Date['last_begin'], Date['last_end'])
+    returndata['Hotzone']['Thisweek'] = {}
+    returndata['Hotzone']['Lastweek'] = {}
+    for index in range(len(town_name)):
+        returndata['Hotzone']['Lastweek'][town_id[index]] = returndata['Detail']['Lastweek'][town_id[index]]['TotalNum']
+        returndata['Hotzone']['Thisweek'][town_id[index]] = returndata['Detail']['Thisweek'][town_id[index]]['TotalNum']
+    return returndata
 
-def this_week_data(request):
-    categoryByTime={}
-    thisweek = week_date()
-    categoryByTime['UnfinishList'] = unfinish_detail()
-    categoryByTime['FinishRate'] = tw_finish_rate(thisweek['week_begin'], thisweek['today'])
-    categoryByTime['Category'] = tw_category(thisweek['week_begin'], thisweek['today'])
-    return JsonResponse(categoryByTime)
+def Personalreport():
+    return {}
+
+def Data_return(request):
+    Response = {}
+    Response['Overview'] = overview()
+    Response['Cityreport'] = Cityreport()
+    Response['Personalreport'] = Personalreport()
+    return JsonResponse(Response)
+
 
 def explore(request): 
-    returndata={}
-    Query_address = request.GET['location'] 
-    if '台南' not in Query_address:
-        Query_address = '台南市' + Query_address
-    geocode_result = gmaps.geocode(Query_address, language='zh-TW')
-    lat = geocode_result[0]['geometry']['location']['lat']
-    lng = geocode_result[0]['geometry']['location']['lng']
-    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
-    for i in reverse_geocode_result:
-        for c in i['address_components']:
-            if 'administrative_area_level_1' in c['types']:
-                city = c['long_name']
-    if '台南' not in city:
-        return JsonResponse(returndata)
-    else:
-        returndata = position_search(lat, lng)
-        returndata['position']=[lat, lng]
-        return JsonResponse(returndata)
+    return render(request, 'index.html')
 
-def position(request): 
-    returndata={}
-    lat = float(request.GET['lat'])
-    lng = float(request.GET['lon'])
-    poi_exist = 0
-    poi = ''
-    address_exist = 0
-    reverse_geocode_result = gmaps.reverse_geocode((lat, lng), language='zh-TW')
-    for i in reverse_geocode_result:
-        if address_exist == 0:
-            address = i['formatted_address']
-            address_exist = 1
-        for c in i['address_components']:
-            if 'administrative_area_level_1' in c['types']:
-                city = c['long_name']
-            if 'point_of_interest' in c['types']:
-                poi = c['long_name']
-                poi_exist = 1
-    if '台南' not in city:
-        return JsonResponse(returndata)
-    else:
-        returndata = position_search(lat, lng)
-        if poi_exist == 1:
-            returndata['address']=poi
-        else:
-            returndata['address']=address
-    return JsonResponse(returndata)
+def test(request):
+    get_new_data()
+    update_status()
+    return render(request, 'index.html')
