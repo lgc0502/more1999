@@ -440,7 +440,7 @@ class Cityreport extends Component{
         this.state = {
             width:props.width||0,
             height:props.height||0,
-            data:testdata.Thisweek//props.Thisweek,
+            data:props.Thisweek,
         }
     }
 

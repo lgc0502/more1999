@@ -31,7 +31,7 @@ class Exploremap extends Component{
         this.refs.map.leafletElement.setView(this.props.position,15);
     }
    componentDidMount(){
-    fetch('/data/tainan.json')//fetch(this.props.data.datapath)
+    fetch(this.props.data.datapath)
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)

@@ -38,7 +38,7 @@ class Overview extends Component{
     render(){
        console.log('overview')
        console.log(this.props)
-        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = testdata//this.props
+        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
         return(
             <div className="Overview">
                 <div className="Overview-chart">
