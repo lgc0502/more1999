@@ -346,8 +346,8 @@ def Data_return(request):
     lng = float(request.GET['lon'])
     Response = {}
     Response['Overview'] = overview()
-    '''Response['Cityreport'] = Cityreport()
-    Response['Personalreport'] = Personalreport()'''
+    Response['Cityreport'] = Cityreport()
+    Response['Personalreport'] = Personalreport()
     return JsonResponse(Response)
 
 
