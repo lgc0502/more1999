@@ -2,37 +2,32 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import {XYPlot,RadialChart,YAxis,LabelSeries} from "react-vis";
 
-// const testdata = {
-//     FinishNum:70,
-//     UnFinishNum:30,
-//     CompleteRate:70,
-//     TotalNum:100
-// }
+const testdata = {
+    FinishNum:70,
+    UnFinishNum:30,
+    CompleteRate:70,
+    TotalNum:100
+}
 class Overview extends Component{ 
 
     constructor(props){
         super(props)
         this.state = {
-            width:props.width||-1,
-            height:props.height||-1,
+            width:props.width||0,
+            height:props.height||0,
         }
     }
 
     updateSize(){
         try{
           const parentDom = ReactDOM.findDOMNode(this).parentNode;
+          console.log(parentDom)
           let {width,height} = this.props;
-          
+          console.log(width)
           if(!width){
             width = parentDom.offsetWidth;
-            
-            if(width>600){
-              width = width*0.3
-              height = width*0.3
-            }else{
-              width = width*0.7
-              height = width*0.75
-            }
+            width = width*0.3
+            height = width*0.3
           }
           
           this.setState({width,height});

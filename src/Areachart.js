@@ -20,8 +20,8 @@ class Areachart extends Component {
   constructor(props) {
     super(props)
     this.state= {
-      width:props.width||-1,
-      height:props.height||-1,
+      width:props.width||0,
+      height:props.height||0,
       dateCollection : Object.keys(props.data), 
       typeCollection : Object.keys(props.data[Object.keys(props.data)[0]]),
       crosshairValues: []

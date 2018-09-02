@@ -7,8 +7,8 @@ class Barchart extends Component{
     constructor(props){
         super(props)
         this.state = {
-            width:props.width||-1,
-            height:props.height||-1,
+            width:props.width||0,
+            height:props.height||0,
         }
     }
 

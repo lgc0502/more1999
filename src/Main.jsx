@@ -51,9 +51,9 @@ class Main extends Component{
           }
         return(
             <main>
-                <Overview {...overview}/> 
-                <Cityreport towngeo={this.props.towngeo} {...cityreport}/>
-                <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/>
+                 <Overview {...overview}/> 
+                 <Cityreport towngeo={this.props.towngeo} {...cityreport}/> 
+                {/* <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/> */}
             </main>
         )
     }
