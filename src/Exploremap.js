@@ -65,7 +65,7 @@ class Exploremap extends Component{
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
         });
-        const position = this.state.lat_lng;
+        const position = this.state.center;
         console.log(position)
         return(
             <div>
