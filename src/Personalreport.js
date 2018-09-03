@@ -82,7 +82,7 @@ class Personalreport extends Component {
     unfinish(){
         this.setState({
             cases:this.props.Unfinish,
-        },()=>console.log('unfinish'))
+        })
     }
     componentDidMount(){
         this.updateSize();
@@ -99,7 +99,7 @@ class Personalreport extends Component {
              </div>
             )
         }
-   
+        console.log(this.state)
         return (
             <div className="Personalreport">
                 <h2>搜尋地點 查看通報狀況</h2>
