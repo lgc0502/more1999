@@ -50,14 +50,14 @@ class Areachart extends Component {
   }
   
   render() { 
+    
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const {dateCollection,typeCollection} = this.state
+   
     const data = typeCollection.map((type,i)=>(
       dateCollection.map((date,i1)=>{  
         if(this.props.id==="DailyNum"){
-          console.log(this.props.data)
-          console.log(this.props.data.date)
-          return({x:timestamp_begin+i1*ONE_DAY,y:this.props.data.date[type] })}
+          return({x:timestamp_begin+i1*ONE_DAY,y:this.props.data[date][type] })}
         else if(this.props.id==="HourNum")
           return({x:date,y: this.props.data[date][type] })
          

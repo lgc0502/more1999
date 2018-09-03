@@ -120,8 +120,7 @@ class Personalreport extends Component {
                 </div>
                 <div className="report">
                     <Exploremap 
-                        {...this.state}
-                        data={this.props.datapath}/>
+                        {...this.state}/>
                 </div>
             </div>
         )
