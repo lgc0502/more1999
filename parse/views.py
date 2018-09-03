@@ -305,10 +305,9 @@ def Area_statistic(begin,end):
         returndata[town_id[index]]['DailyNum'] = WeekDay_statistic(area_data,begin,end)
         returndata[town_id[index]]['Time'] = Time_statistic(area_data,begin,end)
         for d in range(len(classification)):
-            if(returndata[town_id[index]]['Category'][eng_class[d]] == 0):
-                returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = '無案件發生'
-            if(returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'] == 0 and returndata[town_id[index]]['Category'][eng_class[d]] != 0):
-                returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
+            if(returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'] == 0 ):
+                returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = ''
+        
     returndata['All']['Time']={}
     for d in range(len(classification)):
         returndata['All']['Time'][eng_class[d]] = {}
@@ -336,12 +335,28 @@ def Area_statistic(begin,end):
 
 def Category_statistic(objs):
     returndata = {}
+    temp = []
     for index in range(len(classification)):
         returndata[eng_class[index]] = 0
     for obj in objs:
-        for index in range(len(classification)):
-            if obj['service_name'] == classification[index]:
-                returndata[eng_class[index]] = returndata[eng_class[index]] + 1 
+        if obj['service_name'] == classification[0]:
+            returndata[eng_class[0]] = returndata[eng_class[0]] + 1 
+        elif obj['service_name'] == classification[1]:
+            returndata[eng_class[1]] = returndata[eng_class[1]] + 1 
+        elif obj['service_name'] == classification[2]:
+            returndata[eng_class[2]] = returndata[eng_class[2]] + 1 
+        elif obj['service_name'] == classification[3]:
+            returndata[eng_class[3]] = returndata[eng_class[3]] + 1 
+        elif obj['service_name'] == classification[4]:
+            returndata[eng_class[4]] = returndata[eng_class[4]] + 1 
+        elif obj['service_name'] == classification[5]:
+            returndata[eng_class[5]] = returndata[eng_class[5]] + 1 
+        elif obj['service_name'] == classification[6]:
+            returndata[eng_class[6]] = returndata[eng_class[6]] + 1 
+        elif obj['service_name'] == classification[7]:
+            returndata[eng_class[7]] = returndata[eng_class[7]] + 1 
+        elif obj['service_name'] == classification[8]:
+            returndata[eng_class[8]] = returndata[eng_class[8]] + 1          
     return returndata
 
 def Hour_statistic(objs):
@@ -371,27 +386,26 @@ def WeekDay_statistic(objs,begin,end):
         temp = []
     return returndata
     
-def Time_statistic(obj,begin,end):
+def Time_statistic(objs,begin,end):
     returndata = {}
     for index in range(len(classification)):
         total = 0
         delta = 0
         returndata[eng_class[index]]={}
-        finish_obj = obj.filter(status = '已完工', service_name = classification[index])
-        for i in range(len(finish_obj)):
-            requested = finish_obj.values()[i]['requested_datetime']
-            updated = finish_obj.values()[i]['updated_datetime']
-            if requested != updated:
-                delta = delta+(updated- requested).total_seconds()
-                total = total+1
+        for obj in objs:
+            if obj['status'] == '已完工' and obj['service_name'] == classification[index]:
+                requested = obj['requested_datetime']
+                updated = obj['updated_datetime']
+                if requested != updated:
+                    delta = delta+(updated-requested).total_seconds()
+                    total = total+1
         if total == 0:
             delta_time = '0:0:0'
         else:
             delta_time = seconds_format(delta/total)
-        returndata[eng_class[index]]['Seconds'] = delta  
-        returndata[eng_class[index]]['Num'] = total  
-        returndata[eng_class[index]]['Formated'] = delta_time   
-
+        returndata[eng_class[index]]['Seconds'] = delta
+        returndata[eng_class[index]]['Num'] = total
+        returndata[eng_class[index]]['Formated'] = delta_time       
     return returndata
 
 def Cityreport():
@@ -449,7 +463,9 @@ def Data_return(request):
     lng = float(request.GET['lon'])
     Response = {}
     Response['Overview'] = overview()
+    print('done')
     Response['Cityreport'] = Cityreport()
+    print('done')
     poi_exist = 0
     poi = ''
     address_exist = 0
@@ -473,6 +489,7 @@ def Data_return(request):
             Response['Personalreport']['Address']=poi
         else:
             Response['Personalreport']['Address']=address
+    print('done')
     return JsonResponse(Response)
 
 def explore(request): 
