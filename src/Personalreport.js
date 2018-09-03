@@ -55,7 +55,7 @@ class Personalreport extends Component {
           }).then(data => {
               
             this.setState({
-                result:data.re.result,
+                result:data.res.result,
                 lat_lng:data.res.position,
                 cases:this.props.Detail,
                 Category:this.props.Category,
