@@ -37,7 +37,7 @@ class Barchart extends Component{
     }
     render(){
         const {data,id} = this.props;
-        console.log(id)
+        
         let barchartdata;
         if(id==="Category"){
             barchartdata= Object.keys(data).map((key,i)=>{
