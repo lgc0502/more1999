@@ -93,7 +93,7 @@ class Personalreport extends Component {
         this.setState({
             allbtn:false,
             allbtncolor:"ui orange basic button",
-            finishbtncolor:"ui orange button"
+            unfinishbtncolor:"ui orange button"
         })
     }
     componentDidMount(){

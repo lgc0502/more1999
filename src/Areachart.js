@@ -33,7 +33,7 @@ class Areachart extends Component {
       if(!width){
         width = parentDom.offsetWidth;
         width = width*0.95
-        height = width*0.4
+        height = width*0.45
       
       }
       
@@ -62,7 +62,7 @@ class Areachart extends Component {
          
       })
     ))
-    
+    console.log(this.state.crosshairValues)
     return (
         <XYPlot
           width={this.state.width}
@@ -82,7 +82,7 @@ class Areachart extends Component {
             xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
             xRange={[0,this.state.width*0.8]}
             tickFormat={(this.props.id==="DailyNum"?(d)=>formatDay(d):(d)=>{return d+":00"})}
-            tickTotal={(this.props.id==="DailyNum"?3:6)}
+            tickTotal={(this.props.id==="DailyNum"?4:6)}
             style={{
               line:{stroke:"#ADDDE1"},
               text:{fill:"#6b6b76",fontWeight: 400}
@@ -90,6 +90,7 @@ class Areachart extends Component {
           />
            {typeCollection.map((type,typeIndex)=>(
                 <AreaSeries
+                xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
                     onNearestX={(value,{index})=>{
                         this.setState({crosshairValues:data.map(d => {return d[index]})})
                         }}
@@ -111,7 +112,9 @@ class Areachart extends Component {
                   />    
                   )
               )} 
-            <Crosshair values={this.state.crosshairValues}/>
+            <Crosshair values={this.state.crosshairValues} style={{backgroung:"white" ,fillOpacity:0.5}}>
+            
+            </Crosshair>
             </XYPlot>  
     );
   }
