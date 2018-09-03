@@ -76,7 +76,8 @@ class React_leaflet extends Component{
             res.json().then(topology => {
                 
                 topology.features.map((d)=>{
-                    d.properties.casenum = this.props.Hotzone[d.properties.TOWNID]
+                    d.properties.thisweekcasenum = this.props.Hotzone[d.properties.TOWNID]
+                    d.properties.lastweekcasenum = this.props.Lastweek.Hotzone[d.properties.TOWNID]
                   
                 })
                 this.setState({
@@ -118,7 +119,7 @@ class React_leaflet extends Component{
                             data={this.state.data}
                             style={(feature)=>{
                                 return {
-                                    fillColor:getColor(feature.properties.casenum),
+                                    fillColor:(this.props.status?getColor(feature.properties.thisweekcasenum):getColor(feature.properties.lastcasenum)),
                                     weight: 2,
                                     opacity: 1,
                                     color: 'white',

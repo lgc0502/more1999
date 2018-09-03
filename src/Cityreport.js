@@ -877,6 +877,7 @@ class Cityreport extends Component{
             date:date.collectdate('thisweek'),
             thisweekbtncolor:"ui orange  button",
             lastweekbtncolor:"ui orange basic button",
+            thisweek:true
         }
        
     }
@@ -904,6 +905,7 @@ class Cityreport extends Component{
             date:date.collectdate('thisweek'),
             thisweekbtncolor:"ui orange  button",
             lastweekbtncolor:"ui orange basic button",
+            thisweek:true
         })
     }
     lastweekdata(){
@@ -912,6 +914,7 @@ class Cityreport extends Component{
             date:date.collectdate('lastweek'),
             thisweekbtncolor:"ui orange basic button",
             lastweekbtncolor:"ui orange  button",
+            thisweek:false
         })
     }
     componentDidMount(){
@@ -940,7 +943,7 @@ class Cityreport extends Component{
                     </div>
                 </div>
                 <div className="report">
-                    <React_leaflet {...this.state.data}/>
+                    <React_leaflet Lastweek={this.props.Lastweek} status={this.state.thisweek} {...this.state.data}/>
                 </div>
             </div>
         )

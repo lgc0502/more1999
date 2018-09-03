@@ -98,11 +98,15 @@ h4 {
   float: left;
   margin:1% ;
 }
-.right.ui.segment.description-block{
+.right.ui.segment.description-block,.explore-cases-legend
+{
   width:98%;
   height:40vmin;
   float: left;
   margin:2% ;
+}
+.explore-category{
+  float: left;
 }
 .personal-control{
   width:50%;
