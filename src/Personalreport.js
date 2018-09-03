@@ -57,11 +57,11 @@ class Personalreport extends Component {
             this.setState({
                 result:data.res.result,
                 lat_lng:data.res.position,
-                cases:this.props.Detail,
-                Category:this.props.Category,
-                DailyNum:this.props.DailyNum,
-                HourNum:this.props.HourNum,
-                Time:this.props.Time,
+                cases:data.res.Detail,
+                Category:data.res.Category,
+                DailyNum:data.res.DailyNum,
+                HourNum:data.res.HourNum,
+                Time:data.res.Time,
                 isLoading : false
             },()=>{if(this.state.result==="success")
                     this.setState({
