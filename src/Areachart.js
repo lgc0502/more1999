@@ -117,9 +117,9 @@ class Areachart extends Component {
             <Crosshair 
               Domain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
               Range={[0,this.state.width*0.8]}
-              values={this.state.crosshairValues} 
-              itemsFormat={(d,i)=>({title:this.state.typeCollection[i],value:d.y})}
-              titleFormat={(d)=>({title:'時間',value:d.x})}/>
+              values={this.state.crosshairValues} />
+              {/* // itemsFormat={(d,i)=>({title:this.state.typeCollection[i],value:d.y})}
+              // titleFormat={(d)=>({title:'時間',value:d.x})}/> */}
             
             </XYPlot>  
     );
