@@ -76,12 +76,12 @@ class Personalreport extends Component {
     }
     all(){
         this.setState({
-            cases:this.props.Detail,
+            cases:this.state.Detail,
         })
     }
     unfinish(){
         this.setState({
-            cases:this.props.Unfinish,
+            cases:this.state.Unfinish,
         })
     }
     componentDidMount(){
@@ -99,7 +99,7 @@ class Personalreport extends Component {
              </div>
             )
         }
-        console.log(this.state)
+       
         return (
             <div className="Personalreport">
                 <h2>搜尋地點 查看通報狀況</h2>

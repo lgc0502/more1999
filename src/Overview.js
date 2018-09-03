@@ -50,14 +50,14 @@ class Overview extends Component{
                         radius={this.state.width*0.25}
                         data={[{angle:FinishNum},{angle:UnFinishNum}]}
                         colorType="category"
-                        colorRange={["#DCC7AA","#598c14"]} 
+                        colorRange={["#b0a696","#598c14"]} 
                         stroke={null}>
                     <LabelSeries
                         allowOffsetToBeReversed
                         data={[{x:0, y:0,label:'完成度'}]}
                         labelAnchorX="middle"
                         labelAnchorY="hanging"
-                        style={{fill:"#DCC7AA",fontWeight:600,fontSize:"2.5vmin",}}
+                        style={{fill:"#636d7b",fontWeight:600,fontSize:"2.5vmin",}}
                     />
                     <LabelSeries
                         allowOffsetToBeReversed
