@@ -52,7 +52,7 @@ class Areachart extends Component {
     const dateCollection = Object.keys(this.props.data);
     const timestamp_begin = new Date(dateCollection[0]).getTime();
     const {typeCollection} =this.state;
-    console.log(dateCollection)
+
     const data = typeCollection.map((type,i)=>(
       dateCollection.map((date,i1)=>{  
         if(this.props.id==="DailyNum"){

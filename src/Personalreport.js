@@ -92,13 +92,13 @@ class Personalreport extends Component {
         window.removeEventListener('resize',this.updateSize.bind(this));
       }
     render(){
-    //    if(this.state.isLoading){
-    //         return (
-    //          <div className="loaddata">
-    //            <h3 id="load_text">還在找 ......</h3>
-    //          </div>
-    //         )
-    //     }
+       if(this.state.isLoading){
+            return (
+             <div className="loaddata">
+               <h3 id="load_text">還在找 ......</h3>
+             </div>
+            )
+        }
    
         return (
             <div className="Personalreport">
