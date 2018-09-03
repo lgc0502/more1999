@@ -84,10 +84,10 @@ class Barchart extends Component{
                         data={barchartdata} 
                         color={"#454f5d"}
                         style={{borderRadius:5}}>
-                        {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
+                        {this.state.hoveredCell ? <Hint value={buildValue(this.state.hoveredCell)}>
                         <div style={tipStyle}>
-                            <div style={{...boxStyle,background: hoveredCell.clr}}/>
-                                {hoveredCell.clr}
+                            <div style={{...boxStyle}}/>
+                                {this.state.hoveredCell.label}
                             </div>
                         </Hint>:null}
                     </VerticalBarSeries>
