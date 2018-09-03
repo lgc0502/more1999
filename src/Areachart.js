@@ -33,7 +33,7 @@ class Areachart extends Component {
       if(!width){
         width = parentDom.offsetWidth;
         width = width*0.95
-        height = height*0.6
+        height = width*0.4
       
       }
       
@@ -95,7 +95,6 @@ class Areachart extends Component {
                         }}
                     key={`AreaSeries-${this.props.id}-${type}`}
                     curve="curveMonotoneX"
-                    getNull={(d)=>d.y !==null}
                     data={
                       dateCollection.map((date,dateIndex)=>{  
                         if(this.props.id==="DailyNum"){

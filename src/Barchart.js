@@ -15,7 +15,7 @@ function buildValue(hoveredCell){
     
     return{
         x:hoveredCell.x,
-        y:hoveredCell.label,
+        y:hoveredCell.y,
     }
 }
 class Barchart extends Component{
@@ -80,7 +80,7 @@ class Barchart extends Component{
                             text:{fillOpacity:(this.props.id==="Category"?1:0),fontWeight: 400}
                           }}/>
                     <VerticalBarSeries
-                        onValueMouseOver={v=>{console.log(v);this.setState({hoveredCell:v.x && v.y ? v:false})}}
+                        onValueMouseOver={v=>{this.setState({hoveredCell:v.x && v.y ? v:false})}}
                         data={barchartdata} 
                         color={"#454f5d"}
                         style={{borderRadius:5}}>

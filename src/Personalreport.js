@@ -21,8 +21,8 @@ class Personalreport extends Component {
             isLoading:false,
             allbtn:true,
             crosshairValues: [],
-            all:"ui orange button",
-            unfinish:"ui orange basic button",
+            allbtncolor:"ui orange button",
+            unfinishbtncolor:"ui orange basic button",
         };
     }
     updateSize(){
@@ -93,7 +93,7 @@ class Personalreport extends Component {
         this.setState({
             allbtn:false,
             allbtncolor:"ui orange basic button",
-            finishbtncolor:"ui orange  button"
+            finishbtncolor:"ui orange button"
         })
     }
     componentDidMount(){
@@ -111,7 +111,7 @@ class Personalreport extends Component {
              </div>
             )
         }
-       
+       console.log(this.state)
         return (
             <div className="Personalreport">
                 
