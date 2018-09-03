@@ -343,7 +343,7 @@ def Category_statistic(obj):
 def Hour_statistic(obj):
     returndata = {}
     for index in range(0,24):
-        returndata[index] = obj.filter(requested_datetime__hour = index).count()
+        returndata[index] = Category_statistic(obj.filter(requested_datetime__hour = index))
     return returndata
    
 def WeekDay_statistic(obj,begin,end):
@@ -352,7 +352,7 @@ def WeekDay_statistic(obj,begin,end):
         query_date = begin + datetime.timedelta(days=d)
         query_end = query_date + datetime.timedelta(days=1)
         date = query_date.strftime('%Y-%m-%d')
-        returndata[date] = obj.filter(requested_datetime__range = [query_date,query_end]).count()
+        returndata[date] = Category_statistic(obj.filter(requested_datetime__range = [query_date,query_end]))
     return returndata
 
 def Time_statistic(obj,begin,end):
