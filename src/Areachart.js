@@ -40,6 +40,7 @@ class Areachart extends Component {
       this.setState({width,height});
     }catch(ignore){}
   }
+ 
   componentDidMount(){
     this.updateSize();
     window.addEventListener('resize',this.updateSize.bind(this));
@@ -72,10 +73,10 @@ class Areachart extends Component {
           xType={(this.props.id==="DailyNum"?'time':'linear')}
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
           <VerticalGridLines />
-          <HorizontalGridLines />
+          <HorizontalGridLines 
+             tickTotal={(this.props.id==="DailyNum"?7:24)}/>
           <YAxis
             style={{
-              line:{stroke:"#ADDDE1"},
               text:{fillOpacity:0,fontWeight: 400}
             }}/>
           <XAxis  
@@ -112,7 +113,10 @@ class Areachart extends Component {
                   />    
                   )
               )} 
-            <Crosshair values={this.state.crosshairValues} style={{background:"white" ,fillOpacity:0.5}}/>
+            <Crosshair 
+              values={this.state.crosshairValues} />
+               {/* itemsFormat={this._formatCrosshairItems}
+               titleFormat={(d)=>({title:'時間',value:})}/> */}
             
             </XYPlot>  
     );

@@ -76,7 +76,6 @@ class Barchart extends Component{
                         tickLabelAngle={-30}/>
                     <YAxis
                          style={{
-                            line:{stroke:"#ADDDE1"},
                             text:{fillOpacity:(this.props.id==="Category"?1:0),fontWeight: 400}
                           }}/>
                     <VerticalBarSeries

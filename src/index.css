@@ -26,7 +26,7 @@ h2 {
   letter-spacing: 2vmin;
   margin:auto;
 }
-.load,.loaddata{
+.load{
     display: block;
     position: relative;
     z-index: 1000;
@@ -167,13 +167,15 @@ a {
     font-size: 0.5vmin;
   }
   text {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .Map-left ,.Personal-left{
     width:100%;
+    margin:1rem;
   }
   .Map-right ,.Personal-right{
     width:100%;
+    margin:1rem;
   }
  
 }
