@@ -469,7 +469,7 @@ class Cityreport extends Component{
     lastweekdata(){
         this.setState({
             data:this.props.Lastweek
-        })
+        },()=>console.log('lastweek'))
     }
     componentDidMount(){
         this.updateSize();

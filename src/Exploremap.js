@@ -18,7 +18,7 @@ class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:props.lat_lng,
+            center:[22.9972,120.2219],//props.lat_lng,
             zoom:15,
             minZoom:11,
             maxZoom:30,
@@ -60,7 +60,7 @@ class Exploremap extends Component{
           }
        
         const myviews = L.icon({
-            iconUrl:`${this.props.data.icon}myview.png`,
+            iconUrl:'/static/image/myview.png',
             iconSize:[38,38],
             iconAnchor:[19,19],
             popupAnchor:[-3,-76],  
@@ -100,7 +100,7 @@ class Exploremap extends Component{
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
                         {cases.map((d)=>(                              
-                            <Marker position={d.position} icon={createicon(this.props.data.icon+iconUrl[d.category])}>
+                            <Marker position={d.position} icon={createicon('/static/image/'+iconUrl[d.category])}>
                                 <Popup>{transtype[d.category]}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
                         }

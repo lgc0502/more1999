@@ -83,9 +83,11 @@ class Areachart extends Component {
           />
           {/* {typeCollection.map((type,typeIndex)=>{ */}
                 <AreaSeries
-                    onNearestX={(value,{index})=>{
-                        this.setState({crosshairValues:data.map(d => {return d[index]})})
-                        }}
+                    // onNearestX={(value,{index})=>{
+                    //     this.setState({crosshairValues:data.map(d => {return d[index]})})
+                    //     }}
+                    onNearestX= {(value, {index}) =>
+                    this.setState({crosshairValues:[{x:value.x,y:value.y}]})}
                     key={`AreaSeries-${this.props.id}`}
                     curve="curveMonotoneX"
                     data={
