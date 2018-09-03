@@ -106,9 +106,9 @@ class Personalreport extends Component {
     render(){
        if(this.state.isLoading){
             return (
-             <div className="loaddata">
-               <h3 id="load_text">還在找 ......</h3>
-             </div>
+            <div class="load">
+                <h3 id="load_text">正在接通1999 ......</h3>
+              </div>
             )
         }
        console.log(this.state)

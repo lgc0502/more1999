@@ -54,7 +54,7 @@ class Barchart extends Component{
     }
     render(){
         const {data,id} = this.props;
-        
+        console.log(this.state.hoveredCell)
         let barchartdata;
         if(id==="Category"){
             barchartdata= Object.keys(data).map((key,i)=>{
@@ -84,7 +84,7 @@ class Barchart extends Component{
                         data={barchartdata} 
                         color={"#454f5d"}
                         style={{borderRadius:5}}>
-                        {this.state.hoveredCell ? <Hint value={buildValue(this.state.hoveredCell)}>
+                        {this.state.hoveredCell?<Hint value={buildValue(this.state.hoveredCell)}>
                         <div style={tipStyle}>
                             <div style={{...boxStyle}}/>
                                 {this.state.hoveredCell.label}

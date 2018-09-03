@@ -22,7 +22,6 @@ class Main extends Component{
         geolocation.getLocation().then(d=>{     
             this.setState({
                 lat_lng:[d.coords.latitude,d.coords.longitude],
-          // })
             },()=>{
                 postApi.requertPost('./Nobug',{
                     params:{
@@ -30,7 +29,6 @@ class Main extends Component{
                       lon:d.coords.longitude,
                     }
                   }).then(data => {
-                        console.log(data)
                         this.setState({
                             overview:data.res.Overview,
                             cityreport:data.res.Cityreport,
@@ -46,7 +44,7 @@ class Main extends Component{
      
         if(isLoading){
             return (
-              <div className="loaddata">
+            <div class="load">
                 <h3 id="load_text">正在接通1999 ......</h3>
               </div>
             )

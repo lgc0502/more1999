@@ -112,9 +112,8 @@ class Areachart extends Component {
                   />    
                   )
               )} 
-            <Crosshair values={this.state.crosshairValues} style={{backgroung:"white" ,fillOpacity:0.5}}>
+            <Crosshair values={this.state.crosshairValues} style={{background:"white" ,fillOpacity:0.5}}/>
             
-            </Crosshair>
             </XYPlot>  
     );
   }

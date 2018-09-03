@@ -87,9 +87,9 @@ class React_leaflet extends Component{
     render(){
         if(this.state.isLoading){
             return (
-             <div className="loaddata">
-               <h3 id="load_text">等一下 ......</h3>
-             </div>
+            <div class="load">
+                <h3 id="load_text">正在接通1999 ......</h3>
+              </div>
             )
           }
         const position =this.state.center;
