@@ -23,7 +23,7 @@ main {
 h2 {
   font: 3vmin 'Noto Sans TC', sans-serif;
   font-weight: 600;
-  letter-spacing: 2vmin;
+  letter-spacing: 1vmin;
   margin:auto;
 }
 .load{
@@ -92,8 +92,12 @@ h2 {
   float: left;
   margin:2% ;
 }
-.btnbar{
-  width:100%;
+.personal-control{
+  width:50%;
+  height: auto;
+}
+.btnbar,.input{
+  width:50%;
   height:10vmin;
   float: left;
 } 

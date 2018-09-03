@@ -916,7 +916,7 @@ class Cityreport extends Component{
     }
     componentDidMount(){
         this.eventEmitter = emitter.addListener("boardcasting",(town)=>{
-            console.log(town)
+           
             this.setState({
                 selectedtown:town
             })

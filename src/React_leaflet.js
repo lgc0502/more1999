@@ -16,7 +16,7 @@ function getColor(d){
            d === 0 ? '#FFEDA0':
                     '#FED976';
 }
-const type=["違規停車","路燈故障","噪音舉發","騎樓舉發","道路維修","交通運輸","髒亂污染","民生管線" ,"動物救援"]
+const type=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂污染','民生管線' ,'動物救援']
 const Palette =['#19CDD7','#DDB27C','#88572C','#FF991F','#F15C17','#223F9A','#DA70BF','#125C77','#5B3075','#9F989A']
 class React_leaflet extends Component{
     constructor(props){
@@ -66,7 +66,7 @@ class React_leaflet extends Component{
     }
    componentDidMount(){
        
-   fetch('/static/data/tainan.json')
+    fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -142,11 +142,6 @@ class React_leaflet extends Component{
                     </div>
                 </div>
                 <div className="Map-right">
-                {/* <DiscreteColorLegendItem
-                    colors={Palette}
-                    items={type}
-                    orientation="horizontal"
-                    />  */}
                     <div className="right ui segment description-block">
                         <h3>一週通報</h3>
                         <Areachart
