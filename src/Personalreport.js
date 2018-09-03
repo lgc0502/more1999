@@ -17,7 +17,7 @@ class Personalreport extends Component {
             DailyNum:props.DailyNum,
             HourNum:props.HourNum,
             Time:props.Time,
-            isLoading:true,
+            isLoading:false,
             crosshairValues: []
         };
     }
