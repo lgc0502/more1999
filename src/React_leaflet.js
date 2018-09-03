@@ -142,11 +142,11 @@ class React_leaflet extends Component{
                     </div>
                 </div>
                 <div className="Map-right">
-                <DiscreteColorLegendItem
+                {/* <DiscreteColorLegendItem
                     colors={Palette}
                     items={type}
                     orientation="horizontal"
-                    /> 
+                    />  */}
                     <div className="right ui segment description-block">
                         <h3>一週通報</h3>
                         <Areachart
