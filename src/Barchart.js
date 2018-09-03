@@ -60,7 +60,7 @@ class Barchart extends Component{
                     <YAxis/>
                     <VerticalBarSeries
                         data={barchartdata} 
-                        color={"#598c14"}
+                        color={"#454f5d"}
                         style={{borderRadius:5}}/>
                     <LabelSeries
                         allowOffsetToBeReversed

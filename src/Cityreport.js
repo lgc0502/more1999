@@ -930,7 +930,8 @@ class Cityreport extends Component{
     render(){
         return(
             <div className="Cityreport">
-                <h2>視政廳{this.state.selectedtown}廣播</h2>
+                <h3 id="date">{this.state.date}</h3>
+                <h2>視政廳<font style={{color:"#598c14"}}>{this.state.selectedtown}</font>廣播</h2>
                 <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="btnbar">
                     <div className="ui buttons">
@@ -938,7 +939,6 @@ class Cityreport extends Component{
                         <button className={this.state.lastweekbtncolor} onClick={this.lastweekdata.bind(this)}>上週</button>
                     </div>
                 </div>
-                <h3 id="date">{this.state.date}</h3>
                 <div className="report">
                     <React_leaflet {...this.state.data}/>
                 </div>
