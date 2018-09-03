@@ -296,6 +296,10 @@ def Area_statistic(begin,end):
     returndata['All']['Category'] = Category_statistic(all_data)
     returndata['All']['HourNum'] = Hour_statistic(all_data)
     returndata['All']['DailyNum'] = WeekDay_statistic(all_data,begin,end)
+    returndata['All']['Time']=Time_statistic(all_data,begin,end)
+    for d in range(len(classification)):
+        if(returndata['All']['Time'][eng_class[d]]['Seconds'] == 0):
+            returndata['All']['Time'][eng_class[d]]['Formated'] = ''
     for index in range(len(town_name)):
         area_data = all_data.filter(area = town_name[index]) 
         returndata[town_id[index]]={}
@@ -307,30 +311,7 @@ def Area_statistic(begin,end):
         for d in range(len(classification)):
             if(returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'] == 0 ):
                 returndata[town_id[index]]['Time'][eng_class[d]]['Formated'] = ''
-        
-    returndata['All']['Time']={}
-    for d in range(len(classification)):
-        returndata['All']['Time'][eng_class[d]] = {}
-        total = 0
-        second = 0
-        for index in range(len(town_name)):
-            #print("==",returndata[town_id[index]]['Time'][eng_class[d]]['Num'],returndata[town_id[index]]['Time'][eng_class[d]]['Seconds'])
-            second = second + (returndata[town_id[index]]['Time'][eng_class[d]]['Seconds']*returndata[town_id[index]]['Time'][eng_class[d]]['Num'])
-            total = total + returndata[town_id[index]]['Time'][eng_class[d]]['Num']
-            #print(second,total)
-        if total == 0:
-            returndata['All']['Time'][eng_class[d]]['Seconds'] = 0
-        else:
-            returndata['All']['Time'][eng_class[d]]['Seconds'] = int(second/total)
-            #print("**",returndata['All']['Time'][eng_class[d]]['Seconds'])
-        returndata['All']['Time'][eng_class[d]]['Formated'] = seconds_format(returndata['All']['Time'][eng_class[d]]['Seconds'])
-        returndata['All']['Time'][eng_class[d]]['Num'] = total
-        #print('------------------------')
-    for d in range(len(classification)):
-        if(returndata['All']['Category'][eng_class[d]] == 0):
-            returndata['All']['Time'][eng_class[d]]['Formated'] = '無案件發生'
-        if(returndata['All']['Time'][eng_class[d]]['Seconds'] == 0 and returndata['All']['Category'][eng_class[d]] != 0):
-            returndata['All']['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
+    
     return returndata
 
 def Category_statistic(objs):
