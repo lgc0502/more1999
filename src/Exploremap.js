@@ -128,7 +128,7 @@ class Exploremap extends Component{
                 </div>
                 <div className="Personal-right">
                     <div className='explore-cases-legend'>
-                            {Object.keys(this.state.Category).map((t)=>(
+                            {Object.keys(transtype).map((t)=>(
                                 <div className="explore-category">
                                     <svg width="20" height="20">
                                     <circle style={{
