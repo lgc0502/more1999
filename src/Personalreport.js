@@ -115,18 +115,18 @@ class Personalreport extends Component {
         return (
             <div className="Personalreport">
                 
-                <h4><font style={{color:"#598c14"}}>{this.state.address}</font></h4>
+                <h3><font style={{color:"#598c14"}}>{this.state.address}</font></h3>
                 <h2>ON AIR</h2>
                 <h3>收聽範圍一公里</h3>
                 <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="personal-control">
-                    <div className="btnbar">
+                    <div className="control btnbar">
                         <div className="ui buttons">
                             <button className={this.state.allbtncolor} onClick={this.allbutton.bind(this)}>全部</button>
                             <button className={this.state.unfinishbtncolor} onClick={this.unfinishbutton.bind(this)}>未完工</button>
                         </div>
                     </div>
-                    <div className="ui input ">
+                    <div className="ui input control">
                         <input type="text" placeholder="搜尋地點 查看通報狀況..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
                         <button className="ui small icon button" onClick={this.handleclick.bind(this)}>
                             <i className="search icon"></i>

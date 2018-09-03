@@ -17,7 +17,8 @@ function getColor(d){
                     '#FED976';
 }
 const type=['違規停車','路燈故障','噪音舉發','騎樓舉發','道路維修','交通運輸','髒亂污染','民生管線' ,'動物救援']
-const Palette =['#19CDD7','#DDB27C','#88572C','#FF991F','#F15C17','#223F9A','#DA70BF','#125C77','#5B3075','#9F989A']
+const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
+const Palette = {"parking":'#F1CA93',"light":'#F7A71E',"noise":'#DB5738',"aisle":'#5A1E3D',"road":'#9F989A',"traffic":'#E6ABA9',"dirty":'#A61F61',"pipe":'#5B3075',"animal":'#0C327D'};
 class React_leaflet extends Component{
     constructor(props){
         super(props)
@@ -142,6 +143,20 @@ class React_leaflet extends Component{
                     </div>
                 </div>
                 <div className="Map-right">
+                    <div className='explore-cases-legend'>
+                        {Object.keys(towninfo.Category).map((t)=>(
+                            <div className="explore-category">
+                                <svg width="20" height="20">
+                                <circle style={{
+                                        cx:"10",
+                                        cy:"10",
+                                        r:"4",
+                                        fill:Palette[t] }}/></svg>
+                                <span>{transtype[t]}</span>
+                            </div>
+                        ))
+                        }
+                    </div>
                     <div className="right ui segment description-block">
                         <h3>一週通報</h3>
                         <Areachart

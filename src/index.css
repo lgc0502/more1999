@@ -106,9 +106,9 @@ h4 {
 }
 .personal-control{
   width:50%;
-  height: auto;
+  height: 10vmin;
 }
-.personal-control.btnbar,.input{
+.control{
   width:50%;
   height:auto;
   float: left;
@@ -142,6 +142,25 @@ rect {
 }
 #date{
   letter-spacing: 0.3rem;
+}
+.legend {
+  position: absolute ;
+  bottom: 10%;
+  right: 3%;
+  width:100px;
+  z-index: 9999;
+  line-height: 18px;
+  color: #555;
+  background-color: rgb(255,255,255,.8);
+  border-radius: 3px;
+  padding:1%;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  z-index: 9999;
 }
 .container {
   display: -webkit-flex;
