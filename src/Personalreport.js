@@ -19,6 +19,7 @@ class Personalreport extends Component {
             HourNum:props.HourNum,
             Time:props.Time,
             isLoading:false,
+            allbtn:true,
             crosshairValues: [],
             all:"ui orange button",
             unfinish:"ui orange basic button",
@@ -111,7 +112,8 @@ class Personalreport extends Component {
        
         return (
             <div className="Personalreport">
-                <h2>視政廳<font style={{color:"#598c14"}}>{this.state.selectedtown}</font>廣播</h2>
+                <h2>ON AIR</h2>
+                <h4>{this.state.address}</h4>
                 <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="ui input">
                     <input type="text" placeholder="搜尋地點 查看通報狀況..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
@@ -119,13 +121,8 @@ class Personalreport extends Component {
                         <i className="search icon"></i>
                     </button>
                 </div>
-                <div className='current-location'>
-                    <i className="fas fa-map-marker-alt"></i>
-                    <span>{this.state.address}</span>
-                </div>
                 <div className="btnbar">
                     <div className="ui buttons">
-
                         <button className={this.state.all} onClick={this.all.bind(this)}>全部</button>
                         <button className={this.state.unfinish} onClick={this.unfinish.bind(this)}>未完工</button>
                     </div>
