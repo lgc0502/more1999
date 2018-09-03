@@ -13,6 +13,7 @@ class Personalreport extends Component {
             address:props.Address,
             lat_lng:props.position,
             cases:props.Detail,
+            unfinish:props.Unfinish,
             Category:props.Category,
             DailyNum:props.DailyNum,
             HourNum:props.HourNum,
@@ -58,6 +59,7 @@ class Personalreport extends Component {
                 result:data.res.result,
                 lat_lng:data.res.position,
                 cases:data.res.Detail,
+                unfinish:data.res.Unfinish,
                 Category:data.res.Category,
                 DailyNum:data.res.DailyNum,
                 HourNum:data.res.HourNum,
@@ -76,12 +78,12 @@ class Personalreport extends Component {
     }
     all(){
         this.setState({
-            cases:this.state.Detail,
+            cases:this.state.cases,
         })
     }
     unfinish(){
         this.setState({
-            cases:this.state.Unfinish,
+            cases:this.state.unfinish,
         })
     }
     componentDidMount(){
