@@ -72,9 +72,9 @@ class Areachart extends Component {
           xRange={[0,this.state.width*0.9]}
           xType={(this.props.id==="DailyNum"?'time':'linear')}
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
-          <VerticalGridLines />
-          <HorizontalGridLines 
-             tickTotal={(this.props.id==="DailyNum"?7:24)}/>
+          <VerticalGridLines 
+            tickTotal={(this.props.id==="DailyNum"?7:24)}/>
+          <HorizontalGridLines />
           <YAxis
             style={{
               text:{fillOpacity:0,fontWeight: 400}
