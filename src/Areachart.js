@@ -11,7 +11,8 @@ import {
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
 import ReactDOM from 'react-dom';
-const Palette = ['#F1CA93','#F7A71E','#DB5738','#5A1E3D','#9F989A','#E6ABA9','#A61F61','#5B3075','#0C327D'];
+// const Palette = ['#F1CA93','#F7A71E','#DB5738','#5A1E3D','#9F989A','#E6ABA9','#A61F61','#5B3075','#0C327D'];
+const Palette =['#19CDD7','#DDB27C','#88572C','#FF991F','#F15C17','#223F9A','#DA70BF','#125C77','#5B3075','#9F989A']
 const formatDay= timeFormat('%a');
 const ONE_DAY = 86400000
 class Areachart extends Component {
@@ -116,9 +117,9 @@ class Areachart extends Component {
             <Crosshair 
               Domain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
               Range={[0,this.state.width*0.8]}
-              values={this.state.crosshairValues} />
-               {/* itemsFormat={this._formatCrosshairItems}
-               titleFormat={(d)=>({title:'時間',value:})}/> */}
+              values={this.state.crosshairValues} 
+              itemsFormat={(d,i)=>({title:this.state.typeCollection[i],value:d.y})}
+              titleFormat={(d)=>({title:'時間',value:d.x})}/>
             
             </XYPlot>  
     );
