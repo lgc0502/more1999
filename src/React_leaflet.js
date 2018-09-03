@@ -83,7 +83,6 @@ class React_leaflet extends Component{
    }
     render(){
         console.log("reactleaflet")
-        console.log(this.props)
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -93,7 +92,6 @@ class React_leaflet extends Component{
           }
         const position =this.state.center;
         const towninfo = this.props.Detail[this.state.selecttownid];
-        console.log(towninfo)
         return(
             <div>
                 <Map ref='map' 

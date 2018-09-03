@@ -25,7 +25,6 @@ class Personalreport extends Component {
             address:props.Address,
             lat_lng:props.position,
             cases:props.Detail,
-            unfinishcases:props.Unfinish,
             Category:props.Category,
             DailyNum:props.DailyNum,
             HourNum:props.HourNum,
@@ -68,23 +67,23 @@ class Personalreport extends Component {
           }).then(data => {
               
             this.setState({
-              lat_lng:data.res.position,//array
+              lat_lng:data.res.position,
               address:this.state.location,
-              category:data.res.category,//object
-              time:data.res.hour,//object
-              cases:data.res.detail,//array
+              category:data.res.category,
+              time:data.res.hour,
+              cases:data.res.detail,
               isLoading : false
             })
          })
     }
     all(){
         this.setState({
-            data:this.props.All
+            cases:this.props.Detail,
         })
     }
     unfinish(){
         this.setState({
-            data:this.props.Unfinish
+            cases:this.props.Unfinish,
         })
     }
     componentDidMount(){
@@ -95,7 +94,7 @@ class Personalreport extends Component {
         window.removeEventListener('resize',this.updateSize.bind(this));
       }
     render(){
-     
+        console.log("render personal report")
        const beginhour=0;
        const endhour=23; 
     //    if(this.state.isLoading){

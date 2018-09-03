@@ -49,7 +49,7 @@ class Exploremap extends Component{
    }
    
     render(){
-
+        console.log("render explore map")
         const {Category,DailyNum,cases,HourNum,Time}= this.props
         if(this.state.isLoading){
             return (
@@ -66,7 +66,7 @@ class Exploremap extends Component{
             popupAnchor:[-3,-76],  
         });
         const position = this.state.center;
-        console.log(position)
+        
         return(
             <div>
                
