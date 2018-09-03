@@ -52,16 +52,16 @@ class Areachart extends Component {
   render() { 
     const timestamp_begin = new Date(this.state.dateCollection[0]).getTime();
     const {dateCollection,typeCollection} = this.state
-    const data = typeCollection.map((d,i)=>(
+    const data = typeCollection.map((type,i)=>(
       dateCollection.map((date,i1)=>{  
         if(this.props.id==="DailyNum")
-          return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date] })
+          return({x:timestamp_begin+i1*ONE_DAY,y: this.props.data[date][type] })
         else if(this.props.id==="HourNum")
-          return({x:date,y: this.props.data[date] })
+          return({x:date,y: this.props.data[date][type] })
          
       })
     ))
-   
+    
     return (
         <XYPlot
           width={this.state.width}
@@ -72,7 +72,11 @@ class Areachart extends Component {
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
           <VerticalGridLines />
           <HorizontalGridLines />
-          <YAxis/>
+          <YAxis
+            style={{
+              line:{stroke:"#ADDDE1"},
+              text:{fillOpacity:0,fontWeight: 400}
+            }}/>
           <XAxis  
             xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
             xRange={[0,this.state.width*0.8]}
@@ -83,28 +87,28 @@ class Areachart extends Component {
               text:{fill:"#6b6b76",fontWeight: 400}
             }}
           />
-           {typeCollection.map((type,typeIndex)=>{ 
+           {typeCollection.map((type,typeIndex)=>(
                 <AreaSeries
                     onNearestX={(value,{index})=>{
                         this.setState({crosshairValues:data.map(d => {return d[index]})})
                         }}
-                    // onNearestX= {(value, {index}) =>
-                    // this.setState({crosshairValues:[{x:value.x,y:value.y}]})}
-                    key={`AreaSeries-${this.props.id}`}
+                    key={`AreaSeries-${this.props.id}-${type}`}
                     curve="curveMonotoneX"
                     data={
                       dateCollection.map((date,dateIndex)=>{  
                         if(this.props.id==="DailyNum"){
-                          return({x:timestamp_begin+dateIndex*ONE_DAY,y: this.props.data[date] +(450-30*typeIndex),y0:450-30*typeIndex})
+                         
+                          return({x:timestamp_begin+dateIndex*ONE_DAY,y: this.props.data[date][type] +(450-30*typeIndex),y0:450-30*typeIndex})
                         }
                         else if(this.props.id==="HourNum"){
-                          return({x:date,y: this.props.data[date] +(450-30*typeIndex),y0:450-30*typeIndex})
+
+                          return({x:date,y: this.props.data[date][type] +(450-30*typeIndex),y0:450-30*typeIndex})
                         }
                       })
                     }
                      color={Palette[typeIndex]}
                   />    
-                   }
+                  )
               )} 
             <Crosshair values={this.state.crosshairValues}/>
             </XYPlot>  

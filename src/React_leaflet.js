@@ -61,8 +61,8 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
-       console.log("mapmapmapmap")
-    fetch('/static/data/tainan.json')
+       
+       fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
@@ -83,7 +83,6 @@ class React_leaflet extends Component{
         })
    }
     render(){
-        console.log("reactleaflet")
         if(this.state.isLoading){
             return (
              <div className="loaddata">
@@ -93,8 +92,7 @@ class React_leaflet extends Component{
           }
         const position =this.state.center;
         const towninfo = this.props.Detail[this.state.selecttownid];
-        console.log(this.state)
-        console.log(towninfo)
+    
         return(
             <div>
                 <Map ref='map' 

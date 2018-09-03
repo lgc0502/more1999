@@ -36,7 +36,7 @@ class Overview extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props
+        const {FinishNum,UnFinishNum,CompleteRate,TotalNum} = this.props//testdata
         return(
             <div className="Overview">
                 <div className="Overview-chart">

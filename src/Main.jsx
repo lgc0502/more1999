@@ -22,6 +22,7 @@ class Main extends Component{
         geolocation.getLocation().then(d=>{     
             this.setState({
                 lat_lng:[d.coords.latitude,d.coords.longitude],
+        //   })
             },()=>{
                 postApi.requertPost('./Nobug',{
                     params:{
@@ -38,8 +39,8 @@ class Main extends Component{
                         })
                  })
             })
-        })
-      }
+         })
+    }
     render(){
         const {overview,cityreport,personalreport,isLoading} = this.state;
      
@@ -53,7 +54,7 @@ class Main extends Component{
         return(
             <main>
                 <Overview {...overview}/> 
-                <Cityreport towngeo={this.props.towngeo} {...cityreport}/> 
+                <Cityreport {...cityreport}/> 
                 <Personalreport datapath={this.props.towngeo} position={this.state.lat_lng} {...personalreport}/>
             </main>
         )
