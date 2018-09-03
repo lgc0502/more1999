@@ -112,12 +112,13 @@ class Personalreport extends Component {
        
         return (
             <div className="Personalreport">
-                <h2>ON AIR</h2>
+                
                 <h4>{this.state.address}</h4>
+                <h2>ON AIR</h2>
                 <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="ui input">
                     <input type="text" placeholder="搜尋地點 查看通報狀況..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
-                    <button className="ui small icon button" onClick={this.handleclick.bind(this)}>
+                    <button className="ui mini icon button" onClick={this.handleclick.bind(this)}>
                         <i className="search icon"></i>
                     </button>
                 </div>

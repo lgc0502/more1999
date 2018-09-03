@@ -54,14 +54,25 @@ h2 {
   height:80vmin;
   float: left;
 }
-.Map-description,.Personal-description {
-  width:60%;
+.Map-left,.Map-right{
   height:auto;
   float: left;
   margin:1rem;
 }
-.ui.segment.description-block{
+.Map-left ,.Personal-left{
+  width:55%;
+}
+.Map-right ,.Personal-right{
+  width:40%;
+}
+.Map-left.ui.segment.description-block,.Map-left.ui.segment.description-block{
   width:48%;
+  height:auto;
+  float: left;
+  margin:0 1% 1% 1% ;
+}
+.Map-right.ui.segment.description-block,.Map-right.ui.segment.description-block{
+  width:98%;
   height:auto;
   float: left;
   margin:0 1% 1% 1% ;

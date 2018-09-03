@@ -97,35 +97,35 @@ class React_leaflet extends Component{
     
         return(
             <div>
-                <Map ref='map' 
-                     className='Map-chart' 
-                     center={position} 
-                     zoom={this.state.zoom} 
-                     minZoom={this.state.minZoom}
-                     maxZoom={this.state.maxZoom}>
-                    
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                    />
-                    <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
-                    <GeoJSON
-                        ref='geojson'
-                        data={this.state.data}
-                        style={(feature)=>{
-                            return {
-                                fillColor:getColor(feature.properties.casenum),
-                                weight: 2,
-                                opacity: 1,
-                                color: 'white',
-                                fillOpacity: 0.7
-                            }}
-                        }
-                        onEachFeature={this.onEachFeature.bind(this)}
-                    /> 
-                    <Legend/>         
-                </Map>
-                <div className="Map-description">
+                <div className="Map-left">
+                    <Map ref='map' 
+                        className='Map-chart' 
+                        center={position} 
+                        zoom={this.state.zoom} 
+                        minZoom={this.state.minZoom}
+                        maxZoom={this.state.maxZoom}>
+                        
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        />
+                        <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
+                        <GeoJSON
+                            ref='geojson'
+                            data={this.state.data}
+                            style={(feature)=>{
+                                return {
+                                    fillColor:getColor(feature.properties.casenum),
+                                    weight: 2,
+                                    opacity: 1,
+                                    color: 'white',
+                                    fillOpacity: 0.7
+                                }}
+                            }
+                            onEachFeature={this.onEachFeature.bind(this)}
+                        /> 
+                        <Legend/>         
+                    </Map>
                     <div className="ui segment description-block">
                         <Barchart
                             id="Category"
@@ -136,6 +136,8 @@ class React_leaflet extends Component{
                             id="Time"
                             data={towninfo.Time}/>
                     </div>
+                </div>
+                <div className="Map-right">
                     <div className="ui segment description-block">
                         <Areachart
                             id="DailyNum"

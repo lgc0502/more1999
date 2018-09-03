@@ -74,44 +74,43 @@ class Exploremap extends Component{
         const position = this.props.lat_lng;
         return(
             <div>
-               
-                <Map ref='map' 
-                     className="Personal-chart" 
-                     center={position} 
-                     zoom={this.state.zoom} 
-                     minZoom={this.state.minZoom}
-                     maxZoom={this.state.maxZoom}>
-                    
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                    />
-                    <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
-                    {/* <GeoJSON
-                        ref='geojson'
-                        data={this.state.data}
-                        style={(feature)=>{
-                            return {
-                                fillColor:'black',
-                                weight: 2,
-                                opacity: 1,
-                                color: 'white',
-                                fillOpacity: 0.2
-                            }}
-                        }
-                       
-                    />   */}
-                    <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
-                    <Marker position={position} icon={myviews}></Marker>    
-                    <LayerGroup>
-                        {view.map((d)=>(                              
-                            <Marker position={d.position} icon={createicon('/static/image/'+iconUrl[d.category])}>
-                                <Popup>{transtype[d.category]}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
-                            </Marker>))
-                        }
-                    </LayerGroup> 
-                </Map>
-                <div className="Personal-description">
+                <div className="Personal-left">
+                    <Map ref='map' 
+                        className="Personal-chart" 
+                        center={position} 
+                        zoom={this.state.zoom} 
+                        minZoom={this.state.minZoom}
+                        maxZoom={this.state.maxZoom}>
+                        
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        />
+                        <button className='easy-button-button' onClick={this.handlebtnClick.bind(this)}><i className="fas fa-sync-alt"></i></button>  
+                        {/* <GeoJSON
+                            ref='geojson'
+                            data={this.state.data}
+                            style={(feature)=>{
+                                return {
+                                    fillColor:'black',
+                                    weight: 2,
+                                    opacity: 1,
+                                    color: 'white',
+                                    fillOpacity: 0.2
+                                }}
+                            }
+                        
+                        />   */}
+                        <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
+                        <Marker position={position} icon={myviews}></Marker>    
+                        <LayerGroup>
+                            {view.map((d)=>(                              
+                                <Marker position={d.position} icon={createicon('/static/image/'+iconUrl[d.category])}>
+                                    <Popup>{transtype[d.category]}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
+                                </Marker>))
+                            }
+                        </LayerGroup> 
+                    </Map>
                     <div className="ui segment description-block">
                         <Barchart
                             id="Category"
@@ -122,6 +121,8 @@ class Exploremap extends Component{
                             id="Time"
                             data={Time}/>
                     </div>
+                </div>
+                <div className="Personal-right">
                     <div className="ui segment description-block">
                         <Areachart
                             id="DailyNum"
