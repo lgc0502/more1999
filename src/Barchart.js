@@ -12,11 +12,10 @@ const tipStyle={
 const boxStyle={height:'10px',width:'10px'};
 function buildValue(hoveredCell){
     console.log(hoveredCell)
-    const {datapoint} = hoveredCell;
-    console.log(datapoint)
+    
     return{
-        x:datapoint.x,
-        y:datapoint.y,
+        x:hoveredCell.x,
+        y:hoveredCell.label,
     }
 }
 class Barchart extends Component{

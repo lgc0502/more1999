@@ -70,7 +70,7 @@ class Personalreport extends Component {
                 allbtn:true,
                 isLoading : false,
                 allclass:"ui orange button",
-                unfinish:"ui orange basic button",
+                unfinishclass:"ui orange basic button",
             },()=>{if(this.state.result==="success")
                     this.setState({
                         address:this.state.location
