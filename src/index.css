@@ -94,6 +94,13 @@ rect {
   border-color: #ffffff;
   border-radius: 10%;
 }
+.line-block{
+  width:100%;
+  height:1.5vmin;
+}
+#date{
+  letter-spacing: 0.3rem;
+}
 .container {
   display: -webkit-flex;
   display: flex;

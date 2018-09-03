@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import React_leaflet from './React_leaflet.js';
-
+import emitter from './events';
+import date from './Date.js';
 const testdata={
     'Thisweek':{
         'Hotzone':{
@@ -871,10 +872,15 @@ class Cityreport extends Component{
             width:props.width||0,
             height:props.height||0,
             data:props.Thisweek,
-            isLoading:false
+            selectedtown:"大台南",
+            isLoading:false,
+            date:date.collectdate('thisweek'),
+            thisweekbtncolor:"ui orange  button",
+            lastweekbtncolor:"ui orange basic button",
         }
+       
     }
-
+  
     updateSize(){
         try{
           const parentDom = ReactDOM.findDOMNode(this).parentNode;
@@ -891,30 +897,48 @@ class Cityreport extends Component{
           
           this.setState({width,height});
         }catch(ignore){}
-    }
+    }  
     thisweekdata(){
         this.setState({
             data:this.props.Thisweek,
+            date:date.collectdate('thisweek'),
+            thisweekbtncolor:"ui orange  button",
+            lastweekbtncolor:"ui orange basic button",
         })
     }
     lastweekdata(){
         this.setState({
             data:this.props.Lastweek,
+            date:date.collectdate('lastweek'),
+            thisweekbtncolor:"ui orange basic button",
+            lastweekbtncolor:"ui orange  button",
         })
     }
     componentDidMount(){
+        this.eventEmitter = emitter.addListener("boardcasting",(town)=>{
+            console.log(town)
+            this.setState({
+                selectedtown:town
+            })
+        })
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
     }
+    componentWillUnmount(){
+        this.eventEmitter.removeAllListeners()
+      }
     render(){
         return(
             <div className="Cityreport">
+                <h2>視政廳{this.state.selectedtown}廣播</h2>
+                <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="btnbar">
                     <div className="ui buttons">
-                        <button className="ui orange active button" onClick={this.thisweekdata.bind(this)}>本週</button>
-                        <button className="ui orange active button" onClick={this.lastweekdata.bind(this)}>上週</button>
+                        <button className={this.state.thisweekbtncolor} onClick={this.thisweekdata.bind(this)}>本週</button>
+                        <button className={this.state.lastweekbtncolor} onClick={this.lastweekdata.bind(this)}>上週</button>
                     </div>
                 </div>
+                <h3 id="date">{this.state.date}</h3>
                 <div className="report">
                     <React_leaflet {...this.state.data}/>
                 </div>

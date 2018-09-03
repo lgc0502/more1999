@@ -70,7 +70,7 @@ class Overview extends Component{
                 </div>
                 <div className="flexbox Overview-description">
                     <h2>本週截至目前通報{TotalNum}件</h2>
-                    <h2><font color="#598c14">{FinishNum}件完工</font> / <font color="#b0a696">{UnFinishNum}件處理中</font></h2>
+                    <h2><font color="#598c14">{FinishNum}件完工</font>/<font color="#b0a696">{UnFinishNum}件處理中</font></h2>
                 </div>
             </div>
         )

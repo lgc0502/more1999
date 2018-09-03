@@ -17,7 +17,7 @@ function crossmonth(today,cross,date,label){
 }
 
 export default{
-    lastweekdate:(modify)=>{
+    collectdate:(modify)=>{
         let today = new Date()
         let cross = {begindate:0,enddate:0,enddate_modify:0}
         
@@ -28,7 +28,7 @@ export default{
         end_date = (end_date>10)?end_date:"0"+end_date
         end_date_modify= (end_date_modify>10)?end_date_modify:"0"+end_date_modify
         
-        let begin_date = end_date -7
+        let begin_date = end_date -6
         begin_date  = (begin_date>0)?begin_date :crossmonth(today,cross,begin_date,"begin")
         begin_date = (begin_date>10)?begin_date:"0"+begin_date
 
@@ -42,17 +42,11 @@ export default{
         begin_date  =today.getFullYear()+"-"+begin_month+"-"+begin_date 
         end_date = today.getFullYear()+"-"+end_month+"-"+end_date
         end_date_modify = today.getFullYear()+"-"+end_month_modify+"-"+end_date_modify
-        if(modify === true)
+        if(modify === "lastweek")
         {
-            return {
-                begin:begin_date,
-                end:end_date_modify
-            }
+            return begin_date+' ~ '+ end_date_modify
         }else{
-            return {
-                begin:begin_date,
-                end:end_date
-            }
+            return end_date+' ~'
         }
     } 
    

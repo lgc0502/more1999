@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Map,TileLayer,GeoJSON} from 'react-leaflet'
 import L from 'leaflet'
 import Legend from './Legend'
+import emitter from './events'
 import Barchart from './Barchart.js';
 import Areachart from './Areachart.js';
 function getColor(d){
@@ -48,7 +49,8 @@ class React_leaflet extends Component{
         this.setState({
             selecttown:e.target.feature.properties.TOWNNAME,
             selecttownid:e.target.feature.properties.TOWNID
-        })
+        },()=>{emitter.emit("boardcasting",this.state.selecttown); })
+        
     }
     onEachFeature(feature,layer){
         layer.on({
@@ -62,7 +64,7 @@ class React_leaflet extends Component{
     }
    componentDidMount(){
        
-    fetch('/static/data/tainan.json')//fetch('/data/tainan.json')
+   fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
                 console.log(`There was a problem: ${res.status}`)
