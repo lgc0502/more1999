@@ -52,13 +52,11 @@ class Exploremap extends Component{
         
         const {Category,DailyNum,cases,unfinish,HourNum,Time}= this.props
         let view;
-        console.log(cases)
-        console.log(unfinish)
+        
         if(this.props.allbtn)
             view=cases;
         else
             view=unfinish;
-        console.log(view)
 
         if(this.state.isLoading){
             return (

@@ -68,7 +68,9 @@ class Personalreport extends Component {
                 HourNum:data.res.HourNum,
                 Time:data.res.Time,
                 allbtn:true,
-                isLoading : false
+                isLoading : false,
+                allclass:"ui orange button",
+                unfinish:"ui orange basic button",
             },()=>{if(this.state.result==="success")
                     this.setState({
                         address:this.state.location
@@ -83,15 +85,15 @@ class Personalreport extends Component {
     all(){
         this.setState({
             allbtn:true,
-            all:"ui orange button",
-            unfinish:"ui orange basic button",
+            allclass:"ui orange button",
+            unfinishclass:"ui orange basic button",
         })
     }
     unfinish(){
         this.setState({
             allbtn:false,
-            all:"ui orange basic button",
-            finish:"ui orange  button"
+            allclass:"ui orange basic button",
+            finishclass:"ui orange  button"
         })
     }
     componentDidMount(){
@@ -118,14 +120,14 @@ class Personalreport extends Component {
                 <svg className="line-block"><line x1="40%" y1="0" x2="60%" y2="0" stroke="gray"/></svg>
                 <div className="ui input">
                     <input type="text" placeholder="搜尋地點 查看通報狀況..." value={this.state.location} onChange={evt=>this.updateInputValue(evt)}/>
-                    <button className="ui mini icon button" onClick={this.handleclick.bind(this)}>
+                    <button className="ui small icon button" onClick={this.handleclick.bind(this)}>
                         <i className="search icon"></i>
                     </button>
                 </div>
                 <div className="btnbar">
                     <div className="ui buttons">
-                        <button className={this.state.all} onClick={this.all.bind(this)}>全部</button>
-                        <button className={this.state.unfinish} onClick={this.unfinish.bind(this)}>未完工</button>
+                        <button className={this.state.allclass} onClick={this.all.bind(this)}>全部</button>
+                        <button className={this.state.unfinishclass} onClick={this.unfinish.bind(this)}>未完工</button>
                     </div>
                 </div>
                 <div className="report">

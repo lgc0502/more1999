@@ -11,6 +11,7 @@ const tipStyle={
 };
 const boxStyle={height:'10px',width:'10px'};
 function buildValue(hoveredCell){
+    console.log(hoveredCell)
     const {datapoint} = hoveredCell;
     console.log(datapoint)
     return{
@@ -80,7 +81,7 @@ class Barchart extends Component{
                             text:{fillOpacity:(this.props.id==="Category"?1:0),fontWeight: 400}
                           }}/>
                     <VerticalBarSeries
-                        onValueMouseOver={v=>this.setState({hoveredCell:v.x && v.y ? v:false})}
+                        onValueMouseOver={v=>{console.log(v);this.setState({hoveredCell:v.x && v.y ? v:false})}}
                         data={barchartdata} 
                         color={"#454f5d"}
                         style={{borderRadius:5}}>

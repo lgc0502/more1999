@@ -54,7 +54,7 @@ h2 {
   height:50vmin;
   float: left;
 }
-.Map-left,.Map-right{
+.Map-left,.Map-right,.Personal-left,.Personal-right{
   height:auto;
   float: left;
   margin:1rem;
@@ -69,13 +69,13 @@ h2 {
   width:48%;
   height:auto;
   float: left;
-  margin:0 1% 1% 1% ;
+  margin:1% ;
 }
 .right.ui.segment.description-block{
   width:98%;
-  height:auto;
+  height:40vmin;
   float: left;
-  margin:0 1% 1% 1% ;
+  margin:2% ;
 }
 .btnbar{
   width:100%;
