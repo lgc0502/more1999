@@ -95,7 +95,7 @@ class Areachart extends Component {
                         }}
                     key={`AreaSeries-${this.props.id}-${type}`}
                     curve="curveMonotoneX"
-                    getNull={(d)=>d.y !==0}
+                    getNull={(d)=>d.y !==null}
                     data={
                       dateCollection.map((date,dateIndex)=>{  
                         if(this.props.id==="DailyNum"){

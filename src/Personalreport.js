@@ -69,8 +69,8 @@ class Personalreport extends Component {
                 Time:data.res.Time,
                 allbtn:true,
                 isLoading : false,
-                allclass:"ui orange button",
-                unfinishclass:"ui orange basic button",
+                allbtncolor:"ui orange button",
+                unfinishbtncolor:"ui orange basic button",
             },()=>{if(this.state.result==="success")
                     this.setState({
                         address:this.state.location
@@ -82,18 +82,18 @@ class Personalreport extends Component {
                     }})
          })
     }
-    all(){
+    allbutton(){
         this.setState({
             allbtn:true,
-            allclass:"ui orange button",
-            unfinishclass:"ui orange basic button",
+            allbtncolor:"ui orange button",
+            unfinishbtncolor:"ui orange basic button",
         })
     }
-    unfinish(){
+    unfinishbutton(){
         this.setState({
             allbtn:false,
-            allclass:"ui orange basic button",
-            finishclass:"ui orange  button"
+            allbtncolor:"ui orange basic button",
+            finishbtncolor:"ui orange  button"
         })
     }
     componentDidMount(){
@@ -126,8 +126,8 @@ class Personalreport extends Component {
                 </div>
                 <div className="btnbar">
                     <div className="ui buttons">
-                        <button className={this.state.allclass} onClick={this.all.bind(this)}>全部</button>
-                        <button className={this.state.unfinishclass} onClick={this.unfinish.bind(this)}>未完工</button>
+                        <button className={this.state.allbtncolor} onClick={this.allbutton.bind(this)}>全部</button>
+                        <button className={this.state.unfinishbtncolor} onClick={this.unfinishbutton.bind(this)}>未完工</button>
                     </div>
                 </div>
                 <div className="report">
