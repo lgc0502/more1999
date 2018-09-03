@@ -63,7 +63,7 @@ class Areachart extends Component {
           console.log(this.props.data[date][type])
           console.log(type)
           console.log(date)
-          return({x:timestamp_begin+i1*ONE_DAY,y:this.props.data[date][type] })}
+          return({x:timestamp_begin+i1*ONE_DAY,y:this.props.data[date][type]})}
         else if(this.props.id==="HourNum")
           return({x:date,y: this.props.data[date][type] })
          

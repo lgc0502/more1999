@@ -9,6 +9,7 @@ class Personalreport extends Component {
         this.state = {
             width:props.width||0,
             location:'',
+            result:'',
             address:props.Address,
             lat_lng:props.position,
             cases:props.Detail,
