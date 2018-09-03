@@ -5,7 +5,8 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries,
-  Crosshair
+  Crosshair,
+  YAxis
 } from "react-vis";
 import {timeFormat} from 'd3-time-format'
 import emitter from './events'
@@ -71,6 +72,7 @@ class Areachart extends Component {
           onMouseLeave={()=>this.setState({crosshairValues:[]})}>
           <VerticalGridLines />
           <HorizontalGridLines />
+          <YAxis/>
           <XAxis  
             xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
             xRange={[0,this.state.width*0.8]}
