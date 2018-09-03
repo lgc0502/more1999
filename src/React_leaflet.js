@@ -138,11 +138,11 @@ class React_leaflet extends Component{
                             id="DailyNum"
                             data={towninfo.DailyNum}/>
                     </div>
-                    {/* <div className="ui segment description-block">
+                    <div className="ui segment description-block">
                         <Areachart
                             id="HourNum"
                             data={towninfo.HourNum}/>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         )

@@ -84,7 +84,7 @@ class Personalreport extends Component {
     unfinish(){
         this.setState({
             cases:this.props.Unfinish,
-        })
+        },()=>console.log('unfinish'))
     }
     componentDidMount(){
         this.updateSize();

@@ -440,7 +440,9 @@ class Cityreport extends Component{
         this.state = {
             width:props.width||0,
             height:props.height||0,
-            data:props.Thisweek,
+            Thisweek:props.Thisweek,
+            Lastweek:props.Lastweek,
+            data:props.Lastweek,
         }
     }
 
@@ -463,12 +465,12 @@ class Cityreport extends Component{
     }
     thisweekdata(){
         this.setState({
-            data:this.props.Thisweek
+            data:this.state.Thisweek
         })
     }
     lastweekdata(){
         this.setState({
-            data:this.props.Lastweek
+            data:this.state.Lastweek
         })
     }
     componentDidMount(){

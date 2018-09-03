@@ -18,7 +18,7 @@ class Exploremap extends Component{
     constructor(props){
         super(props)
         this.state = {
-            center:[22.9972,120.2219],//props.lat_lng,
+            center:[22.997,120.221],//props.lat_lng,
             zoom:15,
             minZoom:11,
             maxZoom:30,
