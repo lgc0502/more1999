@@ -348,12 +348,12 @@ def Hour_statistic(objs):
     returndata = {}
     temp = []
     for d in range(0,24):
-        for obj in objs:
-            obj_time = obj['requested_datetime'] + datetime.timedelta(hours=8)
-            if obj_time.strftime('%H') == str(d):
-                temp.append(obj)  
-        returndata[str(d)] = Category_statistic(temp)  
-        temp = []  
+        temp.append([])
+    for obj in objs:
+        obj_time = obj['requested_datetime'] + datetime.timedelta(hours=8)
+        temp[int(obj_time.strftime('%H'))].append(obj)
+    for d in range(0,24):
+        returndata[str(d)] = Category_statistic(temp[d])  
     return returndata
    
 def WeekDay_statistic(objs,begin,end):
