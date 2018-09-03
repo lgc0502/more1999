@@ -94,7 +94,7 @@ class React_leaflet extends Component{
         const position =this.state.center;
         const towninfo = this.props.Detail[this.state.selecttownid];
         console.log(this.state)
-        console.log(this.towninfo)
+        console.log(towninfo)
         return(
             <div>
                 <Map ref='map' 

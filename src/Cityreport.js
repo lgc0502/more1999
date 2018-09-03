@@ -441,6 +441,7 @@ class Cityreport extends Component{
             width:props.width||0,
             height:props.height||0,
             data:props.Thisweek,
+            isLoading:false
         }
     }
 
@@ -467,9 +468,10 @@ class Cityreport extends Component{
         })
     }
     lastweekdata(){
+        console.log("set it")
         this.setState({
             data:this.props.Lastweek
-        },()=>console.log("i set"))
+        })
     }
     componentDidMount(){
         this.updateSize();
@@ -477,6 +479,7 @@ class Cityreport extends Component{
     }
     render(){
         console.log("i render")
+        console.log(this.state.data)
         return(
             <div className="Cityreport">
                 <div className="btnbar">
