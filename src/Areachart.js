@@ -92,7 +92,7 @@ class Areachart extends Component {
           />
            {typeCollection.map((type,typeIndex)=>(
                 <AreaSeries
-                xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
+                    xDomain={(this.props.id==="DailyNum"?[timestamp_begin,timestamp_begin+6*ONE_DAY]:[dateCollection[0],dateCollection[23]])}
                     onNearestX={(value,{index})=>{
                         this.setState({crosshairValues:data.map(d => {return d[index]})})
                         }}
