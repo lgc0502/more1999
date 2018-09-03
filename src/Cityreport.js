@@ -516,7 +516,7 @@ const testdata={
                     Formates:'1:12:30'},
             },
             'DailyNum':{
-                '2018-9-1':{
+                '2018-10-1':{
                     "parking":0,
                     "light":0,
                     "noise":0,
@@ -527,7 +527,7 @@ const testdata={
                     "pipe":10 ,
                     "animal":30  
                 },
-                '2018-9-2':{
+                '2018-10-2':{
                     "parking":10,
                     "light":10,
                     "noise":10,
@@ -538,7 +538,7 @@ const testdata={
                     "pipe":0 ,
                     "animal":10  
                 },
-                '2018-9-3':{
+                '2018-10-3':{
                     "parking":10,
                     "light":10,
                     "noise":10,
@@ -549,7 +549,7 @@ const testdata={
                     "pipe":0 ,
                     "animal":10  
                 },
-                '2018-9-4':{
+                '2018-10-4':{
                     "parking":3,
                     "light":0,
                     "noise":2,
@@ -560,7 +560,7 @@ const testdata={
                     "pipe":0 ,
                     "animal":0  
                 },
-                '2018-9-5':{
+                '2018-10-5':{
                     "parking":0,
                     "light":0,
                     "noise":0,
@@ -571,7 +571,7 @@ const testdata={
                     "pipe":10 ,
                     "animal":10  
                 },
-                '2018-9-6':{
+                '2018-10-6':{
                     "parking":10,
                     "light":10,
                     "noise":10,
@@ -582,7 +582,7 @@ const testdata={
                     "pipe":10 ,
                     "animal":10  
                 },
-                '2018-9-7':{
+                '2018-10-7':{
                     "parking":10,
                     "light":10,
                     "noise":10,
@@ -870,7 +870,7 @@ class Cityreport extends Component{
         this.state = {
             width:props.width||0,
             height:props.height||0,
-            data:props.Thisweek,//testdata.Thisweek,
+            data:testdata.Thisweek,//props.Thisweek,
             isLoading:false
         }
     }
@@ -894,12 +894,12 @@ class Cityreport extends Component{
     }
     thisweekdata(){
         this.setState({
-            data:this.props.Thisweek,//testdata.Thisweek,
+            data:testdata.Thisweek,//this.props.Thisweek,
         })
     }
     lastweekdata(){
         this.setState({
-            data:this.props.Lastweek,//testdata.Lastweek,
+            data:testdata.Lastweek,//this.props.Lastweek,
         })
     }
     componentDidMount(){

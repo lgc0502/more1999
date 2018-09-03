@@ -22,7 +22,7 @@ class Main extends Component{
         geolocation.getLocation().then(d=>{     
             this.setState({
                 lat_lng:[d.coords.latitude,d.coords.longitude],
-    //       })
+        //   })
             },()=>{
                 postApi.requertPost('./Nobug',{
                     params:{
@@ -39,7 +39,7 @@ class Main extends Component{
                         })
                  })
             })
-          })
+           })
     }
     render(){
         const {overview,cityreport,personalreport,isLoading} = this.state;
