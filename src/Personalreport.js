@@ -94,7 +94,7 @@ class Personalreport extends Component {
         window.removeEventListener('resize',this.updateSize.bind(this));
       }
     render(){
-        console.log("render personal report")
+       console.log("render personal report")
        const beginhour=0;
        const endhour=23; 
     //    if(this.state.isLoading){

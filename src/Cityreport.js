@@ -440,9 +440,7 @@ class Cityreport extends Component{
         this.state = {
             width:props.width||0,
             height:props.height||0,
-            Thisweek:props.Thisweek,
-            Lastweek:props.Lastweek,
-            data:props.Lastweek,
+            data:props.Thisweek,
         }
     }
 
@@ -465,20 +463,20 @@ class Cityreport extends Component{
     }
     thisweekdata(){
         this.setState({
-            data:this.state.Thisweek
+            data:this.props.Thisweek
         })
     }
     lastweekdata(){
         this.setState({
-            data:this.state.Lastweek
-        })
+            data:this.props.Lastweek
+        },()=>console.log("i set"))
     }
     componentDidMount(){
         this.updateSize();
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        console.log("Cityreport render")
+        console.log("i render")
         return(
             <div className="Cityreport">
                 <div className="btnbar">
@@ -488,9 +486,7 @@ class Cityreport extends Component{
                     </div>
                 </div>
                 <div className="report">
-                    <React_leaflet
-                        data={this.props.towngeo}
-                        {...this.state.data}/>
+                    <React_leaflet {...this.state.data}/>
                 </div>
             </div>
         )

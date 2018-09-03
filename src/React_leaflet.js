@@ -61,6 +61,7 @@ class React_leaflet extends Component{
         this.refs.map.leafletElement.setView([23.15,120.35],10);
     }
    componentDidMount(){
+       console.log("mapmapmapmap")
     fetch('/static/data/tainan.json')
         .then(res => {
             if(res.status !== 200){
@@ -92,6 +93,8 @@ class React_leaflet extends Component{
           }
         const position =this.state.center;
         const towninfo = this.props.Detail[this.state.selecttownid];
+        console.log(this.state)
+        console.log(this.towninfo)
         return(
             <div>
                 <Map ref='map' 
