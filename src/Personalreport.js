@@ -67,13 +67,23 @@ class Personalreport extends Component {
           }).then(data => {
               
             this.setState({
-              lat_lng:data.res.position,
-              address:this.state.location,
-              category:data.res.category,
-              time:data.res.hour,
-              cases:data.res.detail,
-              isLoading : false
-            })
+                result:data.re.result,
+                lat_lng:data.res.position,
+                cases:props.Detail,
+                Category:props.Category,
+                DailyNum:props.DailyNum,
+                HourNum:props.HourNum,
+                Time:props.Time,
+                isLoading : false
+            },()=>{if(this.state.result==="success")
+                    this.setState({
+                        address:this.state.location
+                    })
+                    else{
+                        this.setState({
+                            address:"台南火車站（你輸入的位置無法辨識）"
+                        })
+                    }})
          })
     }
     all(){
