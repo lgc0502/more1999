@@ -111,24 +111,24 @@ class Exploremap extends Component{
                             }
                         </LayerGroup> 
                     </Map>
-                    <div className="ui segment description-block">
+                    <div className="left ui segment description-block">
                         <Barchart
                             id="Category"
                             data={Category}/>
                     </div>
-                    <div className="ui segment description-block">
+                    <div className="left ui segment description-block">
                         <Barchart
                             id="Time"
                             data={Time}/>
                     </div>
                 </div>
                 <div className="Personal-right">
-                    <div className="ui segment description-block">
+                    <div className="right ui segment description-block">
                         <Areachart
                             id="DailyNum"
                             data={DailyNum}/>
                     </div>
-                    <div className="ui segment description-block">
+                    <div className="right ui segment description-block">
                         <Areachart
                             id="HourNum"
                             data={HourNum}/>

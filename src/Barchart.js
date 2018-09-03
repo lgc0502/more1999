@@ -57,7 +57,11 @@ class Barchart extends Component{
                     <HorizontalGridLines />
                     <XAxis
                         tickLabelAngle={-30}/>
-                    <YAxis/>
+                    <YAxis
+                         style={{
+                            line:{stroke:"#ADDDE1"},
+                            text:{fillOpacity:(this.props.id==="Category"?1:0),fontWeight: 400}
+                          }}/>
                     <VerticalBarSeries
                         data={barchartdata} 
                         color={"#454f5d"}

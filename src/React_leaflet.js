@@ -126,24 +126,24 @@ class React_leaflet extends Component{
                         /> 
                         <Legend/>         
                     </Map>
-                    <div className="ui segment description-block">
+                    <div className="left ui segment description-block">
                         <Barchart
                             id="Category"
                             data={towninfo.Category}/> 
                     </div>
-                    <div className="ui segment description-block">
+                    <div className="left ui segment description-block">
                         <Barchart
                             id="Time"
                             data={towninfo.Time}/>
                     </div>
                 </div>
                 <div className="Map-right">
-                    <div className="ui segment description-block">
+                    <div className="right ui segment description-block">
                         <Areachart
                             id="DailyNum"
                             data={towninfo.DailyNum}/>
                     </div>
-                    <div className="ui segment description-block">
+                    <div className="right ui segment description-block">
                         <Areachart
                             id="HourNum"
                             data={towninfo.HourNum}/>

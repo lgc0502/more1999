@@ -50,8 +50,8 @@ h2 {
   float: left;
 }
 .Map-chart,.Personal-chart{
-  width:35%;
-  height:80vmin;
+  width:100%;
+  height:50vmin;
   float: left;
 }
 .Map-left,.Map-right{
@@ -65,13 +65,13 @@ h2 {
 .Map-right ,.Personal-right{
   width:40%;
 }
-.Map-left.ui.segment.description-block,.Map-left.ui.segment.description-block{
+.left.ui.segment.description-block{
   width:48%;
   height:auto;
   float: left;
   margin:0 1% 1% 1% ;
 }
-.Map-right.ui.segment.description-block,.Map-right.ui.segment.description-block{
+.right.ui.segment.description-block{
   width:98%;
   height:auto;
   float: left;
