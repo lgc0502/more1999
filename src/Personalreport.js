@@ -64,6 +64,7 @@ class Personalreport extends Component {
                 DailyNum:data.res.DailyNum,
                 HourNum:data.res.HourNum,
                 Time:data.res.Time,
+                allbtn:true,
                 isLoading : false
             },()=>{if(this.state.result==="success")
                     this.setState({
@@ -78,12 +79,12 @@ class Personalreport extends Component {
     }
     all(){
         this.setState({
-            cases:this.state.cases,
+            allbtn:true,
         })
     }
     unfinish(){
         this.setState({
-            cases:this.state.unfinish,
+            allbtn:false,
         })
     }
     componentDidMount(){

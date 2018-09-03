@@ -50,7 +50,12 @@ class Exploremap extends Component{
    
     render(){
         
-        const {Category,DailyNum,cases,HourNum,Time}= this.props
+        const {Category,DailyNum,cases,unfinish,HourNum,Time}= this.props
+        let view;
+        if(this.props.allbtn)
+            view=cases;
+        else
+            view=unfinish;
 
         if(this.state.isLoading){
             return (
@@ -67,7 +72,6 @@ class Exploremap extends Component{
             popupAnchor:[-3,-76],  
         });
         const position = this.props.lat_lng;
-        console.log(this.props)
         return(
             <div>
                
@@ -100,7 +104,7 @@ class Exploremap extends Component{
                     <Circle center={position} color="red" fillColor='#f03' fillOpacity={0.5} radius={1017}></Circle>
                     <Marker position={position} icon={myviews}></Marker>    
                     <LayerGroup>
-                        {cases.map((d)=>(                              
+                        {view.map((d)=>(                              
                             <Marker position={d.position} icon={createicon('/static/image/'+iconUrl[d.category])}>
                                 <Popup>{transtype[d.category]}<br/>{d.description}<br/>{d.date}<br/>{d.status}</Popup>
                             </Marker>))
