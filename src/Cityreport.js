@@ -468,7 +468,6 @@ class Cityreport extends Component{
         })
     }
     lastweekdata(){
-        console.log("set it")
         this.setState({
             data:this.props.Lastweek
         })
@@ -478,8 +477,6 @@ class Cityreport extends Component{
         window.addEventListener('resize',this.updateSize.bind(this));
     }
     render(){
-        console.log("i render")
-        console.log(this.state.data)
         return(
             <div className="Cityreport">
                 <div className="btnbar">

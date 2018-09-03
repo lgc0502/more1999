@@ -1,21 +1,8 @@
 import React ,{Component} from 'react';
 import Exploremap from './Exploremap.js';
-import geolocation from './geolocation';
 import postApi from './postApi.js';
 import ReactDOM from 'react-dom';
-import {
-    XYPlot,
-    XAxis,
-    YAxis,
-    VerticalGridLines,
-    HorizontalGridLines,
-    AreaSeries,
-    Crosshair
-  } from "react-vis";
-import {timeFormat} from 'd3-time-format'
 
-const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
-const typecolor = {"parking":'#2e1f54',"light":'#f00a36',"noise":'#ed3b21',"aisle":'#ff6908',"road":'#ffc719',"traffic":'#598c14',"dirty":'#335238',"pipe":'#4a8594' ,"animal":'#706357'};
 class Personalreport extends Component {
     constructor(props){
         super(props);
@@ -69,11 +56,11 @@ class Personalreport extends Component {
             this.setState({
                 result:data.re.result,
                 lat_lng:data.res.position,
-                cases:props.Detail,
-                Category:props.Category,
-                DailyNum:props.DailyNum,
-                HourNum:props.HourNum,
-                Time:props.Time,
+                cases:this.props.Detail,
+                Category:this.props.Category,
+                DailyNum:this.props.DailyNum,
+                HourNum:this.props.HourNum,
+                Time:this.props.Time,
                 isLoading : false
             },()=>{if(this.state.result==="success")
                     this.setState({
@@ -104,9 +91,6 @@ class Personalreport extends Component {
         window.removeEventListener('resize',this.updateSize.bind(this));
       }
     render(){
-       console.log("render personal report")
-       const beginhour=0;
-       const endhour=23; 
     //    if(this.state.isLoading){
     //         return (
     //          <div className="loaddata">
@@ -114,9 +98,6 @@ class Personalreport extends Component {
     //          </div>
     //         )
     //     }
-        console.log('personal')
-        console.log(this.state.width)
-        console.log(this.state)
    
         return (
             <div className="Personalreport">
