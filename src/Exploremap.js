@@ -6,6 +6,7 @@ import Barchart from './Barchart.js';
 
 const iconUrl={"parking":'Asset1.png',"light":'Asset2.png',"noise":'Asset3.png',"aisle":'Asset4.png',"road":'Asset5.png',"traffic":'Asset6.png',"dirty":'Asset7.png',"pipe":'Asset8.png' ,"animal":'Asset9.png'}
 const transtype = {"parking":"違規停車","light":"路燈故障","noise":"噪音舉發","aisle":"騎樓舉發","road":"道路維修","traffic":"交通運輸","dirty":"髒亂污染","pipe":"民生管線" ,"animal":"動物救援"}
+const Palette = {"parking":'#F1CA93',"light":'#F7A71E',"noise":'#DB5738',"aisle":'#5A1E3D',"road":'#9F989A',"traffic":'#E6ABA9',"dirty":'#A61F61',"pipe":'#5B3075',"animal":'#0C327D'};
 function createicon(url){
     return L.icon({
         iconUrl:url,
@@ -126,6 +127,20 @@ class Exploremap extends Component{
                     </div>
                 </div>
                 <div className="Personal-right">
+                    <div className='explore-cases-legend'>
+                            {Object.keys(this.state.Category).map((t)=>(
+                                <div className="explore-category">
+                                    <svg width="20" height="20">
+                                    <circle style={{
+                                            cx:"10",
+                                            cy:"10",
+                                            r:"4",
+                                            fill:Palette[t] }}/></svg>
+                                    <span>{transtype[t]}</span>
+                                </div>
+                            ))
+                            }
+                    </div>
                     <div className="right ui segment description-block">
                         <h3>一週通報</h3>
                         <Areachart

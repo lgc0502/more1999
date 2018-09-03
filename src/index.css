@@ -32,12 +32,13 @@ h3 {
   letter-spacing: 1vmin;
   margin:auto;
 }
-h4 {
+h4,span{
   font: 2vmin 'Noto Sans TC', sans-serif;
   font-weight: 400;
   letter-spacing: 1vmin;
   margin:auto;
 }
+
 .load{
     display: block;
     position: relative;
@@ -105,11 +106,15 @@ h4 {
   float: left;
   margin:2% ;
 }
+.explore-cases-legend{
+  height:auto;
+  margin-top: 0%;
+}
 .explore-category{
   float: left;
 }
 .personal-control{
-  width:50%;
+  width:100%;
   height: 10vmin;
 }
 .control{
@@ -180,11 +185,6 @@ body {
 img {
   max-width:15vmin;
   height:auto;
-}
-
-h3,
-span {
-  font-size: 2.5vmin;
 }
 
 p {
