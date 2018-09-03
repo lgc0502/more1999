@@ -278,7 +278,7 @@ def seconds_format(second):
 def overview():
     returndata = {}
     thisweek = week_date()
-    all_data = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'], thisweek['today']]) 
+    all_data = API_DATA.objects.filter(requested_datetime__range = [thisweek['week_begin'], thisweek['today']])
     returndata['TotalNum'] = len(all_data)
     returndata['FinishNum'] = len( all_data.filter(status = '已完工') )
     returndata['UnFinishNum'] = returndata['TotalNum'] - returndata['FinishNum']
@@ -334,27 +334,43 @@ def Area_statistic(begin,end):
             returndata['All']['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
     return returndata
 
-def Category_statistic(obj):
+def Category_statistic(objs):
     returndata = {}
     for index in range(len(classification)):
-        returndata[eng_class[index]] = obj.filter(service_name = classification[index]).count()
+        returndata[eng_class[index]] = 0
+    for obj in objs:
+        for index in range(len(classification)):
+            if obj['service_name'] == classification[index]:
+                returndata[eng_class[index]] = returndata[eng_class[index]] + 1 
     return returndata
 
-def Hour_statistic(obj):
+def Hour_statistic(objs):
     returndata = {}
-    for index in range(0,24):
-        returndata[index] = Category_statistic(obj.filter(requested_datetime__hour = index))
+    temp = []
+    for d in range(0,24):
+        temp.append([])
+    for obj in objs:
+        obj_time = obj['requested_datetime'] + datetime.timedelta(hours=8)
+        temp[int(obj_time.strftime('%H'))].append(obj)
+    for d in range(0,24):
+        returndata[str(d)] = Category_statistic(temp[d])  
     return returndata
    
-def WeekDay_statistic(obj,begin,end):
+def WeekDay_statistic(objs,begin,end):
     returndata = {}
+    temp = []
     for d in range(0,7):
         query_date = begin + datetime.timedelta(days=d)
         query_end = query_date + datetime.timedelta(days=1)
         date = query_date.strftime('%Y-%m-%d')
-        returndata[date] = Category_statistic(obj.filter(requested_datetime__range = [query_date,query_end]))
+        for obj in objs:
+            obj_time = obj['requested_datetime']+datetime.timedelta(hours=8)
+            if obj_time.strftime('%Y-%m-%d') == date:
+                temp.append(obj)  
+        returndata[date] = Category_statistic(temp)    
+        temp = []
     return returndata
-
+    
 def Time_statistic(obj,begin,end):
     returndata = {}
     for index in range(len(classification)):
