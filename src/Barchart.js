@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import {XYPlot,VerticalBarSeries,XAxis,YAxis,LabelSeries ,VerticalGridLines,HorizontalGridLines} from "react-vis";
+import {XYPlot,VerticalBarSeries,XAxis,YAxis,LabelSeries ,VerticalGridLines,HorizontalGridLines,Hint} from "react-vis";
 const transtype = {"animal":'動物救援',"pipe":'民生管線',"dirty":'髒亂污染',"traffic":'交通運輸',"road":'道路維修',"aisle":'騎樓舉發',"noise":'噪音舉發',"light":'路燈故障',"parking":'違規停車'}
+const tipStyle={
+    display:'flex',
+    color:"#fff",
+    background:"#000",
+    alignItems:'center',
+    padding:'5px'
+};
+const boxStyle={height:'10px',width:'10px'};
+function buildValue(hoveredCell){
+    const {datapoint} = hoveredCell;
+    console.log(datapoint)
+    return{
+        x:datapoint.x,
+        y:datapoint.y,
+    }
+}
 class Barchart extends Component{
     
     constructor(props){
@@ -9,6 +25,7 @@ class Barchart extends Component{
         this.state = {
             width:props.width||0,
             height:props.height||0,
+            hoveredCell: false,
         }
     }
 
@@ -63,14 +80,22 @@ class Barchart extends Component{
                             text:{fillOpacity:(this.props.id==="Category"?1:0),fontWeight: 400}
                           }}/>
                     <VerticalBarSeries
+                        onValueMouseOver={v=>this.setState({hoveredCell:v.x && v.y ? v:false})}
                         data={barchartdata} 
                         color={"#454f5d"}
-                        style={{borderRadius:5}}/>
-                    <LabelSeries
+                        style={{borderRadius:5}}>
+                        {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
+                        <div style={tipStyle}>
+                            <div style={{...boxStyle,background: hoveredCell.clr}}/>
+                                {hoveredCell.clr}
+                            </div>
+                        </Hint>:null}
+                    </VerticalBarSeries>
+                    {/* <LabelSeries
                         allowOffsetToBeReversed
                         data={barchartdata}
                         labelAnchorX="text-after-edge"
-                        labelAnchorY="baseline"/>
+                        labelAnchorY="baseline"/> */}
                 </XYPlot>  
         )
     }

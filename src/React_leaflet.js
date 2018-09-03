@@ -127,11 +127,13 @@ class React_leaflet extends Component{
                         <Legend/>         
                     </Map>
                     <div className="left ui segment description-block">
+                        <h3>各類通報件數</h3>
                         <Barchart
                             id="Category"
                             data={towninfo.Category}/> 
                     </div>
                     <div className="left ui segment description-block">
+                        <h3>平均處理時間</h3>
                         <Barchart
                             id="Time"
                             data={towninfo.Time}/>
@@ -139,11 +141,13 @@ class React_leaflet extends Component{
                 </div>
                 <div className="Map-right">
                     <div className="right ui segment description-block">
+                        <h3>一週通報</h3>
                         <Areachart
                             id="DailyNum"
                             data={towninfo.DailyNum}/>
                     </div>
                     <div className="right ui segment description-block">
+                        <h3>各時段累積通報</h3>
                         <Areachart
                             id="HourNum"
                             data={towninfo.HourNum}/>
