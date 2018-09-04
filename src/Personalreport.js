@@ -114,7 +114,7 @@ class Personalreport extends Component {
 
         return (
             <div className="Personalreport">
-                
+                 <svg className="line-block"><line x1="30%" y1="0" x2="70%" y2="0" stroke="gray"/></svg>
                 <h3><font style={{color:"#598c14"}}>{this.state.address}</font></h3>
                 <h2>ON AIR</h2>
                 <h3>收聽範圍一公里</h3>
