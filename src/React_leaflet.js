@@ -163,13 +163,13 @@ class React_leaflet extends Component{
                         }
                     </div>
                     <div className="right ui segment description-block">
-                        <h3>一週通報</h3>
+                        <h3>一週通報件數</h3>
                         <Areachart
                             id="DailyNum"
                             data={towninfo.DailyNum}/>
                     </div>
                     <div className="right ui segment description-block">
-                        <h3>各時段累積通報</h3>
+                        <h3>各時段累積通報件數</h3>
                         <Areachart
                             id="HourNum"
                             data={towninfo.HourNum}/>

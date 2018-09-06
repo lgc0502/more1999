@@ -269,8 +269,8 @@ def week_date():
     return date
 
 def seconds_format(second):
-    days = int(second/(3600*24))
-    hours = int((second%(3600*24))/(3600))
+    days = int(second/86400)
+    hours = int((second%86400)/(3600))
     minutes = int((second%3600)/(60))
     delta_time = str(days)+'天'+str(hours)+'小時'+str(minutes)+'分鐘'
     return delta_time
@@ -378,13 +378,14 @@ def Time_statistic(objs,begin,end):
                 requested = obj['requested_datetime']
                 updated = obj['updated_datetime']
                 if requested != updated:
-                    delta = delta+(updated-requested).total_seconds()
+                    delta = delta+((updated-requested).total_seconds())
                     total = total+1
         if total == 0:
             delta_time = '0:0:0'
+            returndata[eng_class[index]]['Seconds'] = 0
         else:
             delta_time = seconds_format(delta/total)
-        returndata[eng_class[index]]['Seconds'] = delta
+            returndata[eng_class[index]]['Seconds'] = int(delta/total)
         returndata[eng_class[index]]['Num'] = total
         returndata[eng_class[index]]['Formated'] = delta_time       
     return returndata
@@ -415,10 +416,8 @@ def Personalreport(qlat, qlng):
     returndata['DailyNum'] = WeekDay_statistic(POI_obj,Date['week_begin'], Date['today'])
     returndata['Time'] = Time_statistic(POI_obj, Date['week_begin'], Date['today'])
     for d in range(len(classification)):
-        if(returndata['Category'][eng_class[d]] == 0):
-            returndata['Time'][eng_class[d]]['Formated'] = '無案件發生'
-        if(returndata['Time'][eng_class[d]]['Seconds'] == 0 and returndata['Category'][eng_class[d]] != 0):
-            returndata['Time'][eng_class[d]]['Formated'] = '皆尚未完成'
+        if(returndata['Time'][eng_class[d]]['Seconds'] == 0):
+            returndata['Time'][eng_class[d]]['Formated'] = ''
     detail=[]
     temp={}
     unfinish=[]
