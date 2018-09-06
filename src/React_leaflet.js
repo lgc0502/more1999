@@ -64,6 +64,10 @@ class React_leaflet extends Component{
     }
     handlebtnClick(){
         this.refs.map.leafletElement.setView([23.15,120.35],10);
+        this.setState({
+            selecttown:'台南市',
+            selecttownid:'All',
+        })
     }
    componentDidMount(){
        
@@ -119,7 +123,7 @@ class React_leaflet extends Component{
                             data={this.state.data}
                             style={(feature)=>{
                                 return {
-                                    fillColor:(this.props.status?getColor(feature.properties.thisweekcasenum):getColor(feature.properties.lastcasenum)),
+                                    fillColor:(this.props.status?getColor(feature.properties.thisweekcasenum):getColor(feature.properties.lastweekcasenum)),
                                     weight: 2,
                                     opacity: 1,
                                     color: 'white',
