@@ -67,7 +67,7 @@ class React_leaflet extends Component{
         this.setState({
             selecttown:'台南市',
             selecttownid:'All',
-        })
+        },()=>{emitter.emit("boardcasting",this.state.selecttown); })
     }
    componentDidMount(){
        
