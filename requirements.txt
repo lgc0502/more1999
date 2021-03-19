@@ -14,7 +14,7 @@ django-livereload-server==0.2.3
 django-picklefield==1.0.0
 django-q==0.9.4
 django-webpack-loader==0.6.0
-djangorestframework==3.6.2
+djangorestframework==3.11.2
 future==0.16.0
 geocoder==1.38.1
 googlemaps==3.0.2
